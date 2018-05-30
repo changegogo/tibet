@@ -1,0 +1,89 @@
+{% extends "home/base.nj" %}
+
+{% block styles %}
+<style>
+body {
+  padding-top: 60px;
+}
+
+.back {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0.5rem 0.75rem;
+}
+
+.back img {
+  width: 12px;
+}
+
+img.d-block {
+  max-width: 100%;
+}
+
+h6,
+p {
+  font-size: 0.75rem;
+}
+
+h6 {
+  margin-bottom: 4px;
+  color: #000000;
+}
+
+p {
+  color: rgba(0,0,0,0.54);
+}
+
+a.d-block:hover {
+  text-decoration: none;
+}
+
+.nav-link {
+  margin-bottom: -1px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  color: rgba(0,0,0,.54);
+}
+
+.nav-link:not(:last-child) {
+  margin-right: 2rem;
+}
+
+.nav-link:hover {
+  color: #4A90E2;
+}
+
+.nav-link.active {
+  border-bottom: 2px solid #4A90E2;
+  color: #4A90E2;
+}
+</style>
+{% endblock %}
+
+{% block header %}
+<nav class="nav border-bottom justify-content-center fixed-top bg-white">
+  <a href="javascript:history.back();" class="back"><img src="/public/img/Chevron@2x.png" /></a>
+  <a class="nav-link active" href="/books">书籍</a>
+  <a class="nav-link" href="/movies">电影</a>
+</nav>
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+  <div class="row">
+  {% for name, src in books %}
+    <div class="col col-4 col-sm-4 col-md-3 col-lg-2">
+      <a href="/public/books/{{src}}.epub" class="d-block">
+        <img src="/public/books/{{src}}.jpg" class="d-block mx-auto mb-2" />
+        <h6>{{name}}</h6>
+        <p></p>
+      </a>
+    </div>
+  {% endfor %}
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="screen-orientation" content="portrait">
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="format-detection" content="telephone=no">
+<title>青藏WIFI | WIFI | 天路WIFI</title>
+<script type="text/javascript">
+	document.getElementsByTagName('html')[0].style.fontSize = document.documentElement.clientWidth/3.75 +'px';
+</script>
+<link rel="stylesheet" href="/public/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/public/css/weui.min.css" />
+<link rel="stylesheet" href="/public/css/flex.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+<link rel="stylesheet" href="/public/css/index.css">
+</head>
+
+<body>
+	<div class="home-page">
+		<div class="home-header">
+			<div class="title">天路WiFi</div>
+			<div class="left-flow-text">剩余外网流量</div>
+			<div class="left-flow-data">{{flow.total}}<span> {{flow.units}}</span></div>
+			<div class="desc">
+				<img class="align-self-center ico" src="/public/img/1wifi.png" width="100%" height="100%" />
+				<span>{{wifiname}}</span>
+				<img class="align-self-center ico" src="/public/img/1renshu.png" width="100%" height="100%" />
+				<span>{{users}} 人已连接</span>
+			</div>
+			{% if status %}
+				<div class="open-btn"><a href="{{offline}}">关闭外网</a></div>
+			{% else %}
+				<div class="open-btn"><a href="{{online}}">开启外网</a></div>
+			{% endif %}
+		</div>
+		<div class="home-body">
+			<div class="fenlei-wrapper weui-flex">
+				<div class="weui-flex__item">
+					<div class="item-img">
+						<img class="" src="/public/img/1wifi.png"  width="100%" height="100%" />
+					</div>
+					<div class="item-text">数组阅读</div>
+				</div>
+				<div class="weui-flex__item">
+					<div class="item-img">
+						<img class="" src="/public/img/1wifi.png" width="100%" height="100%" />
+					</div>
+					<div class="item-text">列车影院</div>
+				</div>
+				<div class="weui-flex__item">
+					<div class="item-img">
+						<img class="" src="/public/img/1wifi.png" width="100%" height="100%" />
+					</div>
+					<div class="item-text">游戏大厅</div>
+				</div>
+				<div class="weui-flex__item">
+					<div class="item-img">
+						<img class="" src="/public/img/1wifi.png" width="100%" height="100%" />
+					</div>
+					<div class="item-text">天路WiFi</div>
+				</div>
+			</div>
+			<div class="news-wrapper">
+				<div class="head-wrapepr weui-cell weui-cell_access">
+					<div class="weui-cell__bd">藏旅新闻</div>
+					<div class="weui-cell__ft more">更多</div>
+				</div>
+				<div class="body-wrapper">
+					<div class="news-notice weui-cell ">
+						<div class="weui-cell__bd">{{qzintro}}</div>
+						<div class="weui-cell__ft more">查看</div>
+					</div>
+					<div class="news-list weui-panel">
+						{% for item in news%}
+							{% if loop.index0 === 0 %}
+								<a href="{{item.httpurl}}" class="weui-media-box blk">
+									<div class="weui-media-box__bd news-title ">
+										<p class="weui-media-box__title">{{item.description}}</p>
+									</div>
+									<div class=" weui-flex">
+										<div class="weui-flex__item news-img">
+											<img class="weui-media-box__thumb" src="{{item.img_1}}" width="100%" height="100%"/>
+										</div>
+										<div class="weui-flex__item news-img">
+											<img class="weui-media-box__thumb" src="{{item.img_2}}" width="100%" height="100%"/>
+										</div>
+										<div class="weui-flex__item news-img">
+											<img class="weui-media-box__thumb" src="{{item.img_3}}" width="100%" height="100%"/>
+										</div>
+									</div>
+									<div class="weui-media-box__desc" style="margin-top: 0.08rem;">{{item.created_at}}</div>
+								</a>
+							{% else %}
+								<a href="{{item.httpurl}}" class="weui-media-box weui-media-box_appmsg">
+									<div class="weui-media-box__bd news-title ">
+										<p class="weui-media-box__title">{{item.description}}</p>
+										<div class="weui-media-box__desc">{{item.created_at}}</div>
+									</div>
+									<div class="weui-media-box__hd news-img ">
+										<img class="weui-media-box__thumb" src="{{item.img_1}}" width="100%" height="100%"/>
+									</div>
+								</a>
+							{% endif %}
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+			<div class="movies-wrapper">
+				<div class="head-wrapepr weui-cell weui-cell_access">
+					<div class="weui-cell__bd">精品电影</div>
+					<div class="weui-cell__ft more">更多</div>
+				</div>
+				<div class="body-wrapper weui-flex">
+					{% for item in films %}
+						<a href="{{item.httpurl}}">
+							<div class="weui-flex__item movie-item" >
+								<div class="movie-img">
+									<img class="weui-media-box__thumb" src="{{item.imgv}}" width="100%" height="100%"/>
+								</div>
+								<div class="movie-title">{{item.name}}</div>
+							</div>
+						</a>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="novels-wrapper">
+				<div class="head-wrapepr weui-cell weui-cell_access">
+					<div class="weui-cell__bd">精品小说</div>
+					<div class="weui-cell__ft more">更多</div>
+				</div>
+				<div class="body-wrapper weui-flex">
+					{% for item in novels %}
+						<div class="weui-flex__item movie-item" >
+							<div class="movie-img">
+								<img class="weui-media-box__thumb" src="{{item.img}}" width="100%" height="100%"/>
+							</div>
+							<div class="movie-title">{{item.name}}</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="games-wrapper">
+				<div class="head-wrapepr weui-cell weui-cell_access">
+					<div class="weui-cell__bd">精品游戏</div>
+					<div class="weui-cell__ft more">更多</div>
+				</div>
+				<div class="body-wrapper">
+					<div class="swiper-container game-swiper-container">
+						<div class="swiper-wrapper">
+							{% for item in games %}
+								<div class="swiper-slide" ><img src="{{ item.imgbig }}" alt=""></div>
+							{% endfor %}
+							
+							<div class="swiper-slide" ><img src="/public/img/2.png" alt=""></div>
+							<div class="swiper-slide" ><img src="/public/img/3.png" alt=""></div>
+						</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<script src="/public/js/jquery-3.3.1.min.js"></script>
+<script src="/public/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+<script src="/public/js/weui.js"></script>
+<script src="/public/js/index.js"></script>
+</body>
+
+</html>

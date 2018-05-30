@@ -1,0 +1,46 @@
+{
+  "name": "tibet.wifi",
+  "version": "1.0.0",
+  "description": "Tibet WIFI H5 client",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "start": "egg-scripts start --daemon",
+    "stop": "egg-scripts stop",
+    "dev": "egg-bin dev",
+    "debug": "egg-bin debug",
+    "cov": "egg-bin cov",
+    "test": "egg-bin test",
+    "migrate:new": "egg-sequelize migration:create",
+    "migrate:up": "egg-sequelize db:migrate",
+    "migrate:down": "egg-sequelize db:migrate:undo"
+  },
+  "keywords": [
+    "WIFI",
+    "H5",
+    "client"
+  ],
+  "author": "hsiengfu.tseng@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "@alicloud/sms-sdk": "^1.1.1",
+    "bignumber.js": "^7.0.1",
+    "chance": "^1.0.16",
+    "egg": "^2.3.0",
+    "egg-redis": "^1.0.2",
+    "egg-scripts": "^2.5.0",
+    "egg-sequelize": "^3.1.3",
+    "egg-session-redis": "^1.0.0",
+    "egg-validate": "^1.0.0",
+    "egg-view-nunjucks": "^2.1.4",
+    "moment": "^2.20.1",
+    "pg": "^7.4.1",
+    "pg-hstore": "^2.3.2"
+  },
+  "devDependencies": {
+    "egg-bin": "^4.3.7",
+    "egg-mock": "^3.14.0"
+  },
+  "private": true
+}

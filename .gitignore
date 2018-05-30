@@ -1,0 +1,12 @@
+logs/*
+run/*
+config/config.local.*
+config/config.prod.*
+node_modules/
+resources/
+mediacenter/
+migrations/
+spec/
+**/.DS_Store
+package-lock.json
+.vscode
