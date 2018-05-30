@@ -39,12 +39,18 @@ module.exports = app => {
     app.post(ADMIN_ENTRY_POINT, 'admin.login');
     app.get('/logout/', 'admin.logout');
     app.get('/admin', 'admin.dashboard');
-    app.get('/books', 'home.books');
+    app.get('/books/:type', 'home.books');
     app.get('/books/my', 'home.mybooks');
     app.get('/movies', 'home.movies');
     app.get('/player/:name', 'home.player');
     app.get('/buy', 'home.buy');
 
-    // 新闻管理
-   app.get('/news/list', 'news.lists');
+    // 资讯列表 :type 取值 normal notice
+    app.get('/news/list/:type', 'news.typeList');
+    // 游戏列表
+    app.get('/game/list', 'game.lists');
+    // 小说列表
+    app.get('/novel/list/:type', 'novel.lists');
+    // 小说详情
+    app.get('/novel/details/:id', 'novel.details')
 };

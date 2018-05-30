@@ -11,8 +11,8 @@ module.exports = app => {
             "autoIncrement": true,
             "primaryKey": true
         },
-        "type": STRING, // normal 藏旅新闻 notice 通知公告
         "title": STRING,
+        "type": STRING, // normal臧旅新闻 notice通知公告
         "description": STRING,
         "img_1": STRING,
         "img_2": STRING,
@@ -57,7 +57,7 @@ module.exports = app => {
     News.findAllByPage = function (page, pageSize){
         return News.findAll({
             order: [
-                ["updated_at", "desc"]
+                ["created_at", "desc"]
             ],
             offset: (page - 1) * pageSize,
             limit: pageSize
@@ -65,6 +65,22 @@ module.exports = app => {
             return newss;
         });
     };
+    // type => normal notice
+    News.findByType = function (type){
+        return News.findAll({
+            where: {
+                type: type
+            },
+            order: [
+                ["created_at", "desc"]
+            ]
+        }).then( newss => {
+            let news_plain = newss.map((news)=>{
+                return news.get({plain: true}); 
+            })
+            return news_plain;
+        })
+    }
 
     News.delById = function (id){
         return News.destroy({

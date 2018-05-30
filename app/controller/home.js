@@ -81,7 +81,7 @@ module.exports = app => {
     // 模板全局变量
     app.locals = {
         "__CDN__": conf.cdnVersion,
-        "__MIN__": conf.env === 'local' ? '' : '.min',
+        "__MIN__": '.min',
         "__BOOK_INDEX__": conf.bookIndex,
         "__FILM_INDEX__": conf.filmIndex
     };
@@ -442,10 +442,13 @@ module.exports = app => {
             //         resolve('ok');
             //     });
             // });
-
-            console.log('xxxxxxxxxxxx')
-
-            return await ctx.render('home/books', { books: conf.BOOK_LIST });
+            // xh xz kb qg yq
+            let type = ctx.params.type;
+            
+            return await ctx.render('home/books', { 
+                type: type,
+                books: conf.BOOK_LIST[type]
+            });
         }
 
         async movies(ctx) {

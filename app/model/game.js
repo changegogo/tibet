@@ -11,7 +11,6 @@ module.exports = app => {
             "autoIncrement": true,
             "primaryKey": true
         },
-        "type": STRING, // 游戏类型
         "name": STRING,
         "description": STRING,
         "imgsmall": STRING,

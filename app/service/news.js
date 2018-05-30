@@ -22,6 +22,12 @@ class NewsService extends Service {
 
         return newss_plain;
     }
+    // 分类型查询
+    async listByType(type){
+        const model = this.ctx.model;
+        let newss = await model.News.findByType(type);
+        return newss;
+    }
 }
 
 module.exports = NewsService;

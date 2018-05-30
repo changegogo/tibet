@@ -64,7 +64,13 @@ a.d-block:hover {
 {% block header %}
 <nav class="nav border-bottom justify-content-center fixed-top bg-white">
   <a href="javascript:history.back();" class="back"><img src="/public/img/Chevron@2x.png" /></a>
-  <a class="nav-link active" href="/books">书籍</a>
+  <a class="nav-link active" href="/books">数字阅读</a>
+  
+</nav>
+<nav class="nav border-bottom justify-content-center fixed-top bg-white">
+  <a class="nav-link" href="/movies">电影</a>
+  <a class="nav-link" href="/movies">电影</a>
+  <a class="nav-link" href="/movies">电影</a>
   <a class="nav-link" href="/movies">电影</a>
 </nav>
 {% endblock %}

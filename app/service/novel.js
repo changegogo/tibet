@@ -11,6 +11,12 @@ class NovelService extends Service {
 
         return novels;
     }
+
+    async findById(id) {
+        const model = this.ctx.model;
+        let novel = await model.Novel.findById(id);
+        return novel;
+    }
 }
 
 module.exports = NovelService;

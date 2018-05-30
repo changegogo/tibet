@@ -11,7 +11,6 @@ module.exports = app => {
             "autoIncrement": true,
             "primaryKey": true
         },
-        "type": STRING,     // 类型
         "name": STRING,     // 名称
         "author": STRING,   // 作者
         "img": STRING,      // 题图
