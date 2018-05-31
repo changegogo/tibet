@@ -2,8 +2,8 @@
  * film model
  */
 module.exports = app => {
-    const { STRING, TEXT, DATE, UUID, UUID4, INTEGER, FLOAT, DOUBLE, Op} = app.Sequelize;
-    const OP = app.Sequelize.op;
+    const { STRING, TEXT, DATE, UUID, UUID4, INTEGER, FLOAT, DOUBLE} = app.Sequelize;
+    const OP = app.Sequelize.Op;
 
     const Films = app.model.define('film', {
         "id": {
@@ -29,7 +29,7 @@ module.exports = app => {
         return Promise.resolve();
     };
 
-    Films.findById = function (id){
+    Films.findByIdFilm = function (id){
         return Films.findOne({
             "where": {
                 "id": {
@@ -52,7 +52,7 @@ module.exports = app => {
                 }
             ],
             order: [
-                ["updated_at", "desc"]
+                ["created_at", "desc"]
             ],
             offset: (page - 1) * pageSize,
             limit: pageSize

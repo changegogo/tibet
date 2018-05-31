@@ -1,0 +1,13 @@
+.buypage-content-wrapper {
+    max-width: 280px;
+    margin: 0 auto;
+    margin-top: 130px;
+}
+
+.buypage-back-btn {
+    margin-top: 40px;
+    padding: 10px 100px;
+    border-radius: 22px;
+    background-color: #1E96FF;
+    color: #ffffff;
+}

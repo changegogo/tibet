@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <title>青藏WIFI | WIFI | 天路WIFI</title>
+    <script type="text/javascript">
+        document.getElementsByTagName('html')[0].style.fontSize = document.documentElement.clientWidth/3.75 +'px';
+    </script>
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/public/css/weui.min.css" />
+    <link rel="stylesheet" href="/public/css/flex.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+    <link rel="stylesheet" href="/public/css/common.css">
+    <link rel="stylesheet" href="/public/css/trainCinema.css">
+</head>
+
+<body>
+<div class="trainCinema-page">
+    <!---------------------------nav-------------------------->
+    <div class="nav fixed-top bg-white font_size16 flex flex-pack-center">
+        <a href=" " class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
+        <p class="text-center flex justify-content-center">列车影院</p>
+        <a href="/myfilm/list">我的电影</a>
+    </div>
+    <!--------------------------------body--+++++++++++++++++++++++++++++++++-->
+    <div class="trainCinema-body font_size16  marginT50">
+        <!------------------------------------trainCinema-banner-------------------------------------->
+        <div class="trainCinema-header">
+            <div class="swiper-container topbanner-swiper-container swiper-container-horizontal">
+                
+                <div class="swiper-wrapper">
+                    {% for item in header %}
+                        <div class="swiper-slide" >
+                            <a href="/film/details/{{item.id}}">
+                            <img src="{{item.imgh}}" alt="">
+                            </a>
+                        </div>
+                    {% endfor %}
+                    
+                </div>
+                <div class="swiper-pagination topbanner-pagination swiper-pagination-bullets font_size16">
+                    {% for item in header %}
+                        {% if loop.index0 === 0 %}
+                            <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
+                        {% else %}
+                            <span class="swiper-pagination-bullet"></span>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="marginlr15">
+        <!------------------------------------trainCinema-精品推荐-------------------------------------->
+        {% for item in middle %}
+            <a href="/film/details/{{item.id}}" class="weui-media-box weui-media-box_appmsg ">
+                <div class="weui-media-box__hd news-img ">
+                    <img class="weui-media-box__thumb" src="{{item.imgv}}" width="100%" height="100%"/>
+                </div>
+                <div class="weui-media-box__bd news-title ">
+                    <p class="weui-media-box__title">{{item.name}}</p>
+                    <p>导演：{{item.director}}</p>
+                    <p>主演：{{item.tostar}}</p>
+                    <p>评分：{{item.score}}</p>
+                </div>
+            </a>
+        {% endfor %}
+        
+
+        <!------------------------------------trainCinema-movie-type-------------------------------------->
+        <div class="movies-wrapper">
+            <div class="head-wrapepr weui-cell weui-cell_access">
+                <div class="weui-cell__bd">{{type1}}电影</div>
+                <div class="weui-cell__ft more">更多</div>
+            </div>
+            <div class="body-wrapper weui-flex">
+                {% for item in action %}
+                    <a href="/film/details/{{item.id}}" class="weui-media-box weui-media-box_appmsg ">
+                        <div class="weui-flex__item movie-item" >
+                            <div class="movie-img">
+                                <img class="weui-media-box__thumb" src="{{item.imgh}}" width="100%" height="100%"/>
+                            </div>
+                            <div class="movie-title">{{item.name}}</div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="movies-wrapper">
+            <div class="head-wrapepr weui-cell weui-cell_access">
+                <div class="weui-cell__bd">{{type2}}电影</div>
+                <div class="weui-cell__ft more">更多</div>
+            </div>
+            <div class="body-wrapper weui-flex">
+                {% for item in terror %}
+                    <a href="/film/details/{{item.id}}" class="weui-media-box weui-media-box_appmsg ">
+                        <div class="weui-flex__item movie-item" >
+                            <div class="movie-img">
+                                <img class="weui-media-box__thumb" src="{{item.imgh}}" width="100%" height="100%"/>
+                            </div>
+                            <div class="movie-title">{{item.name}}</div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+<script src="/public/js/jquery-3.3.1.min.js"></script>
+<script src="/public/js/bootstrap.min.js"></script>
+<script src="/public/js/weui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+<script src="/public/js/trainCInema.js"></script>
+</body>
+
+</html>

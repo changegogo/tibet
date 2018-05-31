@@ -1,0 +1,32 @@
+/*-----------------------------mycenter-banner----------------------------------------*/
+.mycenter-banner {
+    color: #ffffff;
+    background:linear-gradient(180deg,rgba(7,129,255,1),rgba(81,172,252,1));
+    padding-bottom: 12px;
+}
+.mycenter-banner > p {
+    padding: 16px 0 20px 0;
+}
+.mycenter-banner .weui-media-box_appmsg {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.mycenter-banner .weui-media-box__hd > img {
+    border-radius: 100%;
+    height: 100%;
+}
+.mycenter-celllink-item .weui-cell__bd{
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.mycenter-body .weui-cell_link {
+    color: #000000!important;
+}
+.mycenter-body .weui-cell {
+    padding-top: 0;
+}
+.mycenter-body .weui-cell:before {
+    border-top: 0;
+}
+

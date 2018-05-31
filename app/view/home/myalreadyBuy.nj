@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <title>青藏WIFI | WIFI | 天路WIFI</title>
+    <script type="text/javascript">
+        document.getElementsByTagName('html')[0].style.fontSize = document.documentElement.clientWidth/3.75 +'px';
+    </script>
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/public/css/weui.min.css" />
+    <link rel="stylesheet" href="/public/css/flex.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+    <link rel="stylesheet" href="/public/css/common.css">
+    <link rel="stylesheet" href="/public/css/myalreadyBuy.css">
+</head>
+
+<body>
+<div class="myalreadyBuy-page">
+    <!---------------------------nav-------------------------->
+    <div class="nav fixed-top bg-white font_size17 flex flex-pack-center">
+        <a href=" " class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
+        <p class="text-center flex justify-content-center">已购买</p>
+    </div>
+    <!--------------------------------body--+++++++++++++++++++++++++++++++++-->
+    <div class="myalreadyBuy-body font_size17" style="margin-top: 50px">
+        <!------------------------------------myalreadyBuy-tab-------------------------------------->
+        <div class="flex myalreadybuy-headertab paddinglr15 common_borderBottom">
+            {% if type === 'novel' %}
+                <p class="alreadybuy-tab-active flex-1"><a href="/alreadybuy/novel">数字阅读</a></p>
+                <p class="flex-1"><a href="/alreadybuy/film">列车影院</a></p>
+                <p class="flex-1"><a href="/alreadybuy/wifi">天路WiFi</a></p>
+            {% endif %}
+            {% if type === 'film' %}
+                <p class="flex-1"><a href="/alreadybuy/novel">数字阅读</a></p>
+                <p class="alreadybuy-tab-active flex-1"><a href="/alreadybuy/film">列车影院</a></p>
+                <p class="flex-1"><a href="/alreadybuy/wifi">天路WiFi</a></p>
+            {% endif %}
+            {% if type === 'wifi' %}
+                <p class="flex-1"><a href="/alreadybuy/novel">数字阅读</a></p>
+                <p class="flex-1"><a href="/alreadybuy/film">列车影院</a></p>
+                <p class="alreadybuy-tab-active flex-1"><a href="/alreadybuy/wifi">天路WiFi</a></p>
+            {% endif %}
+            
+        </div>
+        <!------------------------------------myalreadyBuy-list-------------------------------------->
+
+        <div class="myalreadyBuy-list marginlr15">
+                <div class="flex">
+                    <div class="weui-media-box__hd news-img marginR16">
+                        <img class="weui-media-box__thumb" src="/public/img/1.png" width="100%" height="100%"/>
+                    </div>
+                    <div class="weui-media-box__bd news-title marginR16">
+                        <p class="weui-media-box__title">海一样辽迹，摇曳的五彩...</p>
+                        <p class="color_opacity60 font_size12">导演：安东尼·罗素 乔·罗素</p>
+                        <p class="font_size12">6.0元</p>
+                        <p class="color_opacity60 font_size12">支付宝已付款</p>
+                    </div>
+                </div>
+                <div class="flex">
+                    <div class="weui-media-box__hd news-img marginR16">
+                        <img class="weui-media-box__thumb" src="/public/img/1.png" width="100%" height="100%"/>
+                    </div>
+                    <div class="weui-media-box__bd news-title marginR16">
+                        <p class="weui-media-box__title">海一样辽迹，摇曳的五彩...</p>
+                        <p class="color_opacity60 font_size12">导演：安东尼·罗素 乔·罗素</p>
+                        <p class="color_opacity60 font_size12">评分：</p>
+                        <p class="color_opacity60 font_size12">价格：¥6.0</p>
+                    </div>
+                </div>
+
+        </div>
+        <!------------------------------------list-end-------------------------------------->
+    </div>
+</div>
+<script src="/public/js/jquery-3.3.1.min.js"></script>
+<script src="/public/js/bootstrap.min.js"></script>
+<script src="/public/js/weui.js"></script>
+<script src="/public/js/myalreadyBuy.js"></script>
+</body>
+
+</html>

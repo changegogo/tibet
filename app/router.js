@@ -50,7 +50,27 @@ module.exports = app => {
     // 游戏列表
     app.get('/game/list', 'game.lists');
     // 小说列表
-    app.get('/novel/list/:type', 'novel.lists');
+    app.get('/novel/list/:typeid', 'novel.lists');
     // 小说详情
-    app.get('/novel/details/:id', 'novel.details')
+    app.get('/novel/details/:id', 'novel.novedetails');
+    // 我的小说列表
+    app.get('/mynovel/list', 'mynovel.lists');
+    // 列车影院
+    app.get('/traincinema/list', 'film.trainCinema');
+    // 电影详情
+    app.get('/film/details/:id', 'film.details');
+    // 我的电影
+    app.get('/myfilm/list', 'myfilm.lists');
+    // 天路wifi
+    app.get('/tianluwifi', 'home.tianluwifi');
+    // 购买流量
+    app.get('/tianwifi/buy', 'home.tianluwifibuy');
+    // 我的中心
+    app.get('/mycenter', 'home.mycenter');
+    // 已购买 type (novel,film,wifi)
+    app.get('/alreadybuy/:type', 'home.alreadybuy');
+    // 常见问题
+    app.get('/problem', 'home.problem');
+    // 意见反馈
+    app.get('/advice', 'home.advice');
 };

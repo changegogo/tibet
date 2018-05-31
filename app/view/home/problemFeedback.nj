@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <title>青藏WIFI | WIFI | 天路WIFI</title>
+    <script type="text/javascript">
+        document.getElementsByTagName('html')[0].style.fontSize = document.documentElement.clientWidth/3.75 +'px';
+    </script>
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/public/css/weui.min.css" />
+    <link rel="stylesheet" href="/public/css/flex.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+    <link rel="stylesheet" href="/public/css/common.css">
+    <link rel="stylesheet" href="/public/css/problemFeedback.css">
+</head>
+
+<body>
+<div class="problemFeedback-page">
+    <!---------------------------problemFeedback-nav-------------------------->
+
+    <div class="nav fixed-top bg-white font_size17 flex flex-pack-center">
+        <a href=" " class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
+        <p class="text-center flex justify-content-center">意见反馈</p>
+    </div>
+    <!--------------------------------body--+++++++++++++++++++++++++++++++++-->
+    <div class="problemFeedback-body font_size16 marginT50 gray_bgColor">
+
+        <p class="color_opacity38" style="padding:8px 15px;">选择反馈类型</p>
+        <div class="weui-cells weui-cells_radio paddinglr15 flex" style="margin-top: 0;">
+            <label class="weui-cell weui-check__label" for="x11" style="margin-right: 32px;">
+                <div class="weui-cell__ft">
+                    <input type="radio" class="weui-check" name="radio1" id="x11" checked="checked">
+                    <span class="weui-icon-checked"></span>
+                </div>
+
+                <div class="weui-cell__bd">
+                    <p class="font_size15">产品建议</p>
+                </div>
+
+            </label>
+            <label class="weui-cell weui-check__label" for="x12">
+                <div class="weui-cell__ft">
+                    <input type="radio" name="radio1" class="weui-check" id="x12">
+                    <span class="weui-icon-checked"></span>
+                </div>
+
+                <div class="weui-cell__bd">
+                    <p class="font_size15">程序错误</p>
+                </div>
+
+            </label>
+        </div>
+        <p class="color_opacity38" style="padding: 8px 15px;">反馈内容</p>
+
+        <div class="fankui-wrapper">
+
+
+            <div class="weui-cells weui-cells_form paddinglr15" style="margin-top: 0;">
+                <div class="weui-cell">
+                    <div class="weui-cell__bd">
+                        <textarea class="weui-textarea font_size15" placeholder="请输入反馈，我们将为你不断改进请输入反馈，我们将为你不断改进请输入反馈，我们将为你不断改进请输入反馈，我们将为你不断改进请输入反馈，我们将为你不断改进请输入反馈，我们将为你不断改进" rows="4"></textarea>
+                        <div class="weui-textarea-counter font_size15"><span>0</span>/200</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="weui-uploader__bd paddinglr15" style="width: 100%;background-color: #ffffff;">
+                <ul class="weui-uploader__files" id="uploaderFiles">
+                    <li class="weui-uploader__file" style="background-image:url(/public/img/1.png)"></li>
+                    <li class="weui-uploader__file" style="background-image:url(/public/img/1.png)"></li>
+                </ul>
+                <div class="weui-uploader__input-box">
+                    <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*" multiple="">
+                </div>
+            </div>
+        </div>
+
+        <!------------------------------------body-end-------------------------------------->
+    </div>
+</div>
+<script src="/public/js/jquery-3.3.1.min.js"></script>
+<script src="/public/js/bootstrap.min.js"></script>
+<script src="/public/js/weui.js"></script>
+<script src="/public/js/problemFeedback.js"></script>
+</body>
+
+</html>

@@ -53,7 +53,9 @@ module.exports = app => {
             limit: pageSize
         }).then( games => {
             return games;
-        });
+        }).catch((err)=>{
+            console.log(err);
+        })
     };
 
     Games.delById = function (id){

@@ -139,13 +139,13 @@
     margin-left: 0.16rem;
     margin-right: 0.16rem;
 }
-.swiper-slide {
+.game-swiper-container .swiper-slide {
     width: 90%;
 }
 .swiper-slide-next, .swiper-slide-prev {
     transform: scale(.95);
 }
-.swiper-slide img{
+.game-swiper-container .swiper-slide img{
     width: 100%;
     border-radius: 8px;
 }

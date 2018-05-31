@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="app" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="我的" transform="translate(-14.000000, -170.000000)">
+            <g id="Group" transform="translate(0.000000, 160.000000)">
+                <g id="Group-4" transform="translate(14.000000, 10.000000)">
+                    <rect id="Rectangle-23" fill="#7ED321" x="2" y="2" width="20" height="20" rx="2"></rect>
+                    <rect id="Rectangle-24" fill="#FFFFFF" x="5" y="6" width="13" height="2"></rect>
+                    <rect id="Rectangle-24-Copy" fill="#FFFFFF" x="5" y="11" width="10" height="2"></rect>
+                    <rect id="Rectangle-24-Copy-2" fill="#FFFFFF" x="5" y="16" width="8" height="2"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

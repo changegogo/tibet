@@ -1,0 +1,25 @@
+
+.weui-media-box {
+    padding-left: 0;
+    padding-right: 0;
+}
+.zixun-list .zixun-list-item {
+    border-top: 1px solid rgba(0,0,0,.12);
+}
+.zixun-list .news-img{
+    width: 1.11rem;
+    height: 0.74rem;
+    margin-right: 0;
+}
+.zixun-list .news-title p{
+    white-space: normal;
+    margin-bottom: 0.11rem;
+}
+.zixun-body-headertab {
+    position: relative;
+    line-height: 24px;
+}
+.zixun-body-headertab > p {
+    padding: 8px;
+    margin-right: 12px;
+}

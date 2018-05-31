@@ -498,6 +498,48 @@ module.exports = app => {
         async buy(ctx) {
             return await ctx.render('home/buy');
         }
+
+        async tianluwifi(ctx){
+            return await ctx.render('home/buy');
+        }
+        
+        async tianluwifibuy(ctx) {
+            return await ctx.render('home/flowBuySuccess');
+        }
+
+        async mycenter(ctx) {
+            return await ctx.render('home/mycenter');
+        }
+
+        //type (novel,film,wifi)
+        async alreadybuy(ctx) {
+            // todo校验type
+
+            let type = ctx.params.type;
+            let data = [];
+            if(type === 'novel') {
+                data = await ctx.service.mynovel.lists();
+            }else if(type === 'film'){
+                data = await ctx.service.myfilm.lists();
+            }else if(type === 'wifi'){
+                data = await ctx.service.mynovel.lists();
+            }else{
+                return;
+            }
+
+            return await ctx.render('home/myalreadybuy', {
+                type: type,
+                data: data
+            });
+        }
+
+        async problem(ctx) {
+            return await ctx.render('home/comProblems');
+        }
+
+        async advice(ctx) {
+            return await ctx.render('home/problemFeedback');
+        }
     }
 
     return Home;

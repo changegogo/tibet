@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <title>青藏WIFI | WIFI | 天路WIFI</title>
+    <script type="text/javascript">
+        document.getElementsByTagName('html')[0].style.fontSize = document.documentElement.clientWidth/3.75 +'px';
+    </script>
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/public/css/weui.min.css" />
+    <link rel="stylesheet" href="/public/css/flex.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+    <link rel="stylesheet" href="/public/css/common.css">
+    <link rel="stylesheet" href="/public/css/bookReader.css">
+</head>
+
+<body>
+<div class="bookReader-page">
+    <!---------------------------nav-------------------------->
+    <div class="nav fixed-top bg-white font_size16 flex flex-pack-center">
+        <a href="javascript:history.back();" class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
+        <p class="text-center flex justify-content-center">数字阅读</p>
+    </div>
+   <div class="bookReader-header marginT50">
+       <!--------------------------------tab-header--+++++++++++++++++++++++++++++++++-->
+       <div class="flex bookReader-body-headertab common_borderBottom font_size16 paddinglr15">
+          {% for item in allType %}
+            {% if curType == item.id %}
+                <p class="common-headertab-active"><a href="/novel/list/{{item.id}}">{{item.name}}</a></p>
+            {% else %}
+                <p><a href="/novel/list/{{item.id}}">{{item.name}}</a></p>
+            {% endif %} 
+          {% endfor %}
+       </div>
+   </div>
+    <!--------------------------------body--+++++++++++++++++++++++++++++++++-->
+    <div class="bookReader-body font_size16 marginlr15 marginT16">
+
+
+        <!------------------------------------bookReader-list-------------------------------------->
+        <div class="bookReader-list">
+
+            <!--------------------------------------------tabone------------------------------>
+            <div class="bookReader-list">
+                <div class="tabone">
+                    <div class="body-wrapper weui-flex flex-flow-wrap align-content">
+                        {% for item in novels %}
+                            <a href="/novel/details/{{item.id}}">
+                                <div class="weui-flex__item bookReader-item" >
+                                    <div class="bookReader-img">
+                                        <img class="weui-media-box__thumb" src="{{item.img}}" width="100%" height="100%"/>
+                                    </div>
+                                    <div class="bookReaderItem-title font_size12">
+                                        <p>{{item.name}}</p>
+                                        <p class="color_opacity38">{{item.price}} 元</p>
+                                    </div>
+                                </div>
+                            </a>
+                        {% endfor %}
+                        
+
+
+                    </div>
+                </div>
+                <!-------------------------------------------tabtwo-------------------------------------------------->
+
+
+
+
+            <!-------------------------------------------tabthree-------------------------------------------------->
+
+            <!-------------------------------------------tabfour-------------------------------------------------->
+            <!-------------------------------------------tabfive-------------------------------------------------->
+            <!-------------------------------------------tabsix-------------------------------------------------->
+            <!---------------------------------end-------------------------------------------->
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/public/js/jquery-3.3.1.min.js"></script>
+<script src="/public/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+<script src="/public/js/weui.js"></script>
+<script src="/public/js/bookReader.js"></script>
+</body>
+
+</html>

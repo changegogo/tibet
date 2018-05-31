@@ -1,0 +1,33 @@
+.gameRoom-page h2 {
+    margin: 8px 0;
+    font-size: .20rem;
+    line-height: 28px;
+
+}
+/*-----------------------------------swipersytle-------------------------*/
+.gameRoom-swiper-container .swiper-slide {
+    width: 90%;
+}
+.gameRoom-swiper-container .swiper-slide img {
+    border-radius: 8px;
+}
+/*-------------------------list-style----------------------------------------*/
+.gameRoom-list .weui-media-box {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.gamRoome-listitem-rsection {
+    height: 60px;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+}
+.gameRoom-list .weui-media-box:before {
+    border-top: 0 ;
+}
+.gameRoom-entry-btn {
+    padding: 0 16px;
+    height: 32px;
+    color: #1E96FF;
+    background-color: RGBA(30, 150, 255, 0.12);
+    border-radius: 16px;
+}

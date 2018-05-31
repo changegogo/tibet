@@ -1,0 +1,16 @@
+/*------------------------------------------header-style------------------------------*/
+.bookReader-body-headertab p {
+    line-height: 26px;
+    padding: 8px 10px;
+}
+
+
+/*------------------------------------------list-style------------------------------*/
+.bookReader-list > div .bookReader-item{
+    flex: 0 32%;
+    margin-right: 2%;
+    margin-bottom: 24px;
+}
+.bookReader-list > div .bookReader-item:nth-child(3n) {
+    margin-right: 0;
+}

@@ -32,13 +32,11 @@ module.exports = app => {
         });
     };
 
-    FilmType.findAllByTypeAndPage = function (page, pageSize){
+    FilmType.findAllFilmType = function (){
         return FilmType.findAll({
             order: [
                 ["updated_at", "desc"]
-            ],
-            offset: (page - 1) * pageSize,
-            limit: pageSize
+            ]
         }).then( filmtypes => {
             let filmtype_plain = filmtypes.map((filmtype)=>{
                 return filmtype.get( {plain: true} )

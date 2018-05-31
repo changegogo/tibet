@@ -2,8 +2,8 @@
  * novel model
  */
 module.exports = app => {
-    const { STRING, TEXT, DATE, UUID, UUID4, INTEGER, DOUBLE, Op} = app.Sequelize;
-    const OP = app.Sequelize.op;
+    const { STRING, TEXT, DATE, UUID, UUID4, INTEGER, DOUBLE} = app.Sequelize;
+    const OP = app.Sequelize.Op;
 
     const Novels = app.model.define('novel', {
         "id": {
@@ -42,7 +42,7 @@ module.exports = app => {
         type != 'all' ? wh.id = type : wh;
         return Novels.findAll({
             order: [
-                ["updated_at", "desc"]
+                ["created_at", "desc"]
             ],
             include: [
                 {
@@ -52,8 +52,11 @@ module.exports = app => {
             ],
             offset: (page - 1) * pageSize,
             limit: pageSize
-        }).then( Novels => {
-            return Novels;
+        }).then( novels => {
+            let novels_plain = novels.map( novelmodel => {
+                return novelmodel.get( {plain: true} );
+            });
+            return novels_plain;
         });
     };
 

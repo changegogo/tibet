@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <title>青藏WIFI | WIFI | 天路WIFI</title>
+    <script type="text/javascript">
+        document.getElementsByTagName('html')[0].style.fontSize = document.documentElement.clientWidth/3.75 +'px';
+    </script>
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/public/css/weui.min.css" />
+    <link rel="stylesheet" href="/public/css/flex.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+    <link rel="stylesheet" href="/public/css/common.css">
+    <link rel="stylesheet" href="/public/css/movieDetail.css">
+</head>
+
+<body>
+<div class="movieDetail-page">
+    <!---------------------------nav-------------------------->
+    <div class="nav fixed-top bg-white font_size17 flex flex-pack-center">
+        <a href=" " class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
+        <p class="text-center flex justify-content-center">详情</p>
+    </div>
+    <!--------------------------------------top-book-jianjie -introduce------------------------------------->
+   <div class="top-intro font_size16 marginlr15" style="margin-top: 66px;">
+       <div class="flex">
+           <div class="weui-media-box__hd news-img marginR16">
+               <img class="weui-media-box__thumb" src="{{film.imgv}}" width="100%" height="100%"/>
+           </div>
+           <div class="weui-media-box__bd news-title marginR16">
+               <p class="weui-media-box__title">{{film.name}}</p>
+               <p class="color_opacity60 font_size12">导演：{{film.director}}</p>
+               <p class="color_opacity60 font_size12">评分：{{film.score}}</p>
+               <p class="color_opacity60 font_size12">价格：¥{{film.price}}</p>
+           </div>
+       </div>
+      <p class="marginT16 color_opacity60 font_size12">
+       {{film.description}}
+      </p>
+   </div>
+    <!---------------------------------------select-pay-method-wrapper------------------------------------->
+    <div class="paymethod-wrapper marginT16 marginlr15">
+        <h2 class="font_size16">支付方式</h2>
+        <div class="weui-cells weui-cells_radio">
+            <label class="weui-cell weui-check__label" for="wxpay">
+                <div class="weui-cell__bd">
+                    <img src="/public/img/Wechat.svg" /> <span>微信支付</span>
+                </div>
+                <div class="weui-cell__ft">
+                    <input class="weui-check" name="radio1" id="wxpay" type="radio">
+                    <span class="weui-icon-checked"></span>
+                </div>
+            </label>
+            <label class="weui-cell weui-check__label" for="alipay">
+                <div class="weui-cell__bd">
+                    <img src="/public/img/Alipay.svg" /> <span>支付宝</span>
+                </div>
+                <div class="weui-cell__ft">
+                    <input name="radio1" class="weui-check" id="alipay" checked="checked" type="radio">
+                    <span class="weui-icon-checked"></span>
+                </div>
+            </label>
+        </div>
+    </div>
+    <!--------------------------------pay-btn-------------------------------------->
+    <div class="pay-btn orange_bgcolor">
+        去支付
+    </div>
+</div>
+<script src="/public/js/jquery-3.3.1.min.js"></script>
+<script src="/public/js/bootstrap.min.js"></script>
+<script src="/public/js/weui.js"></script>
+<script src="/public/js/movieDetail.js"></script>
+</body>
+
+</html>

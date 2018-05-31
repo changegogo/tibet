@@ -1,0 +1,8 @@
+
+.comProblems-celllink-item.weui-cell:before {
+    border-top: 0;
+}
+.comProblems-celllink-item  > div{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

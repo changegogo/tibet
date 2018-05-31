@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <title>青藏WIFI | WIFI | 天路WIFI</title>
+    <script type="text/javascript">
+        document.getElementsByTagName('html')[0].style.fontSize = document.documentElement.clientWidth/3.75 +'px';
+    </script>
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/public/css/weui.min.css" />
+    <link rel="stylesheet" href="/public/css/flex.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+    <link rel="stylesheet" href="/public/css/common.css">
+    <link rel="stylesheet" href="/public/css/mycenter.css">
+</head>
+
+<body>
+<div class="mycenter-page">
+    <!---------------------------mycenter-banner-------------------------->
+    <div class="mycenter-banner bg-white font_size17 paddinglr15">
+        <p class="text-center">我的</p>
+        <div>
+            <a href="javascript:void(0);" class="weui-media-box weui-media-box_appmsg">
+                <div class="weui-media-box__hd flex flex-align-center">
+                    <img class="weui-media-box__thumb" src="/public/img/1.png">
+                </div>
+                <div class="weui-media-box__bd">
+                    <h4 class="weui-media-box__title" style="color: #ffffff;">标题二</h4>
+
+                    <p class="weui-media-box__desc" style="color: rgba(255,255,255,.65);margin-top: 4px;">由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!--------------------------------body--+++++++++++++++++++++++++++++++++-->
+    <div class="mycenter-body font_size16 marginlr15 marginT16">
+
+        <div class="weui-panel__ft">
+            <a href="/alreadybuy" class="weui-cell weui-cell_access weui-cell_link mycenter-celllink-item">
+                <img src="/public/img/Group02.svg" alt="" class="marginR16">
+                <div class="weui-cell__bd flex flex-align-center flex-pack-justify common_borderBottom">
+                    <p>已购买</p>
+                    <span class="weui-cell__ft"></span>
+                </div>
+            </a>
+
+            <a href="/problem" class="weui-cell weui-cell_access weui-cell_link mycenter-celllink-item">
+                <img src="/public/img/Group01.svg" alt="" class="marginR16">
+                <div class="weui-cell__bd flex flex-align-center flex-pack-justify common_borderBottom">
+                    <p>常见问题</p>
+                    <span class="weui-cell__ft"></span>
+                </div>
+            </a>
+
+            <a href="/advice" class="weui-cell weui-cell_access weui-cell_link mycenter-celllink-item">
+                <img src="/public/img/Group03.svg" alt="" class="marginR16">
+                <div class="weui-cell__bd flex flex-align-center flex-pack-justify common_borderBottom">
+                    <p>意见反馈</p>
+                    <span class="weui-cell__ft"></span>
+                </div>
+            </a>
+
+            <a href="#" class="weui-cell weui-cell_access weui-cell_link mycenter-celllink-item">
+                <img src="/public/img/Group04.svg" alt="" class="marginR16">
+                <div class="weui-cell__bd flex flex-align-center flex-pack-justify common_borderBottom">
+                    <p>退出登录</p>
+                </div>
+            </a>
+        </div>
+
+
+        <!------------------------------------body-end-------------------------------------->
+    </div>
+</div>
+<script src="/public/js/jquery-3.3.1.min.js"></script>
+<script src="/public/js/bootstrap.min.js"></script>
+<script src="/public/js/weui.js"></script>
+<script src="/public/js/mycenter.js"></script>
+</body>
+
+</html>

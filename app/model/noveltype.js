@@ -32,13 +32,11 @@ module.exports = app => {
         });
     };
 
-    NovelType.findAllByTypeAndPage = function (page, pageSize){
+    NovelType.findAllNovel = function (){
         return NovelType.findAll({
             order: [
                 ["updated_at", "desc"]
-            ],
-            offset: (page - 1) * pageSize,
-            limit: pageSize
+            ]
         }).then( noveltypes => {
             let noveltype_plain = noveltypes.map((noveltype)=>{
                 return noveltype.get( {plain: true} )

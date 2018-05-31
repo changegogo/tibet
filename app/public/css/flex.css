@@ -94,3 +94,17 @@
     justify-content: space-around;/* android 4.4 */
 
 }
+.flex-flow-wrap {
+    -webkit-flex-flow:row wrap;
+    -webkit-box-orient:horizontal;
+    -webkit-box-lines:multiple;
+　　-moz-flex-flow:row wrap;
+    box-orient:horizontal;
+    box-lines:multiple;
+    flex-flow:row wrap;
+}
+.align-content {
+    align-content: flex-start;
+    -webkit-align-content: flex-start;
+    -ms-align-content: flex-start;
+}

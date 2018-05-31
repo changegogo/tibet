@@ -1,0 +1,8 @@
+.mymovies-list > div .mymovies-item{
+    flex: 0 32%;
+    margin-right: 2%;
+    margin-bottom: 24px;
+}
+.mymovies-list > div .mymovies-item:nth-child(3n) {
+    margin-right: 0;
+}

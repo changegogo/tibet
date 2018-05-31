@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <title>青藏WIFI | WIFI | 天路WIFI</title>
+    <script type="text/javascript">
+        document.getElementsByTagName('html')[0].style.fontSize = document.documentElement.clientWidth/3.75 +'px';
+    </script>
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/public/css/weui.min.css" />
+    <link rel="stylesheet" href="/public/css/flex.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+    <link rel="stylesheet" href="/public/css/common.css">
+    <link rel="stylesheet" href="/public/css/mybook.css">
+</head>
+
+<body>
+<div class="mybook-page">
+    <!---------------------------nav-------------------------->
+    <div class="nav fixed-top bg-white font_size16 flex flex-pack-center">
+        <a href=" " class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
+        <p class="text-center flex justify-content-center">我的书库</p>
+    </div>
+    <!--------------------------------body--+++++++++++++++++++++++++++++++++-->
+    <div class="mybook-body font_size16 marginlr15" style="margin-top: 66px">
+        <!------------------------------------mybook-list-------------------------------------->
+        <div class="mybook-list">
+                    <div class="body-wrapper weui-flex flex-flow-wrap align-content">
+                        {% for item in novels %}
+                            <div class="weui-flex__item mybook-item" >
+                                <div class="mybook-img">
+                                    <img class="weui-media-box__thumb" src="{{item.novel.img}}" width="100%" height="100%"/>
+                                </div>
+                                <div class="mybookItem-title font_size12">
+                                    <p>{{item.novel.name}}</p>
+                                    <p class="color_opacity38">已阅读 {{item.progress}}%</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        
+                        <div class="weui-flex__item mybook-item" >
+                            <div class="mybook-img">
+                                <img class="weui-media-box__thumb" src="/public/img/1.png" width="100%" height="100%"/>
+                            </div>
+                            <div class="mybookItem-title font_size12">
+                                <p>多少黑名单 …多少黑名单 </p>
+                                <p class="color_opacity38">已阅读 88%</p>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+        </div>
+    </div>
+</div>
+<script src="/public/js/jquery-3.3.1.min.js"></script>
+<script src="/public/js/bootstrap.min.js"></script>
+<script src="/public/js/weui.js"></script>
+<script src="/public/js/mybook.js"></script>
+</body>
+
+</html>

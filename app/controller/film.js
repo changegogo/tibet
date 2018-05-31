@@ -32,6 +32,51 @@ class FilmController extends Controller {
             data: data
         };
     }
+
+    async trainCinema(ctx){
+        let model = ctx.app.model;
+        //  查询所有电影的类型
+        let filmTypes = await model.Filmtype.findAllFilmType();
+        
+        // 3个头部轮播图电影
+        let header = await ctx.service.film.lists('all', 1, 3);
+        // 2个中间电影
+        let middle = await ctx.service.film.lists('all', 1, 2);
+        // 3个动作电影
+        let type1 = '';
+        let action = [];
+        if(filmTypes.length>0 && filmTypes[0]){
+            type1 = filmTypes[0].name;
+            action = await ctx.service.film.lists(filmTypes[0].id, 1, 3);
+        }
+        
+        // 3个恐怖电影
+        let type2 = '';
+        let terror = [];
+        if(filmTypes.length>0 && filmTypes[1]){
+            type2 = filmTypes[1].name;
+            terror = await ctx.service.film.lists(filmTypes[1].id, 1, 3);
+        }
+        
+        return await ctx.render('home/trainCinema', {
+            header: header,
+            middle: middle,
+            type1: type1,
+            action: action,
+            type2: type2,
+            terror: terror
+        });
+    }
+
+    async details(ctx) {
+        let model = ctx.app.model;
+        let filmid = ctx.params.id;
+
+        let film = await model.Film.findByIdFilm(filmid);
+        return await ctx.render('home/filmdetails', {
+            film: film
+        });
+    }
 }
 
 module.exports = FilmController;

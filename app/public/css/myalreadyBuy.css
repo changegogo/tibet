@@ -1,0 +1,27 @@
+
+
+
+/*------------------------------------tab-style------------------------------------------------------------------*/
+.myalreadybuy-headertab {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.alreadybuy-tab-active {
+    color: #1E96FF;
+}
+
+
+/*-----------------------------------------------------list-style------------------------------------------------*/
+.myalreadyBuy-list > div {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+}
+.myalreadyBuy-list > div .myalreadyBuy-item{
+    flex: 0 32%;
+    margin-right: 2%;
+    margin-bottom: 24px;
+}
+.myalreadyBuy-list > div .myalreadyBuy-item:nth-child(3n) {
+    margin-right: 0;
+}

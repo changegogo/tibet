@@ -1,0 +1,11 @@
+.movie-title {
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+.weui-flex .weui-flex__item {
+    margin-right: 8px;
+}
+.weui-flex .weui-flex__item:last-child {
+    margin-right: 0;
+}
+

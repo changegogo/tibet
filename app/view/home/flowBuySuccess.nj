@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <title>青藏WIFI | WIFI | 天路WIFI</title>
+    <script type="text/javascript">
+        document.getElementsByTagName('html')[0].style.fontSize = document.documentElement.clientWidth/3.75 +'px';
+    </script>
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/public/css/weui.min.css" />
+    <link rel="stylesheet" href="/public/css/flex.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+    <link rel="stylesheet" href="/public/css/common.css">
+    <link rel="stylesheet" href="/public/css/flowBuySuccess.css">
+</head>
+
+<body>
+<div class="flowBuySuccess-page">
+    <!---------------------------nav-------------------------->
+    <div class="nav fixed-top bg-white font_size17 flex flex-pack-center">
+        <a href=" " class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
+        <p class="text-center flex justify-content-center">天路WIFI</p>
+    </div>
+    <!--------------------------------body--+++++++++++++++++++++++++++++++++-->
+    <div class="flowBuySuccess-body font_size16 marginlr15">
+
+            <div class="buypage-content-wrapper">
+                <div class="text-center">
+                    <p><i class="weui-icon-success weui-icon_msg" style="font-size: 48px;"></i></p>
+                    <p class="font_size24" style="margin-top: 16px;margin-bottom: 8px;">流量购买成功!</p>
+                    <p class="font_size15 color_opacity38 line_h24">您已成功购买 500MB 流量，打开访问开关即可成功访问外网</p>
+                    <button class="buypage-back-btn">返回</button>
+                </div>
+
+            </div>
+
+        <!------------------------------------body-end-------------------------------------->
+    </div>
+</div>
+<script src="/public/js/jquery-3.3.1.min.js"></script>
+<script src="/public/js/bootstrap.min.js"></script>
+<script src="/public/js/weui.js"></script>
+<script src="/public/js/flowBuySuccess.js"></script>
+</body>
+
+</html>

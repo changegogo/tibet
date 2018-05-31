@@ -1,3 +1,18 @@
+-- 新闻
+INSERT INTO public.news (title, description, img_1, img_2, img_3, httpurl, created_at, updated_at, type)
+VALUES
+("第一次见哈士奇在哭，好委屈", "被外面狗子打了，第一次见哈士奇在哭，好委屈", "/public/upload/1.png", "/public/upload/1.png", "/public/upload/1.png", "http://gif.sina.com.cn/","2018-05-31 10:04:00", "2018-05-31 10:04:00", "normal"),
+("第一次见哈士奇在哭，好委屈", "被外面狗子打了，第一次见哈士奇在哭，好委屈", "/public/upload/1.png", "/public/upload/1.png", "/public/upload/1.png", "http://gif.sina.com.cn/","2018-05-31 10:04:00", "2018-05-31 10:04:00", "normal"),
+("第一次见哈士奇在哭，好委屈", "被外面狗子打了，第一次见哈士奇在哭，好委屈", "/public/upload/1.png", "/public/upload/1.png", "/public/upload/1.png", "http://gif.sina.com.cn/","2018-05-31 10:04:00", "2018-05-31 10:04:00", "notice"),
+("第一次见哈士奇在哭，好委屈", "被外面狗子打了，第一次见哈士奇在哭，好委屈", "/public/upload/1.png", "/public/upload/1.png", "/public/upload/1.png", "http://gif.sina.com.cn/","2018-05-31 10:04:00", "2018-05-31 10:04:00", "normal"),
+("第一次见哈士奇在哭，好委屈", "被外面狗子打了，第一次见哈士奇在哭，好委屈", "/public/upload/1.png", "/public/upload/1.png", "/public/upload/1.png", "http://gif.sina.com.cn/","2018-05-31 10:04:00", "2018-05-31 10:04:00", "notice"),
+("第一次见哈士奇在哭，好委屈", "被外面狗子打了，第一次见哈士奇在哭，好委屈", "/public/upload/1.png", "/public/upload/1.png", "/public/upload/1.png", "http://gif.sina.com.cn/","2018-05-31 10:04:00", "2018-05-31 10:04:00", "normal"),
+("第一次见哈士奇在哭，好委屈", "被外面狗子打了，第一次见哈士奇在哭，好委屈", "/public/upload/1.png", "/public/upload/1.png", "/public/upload/1.png", "http://gif.sina.com.cn/","2018-05-31 10:04:00", "2018-05-31 10:04:00", "notice"),
+("第一次见哈士奇在哭，好委屈", "被外面狗子打了，第一次见哈士奇在哭，好委屈", "/public/upload/1.png", "/public/upload/1.png", "/public/upload/1.png", "http://gif.sina.com.cn/","2018-05-31 10:04:00", "2018-05-31 10:04:00", "normal")
+-- 电影
+-- 小说
+-- 游戏
+
 INSERT INTO public.gametypes (name, created_at, updated_at)  
 VALUES 
 ('动作', '2018-05-30 10:10:10', '2018-05-30 10:10:10'),

@@ -77,7 +77,7 @@ label.disabled p {
 {% block header %}
 <nav class="nav border-bottom justify-content-center fixed-top bg-white">
   <a href="javascript:history.back();" class="back"><img src="/public/img/Chevron@2x.png" /></a>
-  <span class="nav-link">购买外网流量</span>
+  <span class="nav-link">天路WiFi</span>
 </nav>
 {% endblock %}
 
@@ -163,7 +163,7 @@ label.disabled p {
       </label>
     </div>
   </div>
-  <button class="btn btn-primary btn-lg btn-block fixed-bottom rounded-0">去支付</button>
+  <button class="btn btn-primary btn-lg btn-block fixed-bottom rounded-0"><a href="/tianwifi/buy">去支付</a></button>
 </form>
 {% endblock %}
 
