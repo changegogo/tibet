@@ -102,6 +102,17 @@
     font-family:PingFangSC-Regular;
     color:rgba(245,132,35,1);
     line-height:0.44rem;
+    padding-left: .15rem ;
+    padding-right: .15rem ;
+}
+.news-adverst-wrapper {
+    max-width: 94%;
+    overflow: hidden ;
+    white-space:nowrap;
+    margin: 0 auto;
+}
+.news-adverst-wrapper > span {
+    padding-right: .5rem;
 }
 .home-body .news-wrapper .body-wrapper .news-list{
     background: #FFFFFF;
@@ -152,3 +163,29 @@
 .games-wrapper {
     margin-bottom: .16rem;
 }
+.weui-cell__ft.more > a{
+    color: rgba(0,0,0,.60) ;
+}
+.weui-media-box__title {
+    display: -webkit-box;
+
+    overflow: hidden;
+
+    white-space: normal!important;
+
+    text-overflow: ellipsis;
+
+    word-wrap: break-word;
+
+    -webkit-line-clamp: 2;
+
+    -webkit-box-orient: vertical;
+    padding-right: 16px;
+}
+
+.movie-title {
+    padding-top: 16px ;
+    padding-bottom: 16px;
+}
+
+

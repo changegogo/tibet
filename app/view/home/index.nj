@@ -43,7 +43,7 @@
 				<div class="weui-flex__item">
 					<a href="/novel/list/1">
 						<div class="item-img">
-							<img class="" src="/public/img/1wifi.png"  width="100%" height="100%" />
+							<img class="" src="/public/img/ic_library_books.svg"  width="100%" height="100%" />
 						</div>
 						<div class="item-text">数字阅读</div>
 					</a>
@@ -51,7 +51,7 @@
 				<div class="weui-flex__item">
 					<a href="/traincinema/list">
 						<div class="item-img">
-							<img class="" src="/public/img/1wifi.png" width="100%" height="100%" />
+							<img class="" src="/public/img/ic_movie.svg" width="100%" height="100%" />
 						</div>
 						<div class="item-text">列车影院</div>
 					</a>
@@ -59,7 +59,7 @@
 				<div class="weui-flex__item">
 					<a href="/game/list">
 						<div class="item-img">
-							<img class="" src="/public/img/1wifi.png" width="100%" height="100%" />
+							<img class="" src="/public/img/ic_videogame.svg" width="100%" height="100%" />
 						</div>
 						<div class="item-text">游戏大厅</div>
 					</a>
@@ -67,7 +67,7 @@
 				<div class="weui-flex__item">
 					<a href="/tianluwifi">
 						<div class="item-img">
-							<img class="" src="/public/img/1wifi.png" width="100%" height="100%" />
+							<img class="" src="/public/img/ic_wifi.svg" width="100%" height="100%" />
 						</div>
 						<div class="item-text">天路WiFi</div>
 					</a>
@@ -79,8 +79,12 @@
 					<div class="weui-cell__ft more"><a href="/news/list/normal">更多</a></div>
 				</div>
 				<div class="body-wrapper">
-					<div class="news-notice weui-cell ">
-						<div class="weui-cell__bd">{{qzintro}}</div>
+					<div class="news-notice" >
+							<div class="news-adverst-wrapper" id="news_notice_adverst">
+								<span id="adversit_one">{{qzintro}}</span>
+								<span id="adversit_two"></span>
+							</div>
+
 						<div class="weui-cell__ft more">查看</div>
 					</div>
 					<div class="news-list weui-panel">

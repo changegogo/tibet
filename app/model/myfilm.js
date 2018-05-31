@@ -11,6 +11,7 @@ module.exports = app => {
             "autoIncrement": true,
             "primaryKey": true
         },
+        "purchasetype": STRING, // zfb支付宝 wx微信
         "created_at": DATE,
         "updated_at": DATE
     } );

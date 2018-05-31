@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_wifi_black_24px</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#0781FF" offset="0%"></stop>
+            <stop stop-color="#51ACFC" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="app" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="首页" transform="translate(-300.000000, -246.000000)">
+            <rect id="Rectangle" fill="url(#linearGradient-1)" x="0" y="0" width="375" height="250"></rect>
+            <rect id="Rectangle-4" fill="#FFFFFF" x="8" y="230" width="359" height="92" rx="8"></rect>
+            <g id="Group-9" transform="translate(273.000000, 230.000000)">
+                <rect id="Rectangle-5-Copy-3" x="0" y="0" width="86" height="92"></rect>
+                <g id="ic_wifi_black_24px" transform="translate(27.000000, 16.000000)" fill="#1E96FF" fill-rule="nonzero">
+                    <path d="M1.33333333,12 L4,14.6666667 C10.6266667,8.04 21.3733333,8.04 28,14.6666667 L30.6666667,12 C22.5733333,3.90666667 9.44,3.90666667 1.33333333,12 Z M12,22.6666667 L16,26.6666667 L20,22.6666667 C17.8,20.4533333 14.2133333,20.4533333 12,22.6666667 Z M6.66666667,17.3333333 L9.33333333,20 C13.0133333,16.32 18.9866667,16.32 22.6666667,20 L25.3333333,17.3333333 C20.1866667,12.1866667 11.8266667,12.1866667 6.66666667,17.3333333 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

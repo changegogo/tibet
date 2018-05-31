@@ -43,7 +43,7 @@
     <div class="mycenter-body font_size16 marginlr15 marginT16">
 
         <div class="weui-panel__ft">
-            <a href="/alreadybuy" class="weui-cell weui-cell_access weui-cell_link mycenter-celllink-item">
+            <a href="/alreadybuy/novel" class="weui-cell weui-cell_access weui-cell_link mycenter-celllink-item">
                 <img src="/public/img/Group02.svg" alt="" class="marginR16">
                 <div class="weui-cell__bd flex flex-align-center flex-pack-justify common_borderBottom">
                     <p>已购买</p>

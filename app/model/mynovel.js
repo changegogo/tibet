@@ -12,6 +12,7 @@ module.exports = app => {
             "primaryKey": true
         },
         "progress": INTEGER,// 读书进度 整数 80  80%
+        "purchasetype": STRING, // zfb支付宝 wx微信
         "created_at": DATE,
         "updated_at": DATE
     } );
