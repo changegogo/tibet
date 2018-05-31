@@ -1,3 +1,4 @@
+.idea/*
 logs/*
 run/*
 config/config.local.*
