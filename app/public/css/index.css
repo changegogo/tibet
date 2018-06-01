@@ -5,7 +5,8 @@
     height:2.5rem;
     background:linear-gradient(180deg,rgba(7,129,255,1),rgba(81,172,252,1));
     text-align: center;
-    padding-top: 0.2rem;
+    padding-top: 0.6rem;
+    padding-bottom: 2.4rem;
 }
 .home-header .title{
     margin-bottom: 0.17rem;

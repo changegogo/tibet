@@ -39,7 +39,7 @@
     margin-right: .16rem;
 }
 .marginT50 {
-    margin-top: 50px;
+    margin-top: 90px;
 }
 .line_h24 {
     line-height: 24px;
@@ -100,8 +100,10 @@ h2, label, p, h4 {
 }
 .nav {
     color: #ffffff;
-    height: 50px;
-    line-height: 50px;
+    /*height: 50px;*/
+    /*line-height: 50px;*/
+    padding-top: 40px;
+    padding-bottom: 20px;
     background:linear-gradient(180deg,rgba(7,129,255,1),rgba(81,172,252,1));
 }
 .nav > a {
