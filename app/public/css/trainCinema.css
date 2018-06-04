@@ -8,4 +8,38 @@
 .weui-flex .weui-flex__item:last-child {
     margin-right: 0;
 }
+.jingpin-wrapper .weui-media-box__hd {
+    max-width: 80px;
+    width: 100%;
+    height: 100%;
+}
+.moviestype-wrapper > a{
+    flex:0 32% ;
+    margin-right: 2%;
+    margin-bottom: 24px;
+}
+.moviestype-wrapper > a:nth-child(3n) {
+    margin-right: 0;
+}
+.score_star_wrapper {
+    background-image: url("../img/dark_Group.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    padding-top: 14px;
+}
+.dark_start_wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-image: url("../img/light_Group.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding-top: 14px;
+    background-position-x: -19px;
+}
+
 

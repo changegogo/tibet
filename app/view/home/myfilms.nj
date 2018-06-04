@@ -25,11 +25,11 @@
 <div class="mymovies-page">
     <!---------------------------nav-------------------------->
     <div class="nav fixed-top bg-white font_size17 flex flex-pack-center">
-        <a href=" " class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
+        <a href="javascript:history.back(); " class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
         <p class="text-center flex justify-content-center">我的电影</p>
     </div>
     <!--------------------------------body--+++++++++++++++++++++++++++++++++-->
-    <div class="mymovies-body font_size16 marginlr15" style="margin-top: 66px">
+    <div class="mymovies-body font_size16 marginlr15" style="margin-top: 16px">
         <!------------------------------------mymovies-list-------------------------------------->
         <div class="mymovies-list">
             <div class="body-wrapper weui-flex flex-flow-wrap align-content">

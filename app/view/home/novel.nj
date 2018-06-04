@@ -28,7 +28,7 @@
         <a href="javascript:history.back();" class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
         <p class="text-center flex justify-content-center">数字阅读</p>
     </div>
-   <div class="bookReader-header marginT50">
+   <div class="bookReader-header">
        <!--------------------------------tab-header--+++++++++++++++++++++++++++++++++-->
        <div class="flex bookReader-body-headertab common_borderBottom font_size16 paddinglr15">
           {% for item in allType %}

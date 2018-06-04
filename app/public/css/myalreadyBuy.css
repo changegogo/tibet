@@ -6,22 +6,26 @@
     padding-top: 10px;
     padding-bottom: 10px;
 }
-.alreadybuy-tab-active {
+.myalreadybuy-headertab a {
+    color: #000000;
+    text-decoration: none;
+}
+.alreadybuy-tab-active a{
     color: #1E96FF;
 }
 
 
 /*-----------------------------------------------------list-style------------------------------------------------*/
-.myalreadyBuy-list > div {
+.myalreadyBuy-list > a {
+    display: inline-block;
+    width: 100%;
     padding-top: 16px;
     padding-bottom: 16px;
     border-bottom: 1px solid rgba(0,0,0,.12);
 }
-.myalreadyBuy-list > div .myalreadyBuy-item{
-    flex: 0 32%;
-    margin-right: 2%;
-    margin-bottom: 24px;
+.weui-media-box__thumb {
+    max-width: 80px;
 }
-.myalreadyBuy-list > div .myalreadyBuy-item:nth-child(3n) {
-    margin-right: 0;
+.weui-media-box__bd {
+    padding-top: 10px;
 }

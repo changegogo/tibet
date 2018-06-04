@@ -59,9 +59,9 @@ module.exports = app => {
     Sta.updateByMAC = function (mac, ip, gw_id, gw_sn) {
         return Sta.upsert({
             "mac": mac,
-            "ip": ip,
-            "gw_id": gw_id,
-            "gw_sn": gw_sn
+            //"ip": ip,
+            //"gw_id": gw_id,
+            //"gw_sn": gw_sn
         }, {
             "returning": true
         }).then(([ user, isNew ]) => {

@@ -25,6 +25,7 @@
   "license": "ISC",
   "dependencies": {
     "@alicloud/sms-sdk": "^1.1.1",
+    "await-stream-ready": "^1.0.1",
     "bignumber.js": "^7.0.1",
     "chance": "^1.0.16",
     "egg": "^2.3.0",
@@ -37,7 +38,8 @@
     "lodash": "^4.17.10",
     "moment": "^2.20.1",
     "pg": "^7.4.1",
-    "pg-hstore": "^2.3.2"
+    "pg-hstore": "^2.3.2",
+    "stream-wormhole": "^1.0.3"
   },
   "devDependencies": {
     "egg-bin": "^4.3.7",

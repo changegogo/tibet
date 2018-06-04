@@ -1,8 +1,8 @@
-.mymovies-list > div .mymovies-item{
+.mymovies-list .weui-flex > a{
     flex: 0 32%;
     margin-right: 2%;
     margin-bottom: 24px;
 }
-.mymovies-list > div .mymovies-item:nth-child(3n) {
+.mymovies-list .weui-flex > a:nth-child(3n) {
     margin-right: 0;
 }

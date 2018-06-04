@@ -19,7 +19,12 @@
     position: relative;
     line-height: 24px;
 }
-.zixun-body-headertab > p {
+.zixun-body-headertab > a {
     padding: 8px;
     margin-right: 12px;
+    text-decoration: none!important;
+}
+.common-headertab-active {
+    border-bottom: 2px solid #1E96FF;
+    color: #1E96FF!important;
 }

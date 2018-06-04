@@ -26,11 +26,11 @@
     <!---------------------------problemFeedback-nav-------------------------->
 
     <div class="nav fixed-top bg-white font_size17 flex flex-pack-center">
-        <a href=" " class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
+        <a href="javascript:history.back(); " class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
         <p class="text-center flex justify-content-center">意见反馈</p>
     </div>
     <!--------------------------------body--+++++++++++++++++++++++++++++++++-->
-    <div class="problemFeedback-body font_size16 marginT50 gray_bgColor">
+    <div class="problemFeedback-body font_size16  gray_bgColor">
 
         <p class="color_opacity38" style="padding:8px 15px;">选择反馈类型</p>
         <div class="weui-cells weui-cells_radio paddinglr15 flex" style="margin-top: 0;">

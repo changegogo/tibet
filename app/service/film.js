@@ -11,6 +11,12 @@ class FilmService extends Service {
 
         return films;
     }
+
+    async getFileById(id) {
+        const model = this.ctx.model;
+        let film = await model.Film.findByIdFilm(id);
+        return film;
+    }
 }
 
 module.exports = FilmService;

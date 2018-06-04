@@ -1,16 +1,20 @@
 /*------------------------------------------header-style------------------------------*/
 .bookReader-body-headertab p {
     line-height: 26px;
-    padding: 8px 10px;
+    padding: 12px 10px;
+    color: #000000;
+}
+.bookReader-body-headertab p a {
+    color: #000000;
 }
 
 
 /*------------------------------------------list-style------------------------------*/
-.bookReader-list > div .bookReader-item{
-    flex: 0 32%;
+.bookReader-list .weui-flex a{
+    flex:0 32% ;
     margin-right: 2%;
     margin-bottom: 24px;
 }
-.bookReader-list > div .bookReader-item:nth-child(3n) {
+.bookReader-list .weui-flex a:nth-child(3n) {
     margin-right: 0;
 }

@@ -2,20 +2,10 @@
 
 {% block styles %}
 <style>
-body {
-  padding-top: 45px;
-  padding-bottom: 60px;
-}
 
-.back {
-  position: absolute;
-  left: 0;
-  top: 0;
-  padding: 0.5rem 0.75rem;
-}
 
-.back img {
-  width: 12px;
+.nav > a {
+  left: 15px;
 }
 
 .weui-cells:before,
@@ -75,10 +65,10 @@ label.disabled p {
 {% endblock %}
 
 {% block header %}
-<nav class="nav border-bottom justify-content-center fixed-top bg-white">
-  <a href="javascript:history.back();" class="back"><img src="/public/img/Chevron@2x.png" /></a>
-  <span class="nav-link">天路WiFi</span>
-</nav>
+<div class="nav fixed-top bg-white  flex flex-pack-center">
+  <a href="javascript:history.back();" class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
+  <p class="text-center flex justify-content-center" style="width: 100%;font-size: 17px">天路WIFI</p>
+</div>
 {% endblock %}
 
 {% block body %}
@@ -86,7 +76,27 @@ label.disabled p {
   <div class="container-fluid">
     <div class="weui-cells__title">选择数额</div>
     <div class="row">
-      <div class="col col-4 col-lg-2">
+      {% for wifi in wifis %}
+        <div class="col col-4 col-lg-2">
+          {% if wifi.status === 'stockup' %}
+            <label class="card disabled">
+          {% else %}
+            <label class="card" for="{{ wifi.id }}gb">
+            <input type="radio" id="{{ wifi.id }}gb" name="flow" class="weui-check" />
+          {% endif %}
+            <div class="card-body">
+              <h6 class="card-title">{{ wifi.amount }}</h6>
+              {% if wifi.status === 'stockup' %}
+              <p class="card-text">备货中</p>
+              {% else %}
+              <p class="card-text">{{ wifi.price }}元</p>
+              {% endif %}
+            </div>
+          </label>
+        </div>
+      {% endfor %}
+
+     <!-- <div class="col col-4 col-lg-2">
         <label class="card disabled">
           <div class="card-body">
             <h6 class="card-title">500 MB</h6>
@@ -112,7 +122,7 @@ label.disabled p {
           </div>
         </label>
       </div>
-      <div class="col col-4 col-lg-2">
+      <div class="col col-4 col-lg-2 marginT16">
         <label class="card" for="3gb">
           <input type="radio" id="3gb" name="flow" class="weui-check" />
           <div class="card-body">
@@ -121,7 +131,7 @@ label.disabled p {
           </div>
         </label>
       </div>
-      <div class="col col-4 col-lg-2">
+      <div class="col col-4 col-lg-2 marginT16">
         <label class="card" for="4gb">
           <input type="radio" id="4gb" name="flow" class="weui-check" />
           <div class="card-body">
@@ -130,7 +140,7 @@ label.disabled p {
           </div>
         </label>
       </div>
-      <div class="col col-4 col-lg-2">
+      <div class="col col-4 col-lg-2 marginT16">
         <label class="card" for="5gb">
           <input type="radio" id="5gb" name="flow" class="weui-check" />
           <div class="card-body">
@@ -138,7 +148,7 @@ label.disabled p {
             <p class="card-text">30.0元</p>
           </div>
         </label>
-      </div>
+      </div>-->
     </div>
 
     <div class="weui-cells__title">支付方式</div>
@@ -163,7 +173,7 @@ label.disabled p {
       </label>
     </div>
   </div>
-  <button class="btn btn-primary btn-lg btn-block fixed-bottom rounded-0"><a href="/tianwifi/buy">去支付</a></button>
+  <button class="btn btn-lg btn-block fixed-bottom rounded-0 orange_bgcolor"><a href="/tianwifi/buy" style="color: #ffffff;">去支付</a></button>
 </form>
 {% endblock %}
 

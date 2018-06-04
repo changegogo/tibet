@@ -42,9 +42,11 @@ module.exports = app => {
     app.get('/books/:type', 'home.books');
     app.get('/books/my', 'home.mybooks');
     app.get('/movies', 'home.movies');
-    app.get('/player/:name', 'home.player');
+    //app.get('/player/:name', 'home.player');
     app.get('/buy', 'home.buy');
 
+    // 浮窗广告
+    app.get('/adver', 'home.adv');
     // 资讯列表 :type 取值 normal notice
     app.get('/news/list/:type', 'news.typeList');
     // 游戏列表
@@ -59,6 +61,8 @@ module.exports = app => {
     app.get('/traincinema/list', 'film.trainCinema');
     // 电影详情
     app.get('/film/details/:id', 'film.details');
+    // 播放电影
+    app.get('/player/:id', 'home.player');
     // 我的电影
     app.get('/myfilm/list', 'myfilm.lists');
     // 天路wifi
@@ -73,4 +77,6 @@ module.exports = app => {
     app.get('/problem', 'home.problem');
     // 意见反馈
     app.get('/advice', 'home.advice');
+    // 图片上传
+    app.post('/upload', 'home.upload');
 };

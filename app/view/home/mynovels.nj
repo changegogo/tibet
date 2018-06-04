@@ -25,11 +25,11 @@
 <div class="mybook-page">
     <!---------------------------nav-------------------------->
     <div class="nav fixed-top bg-white font_size16 flex flex-pack-center">
-        <a href=" " class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
+        <a href="javascript:history.back(); " class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
         <p class="text-center flex justify-content-center">我的书库</p>
     </div>
     <!--------------------------------body--+++++++++++++++++++++++++++++++++-->
-    <div class="mybook-body font_size16 marginlr15" style="margin-top: 66px">
+    <div class="mybook-body font_size16 marginlr15" style="margin-top: 16px">
         <!------------------------------------mybook-list-------------------------------------->
         <div class="mybook-list">
                     <div class="body-wrapper weui-flex flex-flow-wrap align-content">

@@ -25,11 +25,11 @@
 <div class="myalreadyBuy-page">
     <!---------------------------nav-------------------------->
     <div class="nav fixed-top bg-white font_size17 flex flex-pack-center">
-        <a href=" " class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
+        <a href="javascript:history.back(); " class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
         <p class="text-center flex justify-content-center">已购买</p>
     </div>
     <!--------------------------------body--+++++++++++++++++++++++++++++++++-->
-    <div class="myalreadyBuy-body font_size17" style="margin-top: 50px">
+    <div class="myalreadyBuy-body font_size17">
         <!------------------------------------myalreadyBuy-tab-------------------------------------->
         <div class="flex myalreadybuy-headertab paddinglr15 common_borderBottom">
             {% if type === 'novel' %}
@@ -52,29 +52,71 @@
         <!------------------------------------myalreadyBuy-list-------------------------------------->
 
         <div class="myalreadyBuy-list marginlr15">
-                <div class="flex">
-                    <div class="weui-media-box__hd news-img marginR16">
-                        <img class="weui-media-box__thumb" src="/public/img/1.png" width="100%" height="100%"/>
+            {% if type === 'novel' %}
+                {% for item in data %}
+                <a href="https://www.baidu.com">
+                    <div class="flex">
+                        <div class="weui-media-box__hd news-img marginR16">
+                            <img class="weui-media-box__thumb" src="{{item.novel.img}}" width="100%" height="100%"/>
+                        </div>
+                        <div class="weui-media-box__bd news-title">
+                            <p class="weui-media-box__title">{{item.novel.name}}</p>
+                            <p class="color_opacity60 font_size12">作者: {{item.novel.author}}</p>
+                            <p class="font_size12">价格: {{item.novel.price}}元</p>
+                            <p class="color_opacity60 font_size12">
+                                {% if item.purchasetype === "zfb" %}
+                                    支付宝已付款
+                                {% else %}
+                                    微信已付款
+                                {% endif %}
+                            </p>
+                        </div>
                     </div>
-                    <div class="weui-media-box__bd news-title marginR16">
-                        <p class="weui-media-box__title">海一样辽迹，摇曳的五彩...</p>
-                        <p class="color_opacity60 font_size12">导演：安东尼·罗素 乔·罗素</p>
-                        <p class="font_size12">6.0元</p>
-                        <p class="color_opacity60 font_size12">支付宝已付款</p>
+                </a>
+                {% endfor %}
+            {% endif %}
+            {% if type === 'film' %}
+                {% for item in data %}
+                <a href="/player/{{item.film.id}}">
+                    <div class="flex">
+                        <div class="weui-media-box__hd news-img marginR16">
+                            <img class="weui-media-box__thumb" src="{{item.film.imgv}}" width="100%" height="100%"/>
+                        </div>
+                        <div class="weui-media-box__bd news-title">
+                            <p class="weui-media-box__title">{{item.film.name}}</p>
+                            <p class="color_opacity60 font_size12">导演: {{item.film.director}}</p>
+                            <p class="font_size12">价格: {{item.film.price}}元</p>
+                            <p class="color_opacity60 font_size12">
+                                {% if item.purchasetype === "zfb" %}
+                                    支付宝已付款
+                                {% else %}
+                                    微信已付款
+                                {% endif %}
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div class="flex">
-                    <div class="weui-media-box__hd news-img marginR16">
-                        <img class="weui-media-box__thumb" src="/public/img/1.png" width="100%" height="100%"/>
+                </a>
+                {% endfor %}
+            {% endif %}
+            {% if type === 'wifi' %}
+                {% for item in data %}
+                <a href="javascript:void(0)">
+                    <div class="flex">
+                        <div class="weui-media-box__bd news-title">
+                            <p class="weui-media-box__title">{{item.amount}}</p>
+                            <p class="font_size12">价格: {{item.price}}元</p>
+                            <p class="color_opacity60 font_size12">
+                                {% if item.purchasetype === "zfb" %}
+                                    支付宝已付款
+                                {% else %}
+                                    微信已付款
+                                {% endif %}
+                            </p>
+                        </div>
                     </div>
-                    <div class="weui-media-box__bd news-title marginR16">
-                        <p class="weui-media-box__title">海一样辽迹，摇曳的五彩...</p>
-                        <p class="color_opacity60 font_size12">导演：安东尼·罗素 乔·罗素</p>
-                        <p class="color_opacity60 font_size12">评分：</p>
-                        <p class="color_opacity60 font_size12">价格：¥6.0</p>
-                    </div>
-                </div>
-
+                </a>
+            {% endfor %}
+            {% endif %}
         </div>
         <!------------------------------------list-end-------------------------------------->
     </div>

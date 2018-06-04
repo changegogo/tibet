@@ -25,17 +25,17 @@
 <div class="gameRoom-page marginlr15">
     <!---------------------------nav-------------------------->
     <div class="nav fixed-top bg-white font_size16 flex flex-pack-center">
-        <a href=" " class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
+        <a href="javascript:history.back(); " class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
         <p class="text-center flex justify-content-center">游戏大厅</p>
     </div>
     <!----------------------------------------banner---------------------------------------------------->
-    <div class="marginT50">
+    <div class="">
         <h2 style="padding-top: 16px">游戏推荐</h2>
         <div class="gameRoom-header">
             <div class="swiper-container gameRoom-swiper-container swiper-container-horizontal">
                 <div class="swiper-wrapper">
                     {% for item in header %}
-                        <div class="swiper-slide" ><img src="{{item.imgbig}}" alt=""></div>
+                        <div class="swiper-slide" ><a href="{{ item.httpurl }}"><img src="{{item.imgbig}}" alt=""></a></div>
                     {% endfor %}
                 </div>
             </div>

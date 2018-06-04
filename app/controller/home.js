@@ -6,6 +6,9 @@ const SMSClient = require('@alicloud/sms-sdk');
 const Chance = require('chance');
 const URLSearchParams = url.URLSearchParams;
 
+const sendToWormhole = require('stream-wormhole');
+const awaitWriteStream = require('await-stream-ready').write;
+
 // 检查是否可以发送短信
 const SMS_CODE_IS_OK = `
     -- KEYS[1]: 键前缀
@@ -46,10 +49,34 @@ const SMS_CODE_IS_OK = `
     return redis.call('setex', VAL_KEY, VAL_TTL, VAL_VAL)
 `;
 
+
+
 module.exports = app => {
     const conf = app.config;
     const model = app.model;
     const redis = app.redis;
+
+    function isFileExist(){
+        let curDate = new Date();
+        let year = curDate.getFullYear();
+        let month = curDate.getMonth() + 1;
+        month = month < 10 ? '0' + month : month;
+        let day = curDate.getDate();
+        day = day < 10 ? '0' + day : day;
+        let rootFileDir = `${year}${month}${day}`;
+        let wholePath = path.join(conf.baseDir, 'app/public/upload', rootFileDir);
+
+        return new Promise((resolve, reject)=>{
+            fs.exists(wholePath, function(exists){
+                if(exists){
+                    resolve({rootFileDir, wholePath});
+                }else{
+                    fs.mkdirSync(wholePath);
+                    resolve({rootFileDir, wholePath});
+                }
+            })
+        })
+    }
 
     function readdir(dir) {
         return new Promise((resolve, reject) => {
@@ -88,7 +115,7 @@ module.exports = app => {
 
     class Home extends app.Controller {
         async login(ctx) {
-            try {
+            /*try {
                 ctx.validate({
                     "gw_address": {
                         type: 'string',
@@ -100,7 +127,7 @@ module.exports = app => {
                 ctx.logger.error(err);
                 // 非法输入返回`404`
                 return;
-            }
+            }*/
 
             // 请求参数:
             // -------------------------------------
@@ -351,6 +378,7 @@ module.exports = app => {
                 ctx.logger.error(err);
                 return [];
             });
+            
 
             // 非法请求
             if (!gw_address || !username) {
@@ -469,7 +497,7 @@ module.exports = app => {
             return await ctx.render('home/movies', { films: conf.FILM_LIST });
         }
 
-        async player(ctx) {
+       /* async player(ctx) {
             for (let key in conf.FILM_LIST) {
                 let [ name, src ] = conf.FILM_LIST[key];
                 let tpl = await ctx.renderView('home/player', { key: key, name: name, src: src });
@@ -489,6 +517,24 @@ module.exports = app => {
             let key = ctx.params.name.replace('.html', '');
             let [ name, src ] = conf.FILM_LIST[key];
             return await ctx.render('home/player', { key: key, name: name, src: src });
+        }*/
+
+        // 播放电影
+        async player(ctx) {
+            let filmid = ctx.params.id;
+            // 检测电影是否已经购买 todo
+            //await ctx.service.myfilm.find
+
+            let film = await ctx.service.film.getFileById(filmid);
+            return await ctx.render('home/player', {film: film});
+        }
+        
+        async adv(ctx) {
+            ctx.body = {
+                name: '广告名称',
+                img: '/public/1.png',
+                httpurl: 'https://www.baidu.com/'
+            };
         }
 
         async mybooks(ctx) {
@@ -500,7 +546,10 @@ module.exports = app => {
         }
 
         async tianluwifi(ctx){
-            return await ctx.render('home/buy');
+            let wifis = await ctx.service.wifi.lists();
+            return await ctx.render('home/buy', {
+                wifis: wifis
+            });
         }
         
         async tianluwifibuy(ctx) {
@@ -514,7 +563,6 @@ module.exports = app => {
         //type (novel,film,wifi)
         async alreadybuy(ctx) {
             // todo校验type
-
             let type = ctx.params.type;
             let data = [];
             if(type === 'novel') {
@@ -522,7 +570,7 @@ module.exports = app => {
             }else if(type === 'film'){
                 data = await ctx.service.myfilm.lists();
             }else if(type === 'wifi'){
-                data = await ctx.service.mynovel.lists();
+                data = await ctx.service.mywifi.lists();
             }else{
                 return;
             }
@@ -539,6 +587,35 @@ module.exports = app => {
 
         async advice(ctx) {
             return await ctx.render('home/problemFeedback');
+        }
+        
+        // 上传图片
+        async upload(ctx) {
+           const parts = ctx.multipart({ autoFields: true });
+           const files = [];
+           let stream;
+           while((stream = await parts()) != null){
+               let index1 = stream.filename.lastIndexOf('.');
+               let index2 = stream.filename.length;
+               const fileSuffix = stream.filename.substring(index1, index2);
+               const filename = Date.now()+fileSuffix;
+               // 检测时间文件夹是否存在
+               let {rootFileDir, wholePath} = await isFileExist();
+               
+               const target = path.join(wholePath, filename);
+               const writeStream = fs.createWriteStream(target);
+               try{
+                   await awaitWriteStream(stream.pipe(writeStream));
+               }catch(err){
+                    await sendToWormhole(stream);
+                    throw err;
+               }
+               files.push(path.join(rootFileDir, filename));
+           }
+            ctx.body = {
+                //fields: Object.keys(parts.field).map( key => ({key, value: parts.field[key]})),
+                path: files[0],
+            };
         }
     }
 

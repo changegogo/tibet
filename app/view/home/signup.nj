@@ -19,7 +19,7 @@
       </div>
       <div class="form-group border-bottom position-relative mb-4">
         <input name="code" type="input" class="form-control border-0" placeholder="验证码" />
-        <span data-api="{{sendcode}}" class="position-absolute btn btn-outline-success border-0 rounded-0">发送验证码</span>
+        <span data-api="{{sendcode}}" class="position-absolute btn btn-outline-primary border-0 rounded-0">发送验证码</span>
       </div>
       <button type="submit" class="btn btn-primary btn-block">绑定</button>
     </form>

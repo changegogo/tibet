@@ -5,8 +5,7 @@
     height:2.5rem;
     background:linear-gradient(180deg,rgba(7,129,255,1),rgba(81,172,252,1));
     text-align: center;
-    padding-top: 0.6rem;
-    padding-bottom: 2.4rem;
+    padding-top: 0.3rem;
 }
 .home-header .title{
     margin-bottom: 0.17rem;
@@ -188,5 +187,10 @@
     padding-top: 16px ;
     padding-bottom: 16px;
 }
-
+@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+    .home-header {
+        padding-top: 0.6rem;
+        padding-bottom: 2.4rem;
+    }
+}
 

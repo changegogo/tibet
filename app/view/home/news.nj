@@ -29,7 +29,7 @@
         <p class="text-center flex justify-content-center">资讯</p>
     </div>
     <!----------------------------------------banner---------------------------------------------------->
-    <div class="zixun-header marginT50">
+    <div class="zixun-header">
         <div class="swiper-container topbanner-swiper-container swiper-container-horizontal">
             <div class="swiper-wrapper">
                 {% for item in header %}
@@ -53,11 +53,11 @@
         <!-----------------------------------------------tab-header-------------------------->
         <div class="flex zixun-body-headertab">
             {% if type === 'normal' %}
-                <p class="common-headertab-active"><a href="/news/list/normal">藏旅新闻</a></p>
-                <p><a href="/news/list/notice">通知公告</a></p>
+            <a href="/news/list/normal" class="common-headertab-active"><p>藏旅新闻</p></a>
+            <a href="/news/list/notice"><p>通知公告</p></a>
             {% else %}
-                <p><a href="/news/list/normal">藏旅新闻</a></p>
-                <p class="common-headertab-active"><a href="/news/list/notice">通知公告</a></p>
+                <a href="/news/list/normal"><p>藏旅新闻</p></a>
+                <a href="/news/list/notice" class="common-headertab-active"><p>通知公告</p></a>
             {% endif %}
         </div>
 

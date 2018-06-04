@@ -1,4 +1,7 @@
 /*-----------------------------mycenter-banner----------------------------------------*/
+body {
+    padding-top: 0;
+}
 .mycenter-banner {
     color: #ffffff;
     background:linear-gradient(180deg,rgba(7,129,255,1),rgba(81,172,252,1));

@@ -1,8 +1,16 @@
 module.exports = (options, app) => {
     return async function(ctx, next) {
+        ctx.query = Object.assign({
+            ip: "192.168.0.51",
+            gw_address: "192.168.255.1",
+            gw_id: "58:69:6C:ED:EF:10",
+            gw_port: "2060",
+            gw_sn: "HMAPA04170500534"
+        }, ctx.query);
+
         try {
             ctx.validate({
-                "gw_id": {
+               "gw_id": {
                     type: 'string',
                     format: /^([A-F0-9]{2}:){5}[A-F0-9]{2}$/
                 },

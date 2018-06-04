@@ -1,7 +1,11 @@
 const path = require('path');
+  
 
 module.exports = appInfo => {
     return {
+        security: {
+            csrf: false
+        },
         keys: "asV!QSPcD#M6,QQHPct#@qBa3",
         session: {
             key: "wifi",

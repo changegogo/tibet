@@ -1,3 +1,6 @@
+body{
+    padding-top: 50px;
+}
 .font_size12 {
     font-size: .12rem
 }
@@ -64,6 +67,10 @@ button {
     border-bottom: 2px solid #1E96FF;
     color: #1E96FF;
 }
+.common-headertab-active a{
+    color: #1E96FF!important;
+    text-decoration: none;
+}
 .common_borderBottom {
     border-bottom: 1px solid rgba(0,0,0, .12);
 }
@@ -98,12 +105,15 @@ h2, label, p, h4 {
 .weui-flex__item {
     text-align: center;
 }
+.weui-flex__item > a {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
 .nav {
     color: #ffffff;
-    /*height: 50px;*/
-    /*line-height: 50px;*/
-    padding-top: 40px;
-    padding-bottom: 20px;
+    height: 50px;
+    line-height: 50px;
     background:linear-gradient(180deg,rgba(7,129,255,1),rgba(81,172,252,1));
 }
 .nav > a {
@@ -121,4 +131,17 @@ h2, label, p, h4 {
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+.zixun-body-headertab a{
+    color: #000000;
+}
+
+@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+    .nav {
+        padding-top: 30px;
+        padding-bottom: 60px;
+    }
+    body {
+        padding-top: 90px;
+    }
 }

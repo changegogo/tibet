@@ -4,11 +4,14 @@
 
 {% block styles %}
 <style>
+  body {
+    padding-top: 0;
+  }
 .back {
   position: absolute;
   left: 0;
   top: 0;
-  padding: 0.5rem 0.75rem;
+  padding-left: 15px;
 }
 
 .back img {
@@ -25,19 +28,24 @@
 .nav-link:not(:last-child) {
   margin-right: 2rem;
 }
+@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+  .back {
+    padding-top: 30px;
+  }
+}
 </style>
 {% endblock %}
 
 {% block header %}
 <nav class="nav border-bottom justify-content-center bg-white mb-2">
   <a href="javascript:history.back();" class="back"><img src="/public/img/Chevron@2x.png" /></a>
-  <span class="nav-link">{{name}}</span>
+  <span class="">{{film.name}}</span>
 </nav>
 {% endblock %}
 
 {% block body %}
-<div class="px-2">
-  <video src="/public/movies/{{src}}" width="100%;" controls="controls" ></video>
+<div class="" style="padding-left: 15px;padding-right: 15px;">
+  <video src="{{film.httpurl}}" width="100%;" controls="controls" ></video>
 </div>
 {% endblock %}
 
