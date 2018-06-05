@@ -11,11 +11,19 @@ module.exports = app => {
             "autoIncrement": true,
             "primaryKey": true
         },
+        "tradeNumber": STRING, //订单号
+        "tradeNo": STRING, //交易号码
+        "totalRmb": STRING,     // 价格
         "username": STRING, //  所有者
         "purchasetype": STRING, // zfb支付宝 wx微信
+        "status": STRING, // 订单状态
         "created_at": DATE,
         "updated_at": DATE
     } );
+
+    Myfilms.insertData = function(data){
+        return Myfilms.create(data);
+    }
 
     Myfilms.findAllMyFilm = function(){
         return Myfilms.findAll({
@@ -33,6 +41,17 @@ module.exports = app => {
                 return myFilmModel && myFilmModel.get({plain: true});
             });
             return myfilm_plain;
+        })
+    }
+
+    // 使用唯一订单号查找记录
+    Myfilms.findByTradeNumber = function(tradeNumber){
+        return Myfilms.findOne({
+            where: {
+                tradeNumber: tradeNumber
+            }
+        }).then( (myfilm) => {
+            return myfilm;
         })
     }
 

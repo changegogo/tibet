@@ -1,6 +1,10 @@
 body{
     padding-top: 50px;
 }
+*[hidefocus],input,textarea,a{outline:none;}
+a {
+    text-decoration: none;
+}
 .font_size12 {
     font-size: .12rem
 }
@@ -59,6 +63,10 @@ button {
 }
 .dis_block {
     display: block;
+}
+.swiper-container {
+    -webkit-overflow-scrolling: touch;
+    overflow: scroll;
 }
 .swiper-slide img {
     width: 100%;

@@ -100,10 +100,13 @@
     background:rgba(245,166,35,0.12);
     font-size:0.13rem;
     font-family:PingFangSC-Regular;
-    color:rgba(245,132,35,1);
     line-height:0.44rem;
     padding-left: .15rem ;
     padding-right: .15rem ;
+}
+.body-wrapper .news-notice a{
+    color: #F58423;
+    text-decoration: none;
 }
 .news-adverst-wrapper {
     max-width: 94%;

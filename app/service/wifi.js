@@ -8,7 +8,7 @@ class WifiService extends Service {
         const model = this.ctx.model;
 
         let wifis = await model.Wifi.findAllByTypeAndPage();
-
+        wifis.sort((a, b) => {return Number(a.amount) > Number(b.amount);})
         // 更改amount字段，为前端需要的字段
         wifis.map((wifi)=>{
             if(wifi.amount >= 1024){

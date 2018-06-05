@@ -17,8 +17,8 @@ module.exports = app => {
         "imgv": STRING,     // 纵向图
         "director": STRING, // 导演
         "tostar": STRING,   // 主演
-        "score": FLOAT,     // 评分
-        "price": DOUBLE,    // 价格
+        "score": STRING,     // 评分
+        "price": STRING,    // 价格
         "description": STRING, // 简介
         "httpurl": STRING, // 观看地址
         "created_at": DATE,

@@ -11,12 +11,20 @@ module.exports = app => {
             "autoIncrement": true,
             "primaryKey": true
         },
+        "tradeNumber": STRING, //订单号
+        "tradeNo": STRING, //交易号码
         "username": STRING, //  所有者
+        "totalRmb": STRING, // 价格
         "progress": INTEGER,// 读书进度 整数 80  80%
         "purchasetype": STRING, // zfb支付宝 wx微信
+        "status": STRING, // 订单状态
         "created_at": DATE,
         "updated_at": DATE
     } );
+
+    Mynovels.isertData = function(data){
+        return Mynovels.create(data);
+    }
 
     Mynovels.findAllMyNovel = function(){
         return Mynovels.findAll({
@@ -50,6 +58,17 @@ module.exports = app => {
             }
         }).then( (mynovel)=>{
             return mynovel && mynovel.get({plain: true});
+        })
+    }
+
+    // 使用唯一订单号查找记录
+    Mynovels.findByTradeNumber = function(tradeNumber){
+        return Mynovels.findOne({
+            where: {
+                tradeNumber: tradeNumber
+            }
+        }).then( (mynovel) => {
+            return mynovel;
         })
     }
 

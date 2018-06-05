@@ -11,16 +11,24 @@ module.exports = app => {
             "autoIncrement": true,
             "primaryKey": true
         },
-        "username": STRING, //  所有者
-        "amount": DOUBLE,      // wifi大小 Mb
-        "price": DOUBLE,     // wifi价格 元
+        "tradeNumber": STRING, //订单号
+        "tradeNo": STRING, //交易号码
+        "totalRmb": STRING,     // 价格
+        "username": STRING,     // 所有者
+        // "amount": DOUBLE,      // wifi大小 Mb
+        // "price": DOUBLE,     // wifi价格 元
         "purchasetype": STRING, // zfb支付宝 wx微信
+        "status": STRING, // 订单状态
         "created_at": DATE,
         "updated_at": DATE
     } );
 
-    Mywifis.createOrUpdate = function (data){
-        return Promise.resolve();
+    Mywifis.insertData =  function (data){
+        data.wifi_id = data.shopId;
+        return Mywifis.create(data)
+            .then((mywifi) => {
+                return mywifi;
+            });
     };
 
     Mywifis.findByIdMyWifi = function (id){
@@ -31,9 +39,20 @@ module.exports = app => {
                 }
             }
         }).then( mywifi => {
-            return mywifi && mywifi.get({ plain: true });
+            return mywifi;
         });
     };
+
+    // 使用唯一订单号查找记录
+    Mywifis.findByTradeNumber = function(tradeNumber){
+        return Mywifis.findOne({
+            where: {
+                tradeNumber: tradeNumber
+            }
+        }).then( (mywifi) => {
+            return mywifi;
+        })
+    }
 
     Mywifis.findAllMyWifi = function (){
         return Mywifis.findAll({
@@ -57,11 +76,6 @@ module.exports = app => {
             return count;
         });
     };
-
-    // 获取新闻的总条数
-    Mywifis.total = function(){
-        return Mywifis.count();
-    }
 
     return Mywifis;
 }

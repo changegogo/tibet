@@ -79,13 +79,16 @@
 					<div class="weui-cell__ft more"><a href="/news/list/normal">更多</a></div>
 				</div>
 				<div class="body-wrapper">
-					<div class="news-notice" >
+					<div class="news-notice">
+						<a href="/news/list/normal">
 							<div class="news-adverst-wrapper" id="news_notice_adverst">
 								<span id="adversit_one">{{qzintro}}</span>
 								<span id="adversit_two"></span>
 							</div>
+						</a>
 
-						<div class="weui-cell__ft more">查看</div>
+
+						<!--<div class="weui-cell__ft more">查看</div>-->
 					</div>
 					<div class="news-list weui-panel">
 						{% for item in news%}
@@ -129,14 +132,14 @@
 				</div>
 				<div class="body-wrapper weui-flex">
 					{% for item in films %}
-						<a href="/film/details/{{item.id}}">
 							<div class="weui-flex__item movie-item" >
-								<div class="movie-img">
-									<img class="weui-media-box__thumb" src="{{item.imgv}}" width="100%" height="100%"/>
-								</div>
-								<div class="movie-title">{{item.name}}</div>
+								<a href="/film/details/{{item.id}}">
+									<div class="movie-img">
+										<img class="weui-media-box__thumb" src="{{item.imgv}}" width="100%" height="100%"/>
+									</div>
+									<div class="movie-title">{{item.name}}</div>
+								</a>
 							</div>
-						</a>
 					{% endfor %}
 				</div>
 			</div>

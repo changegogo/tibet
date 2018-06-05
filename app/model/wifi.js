@@ -11,15 +11,15 @@ module.exports = app => {
             "autoIncrement": true,
             "primaryKey": true
         },
-        "amount": DOUBLE,      // wifi大小 Mb
-        "price": DOUBLE,     // wifi价格 元
+        "amount": STRING,      // wifi大小 Mb
+        "price": STRING,     // wifi价格 元
         "status": STRING,     // wifi状态 备货or出售 stockup or sell
         "created_at": DATE,
         "updated_at": DATE
     } );
 
-    Wifis.createOrUpdate = function (data){
-        return Promise.resolve();
+    Wifis.insertData = function (data){
+        return Wifis.create(data);
     };
 
     Wifis.findByIdwifi = function (id){
@@ -30,7 +30,7 @@ module.exports = app => {
                 }
             }
         }).then( wifi => {
-            return wifi && wifi.get({ plain: true });
+            return wifi;
         });
     };
 

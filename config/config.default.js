@@ -171,6 +171,7 @@ module.exports = appInfo => {
         },
 
         bookIndex: "http://127.0.0.1/books.html",
-        filmIndex: "http://127.0.0.1/movies.html"
+        filmIndex: "http://127.0.0.1/movies.html",
+        subjects: ["流量", "电影", "小说"]
     };
 };

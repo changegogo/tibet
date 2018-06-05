@@ -9,6 +9,7 @@ const URLSearchParams = url.URLSearchParams;
 const sendToWormhole = require('stream-wormhole');
 const awaitWriteStream = require('await-stream-ready').write;
 
+
 // 检查是否可以发送短信
 const SMS_CODE_IS_OK = `
     -- KEYS[1]: 键前缀
@@ -532,7 +533,7 @@ module.exports = app => {
         async adv(ctx) {
             ctx.body = {
                 name: '广告名称',
-                img: '/public/1.png',
+                img: '/public/img/1.png',
                 httpurl: 'https://www.baidu.com/'
             };
         }

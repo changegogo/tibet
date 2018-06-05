@@ -24,7 +24,8 @@ module.exports = (options, app) => {
                 },
                 "mac": {
                     type: 'string',
-                    format: /^([a-f0-9]{2}:){5}[a-f0-9]{2}$/
+                    format: /^([a-fA-F0-9]{2}:){5}[a-fA-F0-9]{2}$/
+                    //format: /[A-F\d]{2}:[A-F\d]{2}:[A-F\d]{2}:[A-F\d]{2}:[A-F\d]{2}:[A-F\d]{2}/
                 }
             }, ctx.query);
         } catch (err) {
@@ -32,6 +33,7 @@ module.exports = (options, app) => {
             // 非法输入返回`404`
             return;
         }
+        ctx.query.mac = ctx.query.mac.toLowerCase();
 
         return await next();
     };

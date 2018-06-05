@@ -79,4 +79,7 @@ module.exports = app => {
     app.get('/advice', 'home.advice');
     // 图片上传
     app.post('/upload', 'home.upload');
+
+    // 支付相关
+    app.post('/sell/msg', 'sell.commitSellMsg');
 };

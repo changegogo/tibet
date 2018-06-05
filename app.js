@@ -17,6 +17,9 @@ module.exports = app => {
             app.model.Myfilm.belongsTo( app.model.Film  , {"foreignKey":"film_id"} );
             app.model.Film.hasMany(     app.model.Myfilm , {"foreignKey":"film_id"} );
 
+            app.model.Mywifi.belongsTo( app.model.Wifi  , {"foreignKey":"wifi_id"} );
+            app.model.Wifi.hasMany(     app.model.Mywifi , {"foreignKey":"wifi_id"} );
+
             await app.model.sync({force: false});
         });
     }
