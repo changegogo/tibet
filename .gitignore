@@ -12,3 +12,4 @@ spec/
 package-lock.json
 .vscode
 pem/*
+pem/sandbox_ali_public.pem
