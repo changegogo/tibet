@@ -11,8 +11,8 @@ class AlipayService extends Service {
             appId: '2017122001025887',
             notifyUrl: 'https://mobipromo.io/tibet/alipay/order/callback',
             returnUrl:'https://mobipromo.io/presale.html',
-            rsaPrivate: path.resolve('./pem/sandbox_private.pem'),
-            rsaPublic: path.resolve('./pem/sandbox_ali_public.pem'),
+            rsaPrivate: path.resolve('./pem/sandbox_private.txt'),
+            rsaPublic: path.resolve('./pem/sandbox_ali_public.txt'),
             sandbox: true,
             signType: 'RSA2'
         });
@@ -34,8 +34,8 @@ class AlipayService extends Service {
     async query(myoutTradeId){
         let ali = new Alipay({
             appId: '2017122001025887',
-            rsaPrivate: path.resolve('./pem/sandbox_private.pem'),
-            rsaPublic: path.resolve('./pem/sandbox_ali_public.pem'),
+            rsaPrivate: path.resolve('./pem/sandbox_private.txt'),
+            rsaPublic: path.resolve('./pem/sandbox_ali_public.txt'),
             sandbox: false,
             signType: 'RSA2'
         });
@@ -54,8 +54,8 @@ class AlipayService extends Service {
             appId: '2017122001025887',
             notify_url: 'https://mobipromo.io/promo/alipay/order/callback',
             return_url:'https://mobipromo.io/presale.html',
-            rsaPrivate: path.resolve('./pem/sandbox_private.pem'),
-            rsaPublic: path.resolve('./pem/sandbox_ali_public.pem'),
+            rsaPrivate: path.resolve('./pem/sandbox_private.txt'),
+            rsaPublic: path.resolve('./pem/sandbox_ali_public.txt'),
             sandbox: false,
             signType: 'RSA2'
         });
