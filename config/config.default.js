@@ -43,7 +43,7 @@ module.exports = appInfo => {
         cdnVersion: 1,
         maxFlowLimit: 50 * 1024 * 1024,
 
-        qzintroduce: "中国铁路青藏集团有限公司地处青藏高原东部，200中国铁路青藏集团有限公司地处青藏高原东部，200中国铁路青藏集团有限公司地处青藏高原东部，200",
+        qzintroduce: "中国铁路青藏集团有限公司地处青藏高原东部",
 
         FILM_LIST: {
             "EchoesOfTheRainbow": [ "岁月神偷", "EchoesOfTheRainbow.mp4", "EchoesOfTheRainbow.jpg" ],

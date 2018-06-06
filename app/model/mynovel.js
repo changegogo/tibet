@@ -30,8 +30,11 @@ module.exports = app => {
             });
     };
 
-    Mynovels.findAllMyNovel = function(){
+    Mynovels.findAllMyNovel = function(username, status='all'){
+        let wh = (status === 'all') ? {} : {status: status};
+        wh.username = username;
         return Mynovels.findAll({
+            where: wh,
             include: [
                 {
                     model: app.model.Novel,

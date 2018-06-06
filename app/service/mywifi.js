@@ -4,16 +4,18 @@
 const Service = require('egg').Service;
 
 class MyWifiService extends Service {
-    async lists() {
+    async lists(mac) {
         const model = this.ctx.model;
-
-        let myWifis = await model.Mywifi.findAllMyWifi();
+        // 通过mac查找用户
+        let { username } = await model.Sta.findByMAC(mac);
+        let myWifis = await model.Mywifi.findAllMyWifi(username, 'ok');
         myWifis.map((wifi)=>{
-            if(wifi.amount >= 1024){
-                wifi.amount = Math.floor(wifi.amount / 1024) + 'GB';
+            if(wifi.wifi.amount >= 1024){
+                wifi.amount = Math.floor(wifi.wifi.amount / 1024) + 'GB';
             }else{
-                wifi.amount = wifi.amount + 'MB';
+                wifi.amount = wifi.wifi.amount + 'MB';
             }
+            wifi.price = wifi.wifi.price;
         })
 
         return myWifis;

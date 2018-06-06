@@ -3,7 +3,7 @@
  */
 module.exports = app => {
     const { STRING, TEXT, DATE, UUID, UUID4, INTEGER, FLOAT, DOUBLE, Op} = app.Sequelize;
-    const OP = app.Sequelize.op;
+    const OP = app.Sequelize.Op;
 
     const GameType = app.model.define('gametype', {
         "id": {
@@ -32,13 +32,11 @@ module.exports = app => {
         });
     };
 
-    GameType.findAllByTypeAndPage = function (page, pageSize){
+    GameType.findAllByType = function (){
         return GameType.findAll({
             order: [
                 ["updated_at", "desc"]
-            ],
-            offset: (page - 1) * pageSize,
-            limit: pageSize
+            ]
         }).then( gametypes => {
             let gametype_plain = gametypes.map((gametype)=>{
                 return gametype.get( {plain: true} )

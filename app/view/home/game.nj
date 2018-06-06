@@ -47,54 +47,14 @@
         <!-----------------------------------------game-type------------------------------------------------------>
         <h2>游戏分类</h2>
         <div class="gameRoom-type-list flex flex-flow-wrap">
-                <div>
-                    <a href="">
-                        <p class="gametype_circle"></p>
-                        <p class="gametype_title">仙侠</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <p class="gametype_circle"></p>
-                        <p>言情</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <p class="gametype_circle"></p>
-                        <p class="gametype_title">魔幻</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <p class="gametype_circle"></p>
-                        <p class="gametype_title">恐怖</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <p class="gametype_circle"></p>
-                        <p class="gametype_title">休闲</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <p class="gametype_circle"></p>
-                        <p>生存</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <p class="gametype_circle"></p>
-                        <p class="gametype_title">冒险</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="">
-                        <p class="gametype_circle"></p>
-                        <p class="gametype_title">RPG</p>
-                    </a>
-                </div>
+                {% for item in types %}
+                    <div>
+                        <a href="/game/list/{{item.id}}">
+                            <p class="gametype_circle"></p>
+                            <p class="gametype_title">{{item.name}}</p>
+                        </a>
+                    </div>
+                {% endfor %}
             </div>
         <!-----------------------------------------------title-header-------------------------->
         <h2>游戏推荐</h2>

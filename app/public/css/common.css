@@ -1,10 +1,11 @@
 body{
     padding-top: 50px;
 }
-*[hidefocus],input,textarea,a{outline:none;}
-a {
-    text-decoration: none;
-}
+*[hidefocus],input,textarea,a{outline:none!important;}
+a:link{text-decoration:none!important;   /* 指正常的未被访问过的链接*/}
+a:visited{text-decoration:none!important; /*指已经访问过的链接*/}
+a:hover{text-decoration:none!important;/*指鼠标在链接*/}
+a:active{text-decoration:none!important;/* 指正在点的链接*/ }
 .font_size12 {
     font-size: .12rem
 }

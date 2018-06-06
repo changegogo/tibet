@@ -364,7 +364,7 @@ module.exports = app => {
         }
 
         async index(ctx) {
-            let { gw_id, gw_sn, mac } = ctx.query;
+            let { gw_id, gw_sn, mac, wifi } = ctx.query;
             let [ gw_address, gw_port, ip, username ] = await Promise.all([
                 model.Mtfi.findByGW(gw_id, gw_sn),
                 model.Sta.findByMAC(mac)
@@ -423,7 +423,10 @@ module.exports = app => {
             // 下线操作
             let offline = `${online}&logout=1`;
             // wifi名称
-            let wifiname = 'QZTL_WiFi 001';
+            if(!wifi){
+                wifi = "未知";
+            }
+            let wifiname = wifi;
             // 青藏铁路介绍
             let qzintro = conf.qzintroduce;
             
@@ -558,25 +561,35 @@ module.exports = app => {
         }
 
         async mycenter(ctx) {
-            return await ctx.render('home/mycenter');
+            let { mac } = ctx.query;
+            let { username } = await model.Sta.findByMAC(mac);
+            return await ctx.render('home/mycenter', {
+                tel: username,
+                mac: mac
+            });
         }
 
         //type (novel,film,wifi)
         async alreadybuy(ctx) {
+            let { mac } = ctx.query;
+            if(!mac){
+                return;
+            }
             // todo校验type
             let type = ctx.params.type;
             let data = [];
             if(type === 'novel') {
-                data = await ctx.service.mynovel.lists();
+                data = await ctx.service.mynovel.lists(mac);
             }else if(type === 'film'){
-                data = await ctx.service.myfilm.lists();
+                data = await ctx.service.myfilm.lists(mac);
             }else if(type === 'wifi'){
-                data = await ctx.service.mywifi.lists();
+                data = await ctx.service.mywifi.lists(mac);
             }else{
                 return;
             }
 
             return await ctx.render('home/myalreadybuy', {
+                mac: mac,
                 type: type,
                 data: data
             });
@@ -589,10 +602,11 @@ module.exports = app => {
         async advice(ctx) {
             return await ctx.render('home/problemFeedback');
         }
-
+        // 小说阅读
         async novelReader(ctx) {
             return await ctx.render('home/novelReader');
         }
+
         
         // 上传图片
         async upload(ctx) {

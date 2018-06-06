@@ -33,19 +33,19 @@
         <!------------------------------------myalreadyBuy-tab-------------------------------------->
         <div class="flex myalreadybuy-headertab paddinglr15 common_borderBottom">
             {% if type === 'novel' %}
-                <p class="alreadybuy-tab-active flex-1"><a href="/alreadybuy/novel">数字阅读</a></p>
-                <p class="flex-1"><a href="/alreadybuy/film">列车影院</a></p>
-                <p class="flex-1"><a href="/alreadybuy/wifi">天路WiFi</a></p>
+                <p class="alreadybuy-tab-active flex-1"><a href="/alreadybuy/novel?mac={{mac}}">数字阅读</a></p>
+                <p class="flex-1"><a href="/alreadybuy/film?mac={{mac}}">列车影院</a></p>
+                <p class="flex-1"><a href="/alreadybuy/wifi?mac={{mac}}">天路WiFi</a></p>
             {% endif %}
             {% if type === 'film' %}
-                <p class="flex-1"><a href="/alreadybuy/novel">数字阅读</a></p>
-                <p class="alreadybuy-tab-active flex-1"><a href="/alreadybuy/film">列车影院</a></p>
-                <p class="flex-1"><a href="/alreadybuy/wifi">天路WiFi</a></p>
+                <p class="flex-1"><a href="/alreadybuy/novel?mac={{mac}}">数字阅读</a></p>
+                <p class="alreadybuy-tab-active flex-1"><a href="/alreadybuy/film?mac={{mac}}">列车影院</a></p>
+                <p class="flex-1"><a href="/alreadybuy/wifi?mac={{mac}}">天路WiFi</a></p>
             {% endif %}
             {% if type === 'wifi' %}
-                <p class="flex-1"><a href="/alreadybuy/novel">数字阅读</a></p>
-                <p class="flex-1"><a href="/alreadybuy/film">列车影院</a></p>
-                <p class="alreadybuy-tab-active flex-1"><a href="/alreadybuy/wifi">天路WiFi</a></p>
+                <p class="flex-1"><a href="/alreadybuy/novel?mac={{mac}}">数字阅读</a></p>
+                <p class="flex-1"><a href="/alreadybuy/film?mac={{mac}}">列车影院</a></p>
+                <p class="alreadybuy-tab-active flex-1"><a href="/alreadybuy/wifi?mac={{mac}}">天路WiFi</a></p>
             {% endif %}
             
         </div>

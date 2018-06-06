@@ -51,6 +51,8 @@ module.exports = app => {
     app.get('/news/list/:type', 'news.typeList');
     // 游戏列表
     app.get('/game/list', 'game.lists');
+    // 游戏分类
+    app.get('/game/list/:typeid', 'game.gametype');
     // 小说列表
     app.get('/novel/list/:typeid', 'novel.lists');
     // 小说详情
@@ -70,7 +72,7 @@ module.exports = app => {
     // 购买流量
     app.get('/tianwifi/buy', 'home.tianluwifibuy');
     // 我的中心
-    app.get('/mycenter', 'home.mycenter');
+    app.get('/mycenter', MIDDLE_WARES.isMtfi(), 'home.mycenter');
     // 已购买 type (novel,film,wifi)
     app.get('/alreadybuy/:type', 'home.alreadybuy');
     // 常见问题
@@ -79,7 +81,7 @@ module.exports = app => {
     app.get('/advice', 'home.advice');
 
     //阅读器
-    app.get('/novelReader', 'home.novelReader');
+    // app.get('/novelReader', 'home.novelReader');
 
     // 图片上传
     app.post('/upload', 'home.upload');

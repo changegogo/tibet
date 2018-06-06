@@ -32,8 +32,11 @@ module.exports = app => {
             });
     };
 
-    Myfilms.findAllMyFilm = function(){
+    Myfilms.findAllMyFilm = function(username, status='all'){
+        let wh = (status === 'all') ? {} : {status: status};
+        wh.username = username;
         return Myfilms.findAll({
+            where: wh,
             include: [
                 {
                     model: app.model.Film,

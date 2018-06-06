@@ -13,4 +13,5 @@ package-lock.json
 .vscode
 pem/sandbox_private.txt
 pem/sandbox_ali_public.txt
+app/public/movies/*
 

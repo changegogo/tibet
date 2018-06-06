@@ -54,8 +54,16 @@ module.exports = app => {
         })
     }
 
-    Mywifis.findAllMyWifi = function (){
+    Mywifis.findAllMyWifi = function (username, status='all'){
+        let wh = (status === 'all') ? {} : {status: status};
+        wh.username = username;
         return Mywifis.findAll({
+            where: wh,
+            include: [
+                {
+                    model: app.model.Wifi
+                }
+            ],
             order: [
                 ["created_at", "desc"]
             ]

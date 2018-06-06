@@ -2,7 +2,6 @@
  * 我的电影
  */
 const Controller = require('egg').Controller;
-const _ = require('lodash');
 
 class MyFilmController extends Controller {
     async lists(ctx){

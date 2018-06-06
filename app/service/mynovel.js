@@ -4,10 +4,11 @@
 const Service = require('egg').Service;
 
 class MyNovelService extends Service {
-    async lists() {
+    async lists(mac) {
         const model = this.ctx.model;
-
-        let myNovels = await model.Mynovel.findAllMyNovel();
+        // 通过mac查找用户
+        let { username } = await model.Sta.findByMAC(mac);
+        let myNovels = await model.Mynovel.findAllMyNovel(username, 'ok');
 
         return myNovels;
     }

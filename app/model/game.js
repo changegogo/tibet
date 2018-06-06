@@ -36,12 +36,11 @@ module.exports = app => {
         });
     };
 
-    Games.findAllByTypeAndPage = function (type, page, pageSize){
-        let wh = {};
-        type != 'all' ? wh.id = type : wh;
+    Games.findAllByTypeAndPage = function (type, page=1, pageSize=10){
+        let wh = (type != 'all') ? {id : type} : {};
         return Games.findAll({
             order: [
-                ["updated_at", "desc"]
+                ["created_at", "desc"]
             ],
             include: [
                 {
@@ -58,6 +57,32 @@ module.exports = app => {
         })
     };
 
+    Games.findByType = function(type){
+        let wh = (type != 'all') ? {id : type} : {};
+        
+        return Games.findAll({
+            order: [
+                ["created_at", "desc"]
+            ],
+            include: [
+                {
+                    model: app.model.Gametype,
+                    where: wh
+                }
+            ]
+        }).then( games => {
+            return games;
+        }).catch((err)=>{
+            console.log(err);
+        })
+    }
+
+    Games.types = async function(){
+        let gameType = app.model.Gametype;
+        let types = await gameType.findAllByType();
+        return types;
+    }
+
     Games.delById = function (id){
         return Games.destroy({
             "where": {
@@ -68,7 +93,7 @@ module.exports = app => {
         });
     };
 
-    // 获取新闻的总条数
+    // 获取总条数
     Games.total = function(){
         return Games.count();
     }
