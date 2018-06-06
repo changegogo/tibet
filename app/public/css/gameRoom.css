@@ -13,9 +13,10 @@
 }
 /*-------------------------list-style----------------------------------------*/
 /*------------------------------fenlei------------------------------------------------------------*/
-.gameRoom-type-list > div  div {
+.gameRoom-type-list > div {
     flex: 0 25%;
-    /*text-align: center;*/
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 .gametype_circle {
@@ -23,7 +24,7 @@
     height: 56px;
     border-radius: 100%;
     background-color: #0b2e13;
-    /*margin: 0 auto;*/
+    margin: 0 auto;
     margin-bottom: 8px;
 
 }
