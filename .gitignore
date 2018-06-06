@@ -11,5 +11,4 @@ spec/
 **/.DS_Store
 package-lock.json
 .vscode
-pem/sandbox_private.pem
-pem/sandbox_ali_public.pem
+pem/*
