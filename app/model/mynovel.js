@@ -22,9 +22,13 @@ module.exports = app => {
         "updated_at": DATE
     } );
 
-    Mynovels.isertData = function(data){
-        return Mynovels.create(data);
-    }
+    Mynovels.insertData =  function (data){
+        data.nove_id = data.shopId;
+        return Mynovels.create(data)
+            .then((mynovel) => {
+                return mynovel;
+            });
+    };
 
     Mynovels.findAllMyNovel = function(){
         return Mynovels.findAll({
@@ -69,6 +73,17 @@ module.exports = app => {
             }
         }).then( (mynovel) => {
             return mynovel;
+        })
+    }
+
+    Mynovels.findByUserAndId = function(username, id){
+        return Mynovels.findOne({
+            where: {
+                username: username,
+                nove_id: id
+            }
+        }).then( (mynovel)=>{
+            return mynovel && mynovel.get({plain: true});
         })
     }
 

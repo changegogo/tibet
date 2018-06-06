@@ -589,6 +589,10 @@ module.exports = app => {
         async advice(ctx) {
             return await ctx.render('home/problemFeedback');
         }
+
+        async novelReader(ctx) {
+            return await ctx.render('home/novelReader');
+        }
         
         // 上传图片
         async upload(ctx) {

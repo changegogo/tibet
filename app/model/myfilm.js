@@ -21,9 +21,16 @@ module.exports = app => {
         "updated_at": DATE
     } );
 
-    Myfilms.insertData = function(data){
-        return Myfilms.create(data);
-    }
+    Myfilms.insertData =  function (data){
+        data.film_id = data.shopId;
+        return Myfilms.create(data)
+            .then((myfilm) => {
+                return myfilm;
+            })
+            .catch((err)=>{
+                console.log(err);
+            });
+    };
 
     Myfilms.findAllMyFilm = function(){
         return Myfilms.findAll({
@@ -65,6 +72,17 @@ module.exports = app => {
             ],
             where: {
                 id: id
+            }
+        }).then( (myfilm)=>{
+            return myfilm && myfilm.get({plain: true});
+        })
+    }
+
+    Myfilms.findByUserAndId = function(username, id){
+        return Myfilms.findOne({
+            where: {
+                username: username,
+                film_id: id
             }
         }).then( (myfilm)=>{
             return myfilm && myfilm.get({plain: true});

@@ -12,6 +12,25 @@
     border-radius: 8px;
 }
 /*-------------------------list-style----------------------------------------*/
+/*------------------------------fenlei------------------------------------------------------------*/
+.gameRoom-type-list > div {
+    flex: 0 25%;
+    text-align: center;
+}
+.gametype_circle {
+    width: 56px;
+    height: 56px;
+    border-radius: 100%;
+    background-color: #0b2e13;
+    /*margin: 0 auto;*/
+    margin-bottom: 8px;
+
+}
+.gametype_title {
+    width: 56px;
+}
+
+/*---------------------------------------------tuijian---------------------------------------------*/
 .gameRoom-list .weui-media-box {
     padding-left: 0;
     padding-right: 0;

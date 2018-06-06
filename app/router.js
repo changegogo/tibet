@@ -77,6 +77,10 @@ module.exports = app => {
     app.get('/problem', 'home.problem');
     // 意见反馈
     app.get('/advice', 'home.advice');
+
+    //阅读器
+    app.get('/novelReader', 'home.novelReader');
+
     // 图片上传
     app.post('/upload', 'home.upload');
 

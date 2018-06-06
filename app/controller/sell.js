@@ -17,7 +17,7 @@ class SellController extends Controller {
         if(!shopId){
             return;
         }
-        await ctx.service.sell.commitSellMsg(shopType, shopId, mac);
+        ctx.body =  await ctx.service.sell.commitSellMsg(shopType, shopId, mac);
     }
 
     // 支付宝回调方法

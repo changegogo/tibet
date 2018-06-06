@@ -9,8 +9,6 @@ class MyFilmController extends Controller {
         //let conf = ctx.app.config;
         let model = ctx.app.model;
         
-        
-        
         // 类型下的小说
         let myFilms = await ctx.service.myfilm.lists();
         return await ctx.render('home/myfilms', {
