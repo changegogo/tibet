@@ -46,35 +46,62 @@
     <div class="gameRoom-body font_size16">
         <!-----------------------------------------game-type------------------------------------------------------>
         <h2>游戏分类</h2>
-        <div class="gameRoom-type-list flex flex-flow-wrap flex-pack-justify">
-            <div>
-                <a href="">
-                    <p class="gametype_circle"></p>
-                    <p class="gametype_title">仙侠</p>
-                </a>
+        <div class="gameRoom-type-list">
+            <div class="flex flex-pack-justify">
+                <div>
+                    <a href="">
+                        <p class="gametype_circle"></p>
+                        <p class="gametype_title">仙侠</p>
+                    </a>
+                </div>
+                <div class="flex">
+                    <div>
+                        <a href="">
+                            <p class="gametype_circle"></p>
+                            <p>仙侠</p>
+                        </a>
+                    </div>
+                    <div>
+                        <p class="gametype_circle"></p>
+                        <p>仙侠</p>
+                    </div>
+                </div>
+                <div>
+                    <a href="">
+                        <p class="gametype_circle"></p>
+                        <p class="gametype_title">仙侠</p>
+                    </a>
+                </div>
             </div>
-            <div>
-                <a href="">
-                    <p class="gametype_circle"></p>
-                    <p>仙侠</p>
-                </a>
+            <div class="flex flex-pack-justify">
+                <div>
+                    <a href="">
+                        <p class="gametype_circle"></p>
+                        <p class="gametype_title">仙侠</p>
+                    </a>
+                </div>
+                <div class="flex">
+                    <div>
+                        <a href="">
+                            <p class="gametype_circle"></p>
+                            <p>仙侠</p>
+                        </a>
+                    </div>
+                    <div>
+                        <p class="gametype_circle"></p>
+                        <p>仙侠</p>
+                    </div>
+                </div>
+                <div>
+                    <a href="">
+                        <p class="gametype_circle"></p>
+                        <p class="gametype_title">仙侠</p>
+                    </a>
+                </div>
             </div>
-            <div>
-                <p class="gametype_circle"></p>
-                <p>仙侠</p>
-            </div>
-            <div>
-                <p class="gametype_circle"></p>
-                <p>仙侠</p>
-            </div>
-            <div>
-                <p class="gametype_circle"></p>
-                <p>仙侠</p>
-            </div>
-            <div>
-                <p class="gametype_circle"></p>
-                <p>仙侠</p>
-            </div>
+
+
+
         </div>
         <!-----------------------------------------------title-header-------------------------->
         <h2>游戏推荐</h2>

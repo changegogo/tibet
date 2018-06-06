@@ -13,14 +13,11 @@
 }
 /*-------------------------list-style----------------------------------------*/
 /*------------------------------fenlei------------------------------------------------------------*/
-.gameRoom-type-list > div {
-    flex: 0 23%;
-    text-align: center;
-    margin-right: 2%;
+.gameRoom-type-list > div  div {
+    flex: 0 25%;
+    /*text-align: center;*/
 }
-.gameRoom-type-list > div:nth-child(4n) {
-    margin-right: 0;
-}
+
 .gametype_circle {
     width: 56px;
     height: 56px;
@@ -31,7 +28,7 @@
 
 }
 .gametype_title {
-    width: 56px;
+    /*width: 56px;*/
 }
 
 /*---------------------------------------------tuijian---------------------------------------------*/
