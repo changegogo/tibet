@@ -14,8 +14,12 @@
 /*-------------------------list-style----------------------------------------*/
 /*------------------------------fenlei------------------------------------------------------------*/
 .gameRoom-type-list > div {
-    flex: 0 25%;
+    flex: 0 23%;
     text-align: center;
+    margin-right: 2%;
+}
+.gameRoom-type-list > div:nth-child(4n) {
+    margin-right: 0;
 }
 .gametype_circle {
     width: 56px;
