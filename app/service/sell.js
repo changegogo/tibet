@@ -48,6 +48,10 @@ class SellService extends Service {
         // 生成订单号码
         let tradeNumber = utils.generateTradeNumber();
         let shopSell = {
+            mac: mac,
+            from: 'BUY',
+            key: 'FLOW',
+            val: Number(shop.amount)*1024*1024,
             tradeNumber: tradeNumber,
             username: username,
             shopId: shopId,
@@ -60,7 +64,10 @@ class SellService extends Service {
         let description = "";
         switch(shopType) {
             case 'flow':
-            result = await model.Mywifi.insertData(shopSell);
+            // 写入订单，未支付
+            //result = await model.Mywifi.insertData(shopSell);
+            result = await model.Order.insertData(shopSell);
+
             subject = conf.subjects[0];
             description = "购买: "+shop.amount;
             break;

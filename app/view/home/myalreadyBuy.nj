@@ -66,8 +66,12 @@
                             <p class="color_opacity60 font_size12">
                                 {% if item.purchasetype === "zfb" %}
                                     支付宝已付款
-                                {% else %}
+                                {% endif %}
+                                {% if item.purchasetype === "wx" %}
                                     微信已付款
+                                {% endif %}
+                                {% if item.status === "wait" %}
+                                    未付款，请尽快付款
                                 {% endif %}
                             </p>
                         </div>
@@ -89,8 +93,12 @@
                             <p class="color_opacity60 font_size12">
                                 {% if item.purchasetype === "zfb" %}
                                     支付宝已付款
-                                {% else %}
+                                {% endif %}
+                                {% if item.purchasetype === "wx" %}
                                     微信已付款
+                                {% endif %}
+                                {% if item.status === "wait" %}
+                                    未付款，请尽快付款
                                 {% endif %}
                             </p>
                         </div>
@@ -108,9 +116,14 @@
                             <p class="color_opacity60 font_size12">
                                 {% if item.purchasetype === "zfb" %}
                                     支付宝已付款
-                                {% else %}
+                                {% endif %}
+                                {% if item.purchasetype === "wx" %}
                                     微信已付款
                                 {% endif %}
+                                {% if item.status === "wait" %}
+                                    未付款，请尽快付款
+                                {% endif %}
+                                
                             </p>
                         </div>
                     </div>

@@ -21,13 +21,57 @@ module.exports = app => {
         "val": {
             "type": BIGINT
         },
+        "totalRmb": STRING,     // 价格
+        "tradeNumber": STRING,      //订单号
+        "tradeNo": STRING,          //交易号码
+        "username": STRING,         // 所有者
+        "purchasetype": STRING, //购买类型 zfb wx
         "status": {
-            "type": SMALLINT,
-            "default": 0
+            "type": STRING,
+            "default": "wait"
         },
         "created_at": DATE,
         "updated_at": DATE,
     });
+
+    Order.insertData = function (record) {
+        return Order.create(record)
+            .then((order) => {
+                return order;
+            })
+            .catch((err)=>{
+                console.log(err);
+            })
+    }
+    // 查询所有的流量订单，包含已付款和未付款的
+    Order.findAllOrder = function(username) {
+        return Order.findAll({
+            where: {
+                username: username,
+                status: 'ok'
+            },
+            order: [
+                ["created_at", "desc"]
+            ]
+        })
+        .then((orders) => {
+            let orders_plain = orders.map((order)=>{
+                return order && order.get( {plain: true });
+            });
+            return orders_plain;
+        })
+    }
+
+    // 使用唯一订单号查找记录
+    Order.findByTradeNumber = function(tradeNumber){
+        return Order.findOne({
+            where: {
+                tradeNumber: tradeNumber
+            }
+        }).then( (order) => {
+            return order;
+        })
+    }
 
     Order.balance = function (mac, key, from = null) {
         let where = {
@@ -38,7 +82,7 @@ module.exports = app => {
                 [Op.eq]: key
             },
             "status": {
-                [Op.eq]: 1
+                [Op.eq]: 'ok'
             }
         };
 

@@ -575,7 +575,7 @@ module.exports = app => {
             if(!mac){
                 return;
             }
-            // todo校验type
+            // 校验type
             let type = ctx.params.type;
             let data = [];
             if(type === 'novel') {
@@ -583,7 +583,9 @@ module.exports = app => {
             }else if(type === 'film'){
                 data = await ctx.service.myfilm.lists(mac);
             }else if(type === 'wifi'){
-                data = await ctx.service.mywifi.lists(mac);
+                // 查询购买的flow  todo
+                //data = await ctx.service.mywifi.lists(mac);
+                data = await ctx.service.mywifi.listsOrder(mac);
             }else{
                 return;
             }

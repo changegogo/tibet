@@ -88,4 +88,8 @@ module.exports = app => {
 
     // 支付相关
     app.post('/sell/msg', 'sell.commitSellMsg');
+    // 未支付订单重新支付
+    //app.post('sell/msg/agin', 'sell.commitSellMsgAgin')
+    // 支付宝回调接口
+    app.post('/sell/callback', 'sell.callback');
 };
