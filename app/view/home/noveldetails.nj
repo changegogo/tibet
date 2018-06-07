@@ -22,13 +22,14 @@
 </head>
 
 <body>
+<span id="macspan" hidden>{{mac}}</span>
 <div class="bookDetail-page">
     <!---------------------------nav-------------------------->
     <div class="nav fixed-top bg-white font_size16 flex flex-pack-center">
         <a href="javascript:history.back(); " class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
         <p class="text-center flex justify-content-center">详情</p>
     </div>
-    <!--------------------------------------top-book-jianjie -introduce------------------------------------->
+    <!-- ------------------------------------top-book-jianjie -introduce----------------------------------- -->
    <div class="top-intro font_size16 marginlr15" style="margin-top: 16px;">
        <div class="flex">
            <div class="weui-media-box__hd news-img marginR16" style="max-width: 80px;">
@@ -44,7 +45,7 @@
         {{novel.description}}
       </p>
    </div>
-    <!---------------------------------------select-pay-method-wrapper------------------------------------->
+    <!-- -------------------------------------select-pay-method-wrapper----------------------------------- -->
     <div class="paymethod-wrapper marginT16 marginlr15">
         <h2 class="font_size16">支付方式</h2>
         <div class="weui-cells weui-cells_radio">
@@ -68,8 +69,8 @@
             </label>
         </div>
     </div>
-    <!--------------------------------pay-btn-------------------------------------->
-    <div class="pay-btn orange_bgcolor">
+    <!-- ------------------------------pay-btn------------------------------------ -->
+    <div id="gopay" class="pay-btn orange_bgcolor">
         去支付
     </div>
 </div>
@@ -77,6 +78,9 @@
 <script src="/public/js/bootstrap.min.js"></script>
 <script src="/public/js/weui.js"></script>
 <script src="/public/js/bookDetail.js"></script>
+<script>
+    
+</script>
 </body>
 
 </html>

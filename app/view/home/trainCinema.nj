@@ -38,7 +38,7 @@
                 <div class="swiper-wrapper">
                     {% for item in header %}
                         <div class="swiper-slide" >
-                            <a href="/film/details/{{item.id}}">
+                            <a href="/film/details/{{item.id}}?mac={{mac}}">
                             <img src="{{item.imgh}}" alt="">
                             </a>
                         </div>
@@ -59,7 +59,7 @@
         <div class="marginlr15">
         <!------------------------------------trainCinema-精品推荐-------------------------------------->
         {% for item in middle %}
-            <a href="/film/details/{{item.id}}" class="weui-media-box weui-media-box_appmsg jingpin-wrapper ">
+            <a href="/film/details/{{item.id}}?mac={{mac}}" class="weui-media-box weui-media-box_appmsg jingpin-wrapper ">
                 <div class="weui-media-box__hd news-img ">
                     <img class="weui-media-box__thumb" src="{{item.imgv}}" width="100%" height="100%"/>
                 </div>
@@ -81,7 +81,7 @@
             </div>
             <div class="body-wrapper weui-flex moviestype-wrapper">
                 {% for item in action %}
-                    <a href="/film/details/{{item.id}}" class="weui-media-box weui-media-box_appmsg ">
+                    <a href="/film/details/{{item.id}}?mac={{mac}}" class="weui-media-box weui-media-box_appmsg ">
                         <div class="weui-flex__item movie-item" >
                             <div class="movie-img">
                                 <img class="weui-media-box__thumb" src="{{item.imgh}}" width="100%" height="100%"/>
@@ -99,7 +99,7 @@
             </div>
             <div class="body-wrapper weui-flex moviestype-wrapper">
                 {% for item in terror %}
-                    <a href="/film/details/{{item.id}}" class="weui-media-box weui-media-box_appmsg ">
+                    <a href="/film/details/{{item.id}}?mac={{mac}}" class="weui-media-box weui-media-box_appmsg ">
                         <div class="weui-flex__item movie-item" >
                             <div class="movie-img">
                                 <img class="weui-media-box__thumb" src="{{item.imgh}}" width="100%" height="100%"/>

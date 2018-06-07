@@ -76,8 +76,10 @@ label.disabled p {
   <div class="container-fluid">
     <div class="weui-cells__title">选择数额</div>
     <div class="row">
+      <span id="macspan" hidden>{{mac}}</span>
       {% for wifi in wifis %}
         <div class="col col-4 col-lg-2">
+          <span>{{wifi.id}}</span>
           {% if wifi.status === 'stockup' %}
             <label class="card disabled">
           {% else %}
@@ -173,7 +175,7 @@ label.disabled p {
       </label>
     </div>
   </div>
-  <button class="btn btn-lg btn-block fixed-bottom rounded-0 orange_bgcolor"><a href="/tianwifi/buy" style="color: #ffffff;">去支付</a></button>
+  <button id="gopay" class="btn btn-lg btn-block fixed-bottom rounded-0 orange_bgcolor">去支付</button>
 </form>
 {% endblock %}
 

@@ -405,7 +405,7 @@ module.exports = app => {
                 // 当前在线用户数
                 model.Token.countByOnline(gw_id),
                 // 终端流量统计
-                model.Counters.flow(mac),
+                model.Counters.flow(mac, username),
                 // 用户跟踪超时(MTFi设备断电)
                 model.Counters.timeout(token.token)
             ]);
@@ -443,6 +443,7 @@ module.exports = app => {
             // 3个游戏
             let games = await ctx.service.game.lists('all', 1, 3);
             return await ctx.render('home/index', {
+                mac: mac,
                 status: token.auth,
                 uname: token.username,
                 online: online,
@@ -550,8 +551,10 @@ module.exports = app => {
         }
 
         async tianluwifi(ctx){
+            let mac = ctx.query.mac;
             let wifis = await ctx.service.wifi.lists();
             return await ctx.render('home/buy', {
+                mac: mac,
                 wifis: wifis
             });
         }

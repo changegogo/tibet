@@ -75,11 +75,11 @@ module.exports = app => {
         return limit.minus(total);
     };
 
-    Counters.flow = async function (mac) {
+    Counters.flow = async function (mac, username) {
         let total = await Counters.remains(mac);
         let units = 'B';
         // 计算流量总量todo
-        total = await app.model.Order.balance(mac, 'FLOW').then(b => {
+        total = await app.model.Order.balance(mac,username, 'FLOW').then(b => {
             return total.plus(b)
         });
 

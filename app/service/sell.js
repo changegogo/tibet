@@ -39,7 +39,7 @@ class SellService extends Service {
             }
         }
         // 检测商品是否已经被购买
-        if(myshop){
+        if(myshop && myshop.status === 'ok'){
             return {
                 isSuccess: false,
                 msg: '您已经购买此商品'

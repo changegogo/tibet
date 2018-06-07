@@ -35,6 +35,7 @@ class FilmController extends Controller {
 
     async trainCinema(ctx){
         let model = ctx.app.model;
+        let mac = ctx.query.mac;
         //  查询所有电影的类型
         let filmTypes = await model.Filmtype.findAllFilmType();
         
@@ -59,6 +60,7 @@ class FilmController extends Controller {
         }
         
         return await ctx.render('home/trainCinema', {
+            mac: mac,
             header: header,
             middle: middle,
             type1: type1,
@@ -71,9 +73,11 @@ class FilmController extends Controller {
     async details(ctx) {
         let model = ctx.app.model;
         let filmid = ctx.params.id;
+        let mac = ctx.query.mac;
 
         let film = await model.Film.findByIdFilm(filmid);
         return await ctx.render('home/filmdetails', {
+            mac: mac,
             film: film
         });
     }

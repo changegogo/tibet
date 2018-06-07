@@ -54,7 +54,7 @@
         <div class="myalreadyBuy-list marginlr15">
             {% if type === 'novel' %}
                 {% for item in data %}
-                <a href="https://www.baidu.com">
+                <a href="{{item.novel.httpurl}}">
                     <div class="flex">
                         <div class="weui-media-box__hd news-img marginR16">
                             <img class="weui-media-box__thumb" src="{{item.novel.img}}" width="100%" height="100%"/>
