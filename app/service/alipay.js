@@ -47,12 +47,14 @@ class AlipayService extends Service {
         var params = null;
         try {
             params = ali.webPay({
-                subject: subject,
+                
                 body: description,
+                subject: subject,
                 outTradeId: myoutTradeId,
                 timeout: '1d',
                 //amount: allrmb,
                 amount: '0.01',
+                product_code: 'FAST_INSTANT_TRADE_PAY',
                 goodsType: '0'
             });
         } catch (error) {
