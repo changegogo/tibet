@@ -579,30 +579,35 @@ module.exports = app => {
 
         //type (novel,film,wifi)
         async alreadybuy(ctx) {
-            let { mac } = ctx.query;
-            if(!mac){
-                return;
-            }
-            // 校验type
-            let type = ctx.params.type;
-            let data = [];
-            if(type === 'novel') {
-                data = await ctx.service.mynovel.lists(mac);
-            }else if(type === 'film'){
-                data = await ctx.service.myfilm.lists(mac);
-            }else if(type === 'wifi'){
-                // 查询购买的flow  todo
-                //data = await ctx.service.mywifi.lists(mac);
-                data = await ctx.service.mywifi.listsOrder(mac);
-            }else{
-                return;
-            }
+            try {
+                let { mac } = ctx.query;
+                if(!mac){
+                    return;
+                }
+                // 校验type
+                let type = ctx.params.type;
+                let data = [];
+                if(type === 'novel') {
+                    data = await ctx.service.mynovel.lists(mac);
+                }else if(type === 'film'){
+                    data = await ctx.service.myfilm.lists(mac);
+                }else if(type === 'wifi'){
+                    // 查询购买的flow  todo
+                    //data = await ctx.service.mywifi.lists(mac);
+                    data = await ctx.service.mywifi.listsOrder(mac);
+                }else{
+                    return;
+                }
 
-            return await ctx.render('home/myalreadybuy', {
-                mac: mac,
-                type: type,
-                data: data
-            });
+                return await ctx.render('home/myalreadybuy', {
+                    mac: mac,
+                    type: type,
+                    data: data
+                });
+            } catch (error) {
+                console.log(error);
+            }
+            
         }
 
         async problem(ctx) {
