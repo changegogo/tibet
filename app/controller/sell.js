@@ -1,5 +1,6 @@
 const Controller = require('egg').Controller;
 const Alipay = require("alipay-node-sdk");
+//const Alipay = require("../ali/alipay");
 
 class SellController extends Controller {
     async commitSellMsg(ctx) {
