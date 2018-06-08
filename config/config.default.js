@@ -19,6 +19,14 @@ module.exports = appInfo => {
             username: 'tibetwifi',
             password: 'ulptfpgkl',
             operatorsAliases: false
+
+            // dialect: 'postgres',
+            // database: 'tempwifi',
+            // host: 'localhost',
+            // port: '5432',
+            // username: 'tibetwifi',
+            // password: 'ulptfpgkl',
+            // operatorsAliases: false
         },
         logger: {
             level: 'WARN'

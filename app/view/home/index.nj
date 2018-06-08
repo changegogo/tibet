@@ -191,6 +191,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
 <script src="/public/js/weui.js"></script>
 <script src="/public/js/index.js"></script>
+<script>
+	qz_android.getMac();
+	function sendMac(mac){
+		alert(mac);
+	}
+</script>
 </body>
 
 </html>

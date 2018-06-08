@@ -86,11 +86,12 @@ class SellService extends Service {
         }
         // 获取支付链接
         let httpurl = "";
-        if (conf.env === 'prod') {
-            httpurl = await this.service.alipay.getOrderAliPay(subject, description, tradeNumber, shop.price);
-        }else{
-            httpurl = 'https://openapi.alipay.com/gateway.do?'+'a=b';
-        }
+        httpurl = await this.service.alipay.getOrderAliPay(subject, description, tradeNumber, shop.price);
+        // if (conf.env === 'prod') {
+        //     httpurl = await this.service.alipay.getOrderAliPay(subject, description, tradeNumber, shop.price);
+        // }else{
+        //     httpurl = 'https://openapi.alipay.com/gateway.do?'+'a=b';
+        // }
         
         return {
             isSuccess: true,

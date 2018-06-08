@@ -54,7 +54,7 @@
         <div class="myalreadyBuy-list marginlr15">
             {% if type === 'novel' %}
                 {% for item in data %}
-                <a href="{{item.novel.httpurl}}">
+                <div class="novel-container" httpurl="http://192.168.1.140:7001{{item.novel.httpurl}}" name="{{item.novel.name}}">
                     <div class="flex">
                         <div class="weui-media-box__hd news-img marginR16">
                             <img class="weui-media-box__thumb" src="{{item.novel.img}}" width="100%" height="100%"/>
@@ -76,7 +76,7 @@
                             </p>
                         </div>
                     </div>
-                </a>
+                </div>
                 {% endfor %}
             {% endif %}
             {% if type === 'film' %}
@@ -138,6 +138,16 @@
 <script src="/public/js/bootstrap.min.js"></script>
 <script src="/public/js/weui.js"></script>
 <script src="/public/js/myalreadyBuy.js"></script>
+<script>
+    $(".novel-container").click(function(){
+        var httpurl = $(this).attr("httpurl");
+        var name = $(this).attr("name");
+        if(httpurl && name){
+            alert(httpurl+':'+name);
+            qz_android.clickBookLink(httpurl, name);
+        }
+    });
+</script>
 </body>
 
 </html>

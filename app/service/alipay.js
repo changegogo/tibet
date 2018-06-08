@@ -6,25 +6,59 @@ const path = require("path");
 const Service = require('egg').Service;
 
 class AlipayService extends Service {
-    async getOrderAliPay(subject, description, myoutTradeId, allrmb){
+    //测试接口获取数据
+    async getAliPay(req, res){
         let ali = new Alipay({
-            appId: '2017122001025887',
-            notifyUrl: 'https://mobipromo.io/tibet/alipay/order/callback',
-            returnUrl:'https://mobipromo.io/presale.html',
+            appId: '2018060860318901',
+            notifyUrl: 'http://39.104.66.16:7001/sell/callback',
+            returnUrl:'http://39.104.66.16:7001/presale.html',
             rsaPrivate: path.resolve('./pem/sandbox_private.txt'),
             rsaPublic: path.resolve('./pem/sandbox_ali_public.txt'),
             sandbox: true,
             signType: 'RSA2'
         });
-        
-        var params = ali.wapPay({
-            subject: subject,
-            body: description,
-            outTradeId: myoutTradeId,
-            timeout: '1d',
-            amount: allrmb,
-            goodsType: '0'
+        let url = ali.webPay({
+            body: "商品描述字符",
+            subject: "Iphone6 16G",
+            outTradeId: "201712201451571513781517701",//商户网站唯一订单号
+            timeout: '90m',
+            amount: "0.01",
+            goods_type: "1"//商品主类型：0—虚拟类商品，1—实物类商
+        })
+
+        console.log(url);
+    
+        let url_API = 'https://openapi.alipay.com/gateway.do?'+url;
+        return url_API;
+    };
+
+
+    async getOrderAliPay(subject, description, myoutTradeId, allrmb){
+        let ali = new Alipay({
+            appId: '2018060860318901',
+            notifyUrl: 'http://39.104.66.16:7001/sell/callback',
+            returnUrl:'http://39.104.66.16:7001/presale.html',
+            rsaPrivate: path.resolve('./pem/sandbox_private.txt'),
+            rsaPublic: path.resolve('./pem/sandbox_ali_public.txt'),
+            sandbox: true,
+            signType: 'RSA2'
         });
+        var params = null;
+        try {
+            params = ali.wapPay({
+                subject: subject,
+                body: description,
+                outTradeId: myoutTradeId,
+                timeout: '1d',
+                //amount: allrmb,
+                amount: '0.01',
+                goodsType: '0'
+            });
+        } catch (error) {
+            console.log(error);
+            return "http://www.baidu.com";
+        }
+        
         console.log(params);
     
         let url_API = 'https://openapi.alipay.com/gateway.do?'+params;
@@ -52,8 +86,8 @@ class AlipayService extends Service {
             tradeNo = sell.tradeNo;
         let ali = new Alipay({
             appId: '2017122001025887',
-            notify_url: 'https://mobipromo.io/promo/alipay/order/callback',
-            return_url:'https://mobipromo.io/presale.html',
+            notify_url: 'http://39.108.211.168/sell/callback',
+            return_url:'http://39.108.211.168/presale.html',
             rsaPrivate: path.resolve('./pem/sandbox_private.txt'),
             rsaPublic: path.resolve('./pem/sandbox_ali_public.txt'),
             sandbox: false,

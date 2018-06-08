@@ -105,7 +105,7 @@
                     .then(function(res){
                         console.log(res);
                         // 跳转支付宝支付链接
-                        //window.location.href="https://www.baidu.com"
+                        window.location.href=res.httpurl;
                     })
                     .catch(function(err){
                         console.log(err);

@@ -59,17 +59,17 @@ class SellController extends Controller {
         let trade_status = receive.trade_status; //交易状态
 
         //支付宝回调
-        // let ali = new Alipay({
-        //     appId: '2017122001025887',
-        //     notifyUrl: 'https://mobipromo.io/tibet/alipay/order/callback',
-        //     returnUrl:'https://mobipromo.io/presale.html',
-        //     rsaPrivate: path.resolve('./pem/sandbox_private.pem'),
-        //     rsaPublic: path.resolve('./pem/sandbox_ali_public.pem'),
-        //     sandbox: true,
-        //     signType: 'RSA2'
-        // });
-        // let result = ali.signVerify(receive);
-        let result = true;
+        let ali = new Alipay({
+            appId: '2018060860318901',
+            notifyUrl: 'https://39.104.66.16:7001/tibet/alipay/order/callback',
+            returnUrl:'https://39.104.66.16:7001/presale.html',
+            rsaPrivate: path.resolve('./pem/sandbox_private.pem'),
+            rsaPublic: path.resolve('./pem/sandbox_ali_public.pem'),
+            sandbox: true,
+            signType: 'RSA2'
+        });
+        let result = ali.signVerify(receive);
+        //let result = true;
         if(result){
             if(trade_status=="TRADE_FINISHED"){
                 //注意：
