@@ -34,8 +34,8 @@
             <div class="buypage-content-wrapper">
                 <div class="text-center">
                     <p><i class="weui-icon-success weui-icon_msg" style="font-size: 48px;"></i></p>
-                    <p class="font_size24" style="margin-top: 16px;margin-bottom: 8px;">流量购买成功!</p>
-                    <p class="font_size15 color_opacity38 line_h24">您已成功购买 500MB 流量，打开访问开关即可成功访问外网</p>
+                    <p class="font_size24" style="margin-top: 16px;margin-bottom: 8px;">{{subject}}购买成功!</p>
+                    <p class="font_size15 color_opacity38 line_h24">{{description}}</p>
                     <button class="buypage-back-btn">返回</button>
                 </div>
 

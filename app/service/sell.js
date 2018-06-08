@@ -69,17 +69,17 @@ class SellService extends Service {
             result = await model.Order.insertData(shopSell);
 
             subject = conf.subjects[0];
-            description = "购买: "+shop.amount;
+            description = `您已成功购买 ${shop.amount} 流量，打开访问开关即可成功访问外网`;
             break;
             case 'film':
             result = await model.Myfilm.insertData(shopSell);
             subject = conf.subjects[1];
-            description = "购买: "+shop.name;
+            description = `您成功购买电影 ${shop.name},进入我的进行观看！`;
             break;
             case 'novel':
             result = await model.Mynovel.insertData(shopSell);
             subject = conf.subjects[2];
-            description = "购买: "+shop.name;
+            description = `您成功购买小说 ${shop.name},进入我的进行阅读！`;
             break;
             default:
             break;
