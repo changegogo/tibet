@@ -53,45 +53,48 @@ class SellController extends Controller {
         let order_no = receive.out_trade_no;	        //获取订单号
         let total_amount = receive.total_amount;	    //获取总金额
         let subject = receive.subject;//商品名称、订单名称
-        let body = "";
-        if(receive.body != null){
-            body = receive.body;//商品描述、订单备注、描述
-        }
-        let buyer_email = receive.buyer_email;		//买家支付宝账号
+        // let body = "";
+        // if(receive.body != null){
+        //     body = receive.body;//商品描述、订单备注、描述
+        // }
+        //let buyer_email = receive.buyer_email;		//买家支付宝账号
         let trade_status = receive.trade_status; //交易状态
-
-        //支付宝回调
-        let ali = new Alipay({
-            appId: '2018060860318901',
-            notifyUrl: 'http://39.104.66.16:7001/sell/callback',
-            returnUrl:'https://39.104.66.16:7001/presale.html',
-            rsaPrivate: path.resolve('./pem/sandbox_private.txt'),
-            rsaPublic: path.resolve('./pem/sandbox_ali_public.txt'),
-            sandbox: true,
-            signType: 'RSA2'
-        });
-        let result = ali.signVerify(receive);
-        console.log('结果-->'+result);
-        //let result = true;
-        if(result){
-            if(trade_status=="TRADE_FINISHED"){
-                //注意：
-                //该种交易状态只在两种情况下出现
-                //1、开通了普通即时到账，买家付款成功后。
-                //2、开通了高级即时到账，从该笔交易成功时间算起，过了签约时的可退款时限（如：三个月以内可退款、一年以内可退款等）后。
-                console.log("TRADE_FINISHED");
-                await updateShopSell(model, conf, subject, order_no,trade_no,total_amount);
-            }else if(trade_status=="TRADE_SUCCESS"){
-                //注意：
-                //该种交易状态只在一种情况下出现——开通了高级即时到账，买家付款成功后。
-                console.log("TRADE_SUCCESS");
-                await updateShopSell(model, conf, subject, order_no,trade_no,total_amount);
+        try {
+            //支付宝回调
+            let ali = new Alipay({
+                appId: '2018060860318901',
+                notifyUrl: 'http://39.104.66.16:7001/sell/callback',
+                returnUrl:'https://39.104.66.16:7001/presale.html',
+                rsaPrivate: path.resolve('./pem/sandbox_private.txt'),
+                rsaPublic: path.resolve('./pem/sandbox_ali_public.txt'),
+                sandbox: true,
+                signType: 'RSA2'
+            });
+            let result = ali.signVerify(receive);
+            console.log('结果-->'+result);
+            //let result = true;
+            if(result){
+                if(trade_status=="TRADE_FINISHED"){
+                    //注意：
+                    //该种交易状态只在两种情况下出现
+                    //1、开通了普通即时到账，买家付款成功后。
+                    //2、开通了高级即时到账，从该笔交易成功时间算起，过了签约时的可退款时限（如：三个月以内可退款、一年以内可退款等）后。
+                    console.log("TRADE_FINISHED");
+                    await updateShopSell(model, conf, subject, order_no,trade_no,total_amount);
+                }else if(trade_status=="TRADE_SUCCESS"){
+                    //注意：
+                    //该种交易状态只在一种情况下出现——开通了高级即时到账，买家付款成功后。
+                    console.log("TRADE_SUCCESS");
+                    await updateShopSell(model, conf, subject, order_no,trade_no,total_amount);
+                }
+                console.log('success');
+                ctx.body = "success";
+            }else{
+                console.log('failure');
+                ctx.body = "failure";
             }
-            console.log('success');
-            ctx.body = "success";
-        }else{
-            console.log('failure');
-            ctx.body = "failure";
+        } catch (error) {
+                console.log(error);
         }
     }
 }
