@@ -76,7 +76,7 @@ class SellController extends Controller {
             let result = ali.signVerify(receive);
             console.log('结果-->'+result);
             //let result = true;
-            if(result){
+            if(true){
                 if(trade_status=="TRADE_FINISHED"){
                     //注意：
                     //该种交易状态只在两种情况下出现
