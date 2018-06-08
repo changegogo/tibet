@@ -67,10 +67,10 @@ module.exports = app => {
     app.get('/player/:id', 'home.player');
     // 我的电影
     app.get('/myfilm/list', 'myfilm.lists');
-    // 天路wifi
+    // 天路wifi购买界面
     app.get('/tianluwifi', 'home.tianluwifi');
-    // 购买流量
-    app.get('/tianwifi/buy', 'home.tianluwifibuy');
+    // 购买成功界面
+    app.get('/buy/success', 'home.buysuccess');
     // 我的中心
     app.get('/mycenter', MIDDLE_WARES.isMtfi(), 'home.mycenter');
     // 已购买 type (novel,film,wifi)

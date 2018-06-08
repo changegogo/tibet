@@ -65,7 +65,6 @@ class SellController extends Controller {
             let ali = new Alipay({
                 appId: '2018060860318901',
                 notifyUrl: 'http://39.104.66.16:7001/sell/callback',
-                return_url:'https://www.baidu.com',
                 rsaPrivate: path.resolve('./pem/sandbox_private.txt'),
                 rsaPublic: path.resolve('./pem/sandbox_ali_public.txt'),
                 sandbox: false,

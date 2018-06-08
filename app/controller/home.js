@@ -559,7 +559,9 @@ module.exports = app => {
             });
         }
         
-        async tianluwifibuy(ctx) {
+        async buysuccess(ctx) {
+            console.log(ctx.query.subject);
+            console.log(ctx.query.description);
             return await ctx.render('home/flowBuySuccess');
         }
 

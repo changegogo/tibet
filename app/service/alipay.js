@@ -48,7 +48,7 @@ class AlipayService extends Service {
             params = ali.wapPay({
                 body: description,
                 subject: subject,
-                return_url:'https://www.baidu.com',
+                return_url: `http://39.104.66.16:7001/buy/success?subject=${subject}&description=${description}`,
                 outTradeId: myoutTradeId,
                 timeout: '1d',
                 //amount: allrmb,
