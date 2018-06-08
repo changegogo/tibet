@@ -63,10 +63,10 @@ class SellController extends Controller {
         //支付宝回调
         let ali = new Alipay({
             appId: '2018060860318901',
-            notifyUrl: 'https://39.104.66.16:7001/tibet/alipay/order/callback',
+            notifyUrl: 'http://39.104.66.16:7001/sell/callback',
             returnUrl:'https://39.104.66.16:7001/presale.html',
-            rsaPrivate: path.resolve('./pem/sandbox_private.pem'),
-            rsaPublic: path.resolve('./pem/sandbox_ali_public.pem'),
+            rsaPrivate: path.resolve('./pem/sandbox_private.txt'),
+            rsaPublic: path.resolve('./pem/sandbox_ali_public.txt'),
             sandbox: true,
             signType: 'RSA2'
         });
