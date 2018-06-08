@@ -1,7 +1,8 @@
 /**
  * ali支付业务
  */
-const Alipay = require("alipay-node-sdk");
+//const Alipay = require("alipay-node-sdk");
+const Alipay = require("../ali/alipay");
 const path = require("path");
 const Service = require('egg').Service;
 
@@ -45,7 +46,7 @@ class AlipayService extends Service {
         });
         var params = null;
         try {
-            params = ali.wapPay({
+            params = ali.webPay({
                 subject: subject,
                 body: description,
                 outTradeId: myoutTradeId,
