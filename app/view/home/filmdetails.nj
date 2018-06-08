@@ -105,7 +105,7 @@
                     .then(function(res){
                         console.log(res);
                         // 跳转支付宝支付链接
-                        if(res.httpurl){
+                        if(!res.httpurl){
                             alert(res.msg);
                         }else{
                             window.location.href=res.httpurl;
