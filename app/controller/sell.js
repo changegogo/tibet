@@ -71,6 +71,8 @@ class SellController extends Controller {
                 sandbox: false,
                 signType: 'RSA2'
             });
+            console.log('ali-->');
+            console.log(ali);
             let result = ali.signVerify(receive);
             console.log('结果-->'+result);
             //let result = true;
