@@ -11,7 +11,7 @@ class AlipayService extends Service {
         let ali = new Alipay({
             appId: '2018060860318901',
             notifyUrl: 'http://39.104.66.16:7001/sell/callback',
-            returnUrl:'http://39.104.66.16:7001/presale.html',
+            //returnUrl:'http://39.104.66.16:7001/presale.html',
             rsaPrivate: path.resolve('./pem/sandbox_private.txt'),
             rsaPublic: path.resolve('./pem/sandbox_ali_public.txt'),
             sandbox: true,
@@ -37,7 +37,7 @@ class AlipayService extends Service {
         let ali = new Alipay({
             appId: '2018060860318901',
             notifyUrl: 'http://39.104.66.16:7001/sell/callback',
-            returnUrl:'http://39.104.66.16:7001/presale.html',
+            //returnUrl:'http://39.104.66.16:7001/presale.html',
             rsaPrivate: path.resolve('./pem/sandbox_private.txt'),
             rsaPublic: path.resolve('./pem/sandbox_ali_public.txt'),
             sandbox: true,
@@ -87,7 +87,7 @@ class AlipayService extends Service {
         let ali = new Alipay({
             appId: '2017122001025887',
             notify_url: 'http://39.108.211.168/sell/callback',
-            return_url:'http://39.108.211.168/presale.html',
+            //return_url:'http://39.108.211.168/presale.html',
             rsaPrivate: path.resolve('./pem/sandbox_private.txt'),
             rsaPublic: path.resolve('./pem/sandbox_ali_public.txt'),
             sandbox: false,
