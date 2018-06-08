@@ -599,7 +599,7 @@ module.exports = app => {
                     return;
                 }
 
-                return await ctx.render('home/myalreadybuy', {
+                return await ctx.render('home/myalreadyBuy', {
                     mac: mac,
                     type: type,
                     data: data
