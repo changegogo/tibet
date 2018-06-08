@@ -114,6 +114,7 @@ async function updateShopSell(model, conf, subject, order_no,trade_no,total_amou
     }else if(subject === conf.subjects[1]){  // 电影
         // 查找订单
         let myfilm = await model.Myfilm.findByTradeNumber(order_no);
+        console.log(myfilm);
         // 更新订单
         myfilm.status = 'ok';
         myfilm.purchasetype = 'zfb';  // 支付类型
