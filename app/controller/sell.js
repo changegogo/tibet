@@ -68,7 +68,7 @@ class SellController extends Controller {
                 returnUrl:'https://39.104.66.16:7001/presale.html',
                 rsaPrivate: path.resolve('./pem/sandbox_private.txt'),
                 rsaPublic: path.resolve('./pem/sandbox_ali_public.txt'),
-                sandbox: true,
+                sandbox: false,
                 signType: 'RSA2'
             });
             let result = ali.signVerify(receive);
