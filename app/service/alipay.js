@@ -12,10 +12,10 @@ class AlipayService extends Service {
         let ali = new Alipay({
             appId: '2018060860318901',
             notifyUrl: 'http://39.104.66.16:7001/sell/callback',
-            //returnUrl:'http://39.104.66.16:7001/presale.html',
+            returnUrl:'http://39.104.66.16:7001/presale.html',
             rsaPrivate: path.resolve('./pem/sandbox_private.txt'),
             rsaPublic: path.resolve('./pem/sandbox_ali_public.txt'),
-            sandbox: true,
+            sandbox: false,
             signType: 'RSA2'
         });
         let url = ali.wapPay({
@@ -38,7 +38,7 @@ class AlipayService extends Service {
         let ali = new Alipay({
             appId: '2018060860318901',
             notifyUrl: 'http://39.104.66.16:7001/sell/callback',
-            //returnUrl:'http://39.104.66.16:7001/presale.html',
+            returnUrl:'http://39.104.66.16:7001/presale.html',
             rsaPrivate: path.resolve('./pem/sandbox_private.txt'),
             rsaPublic: path.resolve('./pem/sandbox_ali_public.txt'),
             sandbox: true,
@@ -46,9 +46,10 @@ class AlipayService extends Service {
         });
         var params = null;
         try {
-            params = ali.webPay({
+            params = ali.wapPay({
                 body: description,
                 subject: subject,
+                return_url:'https://www.baidu.com',
                 outTradeId: myoutTradeId,
                 timeout: '1d',
                 //amount: allrmb,
