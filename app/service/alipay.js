@@ -1,8 +1,8 @@
 /**
  * ali支付业务
  */
-//const Alipay = require("alipay-node-sdk");
-const Alipay = require("../ali/alipay");
+const Alipay = require("alipay-node-sdk");
+//const Alipay = require("../ali/alipay");
 const path = require("path");
 const Service = require('egg').Service;
 
@@ -18,7 +18,7 @@ class AlipayService extends Service {
             sandbox: true,
             signType: 'RSA2'
         });
-        let url = ali.webPay({
+        let url = ali.wapPay({
             body: "商品描述字符",
             subject: "Iphone6 16G",
             outTradeId: "201712201451571513781517701",//商户网站唯一订单号
@@ -47,14 +47,12 @@ class AlipayService extends Service {
         var params = null;
         try {
             params = ali.webPay({
-                
                 body: description,
                 subject: subject,
                 outTradeId: myoutTradeId,
                 timeout: '1d',
                 //amount: allrmb,
                 amount: '0.01',
-                product_code: 'FAST_INSTANT_TRADE_PAY',
                 goodsType: '0'
             });
         } catch (error) {

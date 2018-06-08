@@ -1,6 +1,5 @@
 const Controller = require('egg').Controller;
-//const Alipay = require("alipay-node-sdk");
-const Alipay = require("../ali/alipay");
+const Alipay = require("alipay-node-sdk");
 const path = require("path");
 //const Alipay = require("../ali/alipay");
 
