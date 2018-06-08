@@ -47,6 +47,7 @@ class SellController extends Controller {
         let conf = ctx.app.config;
 
         let receive = ctx.request.body;
+        console.log('receive-->');
         console.log(JSON.stringify(receive));
         let trade_no = receive.trade_no;				//支付宝交易号
         let order_no = receive.out_trade_no;	        //获取订单号
@@ -70,6 +71,7 @@ class SellController extends Controller {
             signType: 'RSA2'
         });
         let result = ali.signVerify(receive);
+        console.log('结果-->'+result);
         //let result = true;
         if(result){
             if(trade_status=="TRADE_FINISHED"){
@@ -85,8 +87,10 @@ class SellController extends Controller {
                 console.log("TRADE_SUCCESS");
                 await updateShopSell(model, conf, subject, order_no,trade_no,total_amount);
             }
+            console.log('success');
             ctx.body = "success";
         }else{
+            console.log('failure');
             ctx.body = "failure";
         }
     }
