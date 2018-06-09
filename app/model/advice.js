@@ -11,6 +11,7 @@ module.exports = app => {
             "autoIncrement": true,
             "primaryKey": true
         },
+        "username": STRING,
         "type": STRING,
         "content": STRING,
         "created_at": DATE,

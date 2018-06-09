@@ -22,6 +22,7 @@
 </head>
 
 <body>
+<span id="macspan">{{mac}}</span>
 <div class="problemFeedback-page">
     <!---------------------------problemFeedback-nav-------------------------->
 
@@ -96,6 +97,11 @@
 <script>
     $(function(){
         $("#commit").click(function(){
+            var mac = $("#macspan").html();
+            if(!mac){
+                alert("没有权限");
+                return;
+            }
             var type = $('input[name="radio1"]:checked').val();
             if(!type){
                 alert("请选择反馈类型");
@@ -110,6 +116,7 @@
                 type: "post",
                 url: "/advice/commit",
                 data: {
+                    mac: mac,
                     type: type,
                     content: content
                 }

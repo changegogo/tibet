@@ -616,7 +616,13 @@ module.exports = app => {
         }
 
         async advice(ctx) {
-            return await ctx.render('home/problemFeedback');
+            let {mac} = ctx.query;
+            if(!mac){
+                return;
+            }
+            return await ctx.render('home/problemFeedback', {
+                mac: mac
+            });
         }
         // 小说阅读
         async novelReader(ctx) {
@@ -654,18 +660,28 @@ module.exports = app => {
         }
 
         async adviceCommit(ctx){
-            let { type, content } = ctx.request.body;
-            if(!type || !content){
+            let { mac, type, content } = ctx.request.body;
+            if(!mac || !type || !content){
                 ctx.body = {
                     isSuccess: false,
                     msg: '字段缺失'
                 }
                 return;
             }
+
+            let { username } = await model.Sta.findByMAC(mac);
+            if(!username){
+                ctx.body = {
+                    isSuccess: false,
+                    msg: '账户不存在'
+                }
+                return;
+            }
             
             let advice = await model.Advice.createAdvice({
                 type: type,
-                content: content
+                content: content,
+                username: username
             });
 
             if(advice){
