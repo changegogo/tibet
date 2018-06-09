@@ -86,7 +86,7 @@ class SellService extends Service {
         }
         // 获取支付链接
         let httpurl = "";
-        httpurl = await this.service.alipay.getOrderAliPay(subject, description, tradeNumber, shop.price);
+        httpurl = await this.service.alipay.getOrderAliPay(subject, description, tradeNumber, shop.price, mac);
         // if (conf.env === 'prod') {
         //     httpurl = await this.service.alipay.getOrderAliPay(subject, description, tradeNumber, shop.price);
         // }else{

@@ -560,9 +560,10 @@ module.exports = app => {
         }
         
         async buysuccess(ctx) {
-            let { subject, description } = ctx.query;
+            let { subject, description, mac } = ctx.query;
             
             return await ctx.render('home/flowBuySuccess', {
+                mac: mac,
                 subject: subject,
                 description: description
             });

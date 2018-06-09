@@ -36,7 +36,7 @@
                     <p><i class="weui-icon-success weui-icon_msg" style="font-size: 48px;"></i></p>
                     <p class="font_size24" style="margin-top: 16px;margin-bottom: 8px;">{{subject}}购买成功!</p>
                     <p class="font_size15 color_opacity38 line_h24">{{description}}</p>
-                    <a href="javascript:window.history.forward(1);" class="buypage-back-btn">返回</a>
+                    <button id="goback" class="buypage-back-btn" value="{{mac}}">返回</button>
                 </div>
             </div>
 
@@ -47,6 +47,15 @@
 <script src="/public/js/bootstrap.min.js"></script>
 <script src="/public/js/weui.js"></script>
 <script src="/public/js/flowBuySuccess.js"></script>
+<script>
+    $(function(){
+        $("#goback").click(function(){
+            let mac = $(this).val();
+            alert(mac);
+            window.location.href = "/wifi/login?mac="+mac;
+        });
+    });
+</script>
 </body>
 
 </html>
