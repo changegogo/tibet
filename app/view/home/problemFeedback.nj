@@ -22,7 +22,7 @@
 </head>
 
 <body>
-<span id="macspan">{{mac}}</span>
+<span id="macspan" hidden>{{mac}}</span>
 <div class="problemFeedback-page">
     <!---------------------------problemFeedback-nav-------------------------->
 
