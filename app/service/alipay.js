@@ -17,7 +17,7 @@ class AlipayService extends Service {
             rsaPrivate: path.resolve('./pem/sandbox_private.txt'),
             rsaPublic: path.resolve('./pem/sandbox_ali_public.txt'),
             sandbox: false,
-            signType: 'RSA'
+            signType: 'RSA2'
         });
         let url = ali.wapPay({
             body: "商品描述字符",
@@ -42,7 +42,7 @@ class AlipayService extends Service {
             rsaPrivate: path.resolve('./pem/sandbox_private.txt'),
             rsaPublic: path.resolve('./pem/sandbox_ali_public.txt'),
             sandbox: false,
-            signType: 'RSA'
+            signType: 'RSA2'
         });
         var params = null;
         try {

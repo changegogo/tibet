@@ -69,7 +69,7 @@ class SellController extends Controller {
                 rsaPrivate: path.resolve('./pem/sandbox_private.txt'),
                 rsaPublic: path.resolve('./pem/sandbox_ali_public.txt'),
                 sandbox: false,
-                signType: 'RSA'
+                signType: 'RSA2'
             });
             console.log('ali-->');
             console.log(ali);
