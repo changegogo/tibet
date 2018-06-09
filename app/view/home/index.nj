@@ -192,10 +192,10 @@
 <script src="/public/js/weui.js"></script>
 <script src="/public/js/index.js"></script>
 <script>
-	qz_android.getMac();
+	/*qz_android.getMac();
 	function sendMac(mac){
 		alert(mac);
-	}
+	}*/
 </script>
 </body>
 

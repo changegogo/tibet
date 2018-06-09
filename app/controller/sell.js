@@ -107,6 +107,7 @@ async function updateShopSell(model, conf, subject, order_no,trade_no,total_amou
         // 查找订单
         //let mywifi = await model.Mywifi.findByTradeNumber(order_no);
         let order = await model.Order.findByTradeNumber(order_no);
+        if(!order)return;
         // 更新订单
         order.status = 'ok';
         order.purchasetype = 'zfb';  // 支付类型
@@ -115,7 +116,7 @@ async function updateShopSell(model, conf, subject, order_no,trade_no,total_amou
     }else if(subject === conf.subjects[1]){  // 电影
         // 查找订单
         let myfilm = await model.Myfilm.findByTradeNumber(order_no);
-        console.log(myfilm);
+        if(!myfilm)return;
         // 更新订单
         myfilm.status = 'ok';
         myfilm.purchasetype = 'zfb';  // 支付类型
@@ -124,6 +125,7 @@ async function updateShopSell(model, conf, subject, order_no,trade_no,total_amou
     }else if(subject === conf.subjects[2]){  // 小说
         // 查找订单
         let mynovel = await model.Mynovel.findByTradeNumber(order_no);
+        if(!mynovel)return;
         // 更新订单
         mynovel.status = 'ok';
         mynovel.purchasetype = 'zfb';  // 支付类型
