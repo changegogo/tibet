@@ -36,7 +36,7 @@
         <div class="weui-cells weui-cells_radio paddinglr15 flex" style="margin-top: 0;">
             <label class="weui-cell weui-check__label" for="x11" style="margin-right: 32px;">
                 <div class="weui-cell__ft">
-                    <input type="radio" class="weui-check" name="radio1" value="productProposal" checked="checked">
+                    <input type="radio" class="weui-check" name="radio1" id="x11" value="productProposal" checked="checked">
                     <span class="weui-icon-checked"></span>
                 </div>
 
@@ -47,7 +47,7 @@
             </label>
             <label class="weui-cell weui-check__label" for="x12">
                 <div class="weui-cell__ft">
-                    <input type="radio" name="radio1" class="weui-check"  value="programBug">
+                    <input type="radio" name="radio1" class="weui-check" id="x12" value="programBug">
                     <span class="weui-icon-checked"></span>
                 </div>
 
