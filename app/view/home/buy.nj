@@ -79,12 +79,12 @@ label.disabled p {
       <span id="macspan" hidden>{{mac}}</span>
       {% for wifi in wifis %}
         <div class="col col-4 col-lg-2">
-          <span>{{wifi.id}}</span>
+          <span hidden>{{wifi.id}}</span>
           {% if wifi.status === 'stockup' %}
             <label class="card disabled">
           {% else %}
             <label class="card" for="{{ wifi.id }}gb">
-            <input type="radio" id="{{ wifi.id }}gb" name="flow" class="weui-check" />
+            <input type="radio" id="{{ wifi.id }}gb" name="flow" class="weui-check" value={{wifi.id}} >
           {% endif %}
             <div class="card-body">
               <h6 class="card-title">{{ wifi.amount }}</h6>
@@ -97,60 +97,6 @@ label.disabled p {
           </label>
         </div>
       {% endfor %}
-
-     <!-- <div class="col col-4 col-lg-2">
-        <label class="card disabled">
-          <div class="card-body">
-            <h6 class="card-title">500 MB</h6>
-            <p class="card-text">备货中</p>
-          </div>
-        </label>
-      </div>
-      <div class="col col-4 col-lg-2">
-        <label class="card" for="1gb">
-          <input type="radio" id="1gb" name="flow" class="weui-check" checked="checked" />
-          <div class="card-body">
-            <h6 class="card-title">1 GB</h6>
-            <p class="card-text">10.0元</p>
-          </div>
-        </label>
-      </div>
-      <div class="col col-4 col-lg-2">
-        <label class="card" for="2gb">
-          <input type="radio" id="2gb" name="flow" class="weui-check" />
-          <div class="card-body">
-            <h6 class="card-title">2 GB</h6>
-            <p class="card-text">15.0元</p>
-          </div>
-        </label>
-      </div>
-      <div class="col col-4 col-lg-2 marginT16">
-        <label class="card" for="3gb">
-          <input type="radio" id="3gb" name="flow" class="weui-check" />
-          <div class="card-body">
-            <h6 class="card-title">3 GB</h6>
-            <p class="card-text">20.0元</p>
-          </div>
-        </label>
-      </div>
-      <div class="col col-4 col-lg-2 marginT16">
-        <label class="card" for="4gb">
-          <input type="radio" id="4gb" name="flow" class="weui-check" />
-          <div class="card-body">
-            <h6 class="card-title">4 GB</h6>
-            <p class="card-text">25.0元</p>
-          </div>
-        </label>
-      </div>
-      <div class="col col-4 col-lg-2 marginT16">
-        <label class="card" for="5gb">
-          <input type="radio" id="5gb" name="flow" class="weui-check" />
-          <div class="card-body">
-            <h6 class="card-title">5 GB</h6>
-            <p class="card-text">30.0元</p>
-          </div>
-        </label>
-      </div>-->
     </div>
 
     <div class="weui-cells__title">支付方式</div>
@@ -160,7 +106,7 @@ label.disabled p {
           <img src="/public/img/Wechat.svg" /> <span>微信支付</span>
         </div>
         <div class="weui-cell__ft">
-          <input class="weui-check" name="radio1" id="wxpay" type="radio">
+          <input class="weui-check" name="radio1" id="wxpay" type="radio" value="wx">
           <span class="weui-icon-checked"></span>
         </div>
       </label>
@@ -169,15 +115,57 @@ label.disabled p {
           <img src="/public/img/Alipay.svg" /> <span>支付宝</span>
         </div>
         <div class="weui-cell__ft">
-          <input name="radio1" class="weui-check" id="alipay" checked="checked" type="radio">
+          <input name="radio1" class="weui-check" id="alipay" checked="checked" type="radio" value="zfb">
           <span class="weui-icon-checked"></span>
         </div>
       </label>
     </div>
   </div>
-  <button id="gopay" class="btn btn-lg btn-block fixed-bottom rounded-0 orange_bgcolor">去支付</button>
+  
+  <div id="gopay" class="pay-btn orange_bgcolor">
+        去支付
+  </div>
 </form>
 {% endblock %}
 
 {% block scripts %}
+<script>
+  $(function(){
+    $("#gopay").click(function(){
+      var payType = $('input[name="radio1"]:checked').val();
+       if(payType === "wx"){
+          alert("微信暂未开放");
+       }else{
+          var flowid = $('input[name="flow"]:checked').val();
+          var mac = $("#macspan").text();
+          var type = "flow";
+          if(!flowid){
+            alert("请选择要购买的流量");
+            return;
+          };
+          $.ajax({
+              type: "post",
+              url: "/sell/msg",
+              data: {
+                  mac: mac,
+                  type: type,
+                  id: flowid
+              }
+          })
+          .then(function(res){
+              console.log(res);
+              // 跳转支付宝支付链接
+              if(!res.httpurl){
+                  alert(res.msg);
+              }else{
+                  window.location.href=res.httpurl;
+              }
+          })
+          .catch(function(err){
+              console.log(err);
+          });
+       }
+    });
+  });
+</script>
 {% endblock %}

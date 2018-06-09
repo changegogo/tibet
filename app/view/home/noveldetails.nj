@@ -33,6 +33,7 @@
    <div class="top-intro font_size16 marginlr15" style="margin-top: 16px;">
        <div class="flex">
            <div class="weui-media-box__hd news-img marginR16" style="max-width: 80px;">
+                <span id="novelid" hidden>{{novel.id}}</span>
                <img class="weui-media-box__thumb" src="{{novel.img}}" width="100%" height="100%"/>
            </div>
            <div class="weui-media-box__bd news-title marginR16">
@@ -54,7 +55,7 @@
                     <img src="/public/img/Wechat.svg" /> <span>微信支付</span>
                 </div>
                 <div class="weui-cell__ft">
-                    <input class="weui-check" name="radio1" id="wxpay" type="radio">
+                    <input class="weui-check" name="radio1" id="wxpay" type="radio" value="wx">
                     <span class="weui-icon-checked"></span>
                 </div>
             </label>
@@ -63,7 +64,7 @@
                     <img src="/public/img/Alipay.svg" /> <span>支付宝</span>
                 </div>
                 <div class="weui-cell__ft">
-                    <input name="radio1" class="weui-check" id="alipay" checked="checked" type="radio">
+                    <input name="radio1" class="weui-check" id="alipay" checked="checked" type="radio" value="zfb">
                     <span class="weui-icon-checked"></span>
                 </div>
             </label>
@@ -79,7 +80,42 @@
 <script src="/public/js/weui.js"></script>
 <script src="/public/js/bookDetail.js"></script>
 <script>
-    
+    $(function(){
+        $("#gopay").click(function(){
+            // 显示遮罩层，防止连续点击todo
+            // 支付方式
+            var payType = $('input[name="radio1"]:checked').val();
+            if(payType === "wx"){
+                alert("微信暂未开放");
+            }else{
+                var novelid = $("#novelid").text();
+                var mac = $("#macspan").text();
+                var type = "novel";
+                $.ajax({
+                    type: "post",
+                    url: "/sell/msg",
+                    data: {
+                        mac: mac,
+                        type: type,
+                        id: novelid
+                    }
+                })
+                .then(function(res){
+                    console.log(res);
+                    // 跳转支付宝支付链接
+                    if(!res.httpurl){
+                        alert(res.msg);
+                    }else{
+                        window.location.href=res.httpurl;
+                    }
+                    
+                })
+                .catch(function(err){
+                    console.log(err);
+                });
+            }
+        });
+    });
 </script>
 </body>
 

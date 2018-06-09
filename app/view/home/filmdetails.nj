@@ -81,46 +81,42 @@
 <script src="/public/js/weui.js"></script>
 <script src="/public/js/movieDetail.js"></script>
 <script>
-
-        $(function(){
-            $("#gopay").click(function(){
-                // 显示遮罩层，防止连续点击todo
-                // 支付方式
-                var payType = $('input[name="radio1"]:checked').val();
-                if(payType === "wx"){
-                    alert("微信暂未开放");
-                }else{
-                    var filmid = $("#filmid").text();
-                    var mac = $("#macspan").text();
-                    var type = "film";
-                    $.ajax({
-                        type: "post",
-                        url: "/sell/msg",
-                        data: {
-                            mac: mac,
-                            type: type,
-                            id: filmid
-                        }
-                    })
-                    .then(function(res){
-                        console.log(res);
-                        // 跳转支付宝支付链接
-                        if(!res.httpurl){
-                            alert(res.msg);
-                        }else{
-                            window.location.href=res.httpurl;
-                        }
-                        
-                    })
-                    .catch(function(err){
-                        console.log(err);
-                    });
-                }
-            });
-        })
-
-
-    
+    $(function(){
+        $("#gopay").click(function(){
+            // 显示遮罩层，防止连续点击todo
+            // 支付方式
+            var payType = $('input[name="radio1"]:checked').val();
+            if(payType === "wx"){
+                alert("微信暂未开放");
+            }else{
+                var filmid = $("#filmid").text();
+                var mac = $("#macspan").text();
+                var type = "film";
+                $.ajax({
+                    type: "post",
+                    url: "/sell/msg",
+                    data: {
+                        mac: mac,
+                        type: type,
+                        id: filmid
+                    }
+                })
+                .then(function(res){
+                    console.log(res);
+                    // 跳转支付宝支付链接
+                    if(!res.httpurl){
+                        alert(res.msg);
+                    }else{
+                        window.location.href=res.httpurl;
+                    }
+                    
+                })
+                .catch(function(err){
+                    console.log(err);
+                });
+            }
+        });
+    })
 </script>
 </body>
 
