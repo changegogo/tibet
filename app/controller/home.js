@@ -652,6 +652,34 @@ module.exports = app => {
                 path: files[0],
             };
         }
+
+        async adviceCommit(ctx){
+            let { type, content } = ctx.request.body;
+            if(!type || !content){
+                ctx.body = {
+                    isSuccess: false,
+                    msg: '字段缺失'
+                }
+                return;
+            }
+            
+            let advice = await model.Advice.createAdvice({
+                type: type,
+                content: content
+            });
+
+            if(advice){
+                ctx.body = {
+                    isSuccess: true,
+                    msg: '提交成功'
+                }
+            }else{
+                ctx.body = {
+                    isSuccess: false,
+                    msg: '提交失败'
+                }
+            }
+        }
     }
 
     return Home;

@@ -84,7 +84,9 @@ module.exports = app => {
     // app.get('/novelReader', 'home.novelReader');
 
     // 图片上传
-    app.post('/upload', 'home.upload');
+    app.post('/advice/upload', 'home.upload');
+    // 意见反馈
+    app.post('/advice/commit', 'home.adviceCommit');
 
     // 支付相关
     app.post('/sell/msg', 'sell.commitSellMsg');

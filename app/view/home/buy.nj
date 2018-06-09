@@ -72,7 +72,7 @@ label.disabled p {
 {% endblock %}
 
 {% block body %}
-<form>
+
   <div class="container-fluid">
     <div class="weui-cells__title">选择数额</div>
     <div class="row">
@@ -125,7 +125,7 @@ label.disabled p {
   <div id="gopay" class="pay-btn orange_bgcolor">
         去支付
   </div>
-</form>
+
 {% endblock %}
 
 {% block scripts %}

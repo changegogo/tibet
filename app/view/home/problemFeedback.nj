@@ -36,7 +36,7 @@
         <div class="weui-cells weui-cells_radio paddinglr15 flex" style="margin-top: 0;">
             <label class="weui-cell weui-check__label" for="x11" style="margin-right: 32px;">
                 <div class="weui-cell__ft">
-                    <input type="radio" class="weui-check" name="radio1" id="x11" checked="checked">
+                    <input type="radio" class="weui-check" name="radio1" value="productProposal" checked="checked">
                     <span class="weui-icon-checked"></span>
                 </div>
 
@@ -47,7 +47,7 @@
             </label>
             <label class="weui-cell weui-check__label" for="x12">
                 <div class="weui-cell__ft">
-                    <input type="radio" name="radio1" class="weui-check" id="x12">
+                    <input type="radio" name="radio1" class="weui-check"  value="programBug">
                     <span class="weui-icon-checked"></span>
                 </div>
 
@@ -65,13 +65,14 @@
             <div class="weui-cells weui-cells_form paddinglr15" style="margin-top: 0;">
                 <div class="weui-cell">
                     <div class="weui-cell__bd">
-                        <textarea class="weui-textarea font_size15" placeholder="请输入反馈，我们将为你不断改进请输入反馈，我们将为你不断改进请输入反馈，我们将为你不断改进请输入反馈，我们将为你不断改进请输入反馈，我们将为你不断改进请输入反馈，我们将为你不断改进" rows="4"></textarea>
+                        <textarea id="content" class="weui-textarea font_size15" placeholder="请输入反馈，我们将为你不断改进请输入反馈，我们将为你不断改进请输入反馈，我们将为你不断改进请输入反馈，我们将为你不断改进请输入反馈，我们将为你不断改进请输入反馈，我们将为你不断改进" rows="4"></textarea>
                         <div class="weui-textarea-counter font_size15"><span>0</span>/200</div>
                     </div>
                 </div>
             </div>
 
-            <div class="weui-uploader__bd paddinglr15" style="width: 100%;background-color: #ffffff;">
+
+            <!--<div class="weui-uploader__bd paddinglr15" style="width: 100%;background-color: #ffffff;">
                 <ul class="weui-uploader__files" id="uploaderFiles">
                     <li class="weui-uploader__file" style="background-image:url(/public/img/1.png)"></li>
                     <li class="weui-uploader__file" style="background-image:url(/public/img/1.png)"></li>
@@ -79,16 +80,53 @@
                 <div class="weui-uploader__input-box">
                     <input id="uploaderInput" class="weui-uploader__input" type="file" accept="image/*" multiple="">
                 </div>
-            </div>
+            </div>-->
         </div>
 
         <!------------------------------------body-end-------------------------------------->
+    </div>
+    <div id="commit" class="pay-btn orange_bgcolor">
+        提交
     </div>
 </div>
 <script src="/public/js/jquery-3.3.1.min.js"></script>
 <script src="/public/js/bootstrap.min.js"></script>
 <script src="/public/js/weui.js"></script>
 <script src="/public/js/problemFeedback.js"></script>
+<script>
+    $(function(){
+        $("#commit").click(function(){
+            var type = $('input[name="radio1"]:checked').val();
+            if(!type){
+                alert("请选择反馈类型");
+                return;
+            }
+            var content = $("#content").val();
+            if(!content){
+                alert("请输入反馈内容");
+                return;
+            }
+            $.ajax({
+                type: "post",
+                url: "/advice/commit",
+                data: {
+                    type: type,
+                    content: content
+                }
+            })
+            .then(function(res){
+                console.log(res);
+                if(res.isSuccess){
+                    $("#content").val("");
+                }
+                alert(res.msg);
+            })
+            .catch(function(err){
+                console.log(err);
+            });
+        });
+    });
+</script>
 </body>
 
 </html>
