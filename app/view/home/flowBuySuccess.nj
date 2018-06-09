@@ -51,7 +51,7 @@
     $(function(){
         $("#goback").click(function(){
             let mac = $(this).val();
-            alert(mac);
+            //alert(mac);
             window.location.href = "/wifi/login?mac="+mac;
         });
     });
