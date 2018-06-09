@@ -1,10 +1,11 @@
 /**
  * ali支付业务
  */
-const Alipay = require("alipay-node-sdk");
-//const Alipay = require("../ali/alipay");
 const path = require("path");
 const Service = require('egg').Service;
+
+//const Alipay = require("alipay-node-sdk");
+const Alipay = require("../ali/alipay");
 
 class AlipayService extends Service {
     //测试接口获取数据
@@ -16,7 +17,7 @@ class AlipayService extends Service {
             rsaPrivate: path.resolve('./pem/sandbox_private.txt'),
             rsaPublic: path.resolve('./pem/sandbox_ali_public.txt'),
             sandbox: false,
-            signType: 'RSA2'
+            signType: 'RSA'
         });
         let url = ali.wapPay({
             body: "商品描述字符",
@@ -41,7 +42,7 @@ class AlipayService extends Service {
             rsaPrivate: path.resolve('./pem/sandbox_private.txt'),
             rsaPublic: path.resolve('./pem/sandbox_ali_public.txt'),
             sandbox: false,
-            signType: 'RSA2'
+            signType: 'RSA'
         });
         var params = null;
         try {

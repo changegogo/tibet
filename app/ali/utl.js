@@ -1,3 +1,7 @@
+/**
+ * Created by ference on 2017/4/8.
+ */
+
 var crypto = require('crypto');
 var request = require('request');
 
@@ -131,7 +135,7 @@ utl.request = function(opts){
                 reject(err);
                 return;
             }
-            let ret = {response:res, body:body};
+            var ret = {response:res, body:body};
             ret.ok = function() {
                 return res.statusCode === 200;
             };

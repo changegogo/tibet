@@ -1,7 +1,8 @@
 const Controller = require('egg').Controller;
-const Alipay = require("alipay-node-sdk");
 const path = require("path");
-//const Alipay = require("../ali/alipay");
+
+//const Alipay = require("alipay-node-sdk");
+const Alipay = require("../ali/alipay");
 
 class SellController extends Controller {
     async commitSellMsg(ctx) {
@@ -68,7 +69,7 @@ class SellController extends Controller {
                 rsaPrivate: path.resolve('./pem/sandbox_private.txt'),
                 rsaPublic: path.resolve('./pem/sandbox_ali_public.txt'),
                 sandbox: false,
-                signType: 'RSA2'
+                signType: 'RSA'
             });
             console.log('ali-->');
             console.log(ali);
