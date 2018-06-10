@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/public/css/weui.min.css" />
     <link rel="stylesheet" href="/public/css/flex.css">
     <link rel="stylesheet" href="/public/css/common.css">
-    <link rel="stylesheet" href="/public/css/gameRoom.css">
+    <link rel="stylesheet" href="/public/css/movieDetail.css">
 </head>
 
 <body>
@@ -30,22 +30,22 @@
     <!----------------------------------------banner---------------------------------------------------->
 
     <!--------------------------------body--+++++++++++++++++++++++++++++++++-->
-    <div class="gameRoom-body font_size16">
+    <div class="gameRoom-body font_size16 marginT16">
         <!-----------------------------------------game-type------------------------------------------------------>
-        <h2>{{typeName}}</h2>
+        <h2 class="font_size20">{{typeName}}电影</h2>
 
         <!------------------------------------gameRoom-list-------------------------------------->
         <div class="gameRoom-list">
         {% for item in films %}
             <a href="/film/details/{{item.id}}?mac={{mac}}" class="weui-media-box weui-media-box_appmsg jingpin-wrapper ">
-                <div class="weui-media-box__hd news-img ">
+                <div class="marginR16    news-img movieitem-detail-img">
                     <img class="weui-media-box__thumb" src="{{item.imgv}}" width="100%" height="100%"/>
                 </div>
-                <div class="weui-media-box__bd news-title">
+                <div class="weui-media-box__bd news-title font_size12">
                     <p class="weui-media-box__title">{{item.name}}</p>
                     <p class="color_opacity60">导演：{{item.director}}</p>
                     <p class="color_opacity60">主演：{{item.tostar}}</p>
-                    <p class="color_opacity60">评分：<span class="score_star_wrapper"><span class="dark_start_wrapper"></span></span>{{item.score}}</p>
+                    <p class="color_opacity60 flex flex-align-center"><span>评分：</span><span class="score_star_wrapper" ><span class="dark_start_wrapper" value={{item.score}} ></span></span><span>{{item.score}}</span></p>
                 </div>
             </a>
         {% endfor %}
@@ -61,6 +61,39 @@
 <script src="/public/js/jquery-3.3.1.min.js"></script>
 <script src="/public/js/bootstrap.min.js"></script>
 <script src="/public/js/weui.js"></script>
+<script type="text/javascript">
+    // 根据score change startstyle 
+    var movieScoreDoms = $('.dark_start_wrapper') ;
+    $(movieScoreDoms).each(function(index,ele) {
+    var parseSCORE = parseInt ($(ele).attr('value')) ;
+    switch (parseSCORE) {
+    case 1: {
+        $(ele).css({backgroundPositionX: '-83px'});
+    }
+    break;
+    case 2: {
+        $(ele).css({backgroundPositionX: '-62px'});
+    }
+    break;
+    case 3: {
+        $(ele).css({backgroundPositionX: '-41px'});
+    }
+    break;
+    case 4: {
+        $(ele).css({backgroundPositionX: '-20px'})
+    }
+    break;
+    case 5: {
+        $(ele).css({backgroundPositionX: 0});
+    }
+    break;
+    default: {
+        $(ele).css({backgroundPositionX: 0});
+    }
+
+   }
+})
+</script>
 </body>
 
 </html>

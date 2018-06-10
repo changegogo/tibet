@@ -55,21 +55,20 @@ class FilmController extends Controller {
             });
         }
 
-        // 3个动作电影
-        let type1 = '';
-        let action = [];
-        if(filmTypes.length>0 && filmTypes[0]){
-            type1 = filmTypes[0].name;
-            action = await ctx.service.film.lists(filmTypes[0].id, 1, 3);
-        }
-        
-        // 3个恐怖电影
-        let type2 = '';
-        let terror = [];
-        if(filmTypes.length>0 && filmTypes[1]){
-            type2 = filmTypes[1].name;
-            terror = await ctx.service.film.lists(filmTypes[1].id, 1, 3);
-        }
+        // // 3个动作电影
+        // let type1 = '';
+        // let action = [];
+        // if(filmTypes.length>0 && filmTypes[0]){
+        //     type1 = filmTypes[0].name;
+        //     action = await ctx.service.film.lists(filmTypes[0].id, 1, 3);
+        // }
+        // // 3个恐怖电影
+        // let type2 = '';
+        // let terror = [];
+        // if(filmTypes.length>0 && filmTypes[1]){
+        //     type2 = filmTypes[1].name;
+        //     terror = await ctx.service.film.lists(filmTypes[1].id, 1, 3);
+        // }
         
         return await ctx.render('home/trainCinema', {
             mac: mac,
@@ -77,10 +76,10 @@ class FilmController extends Controller {
             middle: middle,
             allTypeFilms: allTypefilms,
 
-            type1: type1,
-            action: action,
-            type2: type2,
-            terror: terror
+            // type1: type1,
+            // action: action,
+            // type2: type2,
+            // terror: terror
         });
     }
 

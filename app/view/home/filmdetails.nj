@@ -36,11 +36,11 @@
                <span id="filmid" hidden>{{film.id}}</span>
                <img class="weui-media-box__thumb" src="{{film.imgv}}" width="100%" height="100%"/>
            </div>
-           <div class="weui-media-box__bd news-title marginR16">
+           <div class="weui-media-box__bd news-title marginR16 font_size12">
                <p class="weui-media-box__title">{{film.name}}</p>
-               <p class="color_opacity60 font_size12">导演：{{film.director}}</p>
-               <p class="color_opacity60 font_size12 flex flex-align-center"><span>评分：</span><span class="score_star_wrapper" ><span class="dark_start_wrapper" value={{film.score}} ></span></span><span>{{film.score}}</span></p>
-               <p class="color_opacity60 font_size12">价格：¥{{film.price}}</p>
+               <p class="color_opacity60">导演：{{film.director}}</p>
+               <p class="color_opacity60 flex flex-align-center"><span>评分：</span><span class="score_star_wrapper" ><span class="dark_start_wrapper" value={{film.score}} ></span></span><span>{{film.score}}</span></p>
+               <p class="color_opacity60">价格：¥{{film.price}}</p>
            </div>
        </div>
       <p class="marginT16 color_opacity60 font_size12">

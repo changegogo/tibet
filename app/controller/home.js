@@ -423,7 +423,7 @@ module.exports = app => {
             // 下线操作
             let offline = `${online}&logout=1`;
             // wifi名称
-            if(!wifi){
+            if(!wifi || wifi === '<unknown ssid>'){
                 wifi = "未知";
             }
             let wifiname = wifi;

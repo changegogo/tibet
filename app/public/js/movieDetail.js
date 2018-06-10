@@ -16,7 +16,7 @@ $(movieScoreDoms).each(function(index,ele) {
    	}
    	break;
    	case 4: {
-   		$(".dark_start_wrapper").eq(i).css({backgroundPositionX: '-20px'})
+   		$(ele).css({backgroundPositionX: '-20px'})
    	}
    	break;
    	case 5: {
