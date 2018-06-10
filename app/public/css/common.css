@@ -137,9 +137,8 @@ h2, label, p, h4 {
     font-size: .18rem;
     padding: 16px 0;
     text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    margin: 0 .15rem;
+    margin-top: 50px;
 }
 .zixun-body-headertab a{
     color: #000000;

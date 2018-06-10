@@ -63,6 +63,8 @@ module.exports = app => {
     app.get('/traincinema/list', 'film.trainCinema');
     // 电影详情
     app.get('/film/details/:id', 'film.details');
+    // 电影更多
+    app.get('/film/more/:filmtype/:typename', 'film.more');
     // 播放电影
     app.get('/player/:id', 'home.player');
     // 我的电影
@@ -79,15 +81,12 @@ module.exports = app => {
     app.get('/problem', 'home.problem');
     // 意见反馈
     app.get('/advice', 'home.advice');
-
     //阅读器
     // app.get('/novelReader', 'home.novelReader');
-
     // 图片上传
     app.post('/advice/upload', 'home.upload');
     // 意见反馈
     app.post('/advice/commit', 'home.adviceCommit');
-
     // 支付相关
     app.post('/sell/msg', 'sell.commitSellMsg');
     // 未支付订单重新支付

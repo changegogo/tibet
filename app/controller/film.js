@@ -43,6 +43,18 @@ class FilmController extends Controller {
         let header = await ctx.service.film.lists('all', 1, 3);
         // 2个中间电影
         let middle = await ctx.service.film.lists('all', 1, 2);
+        let allTypefilms = [];
+        for(let i=0; i < filmTypes.length; i++){
+            let filmType = filmTypes[i];
+            //let typeName = filmType.name;
+            //let films = await ctx.service.film.lists(filmType.id, 1, 3);
+            allTypefilms.push({
+                typeId: filmType.id,
+                typeName: filmType.name,
+                films: await ctx.service.film.lists(filmType.id, 1, 3)
+            });
+        }
+
         // 3个动作电影
         let type1 = '';
         let action = [];
@@ -63,6 +75,8 @@ class FilmController extends Controller {
             mac: mac,
             header: header,
             middle: middle,
+            allTypeFilms: allTypefilms,
+
             type1: type1,
             action: action,
             type2: type2,
@@ -74,12 +88,36 @@ class FilmController extends Controller {
         let model = ctx.app.model;
         let filmid = ctx.params.id;
         let mac = ctx.query.mac;
+        if(!mac){
+            ctx.body = "mac地址不能为空";
+            return;
+        }
 
         let film = await model.Film.findByIdFilm(filmid);
         return await ctx.render('home/filmdetails', {
             mac: mac,
             film: film
         });
+    }
+
+    async more(ctx){
+        let { filmtype, typename} = ctx.params;
+        if(!filmtype){
+            ctx.body = "电影类型不能为空";
+            return;
+        }
+        let mac = ctx.query.mac;
+        if(!mac){
+            ctx.body = "mac地址不能为空";
+            return;
+        }
+       
+        let films = await ctx.service.film.lists(filmtype, 1, 100);
+        ctx.body = {
+            mac: mac,
+            typeName: typename,
+            films: films
+        };
     }
 }
 

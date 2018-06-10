@@ -35,7 +35,7 @@ module.exports = app => {
     FilmType.findAllFilmType = function (){
         return FilmType.findAll({
             order: [
-                ["updated_at", "desc"]
+                ["created_at", "desc"]
             ]
         }).then( filmtypes => {
             let filmtype_plain = filmtypes.map((filmtype)=>{

@@ -67,7 +67,7 @@
                     <p class="weui-media-box__title">{{item.name}}</p>
                     <p class="color_opacity60">导演：{{item.director}}</p>
                     <p class="color_opacity60">主演：{{item.tostar}}</p>
-                    <p class="color_opacity60">评分：<span class="score_star_wrapper"><span class="dark_start_wrapper"></span></span>{{item.score}}</p>
+                    <p class="color_opacity60">评分：<span class="score_star_wrapper" ><span class="dark_start_wrapper" value={{item.score}} ></span></span>{{item.score}}</p>
                 </div>
             </a>
         {% endfor %}
@@ -109,6 +109,18 @@
                     </a>
                 {% endfor %}
             </div>
+
+            {% for item in allTypeFilms %}
+                {% if item.films.length != 0 %}
+                    <div>
+                        <span>{{item.typeName}}电影</span>
+                        <a href="/film/more/{{item.typeId}}/{{item.typeName}}?mac={{mac}}">更多</a>
+                    </div>
+                    {% for film in item.films %}
+                        {{film.name}}
+                    {% endfor %}
+                {% endif%}
+            {% endfor %}
         </div>
     </div>
     </div>
