@@ -137,13 +137,15 @@ h2, label, p, h4 {
     font-size: .18rem;
     padding: 16px 0;
     text-align: center;
-    margin: 0 .15rem;
+    width: 90%;
     margin-top: 50px;
 }
 .zixun-body-headertab a{
     color: #000000;
 }
-
+.weui-toptips  {
+    padding: 15px 5px;
+}
 @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
     .nav {
         padding-top: 30px;

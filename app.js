@@ -1,4 +1,4 @@
-//const test = require('./app/ali/test');
+const test = require('./app/wx/wxpay');
 
 module.exports = app => {
     if (app.config.env === 'local') {

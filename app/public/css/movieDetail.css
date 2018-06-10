@@ -1,3 +1,24 @@
 .movieitem-detail-img {
     max-width: 80px;
 }
+.score_star_wrapper {
+    background-image: url("../img/dark_Group.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 20px;
+    margin-right: 16px;
+}
+.dark_start_wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-image: url("../img/light_Group.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 20px;
+    background-position-x: -20px;
+}

@@ -36,10 +36,12 @@
     "egg-session-redis": "^1.0.0",
     "egg-validate": "^1.0.0",
     "egg-view-nunjucks": "^2.1.4",
+    "ejs": "^2.6.1",
     "lodash": "^4.17.10",
     "moment": "^2.20.1",
     "pg": "^7.4.1",
     "pg-hstore": "^2.3.2",
+    "q": "^1.5.1",
     "stream-wormhole": "^1.0.3"
   },
   "devDependencies": {

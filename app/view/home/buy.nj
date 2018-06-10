@@ -124,8 +124,8 @@ label.disabled p {
         </div>
     </div>
     
-    <div id="gopay" class="pay-btn orange_bgcolor">
-        去支付
+    <div class="text-center">
+        <button id="gopay" class="pay-btn orange_bgcolor">去支付</button>
     </div>
 
 {% endblock %}
@@ -135,8 +135,10 @@ label.disabled p {
   $(function(){
     $("#gopay").click(function(){
       var payType = $('input[name="radio1"]:checked').val();
+      var _this = this;
        if(payType === "wx"){
-          alert("微信暂未开放");
+          $(this).removeAttr('disabled').css({backgroundColor: '#F55F23',cursor: 'pointer'}) ;
+                weui.topTips('微信暂未开放');
        }else{
           var flowid = $('input[name="flow"]:checked').val();
           var mac = $("#macspan").text();
@@ -155,15 +157,18 @@ label.disabled p {
               }
           })
           .then(function(res){
+                    $(_this).removeAttr('disabled').css({backgroundColor: '#F55F23',cursor: 'pointer'}) ;
               console.log(res);
               // 跳转支付宝支付链接
               if(!res.httpurl){
-                  alert(res.msg);
+                  weui.topTips(res.msg);
               }else{
                   window.location.href=res.httpurl;
               }
           })
           .catch(function(err){
+                    $(_this).removeAttr('disabled').css({backgroundColor: '#F55F23',cursor: 'pointer'}) ;
+          
               console.log(err);
           });
        }
