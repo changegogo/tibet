@@ -87,7 +87,7 @@
         $("#gopay").click(function(){
             // 显示遮罩层，防止连续点击todo
             // 支付方式
-                    var _this = this;
+            var _this = this;
 
             $(this).attr({disabled: 'disabled'}).css({backgroundColor: '#ccc',cursor: 'no-drop'}) ;
             var payType = $('input[name="radio1"]:checked').val();
