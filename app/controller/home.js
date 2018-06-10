@@ -174,7 +174,7 @@ module.exports = app => {
         async signup(ctx) {
             let { mobile, code } = ctx.request.body;
             let { mac } = ctx.query;
-
+            // 限制只能绑定一台设备
             let {username} = await model.Sta.findByMobile(mobile);
             if(username){
                 ctx.body = {
