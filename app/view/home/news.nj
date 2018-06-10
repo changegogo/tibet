@@ -25,7 +25,7 @@
 <div class="zixun-page" id="zixun-page">
     <!---------------------------nav-------------------------->
     <div class="nav fixed-top bg-white font_size16 flex flex-pack-center">
-        <a href="javascript:history.back();" class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
+        <a href="javascript:history.back();" class="back" hidden><img src="/public/img/Chevron@2x.png" width="12"/></a>
         <p class="text-center flex justify-content-center">资讯</p>
     </div>
     <!----------------------------------------banner---------------------------------------------------->
