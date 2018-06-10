@@ -1,6 +1,10 @@
 .blk{
     display: block;
 }
+*[hidefocus],input,textarea,a{outline:none!important;}
+a:link{text-decoration:none!important;   /* 指正常的未被访问过的链接*/}
+a:visited{text-decoration:none!important; /*指已经访问过的链接*/}
+a:hover{text-decoration:none!important;/*指鼠标在链接*/}
 .home-header{
     height:2.5rem;
     background:linear-gradient(180deg,rgba(7,129,255,1),rgba(81,172,252,1));

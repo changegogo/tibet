@@ -128,7 +128,7 @@
 			<div class="movies-wrapper">
 				<div class="head-wrapepr weui-cell weui-cell_access">
 					<div class="weui-cell__bd">精品电影</div>
-					<div class="weui-cell__ft more"><a href="/traincinema/list">更多</a></div>
+					<div class="weui-cell__ft more"><a href="/traincinema/list?mac={{mac}}">更多</a></div>
 				</div>
 				<div class="body-wrapper weui-flex">
 					{% for item in films %}
@@ -146,7 +146,7 @@
 			<div class="novels-wrapper">
 				<div class="head-wrapepr weui-cell weui-cell_access">
 					<div class="weui-cell__bd">精品小说</div>
-					<div class="weui-cell__ft more"><a href="/novel/list/1">更多</a></div>
+					<div class="weui-cell__ft more"><a href="/novel/list/1?mac={{mac}}">更多</a></div>
 				</div>
 				<div class="body-wrapper weui-flex">
 					{% for item in novels %}
@@ -164,7 +164,7 @@
 			<div class="games-wrapper">
 				<div class="head-wrapepr weui-cell weui-cell_access">
 					<div class="weui-cell__bd">精品游戏</div>
-					<div class="weui-cell__ft more"><a href="/game/list">更多</a></div>
+					<div class="weui-cell__ft more"><a href="/game/list?mac={{mac}}">更多</a></div>
 				</div>
 				<div class="body-wrapper">
 					<div class="swiper-container game-swiper-container">

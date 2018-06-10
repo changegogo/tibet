@@ -43,7 +43,7 @@ module.exports = app => {
     app.get('/books/my', 'home.mybooks');
     app.get('/movies', 'home.movies');
     //app.get('/player/:name', 'home.player');
-    app.get('/buy', 'home.buy');
+    //app.get('/buy', 'home.buy');
 
     // 浮窗广告
     app.get('/adver', 'home.adv');
@@ -87,10 +87,14 @@ module.exports = app => {
     app.post('/advice/upload', 'home.upload');
     // 意见反馈
     app.post('/advice/commit', 'home.adviceCommit');
-    // 支付相关
+    // 支付宝支付相关
     app.post('/sell/msg', 'sell.commitSellMsg');
     // 未支付订单重新支付
     //app.post('sell/msg/agin', 'sell.commitSellMsgAgin')
     // 支付宝回调接口
     app.post('/sell/callback', 'sell.callback');
+    // 微信支付相关
+    app.post('/wx/sell/msg', 'wxSell.wxCommitSellMsg');
+    // 微信支付回调
+    app.post('/wx/notify', 'wxSell.wxCallback');
 };

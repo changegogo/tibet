@@ -113,11 +113,11 @@ class FilmController extends Controller {
         }
        
         let films = await ctx.service.film.lists(filmtype, 1, 100);
-        ctx.body = {
+        return await ctx.render('home/movietype', {
             mac: mac,
             typeName: typename,
             films: films
-        };
+        });
     }
 }
 

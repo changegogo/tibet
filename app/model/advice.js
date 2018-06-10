@@ -21,7 +21,11 @@ module.exports = app => {
     Advices.createAdvice = function (data){
         return Advices.create(data)
             .then((advice)=>{
-                return advice && advice.get({plain: true});
+                return advice ? advice.get({plain: true}) : null;
+            })
+            .catch((error)=>{
+                console.log(error);
+                return null;
             })
     };
 
@@ -33,7 +37,11 @@ module.exports = app => {
                 }
             }
         }).then( advice => {
-            return advice && advice.get({ plain: true });
+            return advice ? advice.get({ plain: true }) : null;
+        })
+        .catch((error)=>{
+            console.log(error);
+            return null;
         });
     };
 

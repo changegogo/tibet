@@ -78,7 +78,7 @@ label.disabled p {
     <div class="row">
       <span id="macspan" hidden>{{mac}}</span>
       {% for wifi in wifis %}
-        <div class="col col-4 col-lg-2">
+        <div class="col col-4 col-lg-2" style="margin-bottom: 16px;">
           <span hidden>{{wifi.id}}</span>
           {% if wifi.status === 'stockup' %}
             <label class="card disabled">
@@ -105,7 +105,7 @@ label.disabled p {
         <div class="weui-cells weui-cells_radio">
             <label class="weui-cell weui-check__label" for="wxpay">
                 <div class="weui-cell__bd">
-                    <img src="/public/img/Wechat.svg" /> <span>微信支付</span>
+                    <img src="/public/img/Wechat.svg" /> <span style="font-size:16px;">微信支付</span>
                 </div>
                 <div class="weui-cell__ft">
                     <input class="weui-check" name="radio1" id="wxpay" type="radio" value="wx">
@@ -114,7 +114,7 @@ label.disabled p {
             </label>
             <label class="weui-cell weui-check__label" for="alipay">
                 <div class="weui-cell__bd">
-                    <img src="/public/img/Alipay.svg" /> <span>支付宝</span>
+                    <img src="/public/img/Alipay.svg" /> <span style="font-size:16px;">支付宝</span>
                 </div>
                 <div class="weui-cell__ft">
                     <input name="radio1" class="weui-check" id="alipay" checked="checked" type="radio" value="zfb">
@@ -125,7 +125,7 @@ label.disabled p {
     </div>
     
     <div class="text-center">
-        <button id="gopay" class="pay-btn orange_bgcolor">去支付</button>
+        <button id="gopay" class="pay-btn orange_bgcolor font_size18">去支付</button>
     </div>
 
 {% endblock %}

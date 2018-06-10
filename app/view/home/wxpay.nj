@@ -1,0 +1,11 @@
+微信支付前详情页面
+<p>appId: {{args.appId}}</p>
+<p>timeStamp: {{args.timeStamp}}</p>
+<p>nonceStr: {{args.nonceStr}}</p>
+<p>signType: {{args.signType}}</p>
+<p>package: {{args.package}}</p>
+<p>paySign: {{args.paySign}}</p>
+<!--
+href="https://wx.tenpay.com/cgi-bin/mmpayweb-bin/checkmweb
+?prepay_id=wx101548044358576b61b4dded2956098569&package=4091450634&redirect_url=http%3a%2f%2fwxpay.wxutil.com%2fmch%2fpay%2fh5jumppage.php"
+-->

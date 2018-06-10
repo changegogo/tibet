@@ -89,7 +89,7 @@
  
     <div class="text-center">
         <button id="commit" class="pay-btn orange_bgcolor">
-            去支付  
+            提交  
         </button>
     </div>
 </div>

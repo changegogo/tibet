@@ -11,7 +11,10 @@ class SellService extends Service {
         // 查询用户
         let {username} = await model.Sta.findByMAC(mac);
         if(!username) {
-            return;
+            return {
+                isSuccess: false,
+                msg: '非法操作'
+            };
         }
         // 查询商品是否存在
         let shop = null;
