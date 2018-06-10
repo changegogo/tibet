@@ -177,6 +177,7 @@ module.exports = app => {
             // 限制只能绑定一台设备
             let {username} = await model.Sta.findByMobile(mobile);
             if(username){
+                ctx.status = 400;
                 ctx.body = {
                     "message": "认证出错，您已绑定其它手机"
                 };
