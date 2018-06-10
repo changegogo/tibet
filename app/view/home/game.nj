@@ -50,8 +50,8 @@
                 {% for item in types %}
                     <div>
                         <a href="/game/list/{{item.id}}">
-                            <p class="gametype_circle"></p>
-                            <p class="gametype_title">{{item.name}}</p>
+                            <p class="gametype_circle"><img src="/public/img/game_type_01.png"></p>
+                            <p class="gametype_title" style="color:#000;">{{item.name}}</p>
                         </a>
                     </div>
                 {% endfor %}

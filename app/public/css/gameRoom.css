@@ -28,6 +28,9 @@
     margin-bottom: 8px;
 
 }
+.gametype_circle img {
+    width: 100%;
+}
 .gametype_title {
     /*width: 56px;*/
 }

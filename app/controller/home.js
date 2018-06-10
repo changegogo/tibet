@@ -175,6 +175,14 @@ module.exports = app => {
             let { mobile, code } = ctx.request.body;
             let { mac } = ctx.query;
 
+            let {username} = await model.Sta.findByMobile(mobile);
+            if(username){
+                ctx.body = {
+                    "message": "认证出错，您已绑定其它手机"
+                };
+                return;
+            }
+
             try {
                 ctx.validate({
                     "code": {

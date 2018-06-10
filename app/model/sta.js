@@ -59,6 +59,21 @@ module.exports = app => {
         });
     };
 
+    Sta.findByMobile = function (mobile) {
+        return Sta.findOne({
+            "where": {
+                "username": {
+                    [OP.eq]: mobile
+                }
+            }
+        }).then(sta => {
+            return sta ? sta.get({ plain: true }) : {};
+        }).catch((error)=>{
+            console.log(error);
+            return {};
+        });
+    };
+
     Sta.updateByMAC = function (mac, ip, gw_id, gw_sn) {
         return Sta.upsert({
             "mac": mac,
