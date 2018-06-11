@@ -4,7 +4,7 @@ class GameController extends Controller {
     async lists(ctx){
         //let conf = ctx.app.config;
         // 头部轮播图
-        let header = await ctx.service.game.lists('all', 1, 3);
+        let header = await ctx.service.game.lists('all', 1, 5);
         // 中部类型
         let types = await ctx.service.game.types();
         // 下方列表
