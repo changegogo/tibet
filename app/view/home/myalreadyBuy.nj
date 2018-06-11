@@ -143,8 +143,8 @@
         var httpurl = $(this).attr("httpurl");
         var name = $(this).attr("name");
         if(httpurl && name){
-            console.log(httpurl+':'+name);
-            qz_android.clickBookLink(httpurl, name);
+            console.log('http://'+window.location.host+httpurl+':'+name);
+            qz_android.clickBookLink('http://'+window.location.host+httpurl, name);
         }
     });
 </script>
