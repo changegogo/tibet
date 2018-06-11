@@ -2,10 +2,10 @@ body{
     padding-top: 50px;
 }
 *[hidefocus],input,textarea,a{outline:none!important;}
-a:link{text-decoration:none!important;   /* 指正常的未被访问过的链接*/}
-a:visited{text-decoration:none!important; /*指已经访问过的链接*/}
-a:hover{text-decoration:none!important;/*指鼠标在链接*/}
-a:active{text-decoration:none!important;/* 指正在点的链接*/ }
+a:link{text-decoration:none!important;   border-bottom: 0;/* 指正常的未被访问过的链接*/}
+a:visited{text-decoration:none!important; border-bottom: 0; /*指已经访问过的链接*/}
+a:hover{text-decoration:none!important;border-bottom: 0; /*指鼠标在链接*/}
+a:active{text-decoration:none!important;border-bottom: 0; /* 指正在点的链接*/ }
 .font_size12 {
     font-size: .12rem
 }
@@ -141,7 +141,7 @@ h2, label, p, h4 {
     padding: 16px 0;
     text-align: center;
     width: 90%;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 .zixun-body-headertab a{
     color: #000000;

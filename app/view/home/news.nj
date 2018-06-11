@@ -53,11 +53,11 @@
         <!-----------------------------------------------tab-header-------------------------->
         <div class="flex zixun-body-headertab">
             {% if type === 'normal' %}
-            <a href="/news/list/normal" class="common-headertab-active"><p>藏旅新闻</p></a>
+            <a href="/news/list/normal"><p class="common-headertab-active">藏旅新闻</p></a>
             <a href="/news/list/notice"><p>通知公告</p></a>
             {% else %}
                 <a href="/news/list/normal"><p>藏旅新闻</p></a>
-                <a href="/news/list/notice" class="common-headertab-active"><p>通知公告</p></a>
+                <a href="/news/list/notice"><p class="common-headertab-active">通知公告</p></a>
             {% endif %}
         </div>
 

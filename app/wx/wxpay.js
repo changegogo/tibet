@@ -3,7 +3,7 @@ const request = require('request');
 const crypto = require('crypto');
 const ejs = require('ejs');
 const fs = require('fs');
-const key = ''; // 此处为申请微信支付的API密码
+//const key = ''; // 此处为申请微信支付的API密码
 const messageTpl = fs.readFileSync(__dirname + '/message.ejs', 'utf-8');
 
 const WxPay = {
@@ -26,7 +26,7 @@ const WxPay = {
         string = string.substr(1);
         return string;
     },
-    paysignjs: function(appid, nonceStr, package, signType, timeStamp) {
+    paysignjs: function(appid, key, nonceStr, package, signType, timeStamp) {
         let ret = {
             appId: appid,
             nonceStr: nonceStr,
@@ -39,7 +39,7 @@ const WxPay = {
         let sign = crypto.createHash('md5').update(string, 'utf8').digest('hex');
         return sign.toUpperCase();
     },
-    paysignjsapi: function(appid, attach, body, mch_id, nonce_str, notify_url, openid, out_trade_no, spbill_create_ip, total_fee, trade_type) {
+    paysignjsapi: function(appid, key, attach, body, mch_id, nonce_str, notify_url, openid, out_trade_no, spbill_create_ip, total_fee, trade_type) {
         let ret = {
             appid: appid,
             attach: attach,
@@ -64,9 +64,9 @@ const WxPay = {
     createTimeStamp: function() {
         return parseInt(new Date().getTime() / 1000) + '';
     },
-    order: function(attach, body, mch_id, openid, bookingNo, spbill_create_ip, total_fee, notify_url) {
+    order: function(attach, body, mch_id, openid, app_id, key, bookingNo, spbill_create_ip, total_fee, notify_url) {
         let deferred = Q.defer();
-        let appid = 'xxx';
+        let appid = app_id;
         let nonce_str = this.createNonceStr();
         let timeStamp = this.createTimeStamp();
         let url = 'https://api.mch.weixin.qq.com/pay/unifiedorder';
@@ -80,10 +80,10 @@ const WxPay = {
         formData += '<openid>' + openid + '</openid>';
         formData += '<out_trade_no>' + bookingNo + '</out_trade_no>';
         formData += '<spbill_create_ip>' + spbill_create_ip +'</spbill_create_ip>'; 
-        formData += "<total_fee>" + total_fee + "</total_fee>"; 
+        formData += "<total_fee>" + total_fee + "</total_fee>";
         formData += "<trade_type>JSAPI</trade_type>";
-        formData += "<sign>" + this.paysignjsapi(appid, attach, body, mch_id, nonce_str, notify_url, openid, bookingNo, spbill_create_ip, total_fee, 'JSAPI') + "</sign>"; 
-        formData += "</xml>"; 
+        formData += "<sign>" + this.paysignjsapi(appid, key, attach, body, mch_id, nonce_str, notify_url, openid, bookingNo, spbill_create_ip, total_fee, 'JSAPI') + "</sign>"; 
+        formData += "</xml>";
         let self = this;
         request({
             url: url,
@@ -95,7 +95,7 @@ const WxPay = {
                 let prepay_id = self.getXMLNodeValue('prepay_id', body.toString('utf-8'));
                 let tmp = prepay_id.split('[');
                 let tmp1 = tmp[2].split(']');
-                let _paySignjs = self.paysignjs(appid, nonce_str, 'prepay_id=' + tmp1[0], 'MD5', timeStamp);
+                let _paySignjs = self.paysignjs(appid, key, nonce_str, 'prepay_id=' + tmp1[0], 'MD5', timeStamp);
                 let args = {
                     appId: appid,
                     timeStamp: timeStamp,
@@ -113,13 +113,14 @@ const WxPay = {
     },
     notify: function(obj){
         let output = '';
+        let reply = null;
         if(obj.return_code == 'SUCCESS') {
-            let reply = {
+            reply = {
                 return_code: 'SUCCESS',
                 return_msg: 'OK'
             };
         }else {
-            let reply = {
+            reply = {
                 return_code: 'FAIL',
                 return_msg: 'FAIL'
             };

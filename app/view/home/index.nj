@@ -76,11 +76,11 @@
 			<div class="news-wrapper">
 				<div class="head-wrapepr weui-cell weui-cell_access">
 					<div class="weui-cell__bd">藏旅新闻</div>
-					<div class="weui-cell__ft more"><a href="/news/list/normal">更多</a></div>
+					<!-- <div class="weui-cell__ft more"><a href="/news/list/normal">更多</a></div> -->
 				</div>
 				<div class="body-wrapper">
 					<div class="news-notice">
-						<a href="/news/list/normal">
+						<a href="http://m2.people.cn/r/MV8wXzExMDYxNTY1XzEyNzRfMTUyNzYzNDY0NA==">
 							<div class="news-adverst-wrapper" id="news_notice_adverst">
 								<span id="adversit_one">{{qzintro}}</span>
 								<span id="adversit_two"></span>

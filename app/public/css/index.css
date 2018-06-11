@@ -89,6 +89,10 @@ a:hover{text-decoration:none!important;/*指鼠标在链接*/}
     color:rgba(0,0,0,0.87);
     line-height:0.28rem;
 }
+.home-body .body-wrapper {
+    /*padding-left: 0.16rem;*/
+    /*padding-right: 0.16rem;*/
+}
 .home-body .head-wrapepr .more{
     font-size:0.12rem;
     color:rgba(0,0,0,0.6);
@@ -136,11 +140,14 @@ a:hover{text-decoration:none!important;/*指鼠标在链接*/}
 .home-body .movies-wrapper .body-wrapper,.home-body .novels-wrapper .body-wrapper{
     background: #FFFFFF;
     padding-left: 0.16rem;
+    padding-right: 0.16rem;
 }
-
-.home-body  .body-wrapper .movie-item .movie-img{
+.home-body  .body-wrapper .movie-item  {
     margin-right: 0.08rem;
-    width: 1.09rem;
+}
+.home-body  .body-wrapper .movie-item .movie-img{
+    /*margin-right: 0.08rem;*/
+    /*width: 1.09rem;*/
     height: 1.44rem;
 }
 .home-body  .body-wrapper .movie-item .movie-title{
