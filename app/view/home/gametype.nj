@@ -71,7 +71,7 @@
     $(function(){
         $("a").click(function(){
             var httpurl = $(this).attr('httpurl');
-            console.log(httpurl);
+            //alert(httpurl);
             try{
                 qz_android.playGame(httpurl);
             }catch(err){
