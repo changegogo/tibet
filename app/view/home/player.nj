@@ -56,10 +56,10 @@ video::-webkit-media-controls-panel {
 
 {% block body %}
 <div class="" style="padding-left: 15px;padding-right: 15px;">
-  /*--<video src="{{film.httpurl}}" width="100%;" controls="controls" ></video>--*/
+  <!--<video src="{{film.httpurl}}" width="100%;" controls="controls" ></video>-->  
 
-  <video id="qzwifi_video" class="video-js vjs-default-skin" controls preload="none" width="90%" height="90%"
-      poster="http://video-js.zencoder.com/oceans-clip.png"
+  <video id="qzwifi_video" class="video-js vjs-default-skin" controls preload="none" width="100%" height="90%" style="margin:0 auto;"
+      poster="/public/img/1.png"
       data-setup="{}">
     <source src="{{film.httpurl}}" type='video/mp4' />
 </video>
@@ -67,7 +67,7 @@ video::-webkit-media-controls-panel {
 {% endblock %}
 
 {% block scripts %}
-<script src="http://vjs.zencdn.net/ie8/ie8-version/videojs-ie8.min.js"></script>
+<script src="/public/js/videojs-ie8.min.js"></script>
 <script type="text/javascript">
    var myPlayer = videojs('qzwifi_video');
     videojs("qzwifi_video").ready(function(){

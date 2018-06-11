@@ -81,7 +81,8 @@
             {% endif %}
             {% if type === 'film' %}
                 {% for item in data %}
-                <a href="/player/{{item.film.id}}">
+                <!-- httpurl="/player/{{item.film.id}}" -->
+                <a class="film-container" httpurl="{{item.film.httpurl}}" showimg="{{item.film.imgv}}" name="{{item.film.name}}" >
                     <div class="flex">
                         <div class="weui-media-box__hd news-img marginR16">
                             <img class="weui-media-box__thumb" src="{{item.film.imgv}}" width="100%" height="100%"/>
@@ -145,6 +146,16 @@
         if(httpurl && name){
             console.log('http://'+window.location.host+httpurl+':'+name);
             qz_android.clickBookLink('http://'+window.location.host+httpurl, name);
+        }
+    });
+    $(".film-container").click(function(){
+        var httpurl = $(this).attr("httpurl");
+        var showimg = $(this).attr("showimg");
+        var name = $(this).attr("name");
+        var host = 'http://'+window.location.host;
+        console.log(host+httpurl, host+showimg, name);
+        if(httpurl && showimg && name){
+            qz_android.playVideo(host+httpurl, host+showimg, name);
         }
     });
 </script>
