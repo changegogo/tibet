@@ -3,7 +3,9 @@ var swiper = new Swiper('.game-swiper-container', {
     watchSlidesProgress: true,
     spaceBetween: 8,
     slidesPerView: 'auto',
-    loop: true,
+    loop: false,
+    observer: true,//修改swiper自己或子元素时，自动初始化swiper
+    observeParents: true//修改swiper的父元素时，自动初始化swiper
 });
 // ---------------------------------------------index 文字横向滚动------------------------------------
 var s,s2,s3,timer;

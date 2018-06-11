@@ -68,10 +68,7 @@ button {
 .dis_block {
     display: block;
 }
-.swiper-container {
-    -webkit-overflow-scrolling: touch;
-    overflow: scroll;
-}
+
 .swiper-slide img {
     width: 100%;
 }
@@ -148,6 +145,23 @@ h2, label, p, h4 {
 }
 .weui-toptips  {
     padding: 15px 5px;
+}
+.mui-ellipsis-3 {
+
+display: -webkit-box;
+
+overflow: hidden;
+
+white-space: normal!important;
+
+text-overflow: ellipsis;
+
+word-wrap: break-word;
+
+-webkit-line-clamp: 3;
+
+-webkit-box-orient: vertical;
+
 }
 @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
     .nav {

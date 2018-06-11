@@ -43,7 +43,7 @@
                <p class="color_opacity60">价格：¥{{film.price}}</p>
            </div>
        </div>
-      <p class="marginT16 color_opacity60 font_size12">
+      <p class="marginT16 color_opacity60 font_size12 mui-ellipsis-3">
        {{film.description}}
       </p>
    </div>
@@ -72,7 +72,7 @@
         </div>
     </div>
     <!--------------------------------pay-btn-------------------------------------->
-    <div class="text-center">
+    <div class="text-center font_size16">
         <button id="gopay" class="pay-btn orange_bgcolor">
             去支付  
         </button>

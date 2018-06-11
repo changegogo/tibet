@@ -54,7 +54,7 @@
         <div class="myalreadyBuy-list marginlr15">
             {% if type === 'novel' %}
                 {% for item in data %}
-                <div class="novel-container" httpurl="http://192.168.1.140:7001{{item.novel.httpurl}}" name="{{item.novel.name}}">
+                <div class="novel-container" httpurl="{{item.novel.httpurl}}" name="{{item.novel.name}}">
                     <div class="flex">
                         <div class="weui-media-box__hd news-img marginR16">
                             <img class="weui-media-box__thumb" src="{{item.novel.img}}" width="100%" height="100%"/>
