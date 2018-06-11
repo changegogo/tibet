@@ -35,7 +35,7 @@
             <div class="swiper-container gameRoom-swiper-container swiper-container-horizontal">
                 <div class="swiper-wrapper">
                     {% for item in header %}
-                        <div class="swiper-slide" ><a href="{{ item.httpurl }}"><img src="{{item.imgbig}}" alt=""></a></div>
+                        <div class="swiper-slide" ><a httpurl="{{ item.httpurl }}"><img src="{{item.imgbig}}" alt=""></a></div>
                     {% endfor %}
                 </div>
             </div>
@@ -49,7 +49,7 @@
         <div class="gameRoom-type-list flex flex-flow-wrap">
                 {% for item in types %}
                     <div>
-                        <a href="/game/list/{{item.id}}">
+                        <a httpurl="/game/list/{{item.id}}">
                             <p class="gametype_circle"><img src="/public/img/game_type_01.png"></p>
                             <p class="gametype_title" style="color:#000;">{{item.name}}</p>
                         </a>
@@ -63,7 +63,7 @@
         <div class="gameRoom-list">
 
                 {% for item in games %}
-                    <a href="{{item.httpurl}}" class="weui-media-box weui-media-box_appmsg gameRoom-list-item">
+                    <a httpurl="{{item.httpurl}}" class="weui-media-box weui-media-box_appmsg gameRoom-list-item">
                         <div class="weui-media-box__hd news-img ">
                             <img class="weui-media-box__thumb" src="{{item.imgsmall}}" width="100%" height="100%"/>
                         </div>
@@ -93,6 +93,20 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
 <script src="/public/js/weui.js"></script>
 <script src="/public/js/gameRoom.js"></script>
+<script>
+    $(function(){
+        $("a").click(function(){
+            var httpurl = $(this).attr('httpurl');
+            console.log(httpurl);
+            try{
+                qz_android.playGame(httpurl);
+            }catch(err){
+                window.location.href = httpurl;
+            }
+            
+        });
+    });
+</script>
 </body>
 
 </html>

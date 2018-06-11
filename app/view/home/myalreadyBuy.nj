@@ -163,8 +163,7 @@
                 qz_android.playVideo(host+httpurl, host+showimg, name);
             }catch(err){
                 alert("请在app中观看");
-            }
-            
+            } 
         }
     });
 </script>
