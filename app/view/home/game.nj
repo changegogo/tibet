@@ -25,7 +25,7 @@
 <div class="gameRoom-page marginlr15">
     <!---------------------------nav-------------------------->
     <div class="nav fixed-top bg-white font_size16 flex flex-pack-center">
-        <a href="javascript:history.back(); " class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
+        <a href="javascript:history.back();" class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
         <p class="text-center flex justify-content-center">游戏大厅</p>
     </div>
     <!----------------------------------------banner---------------------------------------------------->
@@ -96,6 +96,10 @@
 <script>
     $(function(){
         $("a").click(function(){
+            if($(this).hasClass('back')){
+                console.log('back');
+                return;
+            }
             var httpurl = $(this).attr('httpurl');
             //alert(httpurl);
             try{
