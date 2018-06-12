@@ -45,7 +45,7 @@ class SellService extends Service {
         if(myshop && myshop.status === 'ok'){
             return {
                 isSuccess: false,
-                msg: '您已经购买此商品'
+                msg: '您已经购买此商品,请去 我的->已购买 查看'
             }
         }
         // 生成订单号码
