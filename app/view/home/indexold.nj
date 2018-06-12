@@ -1,7 +1,12 @@
 {% extends "home/base.nj" %}
 
 {% block styles %}
+<link rel="stylesheet" href="/public/css/flex.css">
+
 <style>
+body {
+  padding-top: 0;
+}
 .wifi-status {
   padding: 10px 15px;
   background-color: rgba(0,0,0,0.65);
@@ -152,10 +157,53 @@
   z-index: 2;
   background-color: rgba(255,255,255,0.85);
 }
+
+/*-----------------------------------header--------------------------------*/
+
+.web-header-wrapper > div {
+  padding: 8px 0;
+}
+.web-header-wrapper .header-words-title {
+  max-width:180px;
+  font-size:13px;
+}
+.header-img-logo {
+  max-width: 40px;
+}
+.download-btn {
+  width:80px;
+  padding: 6px 0;
+  background-color:#1E96FF;
+  border-radius:4px;
+}
+.download-btn a {
+  display: block;
+  width:100%;
+  height:100%;
+  color:#ffffff;  
+}
 </style>
 {% endblock %}
 
+
+
+
+
+
 {% block header %}
+<div class="container-fluid px-2">
+  <div class="web-header-wrapper">
+      <div class="flex flex-pack-justify flex-align-center">
+          <img src="/public/img/App_logo.png" class="header-img-logo"/>
+          <div class="header-words-title">
+            <p>更多精彩电影、小说、游戏请下载天路WIFI APP</p>
+          </div>
+          <button class="download-btn">
+            <a href="#">去下载</a>
+          </button>
+      </div>
+  </div>
+
 <div class="wifi-status">
   <div class="media">
     <img class="align-self-center mr-1 ico" src="/public/img/ic_wifi_black_24px.svg" />
@@ -183,7 +231,6 @@
 {% endblock %}
 
 {% block body %}
-<div class="container-fluid px-2">
   <ul class="list-unstyled wifi w-100 mb-2">
     <li class="pr-1">
       <div class="bg-primary p-3">

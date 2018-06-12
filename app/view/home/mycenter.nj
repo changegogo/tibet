@@ -51,7 +51,7 @@
                 </div>
             </a>
 
-            <a href="/problem?mac={{ mac }}" class="weui-cell weui-cell_access weui-cell_link mycenter-celllink-item">
+            <a hidden href="/problem?mac={{ mac }}" class="weui-cell weui-cell_access weui-cell_link mycenter-celllink-item">
                 <img src="/public/img/Group01.svg" alt="" class="marginR16">
                 <div class="weui-cell__bd flex flex-align-center flex-pack-justify common_borderBottom">
                     <p>常见问题</p>
