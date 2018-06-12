@@ -48,11 +48,9 @@
         <h2>游戏分类</h2>
         <div class="gameRoom-type-list flex flex-flow-wrap">
                 {% for item in types %}
-                    <div>
-                        <a href="/game/list/{{item.id}}" class="type">
-                            <p class="gametype_circle"><img src="/public/img/game_type_01.png"></p>
-                            <p class="gametype_title" style="color:#000;">{{item.name}}</p>
-                        </a>
+                    <div class="typejump" httpurl="/game/list/{{item.id}}">
+                        <p class="gametype_circle"><img src="/public/img/game_type_01.png"></p>
+                        <p class="gametype_title" style="color:#000;">{{item.name}}</p>
                     </div>
                 {% endfor %}
             </div>
@@ -108,6 +106,11 @@
                 window.location.href = httpurl;
             }
             
+        });
+
+        $(".typejump").click(function(){
+             var httpurl = $(this).attr('httpurl');
+             window.location.href = httpurl;
         });
     });
 </script>
