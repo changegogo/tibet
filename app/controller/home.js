@@ -373,7 +373,7 @@ module.exports = app => {
         }
 
         async index(ctx) {
-            let { gw_id, gw_sn, mac, wifi } = ctx.query;
+            let { gw_id, gw_sn, mac, wifi, tag } = ctx.query;
             let [ gw_address, gw_port, ip, username ] = await Promise.all([
                 model.Mtfi.findByGW(gw_id, gw_sn),
                 model.Sta.findByMAC(mac)
@@ -431,41 +431,52 @@ module.exports = app => {
             let online = `http://${gw_address}:${gw_port}/wifidog/auth?token=${token.token}`;
             // 下线操作
             let offline = `${online}&logout=1`;
-            // wifi名称
-            if(!wifi || wifi === '<unknown ssid>'){
-                wifi = "未知";
+            if(tag === 'app'){ // 表示在app中打开
+                // wifi名称
+                if(!wifi || wifi === '<unknown ssid>'){
+                    wifi = "未知";
+                }
+                let wifiname = wifi;
+                // 青藏铁路介绍
+                let qzintro = conf.qzintroduce;
+                
+                /**
+                 * 3条新闻
+                 * 1 第一页
+                 * 3 3条数
+                 */
+                let news = await ctx.service.news.lists(1, 3);
+                // 3个电影 all 表示全部类型
+                let films = await ctx.service.film.lists('all', 1, 3);
+                // 3个小说
+                let novels = await ctx.service.novel.lists('all', 1, 3);
+                // 3个游戏
+                let games = await ctx.service.game.lists('all', 1, 3);
+                return await ctx.render('home/index', {
+                    mac: mac,
+                    status: token.auth,
+                    uname: token.username,
+                    online: online,
+                    offline: offline,
+                    wifiname: wifiname,
+                    users: users,
+                    flow: flow,
+                    qzintro: qzintro,
+                    news: news,
+                    films: films,
+                    novels: novels,
+                    games: games
+                });  
+            }else{ // 表示在弹出页面打开
+                return await ctx.render('home/indexold', {
+                    status: token.auth,
+                    uname: token.username,
+                    online: online,
+                    offline: offline,
+                    users: users,
+                    flow: flow
+                });
             }
-            let wifiname = wifi;
-            // 青藏铁路介绍
-            let qzintro = conf.qzintroduce;
-            
-            /**
-             * 3条新闻
-             * 1 第一页
-             * 3 3条数
-             */
-            let news = await ctx.service.news.lists(1, 3);
-            // 3个电影 all 表示全部类型
-            let films = await ctx.service.film.lists('all', 1, 3);
-            // 3个小说
-            let novels = await ctx.service.novel.lists('all', 1, 3);
-            // 3个游戏
-            let games = await ctx.service.game.lists('all', 1, 3);
-            return await ctx.render('home/index', {
-                mac: mac,
-                status: token.auth,
-                uname: token.username,
-                online: online,
-                offline: offline,
-                wifiname: wifiname,
-                users: users,
-                flow: flow,
-                qzintro: qzintro,
-                news: news,
-                films: films,
-                novels: novels,
-                games: games
-            });
         }
 
         async message(ctx) {
@@ -473,6 +484,22 @@ module.exports = app => {
         }
 
         async books(ctx) {
+            let tpl = await ctx.renderView('home/books', { books: conf.BOOK_LIST });
+            let file = path.join(app.baseDir, 'mediacenter/books.html');
+
+            await new Promise((resolve, reject) => {
+                fs.writeFile(file, tpl, (err) => {
+                    if (err) {
+                        return reject(err);
+                    }
+                    resolve('ok');
+                });
+            });
+
+            ctx.body = tpl;
+        }
+
+        /*async books(ctx) {
             // let tpl = await ctx.renderView('home/books', { books: conf.BOOK_LIST });
             // let file = path.join(app.baseDir, 'mediacenter/books.html');
 
@@ -491,27 +518,44 @@ module.exports = app => {
                 type: type,
                 books: conf.BOOK_LIST[type]
             });
-        }
+        }*/
 
         async movies(ctx) {
-            // let tpl = await ctx.renderView('home/movies', { films: conf.FILM_LIST });
-            // let file = path.join(app.baseDir, 'mediacenter/movies.html');
+            let tpl = await ctx.renderView('home/movies', { films: conf.FILM_LIST });
+            let file = path.join(app.baseDir, 'mediacenter/movies.html');
 
-            // await new Promise((resolve, reject) => {
-            //     fs.writeFile(file, tpl, (err) => {
-            //         if (err) {
-            //             return reject(err);
-            //         }
-            //         resolve('ok');
-            //     });
-            // });
+            await new Promise((resolve, reject) => {
+                fs.writeFile(file, tpl, (err) => {
+                    if (err) {
+                        return reject(err);
+                    }
+                    resolve('ok');
+                });
+            });
 
-            // ctx.body = tpl;
-
-            return await ctx.render('home/movies', { films: conf.FILM_LIST });
+            ctx.body = tpl;
         }
 
-       /* async player(ctx) {
+
+        // async movies(ctx) {
+        //     // let tpl = await ctx.renderView('home/movies', { films: conf.FILM_LIST });
+        //     // let file = path.join(app.baseDir, 'mediacenter/movies.html');
+
+        //     // await new Promise((resolve, reject) => {
+        //     //     fs.writeFile(file, tpl, (err) => {
+        //     //         if (err) {
+        //     //             return reject(err);
+        //     //         }
+        //     //         resolve('ok');
+        //     //     });
+        //     // });
+
+        //     // ctx.body = tpl;
+
+        //     return await ctx.render('home/movies', { films: conf.FILM_LIST });
+        // }
+
+       async player(ctx) {
             for (let key in conf.FILM_LIST) {
                 let [ name, src ] = conf.FILM_LIST[key];
                 let tpl = await ctx.renderView('home/player', { key: key, name: name, src: src });
@@ -531,7 +575,7 @@ module.exports = app => {
             let key = ctx.params.name.replace('.html', '');
             let [ name, src ] = conf.FILM_LIST[key];
             return await ctx.render('home/player', { key: key, name: name, src: src });
-        }*/
+        }
 
         // 播放电影
         async player(ctx) {

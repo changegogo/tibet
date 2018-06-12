@@ -39,11 +39,11 @@ module.exports = app => {
     app.post(ADMIN_ENTRY_POINT, 'admin.login');
     app.get('/logout/', 'admin.logout');
     app.get('/admin', 'admin.dashboard');
-    app.get('/books/:type', 'home.books');
+    app.get('/books', 'home.books');
     app.get('/books/my', 'home.mybooks');
     app.get('/movies', 'home.movies');
-    //app.get('/player/:name', 'home.player');
-    //app.get('/buy', 'home.buy');
+    app.get('/player/:name', 'home.player');
+    app.get('/buy', 'home.buy');
 
     // 浮窗广告
     app.get('/adver', 'home.adv');
