@@ -49,7 +49,7 @@
         <div class="gameRoom-type-list flex flex-flow-wrap">
                 {% for item in types %}
                     <div>
-                        <a httpurl="/game/list/{{item.id}}">
+                        <a httpurl="/game/list/{{item.id}}" class="type">
                             <p class="gametype_circle"><img src="/public/img/game_type_01.png"></p>
                             <p class="gametype_title" style="color:#000;">{{item.name}}</p>
                         </a>

@@ -171,9 +171,11 @@
 						<div class="swiper-wrapper">
 							{% for item in games %}
 								<div class="swiper-slide" >
-									<a href="{{ item.httpurl }}">
+									<div class="gamejump"  httpurl="{{ item.httpurl }}">
+									<a>
 										<img src="{{ item.imgbig }}" alt="{{ item.name }}">
 									</a>
+									</div>
 								</div>
 							{% endfor %}
 						</div>
@@ -188,6 +190,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
 <script src="/public/js/weui.js"></script>
 <script src="/public/js/index.js"></script>
+<script>
+	$(function(){
+		$(".gamejump").click(function(){
+			var httpurl = $(this).attr('httpurl');
+			try{
+                qz_android.playGame(httpurl);
+            }catch(err){
+                window.location.href = httpurl;
+            }
+		});
+	});
+</script>
 </body>
 
 </html>
