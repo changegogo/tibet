@@ -396,8 +396,10 @@ module.exports = app => {
                 ctx.logger.error(err);
                 return [];
             });
-            
+            console.log("is_app");
+            console.log(is_app);
             if (is_app) {
+
                 tag = "app";
             }
 
