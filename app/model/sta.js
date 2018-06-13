@@ -113,7 +113,10 @@ module.exports = app => {
                 }
             }
         }).then( c => {
+            console.log(c);
             return c;
+        }).catch(err=>{
+            console.log(err);
         })
     }
 

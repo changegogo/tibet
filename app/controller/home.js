@@ -154,6 +154,8 @@ module.exports = app => {
 
             // 获取`WIFI终端`信息
             let [ sta ] = await model.Sta.updateByMAC(mac, ip, gw_id, gw_sn);
+            console.log('index sta');
+            console.log(sta);
             let query = new URLSearchParams(ctx.query).toString();
 
             // 未绑定手机
