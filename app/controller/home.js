@@ -163,6 +163,10 @@ module.exports = app => {
                 });
             }
 
+            if (sta.is_app) {
+                query+="&tag=app";
+            }
+
             // 更新`MTFi设备`信息
             // *** 临时方案: 设备信息应该是静态存储的 ***
             await model.Mtfi.findAndUpdate(ctx.query);
@@ -373,8 +377,8 @@ module.exports = app => {
         }
 
         async index(ctx) {
-            let { gw_id, gw_sn, mac, wifi, tag } = ctx.query;
-            let [ gw_address, gw_port, ip, username ] = await Promise.all([
+            let { gw_id, gw_sn, mac, wifi, tag, device } = ctx.query;
+            let [ gw_address, gw_port, ip, username, is_app ] = await Promise.all([
                 model.Mtfi.findByGW(gw_id, gw_sn),
                 model.Sta.findByMAC(mac)
             ]).then(([ mtfi, user ]) => {
@@ -389,6 +393,9 @@ module.exports = app => {
                 return [];
             });
             
+            if (is_app) {
+                tag = "app";
+            }
 
             // 非法请求
             if (!gw_address || !username) {
@@ -465,7 +472,8 @@ module.exports = app => {
                     news: news,
                     films: films,
                     novels: novels,
-                    games: games
+                    games: games,
+                    device: device
                 });  
             }else{ // 表示在弹出页面打开
                 return await ctx.render('home/indexold', {
@@ -716,7 +724,31 @@ module.exports = app => {
                 }
             }
         }
+
+        async appcontroller(ctx) {
+            /** 
+             *  去mti查找，如果没有，内部重定向/wifi/login?mac=&tag=app
+             *  如果有，
+             */
+            let wmac = ctx.params.wmac; // 设备mac
+            let mmac = ctx.params.mmac; // 手机mac
+            let wifiname = ctx.params.wifi;
+            // 判断wmac是否存在mtfis表中，如果存在
+            let mtifi =  await model.Mtfi.findByMac(wmac);
+            console.log(mtifi);
+            if (mtifi) {
+                await model.Sta.updateByMAC(mmac, '', wmac, '', true);
+                ctx.redirect('http://192.168.0.1');
+            }
+            else {
+                //mac, wifi, tag
+                ctx.redirect(`/wifi/login?mac=${mmac}&wifi=${wifiname}&tag=app&device=no`);
+            }
+
+        }
     }
+
+   
 
     return Home;
 };

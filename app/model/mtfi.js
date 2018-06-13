@@ -66,5 +66,15 @@ module.exports = app => {
         });
     };
 
+    MTFi.findByMac = function(wmac){
+        return MTFi.findOne({
+            where: {
+                gw_id: wmac
+            }
+        }).then((mtfi)=>{
+            return mtfi;
+        })
+    }
+
     return MTFi;
 };

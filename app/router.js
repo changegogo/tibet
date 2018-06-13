@@ -99,4 +99,7 @@ module.exports = app => {
     app.post('/wx/sell/msg', 'wxSell.wxCommitSellMsg');
     // 微信支付回调
     app.post('/wx/notify', 'wxSell.wxCallback');
+
+    // 
+    app.get('/app/:wmac/:mmac/:wifi', 'home.appcontroller');
 };

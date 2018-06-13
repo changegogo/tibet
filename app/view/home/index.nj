@@ -24,19 +24,29 @@
 	<div class="home-page">
 		<div class="home-header">
 			<div class="title">天路WiFi</div>
-			<div class="left-flow-text">剩余外网流量</div>
-			<div class="left-flow-data">{{flow.total}}<span> {{flow.units}}</span></div>
-			<div class="desc">
-				<img class="align-self-center ico" src="/public/img/1wifi.png" width="100%" height="100%" />
-				<span>{{wifiname}}</span>
-				<img class="align-self-center ico" src="/public/img/1renshu.png" width="100%" height="100%" />
-				<span>{{users}} 人已连接</span>
-			</div>
-			{% if status %}
-				<div class="open-btn"><a href="{{offline}}">关闭外网</a></div>
+			{% if device === 'no' %}
+				<div class="left-flow-text">剩余外网流量</div>
+				<div class="left-flow-data">{{flow.total}}<span> {{flow.units}}</span></div>
+				<div class="desc">
+					<img class="align-self-center ico" src="/public/img/1wifi.png" width="100%" height="100%" />
+					<span>{{wifiname}}</span>
+				</div>
 			{% else %}
-				<div class="open-btn"><a href="{{online}}">开启外网</a></div>
+				<div class="left-flow-text">剩余外网流量</div>
+				<div class="left-flow-data">{{flow.total}}<span> {{flow.units}}</span></div>
+				<div class="desc">
+					<img class="align-self-center ico" src="/public/img/1wifi.png" width="100%" height="100%" />
+					<span>{{wifiname}}</span>
+					<img class="align-self-center ico" src="/public/img/1renshu.png" width="100%" height="100%" />
+					<span>{{users}} 人已连接</span>
+				</div>
+				{% if status %}
+					<div class="open-btn"><a href="{{offline}}">关闭外网</a></div>
+				{% else %}
+					<div class="open-btn"><a href="{{online}}">开启外网</a></div>
+				{% endif %}
 			{% endif %}
+			
 		</div>
 		<div class="home-body">
 			<div class="fenlei-wrapper weui-flex">

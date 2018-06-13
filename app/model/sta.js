@@ -40,6 +40,11 @@ module.exports = app => {
             "defaultValue": false
         },
 
+        "is_app": {
+            "type": BOOLEAN,
+            "defaultValue": false
+        },
+
         "created_at": DATE,
         "updated_at": DATE,
     });
@@ -74,13 +79,19 @@ module.exports = app => {
         });
     };
 
-    Sta.updateByMAC = function (mac, ip, gw_id, gw_sn) {
+    Sta.updateByMAC = function (mac, ip, gw_id, gw_sn, is_app = false) {
         return Sta.upsert({
             "mac": mac,
             "ip": ip,
             "gw_id": gw_id,
-            "gw_sn": gw_sn
+            "gw_sn": gw_sn,
+            "is_app": is_app
         }, {
+            "where": {
+                "mac": {
+                    [OP.eq]: mac
+                }
+            },
             "returning": true
         }).then(([ user, isNew ]) => {
             return [ user.get({ plain: true }), isNew ];
