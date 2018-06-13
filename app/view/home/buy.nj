@@ -125,7 +125,7 @@ label.disabled p {
     </div>
     
     <div class="text-center">
-        <button id="gopay" class="pay-btn orange_bgcolor font_size18">去支付</button>
+        <button id="gopay" class="pay-btn orange_bgcolor font_size18" style="font-size: 18px;">去支付</button>
     </div>
 
 {% endblock %}
