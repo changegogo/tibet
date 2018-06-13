@@ -103,6 +103,20 @@ module.exports = app => {
         });
     };
 
+    Sta.updateIsApp = function(mac, is_app = false){
+        return Sta.update({
+            "is_app": is_app
+        },{
+            where: {
+                "mac": {
+                    [OP.eq]: mac
+                }
+            }
+        }).then( c => {
+            return c;
+        })
+    }
+
     Sta.authMobile = function (mac, mobile) {
         return Sta.update({
             "username": mobile
