@@ -79,13 +79,13 @@ module.exports = app => {
         });
     };
 
-    Sta.updateByMAC = function (mac, ip, gw_id, gw_sn, is_app = false) {
+    Sta.updateByMAC = function (mac, ip, gw_id, gw_sn) {
         return Sta.upsert({
             "mac": mac,
             "ip": ip,
             "gw_id": gw_id,
             "gw_sn": gw_sn,
-            "is_app": is_app
+            //"is_app": is_app
         }, {
             "where": {
                 "mac": {
