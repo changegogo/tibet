@@ -79,6 +79,18 @@ module.exports = app => {
         })
     }
 
+    Mynovels.findByUserAndIdOk = function(username, id){
+        return Mynovels.findOne({
+            where: {
+                username: username,
+                nove_id: id,
+                status: 'ok'
+            }
+        }).then( (mynovel)=>{
+            return mynovel && mynovel.get({plain: true});
+        })
+    }
+
     Mynovels.findByUserAndId = function(username, id){
         return Mynovels.findOne({
             where: {

@@ -26,11 +26,11 @@ class SellService extends Service {
             case 'film':
             shop = await model.Film.findByIdFilm(shopId);
             // 通过用户名和商品id查询是否已经购买了此产品
-            myshop = await model.Myfilm.findByUserAndId(username, shopId);
+            myshop = await model.Myfilm.findByUserAndIdOk(username, shopId);
             break;
             case 'novel':
             shop = await model.Novel.findById(shopId);
-            myshop = await model.Mynovel.findByUserAndId(username, shopId);
+            myshop = await model.Mynovel.findByUserAndIdOk(username, shopId);
             break;
             default:
             break;

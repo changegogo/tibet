@@ -80,6 +80,18 @@ module.exports = app => {
             return myfilm && myfilm.get({plain: true});
         })
     }
+    
+    Myfilms.findByUserAndIdOk = function(username, id){
+        return Myfilms.findOne({
+            where: {
+                username: username,
+                film_id: id,
+                status: 'ok'
+            }
+        }).then( (myfilm)=>{
+            return myfilm && myfilm.get({plain: true});
+        })
+    }
 
     Myfilms.findByUserAndId = function(username, id){
         return Myfilms.findOne({
