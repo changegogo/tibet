@@ -69,6 +69,8 @@ a:hover{text-decoration:none!important;/*指鼠标在链接*/}
     height: 0.92rem;
     background:rgba(255,255,255,1);
     border-radius:0.08rem;
+    width: 100%;
+    overflow: hidden;
 }
 .home-body .fenlei-wrapper .item-img{
     width: 0.27rem;

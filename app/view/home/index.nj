@@ -87,8 +87,6 @@
 							</div>
 						</a>
 
-
-						<!--<div class="weui-cell__ft more">查看</div>-->
 					</div>
 					<div class="news-list weui-panel">
 						{% for item in news%}
