@@ -390,7 +390,8 @@ module.exports = app => {
                     mtfi.gw_address,
                     mtfi.gw_port,
                     user.ip,
-                    user.username
+                    user.username,
+                    user.is_app
                 ] : [];
             }).catch(err => {
                 ctx.logger.error(err);
