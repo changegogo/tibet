@@ -382,13 +382,14 @@ module.exports = app => {
         async index(ctx) {
             console.log('index');
             let { gw_id, gw_sn, mac, wifi, tag, device } = ctx.query;
-            let [ gw_address, gw_port, ip, username, is_app ] = await Promise.all([
+            let [ gw_address, gw_port,ssid, ip, username, is_app ] = await Promise.all([
                 model.Mtfi.findByGW(gw_id, gw_sn),
                 model.Sta.findByMAC(mac)
             ]).then(([ mtfi, user ]) => {
                 return mtfi && user ? [
                     mtfi.gw_address,
                     mtfi.gw_port,
+                    mtfi.ssid,
                     user.ip,
                     user.username,
                     user.is_app
@@ -448,7 +449,7 @@ module.exports = app => {
             if(tag === 'app'){ // 表示在app中打开
                 // wifi名称
                 if(!wifi || wifi === '<unknown ssid>'){
-                    wifi = "未知";
+                    wifi = ssid;
                 }
                 let wifiname = wifi;
                 // 青藏铁路介绍
