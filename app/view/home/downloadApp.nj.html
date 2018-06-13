@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <title>青藏WIFI | WIFI | 天路WIFI</title>
+    <script type="text/javascript">
+        document.getElementsByTagName('html')[0].style.fontSize = document.documentElement.clientWidth/3.75 +'px';
+    </script>
+
+    <link rel="stylesheet" href="/public/css/flex.css">
+    <style type="text/css">
+        body {
+            font-size: .16rem;
+            margin: 0;
+            padding: 0;
+        }
+        .top-title {
+            font-size: .28rem;
+            margin: 0;
+        }
+        .img-app-logo {
+            max-width: 108px;
+        }
+        .downloadApp-top-wrapper {
+            padding: 40px 0;
+        }
+        .downloadApp-bottom-wrapper {
+            background-image: url("/public/img/download_icon_04.png");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center bottom;
+            font-size: .15rem;
+            background-color: #1E96FF;
+            padding:40px 0;
+            padding-bottom: 0;
+            height: calc(100vh - 306px);
+            position: relative;
+        }
+        .downloadApp-bottom-wrapper .andrio-wrapper, .downloadApp-bottom-wrapper .ios-wrapper {
+            background:rgba(255,255,255,1);
+            border-radius:4px;
+            max-width: 260px;
+            margin: 0 auto;
+            margin-bottom: 16px;
+        }
+        .downloadApp-bottom-wrapper .ios-wrapper {
+            background:none;
+            border:1px solid rgba(255,255,255,0.5);
+            box-sizing: border-box;
+
+        }
+        .downloadApp-bottom-wrapper .ios-wrapper a {
+            color: #ffffff;
+        }
+
+        .wave {
+            position: relative;
+            align-items: center;
+            min-height: 40px;
+            background-color: #1E96FF;
+            overflow: hidden;
+        }
+        .wave:before, .wave:after {
+                       content: "";
+                       position: absolute;
+                       left: 50%;
+                       min-width: 320vw;
+                       min-height: 320vw;
+                       background-color: #fff;
+                       animation-name: rotate;
+                       animation-iteration-count: infinite;
+                       animation-timing-function: linear;
+                   }
+
+        .wave:before {
+             bottom: 20px;
+             border-radius: 45%;
+             animation-duration: 10s;
+         }
+
+        .wave:after {
+             bottom: 15px;
+             opacity: .5;
+             border-radius: 47%;
+             animation-duration: 10s;
+         }
+
+
+        @keyframes rotate {
+            0% {
+                transform: translate(-50%, 0) rotateZ(0deg);
+            }
+            50% {
+                transform: translate(-50%, -2%) rotateZ(180deg);
+            }
+            100% {
+                transform: translate(-50%, 0%) rotateZ(360deg);
+            }
+        }
+
+        a {
+            text-decoration: none;
+        }
+        a:visited {
+            text-decoration: none;
+        }
+
+    </style>
+
+</head>
+
+<body>
+<div class="downloadApp-page">
+    <!---------------------------mycenter-banner-------------------------->
+    <div class="downloadApp-top-wrapper">
+        <div class="" style="text-align: center;">
+            <img src="/public/img/App_logo.png" alt="" class="img-app-logo">
+            <p class="top-title">天路WiFi</p>
+        </div>
+
+    </div>
+
+    <div class="wave"></div>
+    <div class="downloadApp-bottom-wrapper">
+        <div>
+            <div class="andrio-wrapper">
+                <a href="http://192.168.1.140:7001/public/wifi.apk" class="flex flex-align-center flex-pack-center">
+                    <img src="/public//img/andrio.svg" alt="" style="margin-right: 24px;">
+                    <p style="color:#1E96FF;">Android 下载</p>
+                </a>
+            </div>
+            <div class="ios-wrapper">
+
+                <a href="javascript:;" class="flex flex-align-center flex-pack-center">
+                    <img src="/public/img/ios.svg" alt="" style="margin-right: 24px;">
+                    <p>iOS 即将推出</p>
+                </a>
+
+            </div>
+            <p style="margin-top: 18px;text-align: center;font-size: .11rem;color: #ffffff;">© 2018 中国铁路青藏集团有限公司</p>
+        </div>
+
+    </div>
+</div>
+
+</body>
+
+</html>

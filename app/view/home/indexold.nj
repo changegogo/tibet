@@ -172,9 +172,10 @@ body {
 }
 .download-btn {
   width:80px;
-  padding: 6px 0;
+  padding: 4px 0;
   background-color:#1E96FF;
   border-radius:4px;
+  font-size:15px;
 }
 .download-btn a {
   display: block;
@@ -199,7 +200,7 @@ body {
             <p>更多精彩电影、小说、游戏请下载天路WIFI APP</p>
           </div>
           <button class="download-btn">
-            <a href="#">去下载</a>
+            <a href="/app/download">去下载</a>
           </button>
       </div>
   </div>

@@ -45,6 +45,8 @@ module.exports = app => {
     app.get('/player/:name', 'home.player');
     app.get('/buy', 'home.buy');
 
+    // 下载页面
+    app.get('/app/download', 'home.downloadApp');
     // 浮窗广告
     app.get('/adver', 'home.adv');
     // 资讯列表 :type 取值 normal notice
@@ -66,7 +68,7 @@ module.exports = app => {
     // 电影更多
     app.get('/film/more/:filmtype/:typename', 'film.more');
     // 播放电影
-    app.get('/player/:id', 'home.player');
+    app.get('/player/:id', 'home.playervideo');
     // 我的电影
     app.get('/myfilm/list', 'myfilm.lists');
     // 天路wifi购买界面

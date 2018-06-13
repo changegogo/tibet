@@ -1,0 +1,78 @@
+{% extends "home/base.nj" %}
+
+{% block PAGE_TITLE %}{{name}} - 电影{% endblock %}
+
+{% block styles %}
+<link href="https://vjs.zencdn.net/6.9.0/video-js.css" rel="stylesheet">
+<style>
+  body {
+    padding-top: 0;
+  }
+.back {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-left: 15px;
+}
+
+.back img {
+  width: 12px;
+}
+
+.nav-link {
+  margin-bottom: -1px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  color: rgba(0,0,0,.54);
+}
+
+.nav-link:not(:last-child) {
+  margin-right: 2rem;
+}
+@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+  .back {
+    padding-top: 30px;
+  }
+}
+
+video::-internal-media-controls-download-button {
+    display:none;
+}
+video::-webkit-media-controls-enclosure {
+    overflow:hidden;
+}
+video::-webkit-media-controls-panel {
+    width: calc(100% + 30px); 
+}
+</style>
+{% endblock %}
+
+{% block header %}
+<nav class="nav border-bottom justify-content-center bg-white mb-2">
+  <a href="javascript:history.back();" class="back"><img src="/public/img/Chevron@2x.png" /></a>
+  <span class="">{{film.name}}</span>
+</nav>
+{% endblock %}
+
+{% block body %}
+<div class="" style="padding-left: 15px;padding-right: 15px;">
+  <!--<video src="{{film.httpurl}}" width="100%;" controls="controls" ></video>-->  
+
+  <video id="qzwifi_video" class="video-js vjs-default-skin" controls preload="none" width="100%" height="90%" style="margin:0 auto;"
+      poster="/public/img/1.png"
+      data-setup="{}">
+    <source src="{{film.httpurl}}" type='video/mp4' />
+</video>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="/public/js/videojs-ie8.min.js"></script>
+<script type="text/javascript">
+   var myPlayer = videojs('qzwifi_video');
+    videojs("qzwifi_video").ready(function(){
+        var myPlayer = this;
+        myPlayer.play();
+    });
+</script>
+{% endblock %}

@@ -499,27 +499,6 @@ module.exports = app => {
             ctx.body = tpl;
         }
 
-        /*async books(ctx) {
-            // let tpl = await ctx.renderView('home/books', { books: conf.BOOK_LIST });
-            // let file = path.join(app.baseDir, 'mediacenter/books.html');
-
-            // await new Promise((resolve, reject) => {
-            //     fs.writeFile(file, tpl, (err) => {
-            //         if (err) {
-            //             return reject(err);
-            //         }
-            //         resolve('ok');
-            //     });
-            // });
-            // xh xz kb qg yq
-            let type = ctx.params.type;
-            
-            return await ctx.render('home/books', { 
-                type: type,
-                books: conf.BOOK_LIST[type]
-            });
-        }*/
-
         async movies(ctx) {
             let tpl = await ctx.renderView('home/movies', { films: conf.FILM_LIST });
             let file = path.join(app.baseDir, 'mediacenter/movies.html');
@@ -535,25 +514,6 @@ module.exports = app => {
 
             ctx.body = tpl;
         }
-
-
-        // async movies(ctx) {
-        //     // let tpl = await ctx.renderView('home/movies', { films: conf.FILM_LIST });
-        //     // let file = path.join(app.baseDir, 'mediacenter/movies.html');
-
-        //     // await new Promise((resolve, reject) => {
-        //     //     fs.writeFile(file, tpl, (err) => {
-        //     //         if (err) {
-        //     //             return reject(err);
-        //     //         }
-        //     //         resolve('ok');
-        //     //     });
-        //     // });
-
-        //     // ctx.body = tpl;
-
-        //     return await ctx.render('home/movies', { films: conf.FILM_LIST });
-        // }
 
        async player(ctx) {
             for (let key in conf.FILM_LIST) {
@@ -577,14 +537,26 @@ module.exports = app => {
             return await ctx.render('home/player', { key: key, name: name, src: src });
         }
 
+        async mybooks(ctx) {
+            return await ctx.render('home/mybooks');
+        }
+
+        async buy(ctx) {
+            return await ctx.render('home/buybefore');
+        }
+
+        async downloadApp(ctx) {
+            return await ctx.render('home/downloadApp');
+        }
+
         // 播放电影
-        async player(ctx) {
+        async playervideo(ctx) {
             let filmid = ctx.params.id;
             // 检测电影是否已经购买 todo
             //await ctx.service.myfilm.find
 
             let film = await ctx.service.film.getFileById(filmid);
-            return await ctx.render('home/player', {film: film});
+            return await ctx.render('home/playervideo', {film: film});
         }
         
         async adv(ctx) {
@@ -593,14 +565,6 @@ module.exports = app => {
                 img: '/public/img/1.png',
                 httpurl: 'https://www.baidu.com/'
             };
-        }
-
-        async mybooks(ctx) {
-            return await ctx.render('home/mybooks');
-        }
-
-        async buy(ctx) {
-            return await ctx.render('home/buy');
         }
 
         async tianluwifi(ctx){

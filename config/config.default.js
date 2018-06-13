@@ -43,13 +43,7 @@ module.exports = appInfo => {
         cdnVersion: 1,
         maxFlowLimit: 50 * 1024 * 1024,
 
-        qzintroduce: "中国铁路青藏集团有限公司地处青藏高原东部中国铁路青藏集团有限公司地处青藏高原东部中国铁路青藏集团有限公司地处青藏高原东部中国铁路青藏集团有限公司地处青藏高原东部中国铁路青藏集团有限公司地处青藏高原东部中国铁路青藏集团有限公司地处青藏高原东部",
-
         FILM_LIST: {
-            "EchoesOfTheRainbow": [ "岁月神偷", "EchoesOfTheRainbow.mp4", "EchoesOfTheRainbow.jpg" ],
-            "WildCity": [ "谜城", "WildCity.mp4", "WildCity.jpg" ],
-            "708090": [ "708090之深圳恋歌", "708090.mp4", "708090.jpg" ],
-            "PortofCall": [ "踏血寻梅", "PortofCall.mp4", "PortofCall.jpg" ],
             "fanghua": [ "芳华", "fanghua.mp4", "fanghua.jpg" ],
             "201805081041-01": [ "军师联盟(第一集)", "201805081041-01.mp4", "junshilianmeng.jpg" ],
             "201805081041-02": [ "军师联盟(第二集)", "201805081041-02.mp4", "junshilianmeng.jpg" ],
@@ -84,24 +78,10 @@ module.exports = appInfo => {
             [ "英国旅行Let'sGo（第四版）", "201805090428-13" ],
             [ "蒙台梭利早教经典", "201805090428-14" ],
         ],
-        
-
-        GAME_LIST: {
-            recommend: [
-               {img: "", downloadurl: ""},
-               {img: "", downloadurl: ""}
-            ],
-            rank:[
-                {name: "", img: "", type: "", downloadurl: "" },
-                {name: "", img: "", type: "", downloadurl: "" },
-                {name: "", img: "", type: "", downloadurl: "" },
-                {name: "", img: "", type: "", downloadurl: "" },
-                {name: "", img: "", type: "", downloadurl: "" }
-            ]
-        },
-        subjects: ["流量", "电影", "小说"],
+        qzintroduce: "中国铁路青藏集团有限公司地处青藏高原东部中国铁路青藏集团有限公司地处青藏高原东部中国铁路青藏集团有限公司地处青藏高原东部中国铁路青藏集团有限公司地处青藏高原东部中国铁路青藏集团有限公司地处青藏高原东部中国铁路青藏集团有限公司地处青藏高原东部",
         bookIndex: "http://192.168.0.1/books.html",
-        filmIndex: "http://192.168.0.1/movies.html"
-       
+        filmIndex: "http://192.168.0.1/movies.html",
+        
+        subjects: ["流量", "电影", "小说"]
     };
 };

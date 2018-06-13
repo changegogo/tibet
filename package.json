@@ -6,7 +6,9 @@
     "test": "test"
   },
   "scripts": {
-    "start": "egg-scripts start --daemon",
+    "beforestart": "egg-scripts start --port 7002 --title=egg-new",
+    "beforestop": "egg-scripts stop --title=egg-new",
+    "start": "egg-scripts start --daemon --port 7001",
     "stop": "egg-scripts stop",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
