@@ -741,8 +741,9 @@ module.exports = app => {
             // 判断wmac是否存在mtfis表中，如果存在
             let mtifi =  await model.Mtfi.findByMac(wmac);
             
-            console.log(mtifi);
-            if(wmac && wmac.indexOf('58:69')>-1){
+            //console.log(mtifi);
+            if(true){
+                console.log('app and device');
                 await model.Sta.updateIsApp(mmac, true);
                 ctx.redirect('http://192.168.0.1');
             }

@@ -94,7 +94,7 @@ module.exports = app => {
             },
             "returning": true
         }).then(([ user, isNew ]) => {
-            console.log(user);
+            //console.log(user);
             console.log("isNew-->"+isNew);
             return [ user.get({ plain: true }), isNew ];
         }).catch(err =>{
