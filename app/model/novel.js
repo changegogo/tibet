@@ -54,8 +54,8 @@ module.exports = app => {
                     where: wh
                 }
             ],
-            // offset: (page - 1) * pageSize,
-            // limit: pageSize
+             offset: (page - 1) * pageSize,
+             limit: pageSize
         }).then( novels => {
             let novels_plain = novels.map( novelmodel => {
                 return novelmodel.get( {plain: true} );

@@ -17,7 +17,7 @@ class NovelController extends Controller {
             return;
         }
         // 类型下的小说
-        let novels = await ctx.service.novel.lists(curType, 1, 10);
+        let novels = await ctx.service.novel.lists(curType, 1, 10000);
         return await ctx.render('home/novel', {
             mac: mac,
             allType: allType,
