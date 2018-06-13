@@ -678,6 +678,7 @@ module.exports = app => {
 
         async adviceCommit(ctx){
             let { mac, type, content } = ctx.request.body;
+            
             if(!mac || !type || !content){
                 ctx.body = {
                     isSuccess: false,
@@ -685,6 +686,8 @@ module.exports = app => {
                 }
                 return;
             }
+            type = type.substring(0,10);
+            content = content.substring(0,200);
 
             let { username } = await model.Sta.findByMAC(mac);
             if(!username){

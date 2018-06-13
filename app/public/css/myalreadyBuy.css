@@ -25,7 +25,10 @@
 }
 .weui-media-box__thumb {
     max-width: 80px;
+    min-width: 80px;
 }
 .weui-media-box__bd {
     padding-top: 10px;
+    padding-right: 15px;
+    overflow: hidden;
 }
