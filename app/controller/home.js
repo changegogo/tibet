@@ -733,6 +733,9 @@ module.exports = app => {
             let wmac = ctx.params.wmac; // 设备mac
             let mmac = ctx.params.mmac; // 手机mac
             let wifiname = ctx.params.wifi;
+            console.log("wmac:"+wmac);
+            console.log("mmac:"+mmac);
+            console.log("wifiname:"+wifiname);
             // 判断wmac是否存在mtfis表中，如果存在
             let mtifi =  await model.Mtfi.findByMac(wmac);
             console.log(mtifi);
