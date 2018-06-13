@@ -51,8 +51,8 @@ class AlipayService extends Service {
                 return_url: `http://39.108.211.168:8083/buy/success?subject=${subject}&description=${description}&mac=${mac}`,
                 outTradeId: myoutTradeId,
                 timeout: '1d',
-                //amount: allrmb,
-                amount: '0.01',
+                amount: allrmb,
+                //amount: '0.01',
                 goodsType: '0'
             });
         } catch (error) {
