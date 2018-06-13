@@ -116,6 +116,7 @@ module.exports = app => {
 
     class Home extends app.Controller {
         async login(ctx) {
+            console.log('login');
             /*try {
                 ctx.validate({
                     "gw_address": {
@@ -377,6 +378,7 @@ module.exports = app => {
         }
 
         async index(ctx) {
+            console.log('index');
             let { gw_id, gw_sn, mac, wifi, tag, device } = ctx.query;
             let [ gw_address, gw_port, ip, username, is_app ] = await Promise.all([
                 model.Mtfi.findByGW(gw_id, gw_sn),
