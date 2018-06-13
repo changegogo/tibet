@@ -53,7 +53,7 @@
         <div class="weui-cells weui-cells_radio">
             <label class="weui-cell weui-check__label" for="wxpay">
                 <div class="weui-cell__bd">
-                    <img src="/public/img/Wechat.svg" /> <span>微信支付</span>
+                    <img src="/public/img/Wechat.svg" /> <span style="color: #bfb8b8;">微信支付</span>
                 </div>
                 <div class="weui-cell__ft">
                     <input class="weui-check" name="radio1" id="wxpay" value="wx" type="radio">
