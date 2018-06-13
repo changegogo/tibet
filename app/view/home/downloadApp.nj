@@ -131,7 +131,7 @@
     <div class="downloadApp-bottom-wrapper">
         <div>
             <div class="andrio-wrapper">
-                <a href="http://192.168.1.140:7001/public/wifi.apk" class="flex flex-align-center flex-pack-center">
+                <a href="http://39.108.211.168:8081/public/tianluwifi.apk" class="flex flex-align-center flex-pack-center">
                     <img src="/public//img/andrio.svg" alt="" style="margin-right: 24px;">
                     <p style="color:#1E96FF;">Android 下载</p>
                 </a>
