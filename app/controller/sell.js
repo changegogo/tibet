@@ -65,7 +65,7 @@ class SellController extends Controller {
             //支付宝回调
             let ali = new Alipay({
                 appId: '2018060860318901',
-                notifyUrl: 'http://39.104.66.16:7001/sell/callback',
+                notifyUrl: 'http://39.108.211.168:8083/sell/callback',
                 rsaPrivate: path.resolve('./pem/sandbox_private.txt'),
                 rsaPublic: path.resolve('./pem/sandbox_ali_public.txt'),
                 sandbox: false,
