@@ -17,6 +17,10 @@ module.exports = app => {
         "price": STRING,    // 小说价格
         "description": STRING, // 简介描述
         "httpurl": STRING,  // 地址
+        "isfree": {// 是否是免费小说 // free免费 pay付费
+            "type": STRING,
+            "default": "pay"
+        }, 
         "created_at": DATE,
         "updated_at": DATE
     } );
@@ -50,8 +54,8 @@ module.exports = app => {
                     where: wh
                 }
             ],
-            offset: (page - 1) * pageSize,
-            limit: pageSize
+            // offset: (page - 1) * pageSize,
+            // limit: pageSize
         }).then( novels => {
             let novels_plain = novels.map( novelmodel => {
                 return novelmodel.get( {plain: true} );

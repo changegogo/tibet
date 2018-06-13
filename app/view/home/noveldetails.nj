@@ -48,6 +48,7 @@
    </div>
     <!-- -------------------------------------select-pay-method-wrapper----------------------------------- -->
     <div class="paymethod-wrapper marginT16 marginlr15">
+        {% if novel.isfree === 'pay' %}
         <h2 class="font_size16">支付方式</h2>
         <div class="weui-cells weui-cells_radio">
             <label class="weui-cell weui-check__label" for="wxpay">
@@ -76,6 +77,13 @@
             去支付  
         </button>
     </div>
+    {% else %}
+        <div class="text-center font_size16">
+        <button id="goread" class="pay-btn orange_bgcolor" httpurl="{{novel.httpurl}}" name="{{novel.name}}">
+            阅读
+        </button>
+    </div>
+    {% endif %}
 </div>
 <script src="/public/js/jquery-3.3.1.min.js"></script>
 <script src="/public/js/bootstrap.min.js"></script>
@@ -120,6 +128,19 @@
                     $(_this).removeAttr('disabled').css({backgroundColor: '#F55F23',cursor: 'pointer'}) ;
                     console.log(err);
                 });
+            }
+        });
+
+        $("#goread").click(function(){
+            var httpurl = $(this).attr("httpurl");
+            var name = $(this).attr("name");
+            if(httpurl && name){
+                console.log('http://'+window.location.host+httpurl+':'+name);
+                try{
+                    qz_android.clickBookLink('http://'+window.location.host+httpurl, name);
+                }catch(err){
+                    alert("请在app中阅读");
+                }
             }
         });
     });
