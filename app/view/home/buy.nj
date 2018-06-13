@@ -101,7 +101,7 @@ label.disabled p {
 
  
     <div class="paymethod-wrapper marginT16 marginlr15">
-        <h1 class="font_size18" style="font-size: 16px;">此流量只在青藏铁路使用</h1>
+        <h1 class="font_size18" style="font-size: 16px;">该流量仅限于天路Wi-Fi内使用</h1>
         <div class="weui-cells weui-cells_radio">
             <label class="weui-cell weui-check__label" for="wxpay">
                 <div class="weui-cell__bd">
