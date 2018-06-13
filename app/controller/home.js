@@ -737,6 +737,8 @@ module.exports = app => {
             let wmac = ctx.params.wmac; // 设备mac
             let mmac = ctx.params.mmac; // 手机mac
             let wifiname = ctx.params.wifi;
+            wmac = wmac.toLowerCase();
+            mmac = mmac.toLowerCase();
             console.log("wmac:"+wmac);
             console.log("mmac:"+mmac);
             console.log("wifiname:"+wifiname);
@@ -744,7 +746,7 @@ module.exports = app => {
             let mtifi =  await model.Mtfi.findByMac(wmac);
             
             //console.log(mtifi);
-            if(true){
+            if(wmac && wmac.indexOf('58:69')>-1){
                 console.log('app and device');
                 await model.Sta.updateIsApp(mmac, true);
                 ctx.redirect('http://192.168.0.1');
