@@ -35,7 +35,7 @@ module.exports = app => {
     NovelType.findAllNovel = function (){
         return NovelType.findAll({
             order: [
-                ["updated_at", "desc"]
+                ["id", "asc"]
             ]
         }).then( noveltypes => {
             let noveltype_plain = noveltypes.map((noveltype)=>{
