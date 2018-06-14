@@ -40,4 +40,4 @@ $(movieScoreDoms).each(function(index,ele) {
    	}
 
    }
-})
+});

@@ -16,7 +16,7 @@
 .moviestype-wrapper > a{
     flex:0 32% ;
     margin-right: 2%;
-    margin-bottom: 24px;
+    /*margin-bottom: 24px;*/
 }
 .moviestype-wrapper > a:nth-child(3n) {
     margin-right: 0;
