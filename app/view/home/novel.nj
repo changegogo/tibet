@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/public/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/public/css/weui.min.css" />
     <link rel="stylesheet" href="/public/css/flex.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+    <link rel="stylesheet" href="/public/css/swiper.min.css">
     <link rel="stylesheet" href="/public/css/common.css">
     <link rel="stylesheet" href="/public/css/bookReader.css">
 </head>
@@ -81,13 +81,11 @@
 </div>
 <script src="/public/js/jquery-3.3.1.min.js"></script>
 <script src="/public/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+<script src="/public/js/swiper.min.js"></script>
 <script src="/public/js/weui.js"></script>
 <script src="/public/js/bookReader.js"></script>
 <script type="text/javascript">
     $('.back').click(function () {
-        alert(24244224)
-        return
         window.location.href = document.referrer;
     });
 </script>
