@@ -579,7 +579,7 @@ module.exports = app => {
             ctx.body = {
                 name: '广告名称',
                 img: '/public/img/1.png',
-                httpurl: 'https://www.baidu.com/'
+                httpurl: 'http://39.108.211.168:8081/public/upload/adv.png'
             };
         }
 

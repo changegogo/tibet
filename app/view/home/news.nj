@@ -33,7 +33,8 @@
         <div class="swiper-container topbanner-swiper-container swiper-container-horizontal">
             <div class="swiper-wrapper">
                 {% for item in header %}
-                    <div class="swiper-slide" ><img src="{{item.img_1}}" alt=""></div>
+                    <!-- <div class="swiper-slide" ><img src="{{item.img_1}}" alt=""></div> -->
+                    <div class="swiper-slide" ><img src="http://39.108.211.168:8081/public/upload/artboard.png" alt=""></div>
                 {% endfor %}
             </div>
             <div class="swiper-pagination topbanner-pagination swiper-pagination-bullets font_size16">
