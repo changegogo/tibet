@@ -86,6 +86,8 @@
 <script src="/public/js/bookReader.js"></script>
 <script type="text/javascript">
     $('.back').click(function () {
+        alert(24244224)
+        return
         window.location.href = document.referrer;
     });
 </script>
