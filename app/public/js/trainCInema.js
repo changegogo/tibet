@@ -1,8 +1,12 @@
 var swiper = new Swiper('.topbanner-swiper-container', {
+    watchSlidesProgress: true,
     pagination: {
         el: '.topbanner-pagination',
-        clickable :true,
+        clickable :true
     },
+    slidesPerView: 'auto',
+    observer: true,//修改swiper自己或子元素时，自动初始化swiper
+    observeParents: true, //修改swiper的父元素时，自动初始化swiper,
     mousewheel: true
 });
 // 根据score change startstyle 
