@@ -65,6 +65,19 @@ module.exports = app => {
             return [ mtfi.get({ plain: true }), isNew ];
         });
     };
+    
+    MTFi.findByLickMac = function(wmac){
+        let value = wmac.slice(0, wmac.length-1)+'%';
+        return MTFi.findOne({
+            where: {
+                gw_id: {
+                    [Op.iLike]: value
+                }
+            }
+        }).then((mtfi)=>{
+            return mtfi && mtfi.get( {plain: true} );
+        })
+    }
 
     MTFi.findByMac = function(wmac){
         return MTFi.findOne({
@@ -74,7 +87,7 @@ module.exports = app => {
         }).then((mtfi)=>{
             return mtfi;
         })
-    }
+    };
 
     return MTFi;
 };
