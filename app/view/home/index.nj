@@ -209,6 +209,7 @@
             }
 		});
 	});
+	sessionStorage.setItem("indexurl", window.location.href); 
 </script>
 </body>
 

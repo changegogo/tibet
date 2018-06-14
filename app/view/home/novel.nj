@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +25,7 @@
 <div class="bookReader-page">
     <!---------------------------nav-------------------------->
     <div class="nav fixed-top bg-white font_size16 flex flex-pack-center">
-        <a href="document.referrer;" class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
+        <a id="goback" class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
         <p class="text-center flex justify-content-center">数字阅读</p>
     </div>
    <div class="bookReader-header">
@@ -65,9 +64,6 @@
                                 </div>
                             </a>
                         {% endfor %}
-                        
-
-
                     </div>
                 </div>
                 <!-------------------------------------------tabtwo-------------------------------------------------->
@@ -84,6 +80,15 @@
 <script src="/public/js/swiper.min.js"></script>
 <script src="/public/js/weui.js"></script>
 <script src="/public/js/bookReader.js"></script>
+<script>
+    $(function(){
+        $("#goback").click(function(){
+            var url = sessionStorage.getItem("indexurl");
+            console.log(url);
+            window.location.href = url;
+        });
+    });
+</script>
 </body>
 
 </html>
