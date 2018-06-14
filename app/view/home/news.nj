@@ -97,7 +97,7 @@
 </div>
 <script src="/public/js/jquery-3.3.1.min.js"></script>
 <script src="/public/js/bootstrap.min.js"></script>
-<script src="/public/swiper.min.js"></script>
+<script src="/public/js/swiper.min.js"></script>
 <script src="/public/js/weui.js"></script>
 <script src="/public/js/zixun.js"></script>
 </body>

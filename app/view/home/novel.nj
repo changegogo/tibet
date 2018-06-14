@@ -26,7 +26,7 @@
 <div class="bookReader-page">
     <!---------------------------nav-------------------------->
     <div class="nav fixed-top bg-white font_size16 flex flex-pack-center">
-        <a href="javascript:;" class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
+        <a href="document.referrer;" class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
         <p class="text-center flex justify-content-center">数字阅读</p>
     </div>
    <div class="bookReader-header">
@@ -84,11 +84,6 @@
 <script src="/public/js/swiper.min.js"></script>
 <script src="/public/js/weui.js"></script>
 <script src="/public/js/bookReader.js"></script>
-<script type="text/javascript">
-    $('.back').click(function () {
-        window.location.href = document.referrer;
-    });
-</script>
 </body>
 
 </html>
