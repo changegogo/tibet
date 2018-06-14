@@ -103,17 +103,21 @@ module.exports = app => {
         });
     };
 
-    Sta.updateIsApp = function(mac, is_app = false){
+    Sta.updateIsApp = function(wmac, mac, is_app = false){
+        let value = wmac.slice(0, wmac.length-1)+'%';
         return Sta.update({
             "is_app": is_app
         },{
             where: {
                 "mac": {
                     [OP.eq]: mac
+                },
+                "gw_id": {
+                    [OP.iLike]: value
                 }
             }
         }).then( c => {
-            console.log(c);
+            console.log('updateIsApp'+c);
             return c;
         }).catch(err=>{
             console.log(err);
