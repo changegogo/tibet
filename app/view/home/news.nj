@@ -69,7 +69,7 @@
                 {% for item in news %}
                     <a href="{{item.httpurl}}" class="weui-media-box weui-media-box_appmsg zixun-list-item">
                         <div class="weui-media-box__bd news-title marginR16">
-                            <p class="weui-media-box__title">{{item.description}}</p>
+                            <p class="weui-media-box__title mui-ellipsis-3">{{item.description}}</p>
                             <div class="weui-media-box__desc">{{item.created_at}}</div>
                         </div>
                         <div class="weui-media-box__hd news-img ">

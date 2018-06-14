@@ -16,6 +16,7 @@ function init(){
     s3.innerHTML=s2.innerHTML;
     timer=setInterval(mar,30) ;
 }
+
 function mar(){
     if(s.scrollLeft >= s2.offsetWidth){
         s.scrollLeft-=s2.offsetWidth;
