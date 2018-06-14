@@ -39,7 +39,8 @@
                     {% for item in header %}
                         <div class="swiper-slide" >
                             <a href="/film/details/{{item.id}}?mac={{mac}}">
-                            <img src="{{item.imgh}}" alt="">
+                            <!-- <img src="{{item.imgh}}" alt=""> -->
+                            <img src="http://39.108.211.168:8081/public/upload/artboard.png" alt="">
                             </a>
                         </div>
                     {% endfor %}

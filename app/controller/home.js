@@ -578,7 +578,7 @@ module.exports = app => {
         async adv(ctx) {
             ctx.body = {
                 name: '广告名称',
-                img: '/public/img/1.png',
+                img: '/public/upload/adv.png',
                 httpurl: 'https://www.baidu.com/'
             };
         }
