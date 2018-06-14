@@ -752,7 +752,7 @@ module.exports = app => {
             console.log(mtifi);
             if(mtifi){
                 console.log('app and device');
-                await model.Sta.updateIsApp(mmac, true);
+                await model.Sta.updateIsApp(wmac, mmac, true);
                 ctx.redirect('http://192.168.0.1');
             }
             else {
