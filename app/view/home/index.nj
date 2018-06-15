@@ -211,6 +211,14 @@
 	});
 	sessionStorage.setItem("indexurl", window.location.href); 
 </script>
+{% if not status %}
+<script>
+$('.news-wrapper').on('click', 'a', function (e) {
+	e.preventDefault() ;
+    weui.topTips('请您先开启外网');
+})
+</script>
+<% endif %>
 </body>
 
 </html>
