@@ -353,11 +353,13 @@ module.exports = app => {
                 let balance = await model.Order.balance(mac, 'FLOW');
                 // 流量是否超限
                 let flow = await model.Counters.remains(mac).then(f => f.plus(balance));
-
+                
+                console.log('LOGIN FLOW STATUS: ', flow);
                 if (flow.isNegative()) {
                     ctx.body = { auth: 0 };
                     return;
                 }
+
 
                 ctx.body = await model.Token.online(gw_id, mac);
             }
@@ -441,9 +443,11 @@ module.exports = app => {
                 ctx.redirect('http://192.168.0.1:2060/wifidog/redirect');
                 return;
             }
+            console.log('token: ', token);
 
             // 上线操作
             let online = `http://${gw_address}:${gw_port}/wifidog/auth?token=${token.token}`;
+            console.log('online: ', online);
             // 下线操作
             let offline = `${online}&logout=1`;
             if(tag === 'app'){ // 表示在app中打开

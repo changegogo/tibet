@@ -83,6 +83,7 @@
 					</a>
 				</div>
 			</div>
+			{% if status %}
 			<div class="news-wrapper">
 				<div class="head-wrapepr weui-cell weui-cell_access">
 					<div class="weui-cell__bd">藏旅新闻</div>
@@ -133,6 +134,7 @@
 					</div>
 				</div>
 			</div>
+			{% endif %}
 			<div class="movies-wrapper">
 				<div class="head-wrapepr weui-cell weui-cell_access">
 					<div class="weui-cell__bd">精品电影</div>
