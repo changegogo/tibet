@@ -1,5 +1,6 @@
 const Controller = require('egg').Controller;
 const _ = require('lodash');
+const request = require('request');
 
 class NovelController extends Controller {
     async lists(ctx){
@@ -29,7 +30,33 @@ class NovelController extends Controller {
     async novedetails(ctx){
         let id = ctx.params.id;
         let mac = ctx.query.mac;
+
         let novel = await ctx.service.novel.findById(id);
+        // 请求盒子的某个资源，判断是否连接的是盒子 true 为连接的盒子，false为没有连接盒子
+        let config = ctx.app.config;
+        let deploy = config.deploy;
+        let deviceaddress = config.deviceaddress;
+        let checkdeviceurl = config.checkdeviceurl;
+        if(deploy){
+            let isDevice =  await new Promise((resolve, reject) => {
+                request({
+                    url: `${checkdeviceurl}`,
+                    timeout: 1000
+                }, function (error, response, body) {
+                    if (!error && response.statusCode == 200) {
+                        let data = JSON.parse(body);
+                        resolve(data.device);
+                    }else{
+                        resolve(false);
+                    }
+                });
+            });
+            if(isDevice){
+                //novel.img = `${deviceaddress}${novel.img}`;
+                novel.httpurl = `${deviceaddress}${novel.httpurl}`;
+            }
+        }
+
         return await ctx.render('home/noveldetails', {
             mac: mac,
             novel: novel

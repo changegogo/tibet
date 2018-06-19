@@ -145,10 +145,19 @@
         if(httpurl && name){
             console.log('http://'+window.location.host+httpurl+':'+name);
             try{
-                qz_android.clickBookLink('http://'+window.location.host+httpurl, name);
+                if(httpurl.indexOf('192.168.0.1') > -1){
+                    qz_android.clickBookLink(httpurl, name);
+                }else{
+                    qz_android.clickBookLink('http://'+window.location.host+httpurl, name);
+                }
             }catch(err){
                 alert("请在app中阅读");
             }
+            /*try{
+                qz_android.clickBookLink('http://'+window.location.host+httpurl, name);
+            }catch(err){
+                alert("请在app中阅读");
+            }*/
         }
     });
     $(".film-container").click(function(){
@@ -159,10 +168,19 @@
         console.log(host+httpurl, host+showimg, name);
         if(httpurl && showimg && name){
             try{
+                if(httpurl.indexOf('192.168.0.1') > -1){
+                    qz_android.playVideo(httpurl, host+showimg, name);
+                }else{
+                    qz_android.playVideo(host+httpurl, host+showimg, name);
+                }
+            }catch(err){
+                alert("请在app中观看");
+            }
+            /*try{
                 qz_android.playVideo(host+httpurl, host+showimg, name);
             }catch(err){
                 alert("请在app中观看");
-            } 
+            } */
         }
     });
 </script>

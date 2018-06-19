@@ -3,6 +3,9 @@ const path = require('path');
 
 module.exports = appInfo => {
     return {
+        deploy: false, // 表示静态资源已经完全部署到了设备上,资源没有部署好的话应该设置为false
+        deviceaddress: "http://192.168.0.1",
+        checkdeviceurl: "http://192.168.0.1/public/check.txt",
         security: {
             csrf: false
         },

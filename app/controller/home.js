@@ -9,6 +9,8 @@ const URLSearchParams = url.URLSearchParams;
 const sendToWormhole = require('stream-wormhole');
 const awaitWriteStream = require('await-stream-ready').write;
 
+const request = require('request');
+
 
 // 检查是否可以发送短信
 const SMS_CODE_IS_OK = `
@@ -622,13 +624,45 @@ module.exports = app => {
                 if(!mac){
                     return;
                 }
+                // 请求盒子的某个资源，判断是否连接的是盒子 true 为连接的盒子，false为没有连接盒子
+                let config = ctx.app.config;
+                let deploy = config.deploy;
+                let deviceaddress = config.deviceaddress;
+                let checkdeviceurl = config.checkdeviceurl;
+                let isDevice = false;
+                if(deploy){
+                    isDevice =  await new Promise((resolve, reject) => {
+                        request({
+                            url: `${checkdeviceurl}`,
+                            timeout: 1000
+                        }, function (error, response, body) {
+                            if (!error && response.statusCode == 200) {
+                                let data = JSON.parse(body);
+                                resolve(data.device);
+                            }else{
+                                resolve(false);
+                            }
+                        });
+                    });
+                }
+                
                 // 校验type
                 let type = ctx.params.type;
                 let data = [];
                 if(type === 'novel') {
                     data = await ctx.service.mynovel.lists(mac);
+                    if(isDevice) {
+                        data.map((item)=>{
+                            item.novel.httpurl = `${deviceaddress}${item.novel.httpurl}`;
+                        });
+                    }
                 }else if(type === 'film'){
                     data = await ctx.service.myfilm.lists(mac);
+                    if(isDevice) {
+                        data.map((item)=>{
+                            item.film.httpurl = `${deviceaddress}${item.film.httpurl}`;
+                        });
+                    }
                 }else if(type === 'wifi'){
                     // 查询购买的flow  todo
                     //data = await ctx.service.mywifi.lists(mac);

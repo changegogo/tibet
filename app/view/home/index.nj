@@ -220,7 +220,7 @@ $('.news-wrapper').on('click', 'a', function (e) {
     weui.topTips('请您先开启外网');
 })
 </script>
-<% endif %>
+{% endif %}
 </body>
 
 </html>

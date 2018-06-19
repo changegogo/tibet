@@ -135,12 +135,21 @@
             var httpurl = $(this).attr("httpurl");
             var name = $(this).attr("name");
             if(httpurl && name){
-                console.log('http://'+window.location.host+httpurl+':'+name);
                 try{
-                    qz_android.clickBookLink('http://'+window.location.host+httpurl, name);
+                    if(httpurl.indexOf('192.168.0.1') > -1){
+                        qz_android.clickBookLink(httpurl, name);
+                    }else{
+                        qz_android.clickBookLink('http://'+window.location.host+httpurl, name);
+                    }
                 }catch(err){
                     alert("请在app中阅读");
                 }
+                //console.log('http://'+window.location.host+httpurl+':'+name);
+                /*try{
+                    qz_android.clickBookLink('http://'+window.location.host+httpurl, name);
+                }catch(err){
+                    alert("请在app中阅读");
+                }*/
             }
         });
     });
