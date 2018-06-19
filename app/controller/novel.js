@@ -36,21 +36,9 @@ class NovelController extends Controller {
         let config = ctx.app.config;
         let deploy = config.deploy;
         let deviceaddress = config.deviceaddress;
-        let checkdeviceurl = config.checkdeviceurl;
+        //let checkdeviceurl = config.checkdeviceurl;
         if(deploy){
-            let isDevice =  await new Promise((resolve, reject) => {
-                request({
-                    url: `${checkdeviceurl}`,
-                    timeout: 1000
-                }, function (error, response, body) {
-                    if (!error && response.statusCode == 200) {
-                        let data = JSON.parse(body);
-                        resolve(data.device);
-                    }else{
-                        resolve(false);
-                    }
-                });
-            });
+            let isDevice =  false;
             if(isDevice){
                 //novel.img = `${deviceaddress}${novel.img}`;
                 novel.httpurl = `${deviceaddress}${novel.httpurl}`;
