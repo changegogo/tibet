@@ -101,7 +101,7 @@ label.disabled p {
 
  
     <div class="paymethod-wrapper marginT16 marginlr15">
-        <h1 class="font_size18" style="font-size: 16px;">该流量仅限于天路Wi-Fi内使用</h1>
+        <h1 class="font_size18" style="font-size: 16px;">公网WiFi流量与通信运营商所提供的手机流量不同，该流量仅限于天路WiFi列车使用。</h1>
         <div class="weui-cells weui-cells_radio">
             <label class="weui-cell weui-check__label" for="wxpay">
                 <div class="weui-cell__bd">
@@ -133,6 +133,21 @@ label.disabled p {
 {% block scripts %}
 <script>
   $(function(){
+    // 进入支付页面，如果没有访问外网权限，临时放行可以访问外网
+    $.ajax({
+        type: "get",
+        url: "http://192.168.1.1:2060/auth?stage=openAuth&encrypt=0&timeout=120",
+        timeout: 3000          // 设置超时时间
+    })
+    .then(function(res){
+      //{"Result": "Success"}
+      console.log(res);
+      alert(res.Result);
+    })
+    .catch(function(err){
+      console.log(err);
+      alert(err.message);
+    });
     $("#gopay").click(function(){
       var payType = $('input[name="radio1"]:checked').val();
       var _this = this;
