@@ -619,6 +619,7 @@ module.exports = app => {
 
         //type (novel,film,wifi)
         async alreadybuy(ctx) {
+            console.log(ctx.query);
             try {
                 let { mac } = ctx.query;
                 if(!mac){
