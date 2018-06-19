@@ -134,7 +134,7 @@ label.disabled p {
 <script>
   $(function(){
     // 进入支付页面，如果没有访问外网权限，临时放行可以访问外网
-    $.ajax({
+    /*$.ajax({
         type: "get",
         url: "http://192.168.1.1:2060/auth?stage=openAuth&encrypt=0&timeout=120",
         timeout: 3000          // 设置超时时间
@@ -147,7 +147,7 @@ label.disabled p {
     .catch(function(err){
       console.log(err);
       alert(err.message);
-    });
+    });*/
     $("#gopay").click(function(){
       var payType = $('input[name="radio1"]:checked').val();
       var _this = this;
