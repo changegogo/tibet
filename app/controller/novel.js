@@ -28,8 +28,12 @@ class NovelController extends Controller {
     }
 
     async novedetails(ctx){
+        let model = ctx.app.model;
         let id = ctx.params.id;
-        let mac = ctx.query.mac;
+        let {mac, wmac} = ctx.query;
+        if(wmac){
+            wmac = wmac.toLowerCase();
+        }
 
         let novel = await ctx.service.novel.findById(id);
         // 请求盒子的某个资源，判断是否连接的是盒子 true 为连接的盒子，false为没有连接盒子
@@ -37,8 +41,8 @@ class NovelController extends Controller {
         let deploy = config.deploy;
         let deviceaddress = config.deviceaddress;
         //let checkdeviceurl = config.checkdeviceurl;
-        if(deploy){
-            let isDevice =  false;
+        if(deploy && wmac){
+            let isDevice =  await model.Mtfi.findByLickMac(wmac);
             if(isDevice){
                 //novel.img = `${deviceaddress}${novel.img}`;
                 novel.httpurl = `${deviceaddress}${novel.httpurl}`;
