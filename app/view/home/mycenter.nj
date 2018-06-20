@@ -92,6 +92,7 @@
                 wmac = qz_android.getWifiMac();
                 alert("wmac:"+wmac);
                 url = url + "&wmac=" + wmac;
+                alert("url:"+url);
                 window.location.href = url;
            }catch(err){
                url = url + "&wmac=" + wmac;
