@@ -143,7 +143,7 @@
 				<div class="body-wrapper weui-flex">
 					{% for item in films %}
 							<div class="weui-flex__item movie-item" >
-								<a href="/film/details/{{item.id}}?mac={{mac}}">
+								<a class="filma" httpurl="/film/details/{{item.id}}?mac={{mac}}">
 									<div class="movie-img">
 										<img class="weui-media-box__thumb" src="{{item.imgv}}" width="100%" height="100%"/>
 									</div>
@@ -218,7 +218,21 @@
 $('.news-wrapper').on('click', 'a', function (e) {
 	e.preventDefault() ;
     weui.topTips('请您先开启外网');
-})
+});
+
+$(".filma").click(function(){
+	var url = $(this).attr("httpurl");
+	var wmac = "";
+	try{
+		wmac = qz_android.getWifiMac();
+		url = url + "&wmac=" + wmac;
+		//alert(url);
+		window.location.href = url;
+	}catch(err){
+		url = url + "&wmac=" + wmac;
+		window.location.href = url;
+	}
+});
 </script>
 {% endif %}
 </body>
