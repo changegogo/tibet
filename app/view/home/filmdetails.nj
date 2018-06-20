@@ -53,7 +53,7 @@
     <!---------------------------------------select-pay-method-wrapper-------------------------------------->
     {% if film.price == '0' %}
     <div class="text-center font_size16">
-        <button id="golook" class="pay-btn orange_bgcolor">
+        <button id="golook" class="pay-btn orange_bgcolor"  httpurl="{{film.httpurl}}" showimg="{{film.imgv}}" name="{{film.name}}">
            观看 
         </button>
     </div>
@@ -134,6 +134,26 @@
                     $(_this).removeAttr('disabled').css({backgroundColor: '#F55F23',cursor: 'pointer'}) ;
                     console.log(err);
                 });
+            }
+        });
+
+        // 观看电影
+        $("#golook").click(function(){
+            var httpurl = $(this).attr("httpurl");
+            var showimg = $(this).attr("showimg");
+            var name = $(this).attr("name");
+            var host = 'http://'+window.location.host;
+            console.log(host+httpurl, host+showimg, name);
+            if(httpurl && showimg && name){
+                try{
+                    if(httpurl.indexOf('192.168.0.1') > -1){
+                        qz_android.playVideo(httpurl, host+showimg, name);
+                    }else{
+                        qz_android.playVideo(host+httpurl, host+showimg, name);
+                    }
+                }catch(err){
+                    alert("请在app中观看");
+                }
             }
         });
     })
