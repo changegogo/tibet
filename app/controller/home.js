@@ -621,7 +621,8 @@ module.exports = app => {
         async alreadybuy(ctx) {
             console.log(ctx.query);
             try {
-                let { mac } = ctx.query;
+                let { mac,wmac } = ctx.query;
+                wmac = wmac.toLowerCase();
                 if(!mac){
                     return;
                 }
@@ -630,9 +631,9 @@ module.exports = app => {
                 let deploy = config.deploy;
                 let deviceaddress = config.deviceaddress;
                 //let checkdeviceurl = config.checkdeviceurl;
-                let isDevice = false;
-                if(deploy){
-                    isDevice =  false;
+                let isDevice =  null;
+                if(deploy && wmac){
+                    isDevice =  await model.Mtfi.findByLickMac(wmac);
                 }
                 
                 // 校验type
@@ -770,13 +771,13 @@ module.exports = app => {
             let wifiname = ctx.params.wifi;
             wmac = wmac.toLowerCase();
             mmac = mmac.toLowerCase();
-            console.log("wmac:"+wmac);
-            console.log("mmac:"+mmac);
-            console.log("wifiname:"+wifiname);
+            //console.log("wmac:"+wmac);
+            //console.log("mmac:"+mmac);
+            //console.log("wifiname:"+wifiname);
             // 判断wmac是否存在mtfis表中，如果存在
             let mtifi =  await model.Mtfi.findByLickMac(wmac);
-            console.log('mtifimtifimtifimtifimtifi');
-            console.log(mtifi);
+            //console.log('mtifimtifimtifimtifimtifi');
+            //console.log(mtifi);
             if(mtifi){
                 console.log('app and device');
                 await model.Sta.updateIsApp(wmac, mmac, true);
