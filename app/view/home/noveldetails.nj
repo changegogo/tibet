@@ -88,7 +88,7 @@
 <script src="/public/js/bootstrap.min.js"></script>
 <script src="/public/js/weui.js"></script>
 <script src="/public/js/bookDetail.js"></script>
-<!-- <script src="http://192.168.1.1:2060/auth?stage=openAuth&encrypt=0&timeout=120"></script> -->
+<script src="http://192.168.1.1:2060/auth?stage=openAuth&encrypt=0&timeout=120"></script>
 <script>
     $(function(){
         $("#gopay").click(function(){
