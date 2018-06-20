@@ -131,7 +131,6 @@ label.disabled p {
 {% endblock %}
 
 {% block scripts %}
-<script src="http://192.168.1.1:2060/auth?stage=openAuth&encrypt=0&timeout=120"></script>
 <script>
   $(function(){
     // 进入支付页面，如果没有访问外网权限，临时放行可以访问外网
@@ -191,4 +190,5 @@ label.disabled p {
     });
   });
 </script>
+<script async src="http://192.168.1.1:2060/auth?stage=openAuth&encrypt=0&timeout=120"></script>
 {% endblock %}
