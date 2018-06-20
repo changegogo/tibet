@@ -39,7 +39,7 @@
                <p class="weui-media-box__title">{{film.name}}</p>
                <p class="color_opacity60">导演：{{film.director}}</p>
                <p class="color_opacity60 flex flex-align-center"><span>评分：</span><span class="score_star_wrapper" ><span class="dark_start_wrapper" value={{film.score}} ></span></span><span>{{film.score}}</span></p>
-                {% if film.price == '0.01' %}
+                {% if film.price == '0' %}
                 <p class="color_opacity60">免费</p>
                 {% else %}
                 <p class="color_opacity60">价格：¥{{film.price}}</p>
@@ -51,7 +51,7 @@
       </p>
    </div>
     <!---------------------------------------select-pay-method-wrapper-------------------------------------->
-    {% if film.price == '0.01' %}
+    {% if film.price == '0' %}
     <div class="text-center font_size16">
         <button id="golook" class="pay-btn orange_bgcolor">
            观看 
