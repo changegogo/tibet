@@ -32,19 +32,19 @@
         <!------------------------------------myalreadyBuy-tab-------------------------------------->
         <div class="flex myalreadybuy-headertab paddinglr15 common_borderBottom">
             {% if type === 'novel' %}
-                <p class="alreadybuy-tab-active flex-1"><a href="/alreadybuy/novel?mac={{mac}}">数字阅读</a></p>
-                <p class="flex-1"><a href="/alreadybuy/film?mac={{mac}}">列车影院</a></p>
-                <p class="flex-1"><a href="/alreadybuy/wifi?mac={{mac}}">天路WiFi</a></p>
+                <p class="alreadybuy-tab-active flex-1"><a class="changetype" httpurl="/alreadybuy/novel?mac={{mac}}">数字阅读</a></p>
+                <p class="flex-1"><a class="changetype" httpurl="/alreadybuy/film?mac={{mac}}">列车影院</a></p>
+                <p class="flex-1"><a class="changetype" httpurl="/alreadybuy/wifi?mac={{mac}}">天路WiFi</a></p>
             {% endif %}
             {% if type === 'film' %}
-                <p class="flex-1"><a href="/alreadybuy/novel?mac={{mac}}">数字阅读</a></p>
-                <p class="alreadybuy-tab-active flex-1"><a href="/alreadybuy/film?mac={{mac}}">列车影院</a></p>
-                <p class="flex-1"><a href="/alreadybuy/wifi?mac={{mac}}">天路WiFi</a></p>
+                <p class="flex-1"><a class="changetype" httpurl="/alreadybuy/novel?mac={{mac}}">数字阅读</a></p>
+                <p class="alreadybuy-tab-active flex-1"><a class="changetype" httpurl="/alreadybuy/film?mac={{mac}}">列车影院</a></p>
+                <p class="flex-1"><a class="changetype" httpurl="/alreadybuy/wifi?mac={{mac}}">天路WiFi</a></p>
             {% endif %}
             {% if type === 'wifi' %}
-                <p class="flex-1"><a href="/alreadybuy/novel?mac={{mac}}">数字阅读</a></p>
-                <p class="flex-1"><a href="/alreadybuy/film?mac={{mac}}">列车影院</a></p>
-                <p class="alreadybuy-tab-active flex-1"><a href="/alreadybuy/wifi?mac={{mac}}">天路WiFi</a></p>
+                <p class="flex-1"><a class="changetype" httpurl="/alreadybuy/novel?mac={{mac}}">数字阅读</a></p>
+                <p class="flex-1"><a class="changetype" httpurl="/alreadybuy/film?mac={{mac}}">列车影院</a></p>
+                <p class="alreadybuy-tab-active flex-1"><a class="changetype" httpurl="/alreadybuy/wifi?mac={{mac}}">天路WiFi</a></p>
             {% endif %}
             
         </div>
@@ -53,7 +53,6 @@
         <div class="myalreadyBuy-list marginlr15">
             {% if type === 'novel' %}
                 {% for item in data %}
-                <span>{{item.novel.httpurl}}</span>
                 <a class="novel-container" httpurl="{{item.novel.httpurl}}" name="{{item.novel.name}}">
                     <div class="flex">
                         <div class="weui-media-box__hd news-img marginR16">
@@ -182,6 +181,20 @@
             }catch(err){
                 alert("请在app中观看");
             } */
+        }
+    });
+    $(".changetype").click(function(){
+        var url = $(this).attr("httpurl");
+        alert(url);
+        // 通过app协议获取连接设备的mac地址，后台去判断是否为列车wifi
+        var wmac = "";
+        try{
+            wmac = qz_android.getWifiMac();
+            url = url + "&wmac=" + wmac;
+            window.location.href = url;
+        }catch(err){
+            url = url + "&wmac=" + wmac;
+            window.location.href = url;
         }
     });
 </script>
