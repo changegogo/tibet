@@ -226,7 +226,7 @@ $(".filma").click(function(){
 	try{
 		wmac = qz_android.getWifiMac();
 		url = url + "&wmac=" + wmac;
-		alert(url);
+		//alert(url);
 		window.location.href = url;
 	}catch(err){
 		url = url + "&wmac=" + wmac;
