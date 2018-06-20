@@ -37,7 +37,7 @@
         <!------------------------------------gameRoom-list-------------------------------------->
         <div class="gameRoom-list">
         {% for item in films %}
-            <a href="/film/details/{{item.id}}?mac={{mac}}" class="weui-media-box weui-media-box_appmsg jingpin-wrapper ">
+            <a httpurl="/film/details/{{item.id}}?mac={{mac}}" class="filma weui-media-box weui-media-box_appmsg jingpin-wrapper ">
                 <div class="marginR16    news-img movieitem-detail-img">
                     <img class="weui-media-box__thumb" src="{{item.imgv}}" width="100%" height="100%"/>
                 </div>

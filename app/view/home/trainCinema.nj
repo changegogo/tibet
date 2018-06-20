@@ -38,7 +38,7 @@
                 <div class="swiper-wrapper">
                     {% for item in header %}
                         <div class="swiper-slide" >
-                            <a href="/film/details/{{item.id}}?mac={{mac}}">
+                            <a class="filma" httpurl="/film/details/{{item.id}}?mac={{mac}}">
                             <!-- <img src="{{item.imgh}}" alt=""> -->
                             <img src="http://39.108.211.168:8081/public/upload/artboard.png" alt="">
                             </a>
@@ -60,7 +60,7 @@
         <div class="marginlr15">
         <!------------------------------------trainCinema-精品推荐-------------------------------------->
         {% for item in middle %}
-            <a href="/film/details/{{item.id}}?mac={{mac}}" class="weui-media-box weui-media-box_appmsg jingpin-wrapper ">
+            <a  httpurl="/film/details/{{item.id}}?mac={{mac}}" class="filma weui-media-box weui-media-box_appmsg jingpin-wrapper ">
                 <div class="weui-media-box__hd news-img ">
                     <img class="weui-media-box__thumb" src="{{item.imgv}}" width="100%" height="100%"/>
                 </div>
@@ -86,7 +86,7 @@
                     </div>
                 <div class="body-wrapper weui-flex moviestype-wrapper">
                     {% for film in item.films %}
-                        <a href="/film/details/{{film.id}}?mac={{mac}}" class="weui-media-box weui-media-box_appmsg ">
+                        <a httpurl="/film/details/{{film.id}}?mac={{mac}}" class="filma weui-media-box weui-media-box_appmsg ">
                         <div class="weui-flex__item movie-item" >
                             <div class="movie-img">
                                 <img class="weui-media-box__thumb" src="{{film.imgh}}" width="100%" height="100%"/>
