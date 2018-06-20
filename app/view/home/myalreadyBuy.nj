@@ -185,12 +185,12 @@
     });
     $(".changetype").click(function(){
         var url = $(this).attr("httpurl");
-        alert(url);
         // 通过app协议获取连接设备的mac地址，后台去判断是否为列车wifi
         var wmac = "";
         try{
             wmac = qz_android.getWifiMac();
             url = url + "&wmac=" + wmac;
+            alert(url);
             window.location.href = url;
         }catch(err){
             url = url + "&wmac=" + wmac;
