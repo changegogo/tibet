@@ -53,6 +53,7 @@
         <div class="myalreadyBuy-list marginlr15">
             {% if type === 'novel' %}
                 {% for item in data %}
+                <span>{{item.novel.httpurl}}</span>
                 <a class="novel-container" httpurl="{{item.novel.httpurl}}" name="{{item.novel.name}}">
                     <div class="flex">
                         <div class="weui-media-box__hd news-img marginR16">

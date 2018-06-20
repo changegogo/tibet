@@ -90,9 +90,9 @@
            var wmac = "";
            try{
                 wmac = qz_android.getWifiMac();
-                alert("wmac:"+wmac);
+                //alert("wmac:"+wmac);
                 url = url + "&wmac=" + wmac;
-                alert("url:"+url);
+                //alert("url:"+url);
                 window.location.href = url;
            }catch(err){
                url = url + "&wmac=" + wmac;
