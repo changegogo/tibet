@@ -622,7 +622,9 @@ module.exports = app => {
             console.log(ctx.query);
             try {
                 let { mac,wmac } = ctx.query;
-                wmac = wmac.toLowerCase();
+                if(wmac){
+                    wmac = wmac.toLowerCase();
+                }
                 if(!mac){
                     return;
                 }
