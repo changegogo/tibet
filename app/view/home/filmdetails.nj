@@ -39,7 +39,11 @@
                <p class="weui-media-box__title">{{film.name}}</p>
                <p class="color_opacity60">导演：{{film.director}}</p>
                <p class="color_opacity60 flex flex-align-center"><span>评分：</span><span class="score_star_wrapper" ><span class="dark_start_wrapper" value={{film.score}} ></span></span><span>{{film.score}}</span></p>
-               <p class="color_opacity60">价格：¥{{film.price}}</p>
+                {% if film.price == '0.01' %}
+                <p class="color_opacity60">免费</p>
+                {% else %}
+                <p class="color_opacity60">价格：¥{{film.price}}</p>
+                {% endif %}
            </div>
        </div>
       <p class="marginT16 color_opacity60 font_size12 mui-ellipsis-3">
@@ -47,6 +51,13 @@
       </p>
    </div>
     <!---------------------------------------select-pay-method-wrapper-------------------------------------->
+    {% if film.price == '0.01' %}
+    <div class="text-center font_size16">
+        <button id="golook" class="pay-btn orange_bgcolor">
+           观看 
+        </button>
+    </div>
+    {% else %}
     <div class="paymethod-wrapper marginT16 marginlr15">
         <h2 class="font_size16">支付方式</h2>
         <div class="weui-cells weui-cells_radio">
@@ -76,6 +87,7 @@
             去支付  
         </button>
     </div>
+    {% endif %}
 </div>
 <script src="/public/js/jquery-3.3.1.min.js"></script>
 <script src="/public/js/bootstrap.min.js"></script>
