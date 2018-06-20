@@ -37,7 +37,7 @@
         <!------------------------------------gameRoom-list-------------------------------------->
         <div class="gameRoom-list">
         {% for item in films %}
-            <a href="/film/details/{{item.id}}?mac={{mac}}" class="weui-media-box weui-media-box_appmsg jingpin-wrapper ">
+            <a class="filma" httpurl="/film/details/{{item.id}}?mac={{mac}}" class="weui-media-box weui-media-box_appmsg jingpin-wrapper ">
                 <div class="marginR16    news-img movieitem-detail-img">
                     <img class="weui-media-box__thumb" src="{{item.imgv}}" width="100%" height="100%"/>
                 </div>
@@ -49,11 +49,6 @@
                 </div>
             </a>
         {% endfor %}
-                
-
-                
-
-
             <!---------------------------------end-------------------------------------------->
         </div>
     </div>
@@ -62,6 +57,20 @@
 <script src="/public/js/bootstrap.min.js"></script>
 <script src="/public/js/weui.js"></script>
 <script type="text/javascript">
+    $(".filma").click(function(){
+        var url = $(this).attr("httpurl");
+        var wmac = "";
+        try{
+            wmac = qz_android.getWifiMac();
+            url = url + "&wmac=" + wmac;
+            alert(url);
+            window.location.href = url;
+        }catch(err){
+            url = url + "&wmac=" + wmac;
+            window.location.href = url;
+        }
+    });
+
     // 根据score change startstyle 
     var movieScoreDoms = $('.dark_start_wrapper') ;
     $(movieScoreDoms).each(function(index,ele) {
