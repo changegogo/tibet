@@ -86,13 +86,26 @@ class FilmController extends Controller {
     async details(ctx) {
         let model = ctx.app.model;
         let filmid = ctx.params.id;
-        let mac = ctx.query.mac;
+        let {mac, wmac} = ctx.query;
+        if(wmac){
+            wmac = wmac.toLowerCase();
+        }
         if(!mac){
             ctx.body = "mac地址不能为空";
             return;
         }
-
         let film = await model.Film.findByIdFilm(filmid);
+
+        let config = ctx.app.config;
+        let deploy = config.deploy;
+        let deviceaddress = config.deviceaddress;
+        if(deploy && wmac){
+            let isDevice =  await model.Mtfi.findByLickMac(wmac);
+            if(isDevice){
+                film.httpurl = `${deviceaddress}${film.httpurl}`;
+            }
+        }
+
         return await ctx.render('home/filmdetails', {
             mac: mac,
             film: film
