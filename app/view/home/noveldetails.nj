@@ -144,12 +144,6 @@
                 }catch(err){
                     alert("请在app中阅读");
                 }
-                //console.log('http://'+window.location.host+httpurl+':'+name);
-                /*try{
-                    qz_android.clickBookLink('http://'+window.location.host+httpurl, name);
-                }catch(err){
-                    alert("请在app中阅读");
-                }*/
             }
         });
     });
