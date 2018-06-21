@@ -4,11 +4,13 @@
 
 {% block styles %}
 <style>
-.back {
+body {
+  padding-top: 0;
+}
+.nav .back {
   position: absolute;
-  left: 0;
+  left: .5rem;
   top: 0;
-  padding: 0.5rem 0.75rem;
 }
 
 .back img {
