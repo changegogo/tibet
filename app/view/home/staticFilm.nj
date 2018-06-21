@@ -70,7 +70,7 @@
                 <div class="tabone">
                     <div class="body-wrapper weui-flex flex-flow-wrap align-content">
                         {% for item in allFilms %}
-                            <a class="novela" href='javascript:;'>
+                            <a class="novela" href='/film/play?url={{item.httpurl}}'>
                                 <div class="weui-flex__item bookReader-item" >
                                     <div class="bookReader-img">
                                         <img class="weui-media-box__thumb" src="{{item.imgv}}" width="100%" height="100%"/>
@@ -85,9 +85,6 @@
                     </div>
                 </div>
                 <!-------------------------------------------tabtwo-------------------------------------------------->
-
-
-
             <!---------------------------------end-------------------------------------------->
             </div>
         </div>

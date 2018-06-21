@@ -1,0 +1,45 @@
+{% extends "home/base.nj" %}
+
+{% block PAGE_TITLE %}{{name}} - 电影{% endblock %}
+
+{% block styles %}
+<style>
+.back {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 0.5rem 0.75rem;
+}
+
+.back img {
+  width: 12px;
+}
+
+.nav-link {
+  margin-bottom: -1px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  color: rgba(0,0,0,.54);
+}
+
+.nav-link:not(:last-child) {
+  margin-right: 2rem;
+}
+</style>
+{% endblock %}
+
+{% block header %}
+<nav class="nav border-bottom justify-content-center bg-white mb-2">
+  <a href="javascript:history.back();" class="back"><img src="/public/img/Chevron@2x.png" /></a>
+  <span class="nav-link">{{name}}</span>
+</nav>
+{% endblock %}
+
+{% block body %}
+<div class="px-2">
+  <video src="{{url}}" width="100%;" controls="controls" ></video>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

@@ -127,6 +127,14 @@ class FilmController extends Controller {
             allFilms: allFilms
         });
     }
+
+    async filmPlay(ctx) {
+        let {url} = ctx.query;
+        url = `http://192.168.0.1${url}`;
+        return await ctx.render('home/playerforweb', {
+            url: url
+        });
+    }
 }
 
 module.exports = FilmController;

@@ -106,4 +106,6 @@ module.exports = app => {
     app.get('/novel/web', 'novel.novelWeb');
     app.get('/film/web', 'film.filmWeb');
     app.get('/game/web', 'game.gameWeb');
+    // web页面观看电影
+    app.get('/film/play', 'film.filmPlay');
 };
