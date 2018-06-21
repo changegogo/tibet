@@ -21,6 +21,34 @@
             margin: 0;
             padding: 0;
         }
+        .nav {
+            position: relative;
+            color: #ffffff;
+            height: 50px;
+            line-height: 50px;
+            background:linear-gradient(180deg,rgba(7,129,255,1),rgba(81,172,252,1));
+        }
+        .nav > a {
+            position: absolute;
+            left: .15rem;
+            top:50%;
+            transform: translateY(-40%);
+            -webkit-transform: translateY(-40%);
+            -ms-transform: translateY(-40%);
+            -moz-transform: translateY(-40%);
+            -o-transform: translateY(-40%);
+        }
+        .nav > p {
+            margin: 0;
+            position: absolute;
+            left:50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+        }
         .top-title {
             font-size: .28rem;
             margin: 0;
@@ -118,6 +146,11 @@
 
 <body>
 <div class="downloadApp-page">
+     <!---------------------------nav-------------------------->
+    <div class="nav fixed-top bg-white font_size16">
+        <a href="javascript:history.back();" class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
+        <p class="text-center">App 下载</p>
+    </div>
     <!---------------------------mycenter-banner-------------------------->
     <div class="downloadApp-top-wrapper">
         <div class="" style="text-align: center;">

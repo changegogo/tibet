@@ -7,7 +7,7 @@ class NovelController extends Controller {
         //let conf = ctx.app.config;
         let model = ctx.app.model;
         let typeid = ctx.params.typeid;
-        let mac = ctx.query.mac;
+        let { mac, tag } = ctx.query;
         // 所有的类型
         let allType = await model.Noveltype.findAllNovel();
         // 选择的类型
@@ -19,12 +19,22 @@ class NovelController extends Controller {
         }
         // 类型下的小说
         let novels = await ctx.service.novel.lists(curType, 1, 10000);
-        return await ctx.render('home/novel', {
-            mac: mac,
-            allType: allType,
-            curType: typeid,
-            novels: novels
-         });
+        if(tag){
+            return await ctx.render('home/staticNovel', {
+                mac: "",
+                allType: allType,
+                curType: typeid,
+                novels: novels
+             });
+        }else{
+            return await ctx.render('home/novel', {
+                mac: mac,
+                allType: allType,
+                curType: typeid,
+                novels: novels
+             });
+        }
+        
     }
 
     async novedetails(ctx){

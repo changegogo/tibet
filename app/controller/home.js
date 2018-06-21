@@ -461,11 +461,12 @@ module.exports = app => {
                 // 青藏铁路介绍
                 let qzintro = conf.qzintroduce;
                 
-                /**
-                 * 3条新闻
-                 * 1 第一页
-                 * 3 3条数
-                 */
+                // 跑马灯新闻
+                let zlnews = await ctx.service.news.listByType('normal');
+                let rollNews = null;
+                if(zlnews.length>0){
+                    rollNews = zlnews[0];
+                }
                 let news = await ctx.service.news.lists(1, 3);
                 // 3个电影 all 表示全部类型
                 let films = await ctx.service.film.lists('all', 1, 3);
@@ -476,6 +477,7 @@ module.exports = app => {
                 return await ctx.render('home/index', {
                     mac: mac,
                     status: token.auth,
+                    //status: true,
                     uname: token.username,
                     online: online,
                     offline: offline,
@@ -483,6 +485,7 @@ module.exports = app => {
                     users: users,
                     flow: flow,
                     qzintro: qzintro,
+                    rollNews: rollNews,
                     news: news,
                     films: films,
                     novels: novels,

@@ -35,7 +35,7 @@ class FilmController extends Controller {
 
     async trainCinema(ctx){
         let model = ctx.app.model;
-        let mac = ctx.query.mac;
+        let { mac, tag } = ctx.query;
         //  查询所有电影的类型
         let filmTypes = await model.Filmtype.findAllFilmType();
         
@@ -46,8 +46,6 @@ class FilmController extends Controller {
         let allTypefilms = [];
         for(let i=0; i < filmTypes.length; i++){
             let filmType = filmTypes[i];
-            //let typeName = filmType.name;
-            //let films = await ctx.service.film.lists(filmType.id, 1, 3);
             allTypefilms.push({
                 typeId: filmType.id,
                 typeName: filmType.name,
@@ -55,32 +53,23 @@ class FilmController extends Controller {
             });
         }
 
-        // // 3个动作电影
-        // let type1 = '';
-        // let action = [];
-        // if(filmTypes.length>0 && filmTypes[0]){
-        //     type1 = filmTypes[0].name;
-        //     action = await ctx.service.film.lists(filmTypes[0].id, 1, 3);
-        // }
-        // // 3个恐怖电影
-        // let type2 = '';
-        // let terror = [];
-        // if(filmTypes.length>0 && filmTypes[1]){
-        //     type2 = filmTypes[1].name;
-        //     terror = await ctx.service.film.lists(filmTypes[1].id, 1, 3);
-        // }
+        if(tag){
+            return await ctx.render('home/staticTrainCinema', {
+                mac: "",
+                header: header,
+                middle: middle,
+                allTypeFilms: allTypefilms
+            });
+        }else{
+            return await ctx.render('home/trainCinema', {
+                mac: mac,
+                header: header,
+                middle: middle,
+                allTypeFilms: allTypefilms
+            });
+        }
         
-        return await ctx.render('home/trainCinema', {
-            mac: mac,
-            header: header,
-            middle: middle,
-            allTypeFilms: allTypefilms,
-
-            // type1: type1,
-            // action: action,
-            // type2: type2,
-            // terror: terror
-        });
+        
     }
 
     async details(ctx) {

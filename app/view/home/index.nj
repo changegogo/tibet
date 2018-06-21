@@ -91,13 +91,14 @@
 				</div>
 				<div class="body-wrapper">
 					<div class="news-notice">
-						<a href="http://m2.people.cn/r/MV8wXzExMDYxNTY1XzEyNzRfMTUyNzYzNDY0NA==">
+						{% if rollNews %}
+						<a href="{{rollNews.httpurl}}">
 							<div class="news-adverst-wrapper" id="news_notice_adverst">
-								<span id="adversit_one">{{qzintro}}</span>
+								<span id="adversit_one">{{rollNews.description}}</span>
 								<span id="adversit_two"></span>
 							</div>
 						</a>
-
+						{% endif %}
 					</div>
 					<div class="news-list weui-panel">
 						{% for item in news%}

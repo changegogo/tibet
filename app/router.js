@@ -99,7 +99,9 @@ module.exports = app => {
     app.post('/wx/sell/msg', 'wxSell.wxCommitSellMsg');
     // 微信支付回调
     app.post('/wx/notify', 'wxSell.wxCallback');
-
-    // 
+    // app访问接口
     app.get('/app/:wmac/:mmac/:wifi', 'home.appcontroller');
+
+    // 旧版web页面游戏，小说，电影的跳转页面
+    //app.get();
 };
