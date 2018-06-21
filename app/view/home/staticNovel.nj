@@ -40,7 +40,7 @@
 <div class="bookReader-page">
     <!---------------------------nav-------------------------->
     <div class="nav fixed-top bg-white font_size16 flex flex-pack-center">
-        <a id="goback" class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
+        <a href="javascript:history.back();" class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
         <p class="text-center flex justify-content-center">数字阅读</p>
     </div>
 
@@ -50,7 +50,7 @@
       <div class="flex flex-pack-justify flex-align-center">
           <img src="/public/img/App_logo.png" class="header-img-logo"/ width="40">
           <div class="header-words-title font_size14" style="max-width: 200px;">
-            <p>更多精彩电影、小说、游戏请下载天路WIFI APP</p>
+            <p>为了更好的保护作者的著作版权，小说需要在天路WIFI APP中阅读。</p>
           </div>
           <button class="download-btn">
             <a href="/app/download">去下载</a>
