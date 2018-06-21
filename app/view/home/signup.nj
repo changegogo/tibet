@@ -6,6 +6,13 @@
   top: 0;
   right: 0;
 }
+.wenxin-tip  p {
+  border-radius: 8px;
+    line-height: 36px;
+    background-color: rgba(24, 144, 255, 0.12);
+    padding: 16px;
+    border: 1px solid rgba(24, 144, 255, 0.38);
+}
 </style>
 {% endblock %}
 
@@ -23,6 +30,11 @@
       </div>
       <button type="submit" class="btn btn-primary btn-block">绑定</button>
     </form>
+    <div class="marginT16 wenxin-tip">
+        <p>
+        温馨提示：首次绑定后，将免费赠送您公网WiFi流量50M。公网WiFi流量与通信运营商所提供的手机流量不同，该流量仅限于成功连接天路WiFi后使用。
+        </p>
+    </div>
   </div>
 </div>
 {% endblock %}
