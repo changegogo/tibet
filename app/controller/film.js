@@ -120,6 +120,13 @@ class FilmController extends Controller {
             films: films
         });
     }
+
+    async filmWeb(ctx){
+        let allFilms = await ctx.service.film.lists('all', 1, 100);
+        return await ctx.render('home/staticFilm', {
+            allFilms: allFilms
+        });
+    }
 }
 
 module.exports = FilmController;

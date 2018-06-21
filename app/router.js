@@ -103,5 +103,7 @@ module.exports = app => {
     app.get('/app/:wmac/:mmac/:wifi', 'home.appcontroller');
 
     // 旧版web页面游戏，小说，电影的跳转页面
-    //app.get();
+    app.get('/novel/web', 'novel.novelWeb');
+    app.get('/film/web', 'film.filmWeb');
+    app.get('/game/web', 'game.gameWeb');
 };

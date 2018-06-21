@@ -271,7 +271,7 @@ body {
       </div>
       <div class="pt-1 h-50">
         <div class="bg-warning h-100 position-relative">
-          <a href="/game/list?tag=old" class="nav-item text-white">
+          <a href="/game/web" class="nav-item text-white">
             <img src="/public/img/ic_help_outline_black_24px.svg" />
             <span>游戏大厅</span>
           </a>
@@ -283,7 +283,7 @@ body {
   <ul class="list-unstyled wifi w-100 mb-2">
     <li class="pr-1">
       <div class="bg-primary h-120px position-relative">
-        <a href="/novel/list/1?tag=old" class="nav-item text-white">
+        <a href="/novel/web" class="nav-item text-white">
           <img src="/public/img/ic_library_books_black_24px.svg" />
           <span>数字阅读</span>
         </a>
@@ -291,7 +291,7 @@ body {
     </li>
     <li class="pl-1">
       <div class="bg-primary h-120px position-relative">
-        <a href="/traincinema/list?tag=old" class="nav-item text-white">
+        <a href="/film/web" class="nav-item text-white">
           <img src="/public/img/ic_movie_black_24px.svg" />
           <span>列车影院</span>
         </a>

@@ -45,10 +45,10 @@
     </div>
     <!-------------------------------download-------------------------------------->
 
-    <div class="web-header-wrapper font_size16 marginT16">
+    <div class="web-header-wrapper font_size16 marginT16 ">
       <div class="flex flex-pack-justify flex-align-center">
           <img src="/public/img/App_logo.png" class="header-img-logo"/ width="40">
-          <div class="header-words-title font_size14" style="max-width: 230px;">
+          <div class="header-words-title font_size14" style="max-width: 200px;">
             <p>更多精彩电影、小说、游戏请下载天路WIFI APP</p>
           </div>
           <button class="download-btn">
@@ -56,38 +56,12 @@
           </button>
       </div>
     </div>
-    <!-------------------------------banner-------------------------------------->
-    <div class="">
-        <h2 style="padding-top: 16px">游戏推荐</h2>
-        <div class="gameRoom-header">
-            <div class="swiper-container gameRoom-swiper-container swiper-container-horizontal">
-                <div class="swiper-wrapper">
-                    {% for item in header %}
-                        <div class="swiper-slide" ><a href='javascript:;'><img src="{{item.imgbig}}" alt=""></a></div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
     <!--------------------------------body--+++++++++++++++++++++++++++++++++-->
     <div class="gameRoom-body font_size16">
-        <!-----------------------------------------game-type------------------------------------------------------>
-        <h2>游戏分类</h2>
-        <div class="gameRoom-type-list flex flex-flow-wrap">
-                {% for item in types %}
-                    <div class="typejump">
-                        <p class="gametype_circle"><img src="/public/img/game_type_01.png"></p>
-                        <p class="gametype_title" style="color:#000;">{{item.name}}</p>
-                    </div>
-                {% endfor %}
-            </div>
-        <!-----------------------------------------------title-header-------------------------->
-        <h2>游戏推荐</h2>
-
         <!------------------------------------gameRoom-list-------------------------------------->
         <div class="gameRoom-list">
-
                 {% for item in games %}
                     <a href='javascript:;' class="weui-media-box weui-media-box_appmsg gameRoom-list-item">
                         <div class="weui-media-box__hd news-img ">
@@ -106,11 +80,6 @@
                         </div>
                     </a>
                 {% endfor %}
-                
-
-                
-
-
             <!---------------------------------end-------------------------------------------->
         </div>
     </div>
@@ -121,5 +90,4 @@
 <script src="/public/js/weui.js"></script>
 <script type="text/javascript" src="/public/js/gameRoom.js"></script>
 </body>
-
 </html>

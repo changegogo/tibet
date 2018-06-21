@@ -41,12 +41,12 @@
     <!---------------------------nav-------------------------->
     <div class="nav fixed-top bg-white font_size16 flex flex-pack-center">
         <a id="goback" class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
-        <p class="text-center flex justify-content-center">数字阅读</p>
+        <p class="text-center flex justify-content-center">列车影院</p>
     </div>
 
     <!-------------------------------download-------------------------------------->
 
-    <div class="web-header-wrapper font_size16 marginT16 marginlr15">
+    <div class="web-header-wrapper font_size16  marginT16 marginlr15">
       <div class="flex flex-pack-justify flex-align-center">
           <img src="/public/img/App_logo.png" class="header-img-logo"/ width="40">
           <div class="header-words-title font_size14" style="max-width: 200px;">
@@ -69,11 +69,11 @@
             <div class="bookReader-list">
                 <div class="tabone">
                     <div class="body-wrapper weui-flex flex-flow-wrap align-content">
-                        {% for item in novels %}
+                        {% for item in allFilms %}
                             <a class="novela" href='javascript:;'>
                                 <div class="weui-flex__item bookReader-item" >
                                     <div class="bookReader-img">
-                                        <img class="weui-media-box__thumb" src="{{item.img}}" width="100%" height="100%"/>
+                                        <img class="weui-media-box__thumb" src="{{item.imgv}}" width="100%" height="100%"/>
                                     </div>
                                     <div class="bookReaderItem-title font_size12">
                                         <p>{{item.name}}</p>
