@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/public/css/flex.css">
     <link rel="stylesheet" href="/public/css/swiper.min.css">
     <link rel="stylesheet" href="/public/css/common.css">
-    <link rel="stylesheet" href="/public/css/trainCinema.css">
+    <link rel="stylesheet" href="/public/css/trainCinema.css?version=2.0">
 </head>
 
 <body>
