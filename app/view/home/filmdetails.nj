@@ -38,7 +38,7 @@
            <div class="weui-media-box__bd news-title marginR16 font_size12">
                <p class="weui-media-box__title">{{film.name}}</p>
                <p class="color_opacity60">导演：{{film.director}}</p>
-               <p class="color_opacity60">主演：{{film.tostar}}</p>
+               <p class="color_opacity60 nowrap">主演：{{film.tostar}}</p>
                <p class="color_opacity60 flex flex-align-center"><span>评分：</span><span class="score_star_wrapper" ><span class="dark_start_wrapper" value={{film.score}} ></span></span><span>{{film.score}}</span></p>
                 {% if film.price == '0' %}
                 <p class="color_opacity60">免费</p>
