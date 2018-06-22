@@ -405,10 +405,10 @@ module.exports = app => {
             console.log("is_app");
             console.log(is_app);
             if (is_app) {
-
                 tag = "app";
             }
-
+            // 设置is_app为false todo
+            // await model.Sta.updateIsApp(gw_id, mac, false);
             // 非法请求
             if (!gw_address || !username) {
                 return;
