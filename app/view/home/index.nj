@@ -212,7 +212,7 @@
             }
 		});
 	});
-	sessionStorage.setItem("indexurl", window.location.href); 
+	localStorage.setItem("indexurl", window.location.href); 
 </script>
 {% if not status %}
 <script>

@@ -83,7 +83,7 @@
 <script>
     $(function(){
         $("#goback").click(function(){
-            var url = sessionStorage.getItem("indexurl");
+            var url = localStorage.getItem("indexurl");
             console.log(url);
             window.location.href = url;
         });
