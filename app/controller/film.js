@@ -122,9 +122,12 @@ class FilmController extends Controller {
     }
 
     async filmWeb(ctx){
+        // Referer
+        let referer = ctx.header.referer;
         let allFilms = await ctx.service.film.lists('all', 1, 100);
         return await ctx.render('home/staticFilm', {
-            allFilms: allFilms
+            allFilms: allFilms,
+            referer: referer
         });
     }
 

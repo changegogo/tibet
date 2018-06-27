@@ -34,9 +34,12 @@ class GameController extends Controller {
     }
 
     async gameWeb(ctx) {
+        // Referer
+        let referer = ctx.header.referer;
         let games = await ctx.service.game.lists('all', 1, 100);
         return await ctx.render('home/staticGame', {
-            games: games
+            games: games,
+            referer: referer
         });
     }
 }
