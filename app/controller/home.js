@@ -494,6 +494,7 @@ module.exports = app => {
                 });  
             }else{ // 表示在弹出页面打开
                 return await ctx.render('home/indexold', {
+                    mac: mac,
                     status: token.auth,
                     uname: token.username,
                     online: online,

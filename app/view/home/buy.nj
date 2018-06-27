@@ -159,9 +159,15 @@ label.disabled p {
           var mac = $("#macspan").text();
           var type = "flow";
           if(!flowid){
-            alert("请选择要购买的流量");
+            //alert("请选择要购买的流量");
+            weui.topTips('请选择要购买的流量');
             return;
           };
+          if(!mac){
+            //alert("非法请求");
+            weui.topTips('非法请求');
+            return;
+          }
           $.ajax({
               type: "post",
               url: "/sell/msg",

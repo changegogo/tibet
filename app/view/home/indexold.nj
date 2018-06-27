@@ -262,7 +262,7 @@ body {
     <li class="pl-1">
       <div class="pb-1 h-50">
         <div class="bg-success h-100 position-relative">
-          <a href="/buy" class="nav-item text-white">
+          <a href="/tianluwifi?mac={{mac}}" class="nav-item text-white">
               <img src="/public/img/ic_wifi_black_24px.svg" />
               <span>外网流量购入</span>
           </a>
@@ -272,7 +272,7 @@ body {
       <div class="pt-1 h-50">
         <div class="bg-warning h-100 position-relative">
           <a href="/game/web" class="nav-item text-white">
-            <img src="/public/img/ic_help_outline_black_24px.svg" />
+            <img src="/public/img/ic_game_hall.svg" />
             <span>游戏大厅</span>
           </a>
           <!-- <span class="todo"></span> -->
