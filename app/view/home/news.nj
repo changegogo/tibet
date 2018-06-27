@@ -42,13 +42,6 @@
                 {% endfor %} -->
             </div>
             <div class="swiper-pagination topbanner-pagination swiper-pagination-bullets font_size16">
-                {% for item in header %}
-                    {% if loop.index0 === 0 %}
-                        <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
-                    {% else %}
-                        <span class="swiper-pagination-bullet"></span>
-                    {% endif %}
-                {% endfor %}
             </div>
         </div>
     </div>
@@ -58,8 +51,8 @@
         <!-----------------------------------------------tab-header-------------------------->
         <div class="flex zixun-body-headertab">
             {% if type === 'normal' %}
-            <a href="/news/list/normal"><p class="common-headertab-active">藏旅新闻</p></a>
-            <a href="/news/list/notice"><p>通知公告</p></a>
+                <a href="/news/list/normal"><p class="common-headertab-active">藏旅新闻</p></a>
+                <a href="/news/list/notice"><p>通知公告</p></a>
             {% else %}
                 <a href="/news/list/normal"><p>藏旅新闻</p></a>
                 <a href="/news/list/notice"><p class="common-headertab-active">通知公告</p></a>

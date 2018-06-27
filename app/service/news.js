@@ -6,7 +6,7 @@ const Service = require('egg').Service;
 function formatDate(date){
     date = new Date(date);
     let month = date.getMonth()+1;
-    let day = date.getDay();
+    let day = date.getDate();
     let hour = date.getHours()>9?date.getHours():'0'+date.getHours();
     let minute = date.getMinutes()>9?date.getMinutes():'0'+date.getMinutes();
     return `${month}月${day}日 ${hour}:${minute}`
