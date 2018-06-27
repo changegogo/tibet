@@ -30,7 +30,7 @@ module.exports = app => {
                 }
             }
         }).then( wifi => {
-            return wifi;
+            return wifi && wifi.get({ plain: true });
         });
     };
 

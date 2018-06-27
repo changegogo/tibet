@@ -87,6 +87,11 @@ class SellService extends Service {
             default:
             break;
         }
+        // 测试mac地址
+        // || mac == '78:9f:70:32:81:ed'
+        if(mac == 'b0:e2:35:74:50:57'){
+            shop.price = '0.01';
+        }
         // 获取支付链接
         let httpurl = "";
         httpurl = await this.service.alipay.getOrderAliPay(subject, description, tradeNumber, shop.price, mac);
