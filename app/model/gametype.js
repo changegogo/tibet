@@ -12,6 +12,7 @@ module.exports = app => {
             "primaryKey": true
         },
         "name": STRING,
+        "img": STRING,
         "created_at": DATE,
         "updated_at": DATE
     } );
