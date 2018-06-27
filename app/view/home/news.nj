@@ -29,7 +29,7 @@
         <p class="text-center flex justify-content-center">资讯</p>
     </div>
     <!----------------------------------------banner---------------------------------------------------->
-    <div class="zixun-header">
+    <div class="zixun-header font_size16">
         <div class="swiper-container topbanner-swiper-container swiper-container-horizontal">
             <div class="swiper-wrapper">
                 <div class="swiper-slide" ><img src="/public/img/head_1.jpg" alt=""></div>
