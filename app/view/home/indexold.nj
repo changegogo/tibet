@@ -267,7 +267,7 @@ body {
               <span>外网流量购入</span>
           </a>
           {% if mac == "b0:e2:35:74:50:57" %}
-          {% elif mac == "8c:85:90:cf:08:2e" %}
+          {% elif mac == "78:9f:70:32:81:ed" %}
           {% else %}
           <span class="todo"></span>
           {% endif %}
