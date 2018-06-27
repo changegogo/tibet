@@ -9,7 +9,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="format-detection" content="telephone=no">
-    <title>青藏WIFI | WIFI | 天路WIFI</title>
+    <title>天路WiFi</title>
     <script type="text/javascript">
         document.getElementsByTagName('html')[0].style.fontSize = document.documentElement.clientWidth/3.75 +'px';
     </script>
@@ -50,7 +50,7 @@
       <div class="flex flex-pack-justify flex-align-center">
           <img src="/public/img/App_logo.png" class="header-img-logo"/ width="40">
           <div class="header-words-title font_size14" style="max-width: 200px;">
-            <p>更多精彩电影、小说、游戏请下载天路WIFI APP</p>
+            <p>更多精彩电影、小说、游戏请下载天路WiFi APP</p>
           </div>
           <button class="download-btn">
             <a href="/app/download">去下载</a>

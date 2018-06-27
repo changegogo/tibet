@@ -197,7 +197,7 @@ body {
       <div class="flex flex-pack-justify flex-align-center">
           <img src="/public/img/App_logo.png" class="header-img-logo"/>
           <div class="header-words-title">
-            <p>更多精彩电影、小说、游戏请下载天路WIFI APP</p>
+            <p>更多精彩电影、小说、游戏请下载天路WiFi APP</p>
           </div>
           <button class="download-btn">
             <a href="/app/download">去下载</a>
@@ -208,7 +208,7 @@ body {
 <div class="wifi-status">
   <div class="media">
     <img class="align-self-center mr-1 ico" src="/public/img/ic_wifi_black_24px.svg" />
-    <div class="media-body text-white">天路WIFI <span class="float-right">已连接 {{users}} 人</span></div>
+    <div class="media-body text-white">天路WiFi <span class="float-right">已连接 {{users}} 人</span></div>
   </div>
 </div>
 <div id="carousel" class="carousel slide mb-2" data-ride="carousel">

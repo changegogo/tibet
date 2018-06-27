@@ -67,7 +67,7 @@ label.disabled p {
 {% block header %}
 <div class="nav fixed-top bg-white  flex flex-pack-center">
   <a href="javascript:history.back();" class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
-  <p class="text-center flex justify-content-center" style="width: 100%;font-size: 17px">天路WIFI</p>
+  <p class="text-center flex justify-content-center" style="width: 100%;font-size: 17px">天路WiFi</p>
 </div>
 {% endblock %}
 

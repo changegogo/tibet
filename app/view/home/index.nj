@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="format-detection" content="telephone=no">
-<title>青藏WIFI | WIFI | 天路WIFI</title>
+<title>天路WiFi</title>
 <script type="text/javascript">
 	document.getElementsByTagName('html')[0].style.fontSize = document.documentElement.clientWidth/3.75 +'px';
 </script>
@@ -86,7 +86,7 @@
 			{% if status %}
 			<div class="news-wrapper">
 				<div class="head-wrapepr weui-cell weui-cell_access">
-					<div class="weui-cell__bd">藏旅新闻</div>
+					<div class="weui-cell__bd">青藏铁路资讯</div>
 					<!-- <div class="weui-cell__ft more"><a href="/news/list/normal">更多</a></div> -->
 				</div>
 				<div class="body-wrapper">
