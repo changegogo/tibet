@@ -32,10 +32,14 @@
     <div class="zixun-header">
         <div class="swiper-container topbanner-swiper-container swiper-container-horizontal">
             <div class="swiper-wrapper">
-                {% for item in header %}
-                    <!-- <div class="swiper-slide" ><img src="{{item.img_1}}" alt=""></div> -->
+                <div class="swiper-slide" ><img src="/public/img/head_1.jpg" alt=""></div>
+                <div class="swiper-slide" ><img src="/public/img/head_2.jpg" alt=""></div>
+                <div class="swiper-slide" ><img src="/public/img/head_3.jpg" alt=""></div>
+                <div class="swiper-slide" ><img src="/public/img/head_4.jpg" alt=""></div>
+                <!-- {% for item in header %}
+                    <div class="swiper-slide" ><img src="{{item.img_1}}" alt=""></div>
                     <div class="swiper-slide" ><img src="http://39.108.211.168:8081/public/upload/artboard.png" alt=""></div>
-                {% endfor %}
+                {% endfor %} -->
             </div>
             <div class="swiper-pagination topbanner-pagination swiper-pagination-bullets font_size16">
                 {% for item in header %}
