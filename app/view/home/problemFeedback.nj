@@ -129,7 +129,7 @@
                 if(res.isSuccess){
                     $("#content").val("");
                 }
-                alert(res.msg);
+                weui.topTips(res.msg);
             })
             .catch(function(err){
                 console.log(err);

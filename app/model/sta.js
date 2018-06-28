@@ -117,11 +117,11 @@ module.exports = app => {
                 }
             }
         }).then( c => {
-            console.log('updateIsApp'+c);
+            //console.log('updateIsApp'+c);
             return c;
         }).catch(err=>{
             console.log(err);
-        })
+        });
     }
 
     Sta.authMobile = function (mac, mobile) {

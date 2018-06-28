@@ -2,7 +2,7 @@
  * advice model
  */
 module.exports = app => {
-    const { STRING, TEXT, DATE, UUID, UUID4, INTEGER, FLOAT, DOUBLE} = app.Sequelize;
+    const { STRING, BOOLEAN, TEXT, DATE, UUID, UUID4, INTEGER, FLOAT, DOUBLE} = app.Sequelize;
     const OP = app.Sequelize.Op;
 
     const Advices = app.model.define('advice', {
@@ -14,6 +14,10 @@ module.exports = app => {
         "username": STRING,
         "type": STRING,
         "content": STRING,
+        "review": {
+            "type": BOOLEAN,
+            "defaultValue": false
+        },
         "created_at": DATE,
         "updated_at": DATE
     } );
@@ -67,6 +71,29 @@ module.exports = app => {
             return count;
         });
     };
+
+    Advices.findRecordByUserAndReview = function(username) {
+        return Advices.findOne({
+            where: {
+                username: username,
+                review: false
+            }
+        }).then( advice => {
+            return advice && advice.get( {plain: true} );
+        });
+    }
+
+    Advices.updateReviewById = function(id){
+        return Advices.update({
+            "review": true
+        },{
+            where: {
+                id: id
+            }
+        }).then(c => {
+            return c;
+        });
+    }
 
     return Advices;
 }

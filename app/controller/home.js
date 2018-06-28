@@ -747,8 +747,17 @@ module.exports = app => {
                 }
                 return;
             }
+            // 查询是否有未审阅的反馈
+            let advice = await model.Advice.findRecordByUserAndReview(username);
+            if(advice){
+                ctx.body = {
+                    isSuccess: false,
+                    msg: '正在处理上一次反馈，请稍候'
+                }
+                return;
+            }
             
-            let advice = await model.Advice.createAdvice({
+            advice = await model.Advice.createAdvice({
                 type: type,
                 content: content,
                 username: username
@@ -759,6 +768,10 @@ module.exports = app => {
                     isSuccess: true,
                     msg: '提交成功'
                 }
+                // 开启定时器，30分钟后将自动审阅
+                setTimeout(()=>{
+                    model.Advice.updateReviewById(advice.id);
+                }, 1800000);
             }else{
                 ctx.body = {
                     isSuccess: false,
