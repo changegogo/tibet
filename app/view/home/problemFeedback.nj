@@ -65,7 +65,7 @@
             <div class="weui-cells weui-cells_form paddinglr15" style="margin-top: 0;">
                 <div class="weui-cell">
                     <div class="weui-cell__bd">
-                        <textarea id="content" class="weui-textarea font_size15" placeholder="请输入反馈，我们将为你不断改进请输入反馈，我们将为你不断改进请输入反馈，我们将为你不断改进请输入反馈，我们将为你不断改进请输入反馈，我们将为你不断改进请输入反馈，我们将为你不断改进" rows="4"></textarea>
+                        <textarea id="content" class="weui-textarea font_size15" placeholder="请输入您的车次和反馈，我们将为您不断改进。" rows="4"></textarea>
                         <div hidden class="weui-textarea-counter font_size15"><span>0</span>/200</div>
                     </div>
                 </div>
