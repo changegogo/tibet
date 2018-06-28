@@ -138,8 +138,29 @@
             }
         });
 
+        window.playVideo = function playVideo(obj, device) {
+            if(device === 'Android'){
+                qz_android.playVideo(obj.httpurl, obj.img, obj.name);
+            }else{
+                window.webkit.messageHandlers.playVideo.postMessage(obj);
+            }
+        }
+
+
         // 观看电影
         $("#golook").click(function(){
+            // 判断设备信息
+            var device = "";
+            if(/Android/i.test(navigator.userAgent)) {
+                device = "Android";
+            } else if(/iPhone/i.test(navigator.userAgent)) {
+                device = "iPhone";
+            }
+            if(!device){
+                alert("设备不支持");
+                return;
+            }
+
             var httpurl = $(this).attr("httpurl");
             var showimg = $(this).attr("showimg");
             var name = $(this).attr("name");
@@ -148,9 +169,21 @@
             if(httpurl && showimg && name){
                 try{
                     if(httpurl.indexOf('192.168.0.1') > -1){
-                        qz_android.playVideo(httpurl, host+showimg, name);
+                        window.playVideo({httpurl: httpurl, img: host+showimg, name: name}, device);
+
+                        /*if(device === "Android"){
+                            qz_android.playVideo(httpurl, host+showimg, name);
+                        }else{
+                            window.playVideo({httpurl: httpurl, img: host+showimg, name: name}, device);
+                        }*/
                     }else{
-                        qz_android.playVideo(host+httpurl, host+showimg, name);
+                        window.playVideo({httpurl: host+httpurl, img: host+showimg, name: name}, device);
+
+                        /*if(device === "Android"){
+                            qz_android.playVideo(host+httpurl, host+showimg, name);
+                        }else{
+                            window.playVideo({httpurl: host+httpurl, img: host+showimg, name: name}, device);
+                        }*/
                     }
                 }catch(err){
                     alert("请在app中观看");
