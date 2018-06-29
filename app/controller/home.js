@@ -30,7 +30,7 @@ const SMS_CODE_IS_OK = `
     local VAL_VAL = ARGV[2]
     local VAL_TTL = ARGV[4] or 900
     local TTL_TTL = ARGV[5] or 60
-    local MAX_THRESHOLD_OF_DAY = ARGV[6] or 500
+    local MAX_THRESHOLD_OF_DAY = ARGV[6] or 5
 
     -- 倒计时
     if (tonumber(redis.call('exists', TTL_KEY)) ~= 0) then
