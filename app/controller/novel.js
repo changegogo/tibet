@@ -57,7 +57,7 @@ class NovelController extends Controller {
     // web页面查询全部小说
     async novelWeb(ctx) {
         // Referer
-        let referer = ctx.header.referer;
+        let {referer} = ctx.query;
         let novels = await ctx.service.novel.lists('all', 1, 100);
         return await ctx.render('home/staticNovel', {
             novels: novels,

@@ -598,7 +598,7 @@ module.exports = app => {
             if(!mac){
                 return;
             }
-            let referer = ctx.header.referer;
+            let {referer} = ctx.query;
             let wifis = await ctx.service.wifi.lists();
             return await ctx.render('home/buy', {
                 mac: mac,
