@@ -262,11 +262,13 @@ body {
     <li class="pl-1">
       <div class="pb-1 h-50">
         <div class="bg-success h-100 position-relative">
-          <a href="#" class="nav-item text-white">
+          <a href="/tianluwifi?mac={{mac}}" class="nav-item text-white">
               <img src="/public/img/ic_wifi_black_24px.svg" />
               <span>购买流量</span>
           </a>
+          {% if mac != "b0:e2:35:74:50:57" %}
           <span class="todo"></span>
+          {% endif %}
         </div>
       </div>
       <div class="pt-1 h-50">
