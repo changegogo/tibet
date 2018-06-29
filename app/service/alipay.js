@@ -12,7 +12,7 @@ class AlipayService extends Service {
     async getAliPay(req, res){
         let ali = new Alipay({
             appId: '2018060860318901',
-            notifyUrl: 'http://39.108.211.168:8083/sell/callback',
+            notifyUrl: 'http://39.108.211.168:8081/sell/callback',
             rsaPrivate: path.resolve('./pem/sandbox_private.txt'),
             rsaPublic: path.resolve('./pem/sandbox_ali_public.txt'),
             sandbox: false,
@@ -37,7 +37,7 @@ class AlipayService extends Service {
     async getOrderAliPay(subject, description, myoutTradeId, allrmb, mac){
         let ali = new Alipay({
             appId: '2018060860318901',
-            notifyUrl: 'http://39.108.211.168:8083/sell/callback',
+            notifyUrl: 'http://39.108.211.168:8081/sell/callback',
             rsaPrivate: path.resolve('./pem/sandbox_private.txt'),
             rsaPublic: path.resolve('./pem/sandbox_ali_public.txt'),
             sandbox: false,
@@ -48,7 +48,7 @@ class AlipayService extends Service {
             params = ali.wapPay({
                 body: description,
                 subject: subject,
-                return_url: `http://39.108.211.168:8083/buy/success?subject=${subject}&description=${description}&mac=${mac}`,
+                return_url: `http://39.108.211.168:8081/buy/success?subject=${subject}&description=${description}&mac=${mac}`,
                 outTradeId: myoutTradeId,
                 timeout: '1d',
                 amount: allrmb,
@@ -87,7 +87,7 @@ class AlipayService extends Service {
             tradeNo = sell.tradeNo;
         let ali = new Alipay({
             appId: '2017122001025887',
-            notify_url: 'http://39.108.211.168:8083/sell/callback',
+            notify_url: 'http://39.108.211.168:8081/sell/callback',
             //return_url:'http://39.108.211.168/presale.html',
             rsaPrivate: path.resolve('./pem/sandbox_private.txt'),
             rsaPublic: path.resolve('./pem/sandbox_ali_public.txt'),
