@@ -595,9 +595,14 @@ module.exports = app => {
 
         async tianluwifi(ctx){
             let mac = ctx.query.mac;
+            if(!mac){
+                return;
+            }
+            let referer = ctx.header.referer;
             let wifis = await ctx.service.wifi.lists();
             return await ctx.render('home/buy', {
                 mac: mac,
+                referer: referer,
                 wifis: wifis
             });
         }
