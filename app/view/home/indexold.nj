@@ -327,7 +327,12 @@ $('#switch-cp').one('click.radio', function (ev) {
 
 $('.jumpa').click(function(){
   var httpurl = $(this).attr('httpurl');
-  httpurl = httpurl +'?referer='+ encodeURIComponent(window.location.href);
+  if(httpurl.indexOf("?")>-1){
+    httpurl = httpurl +'&referer='+ encodeURIComponent(window.location.href);
+  }else{
+    httpurl = httpurl +'?referer='+ encodeURIComponent(window.location.href);
+  }
+  
   window.location.href = httpurl;
 });
 </script>
