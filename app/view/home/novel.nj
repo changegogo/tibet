@@ -84,7 +84,7 @@
     $(function(){
         $("#goback").click(function(){
             var url = localStorage.getItem("indexurl");
-            console.log(url);
+            //console.log(url);
             window.location.href = url;
         });
 

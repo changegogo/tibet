@@ -50,8 +50,9 @@
     $(function(){
         $("#goback").click(function(){
             let mac = $(this).val();
-            //alert(mac);
-            window.location.href = "/wifi/login?mac="+mac+"&tag=app";
+            var url = localStorage.getItem("indexurl");
+            window.location.href = url;
+            //window.location.href = "/wifi/login?mac="+mac+"&tag=app";
         });
     });
 </script>
