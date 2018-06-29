@@ -89,7 +89,7 @@ class SellService extends Service {
         }
         // 测试mac地址
         // || mac == '78:9f:70:32:81:ed'
-        if(mac == 'b0:e2:35:74:50:57'){
+        if(mac == 'b0:e2:35:74:50:57' || mac == '8c:85:90:cb:e6:26'){
             shop.price = '0.01';
         }
         // 获取支付链接
