@@ -72,7 +72,7 @@ class SellService extends Service {
             result = await model.Order.insertData(shopSell);
 
             subject = conf.subjects[0];
-            description = `您已成功购买 ${shop.amount} 流量，打开访问开关即可成功访问外网`;
+            description = `您已成功购买 ${shop.amount/1024}GB 流量，打开访问开关即可成功访问外网`;
             break;
             case 'film':
             result = await model.Myfilm.insertData(shopSell);
