@@ -130,16 +130,37 @@
                 });
             }
         });
-
+        window.readBook = function readBook(obj, device) {
+            if(device === 'Android'){
+                qz_android.clickBookLink(obj.httpurl, obj.name);
+            }else{
+                window.webkit.messageHandlers.clickBookLink.postMessage(obj);
+            }
+        }
+        // 阅读小说
         $("#goread").click(function(){
+            // 判断设备信息
+            var device = "";
+            if(/Android/i.test(navigator.userAgent)) {
+                device = "Android";
+            } else if(/iPhone/i.test(navigator.userAgent)) {
+                device = "iPhone";
+            }
+            if(!device){
+                alert("设备不支持");
+                return;
+            }
             var httpurl = $(this).attr("httpurl");
             var name = $(this).attr("name");
+            var host = 'http://'+window.location.host;
             if(httpurl && name){
                 try{
                     if(httpurl.indexOf('192.168.0.1') > -1){
-                        qz_android.clickBookLink(httpurl, name);
+                        window.readBook({httpurl: httpurl, name: name}, device);
+                        //qz_android.clickBookLink(httpurl, name);
                     }else{
-                        qz_android.clickBookLink('http://'+window.location.host+httpurl, name);
+                        window.readBook({httpurl: host + httpurl, name: name}, device);
+                        //qz_android.clickBookLink('http://'+window.location.host+httpurl, name);
                     }
                 }catch(err){
                     alert("请在app中阅读");

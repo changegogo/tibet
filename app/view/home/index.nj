@@ -204,9 +204,25 @@
 <script>
 	$(function(){
 		$(".gamejump").click(function(){
+			// 判断设备信息
+            var device = "";
+            if(/Android/i.test(navigator.userAgent)) {
+                device = "Android";
+            } else if(/iPhone/i.test(navigator.userAgent)) {
+                device = "iPhone";
+            }
+            if(!device){
+                alert("设备不支持");
+                return;
+            }
+
 			var httpurl = $(this).attr('httpurl');
 			try{
-                qz_android.playGame(httpurl);
+				if(device === 'Android'){
+					qz_android.playGame(httpurl);
+				}else{
+					window.webkit.messageHandlers.playGame.postMessage({httpurl: httpurl});
+				}
             }catch(err){
                 window.location.href = httpurl;
             }
