@@ -89,9 +89,25 @@
         });
 
         $(".novela").click(function(){
-            var url = $(this).attr("httpurl");
-            // 通过app协议获取连接设备的mac地址，后台去判断是否为列车wifi
+            // 判断设备信息
+            var device = "";
+            if(/Android/i.test(navigator.userAgent)) {
+                device = "Android";
+            } else if(/iPhone/i.test(navigator.userAgent)) {
+                device = "iPhone";
+            }
+            if(!device){
+                alert("设备不支持");
+                return;
+            }
             var wmac = "";
+            if(device === 'Android'){
+                wmac = qz_android.getWifiMac();
+            }else {
+                wmac = window.webkit.messageHandlers.getMac.postMessage(null);
+            }
+
+            var url = $(this).attr("httpurl");
             try{
                 wmac = qz_android.getWifiMac();
                 url = url + "&wmac=" + wmac;
