@@ -170,20 +170,8 @@
                 try{
                     if(httpurl.indexOf('192.168.0.1') > -1){
                         window.playVideo({httpurl: httpurl, img: host+showimg, name: name}, device);
-
-                        /*if(device === "Android"){
-                            qz_android.playVideo(httpurl, host+showimg, name);
-                        }else{
-                            window.playVideo({httpurl: httpurl, img: host+showimg, name: name}, device);
-                        }*/
                     }else{
                         window.playVideo({httpurl: host+httpurl, img: host+showimg, name: name}, device);
-
-                        /*if(device === "Android"){
-                            qz_android.playVideo(host+httpurl, host+showimg, name);
-                        }else{
-                            window.playVideo({httpurl: host+httpurl, img: host+showimg, name: name}, device);
-                        }*/
                     }
                 }catch(err){
                     alert("请在app中观看");
