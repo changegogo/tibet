@@ -253,7 +253,7 @@ $(".filma").click(function(){
 	if(device === 'Android'){
 		wmac = qz_android.getWifiMac();
 	}else {
-		wmac = window.webkit.messageHandlers.getMac.postMessage(null);
+		wmac = window.webkit.messageHandlers.getWifiMac.postMessage(null);
 	}
 	var url = $(this).attr("httpurl");
 	try{
