@@ -588,7 +588,7 @@ module.exports = app => {
         async adv(ctx) {
             ctx.body = {
                 name: '广告名称',
-                img: '/public/upload/adv.png',
+                img: '/public/upload/adv.jpg',
                 httpurl: 'http://www.peoplerail.com/rail/'
             };
         }
