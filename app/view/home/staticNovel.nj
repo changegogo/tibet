@@ -54,7 +54,7 @@
       <div class="flex flex-pack-justify flex-align-center">
           <img src="/public/img/App_logo.png" class="header-img-logo"/ width="40">
           <div class="header-words-title font_size14" style="max-width: 200px;">
-            <p>为了更好的保护作者的著作版权，小说需要在天路WiFi APP中阅读。</p>
+            <p style="font-size: 13px;">为了更好的保护作者的著作版权，小说需要在天路WiFi APP中阅读。</p>
           </div>
           <button class="download-btn">
             <a href="/app/download">去下载</a>

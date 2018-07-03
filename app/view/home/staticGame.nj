@@ -53,7 +53,7 @@
       <div class="flex flex-pack-justify flex-align-center">
           <img src="/public/img/App_logo.png" class="header-img-logo"/ width="40">
           <div class="header-words-title font_size14" style="max-width: 200px;">
-            <p>游戏需要下载天路WiFi APP使用，精彩好玩，赶快下载！</p>
+            <p style="font-size: 13px;">游戏需要下载天路WiFi APP使用，精彩好玩，赶快下载！</p>
           </div>
           <button class="download-btn">
             <a href="/app/download">去下载</a>
