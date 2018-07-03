@@ -164,7 +164,6 @@
             var showimg = $(this).attr("showimg");
             var name = $(this).attr("name");
             var host = 'http://'+window.location.host;
-            //console.log(host+httpurl, host+showimg, name);
             if(httpurl && showimg && name){
                 try{
                     if(httpurl.indexOf('192.168.0.1') > -1){

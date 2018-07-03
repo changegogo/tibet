@@ -128,9 +128,7 @@
             }
             var url = $(this).attr("httpurl");
             try{
-                wmac = qz_android.getWifiMac();
                 url = url + "&wmac=" + wmac;
-                //alert(url);
                 window.location.href = url;
             }catch(err){
                 url = url + "&wmac=" + wmac;

@@ -157,10 +157,8 @@
                 try{
                     if(httpurl.indexOf('192.168.0.1') > -1){
                         window.readBook({httpurl: httpurl, name: name}, device);
-                        //qz_android.clickBookLink(httpurl, name);
                     }else{
                         window.readBook({httpurl: host + httpurl, name: name}, device);
-                        //qz_android.clickBookLink('http://'+window.location.host+httpurl, name);
                     }
                 }catch(err){
                     alert("请在app中阅读");

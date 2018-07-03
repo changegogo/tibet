@@ -139,48 +139,70 @@
 <script src="/public/js/weui.js"></script>
 <script src="/public/js/myalreadyBuy.js"></script>
 <script>
+    // 判断设备信息
+    var device = "";
+    if(/Android/i.test(navigator.userAgent)) {
+        device = "Android";
+    } else if(/iPhone/i.test(navigator.userAgent)) {
+        device = "iPhone";
+    }
+
+    window.readBook = function readBook(obj, device) {
+        if(device === 'Android'){
+            qz_android.clickBookLink(obj.httpurl, obj.name);
+        }else{
+            window.webkit.messageHandlers.clickBookLink.postMessage(obj);
+        }
+    }
+
+    window.playVideo = function playVideo(obj, device) {
+        if(device === 'Android'){
+            qz_android.playVideo(obj.httpurl, obj.img, obj.name);
+        }else{
+            window.webkit.messageHandlers.playVideo.postMessage(obj);
+        }
+    }
+    
     $(".novel-container").click(function(){
+        if(!device){
+            alert("设备不支持");
+            return;
+        }
         var httpurl = $(this).attr("httpurl");
         var name = $(this).attr("name");
+        var host = 'http://'+window.location.host;
         if(httpurl && name){
-            console.log('http://'+window.location.host+httpurl+':'+name);
             try{
                 if(httpurl.indexOf('192.168.0.1') > -1){
-                    qz_android.clickBookLink(httpurl, name);
+                    window.readBook({httpurl: httpurl, name: name}, device);
                 }else{
-                    qz_android.clickBookLink('http://'+window.location.host+httpurl, name);
+                    window.readBook({httpurl: host + httpurl, name: name}, device);
                 }
             }catch(err){
                 alert("请在app中阅读");
             }
-            /*try{
-                qz_android.clickBookLink('http://'+window.location.host+httpurl, name);
-            }catch(err){
-                alert("请在app中阅读");
-            }*/
         }
     });
     $(".film-container").click(function(){
+        if(!device){
+            alert("设备不支持");
+            return;
+        }
         var httpurl = $(this).attr("httpurl");
         var showimg = $(this).attr("showimg");
         var name = $(this).attr("name");
         var host = 'http://'+window.location.host;
-        console.log(host+httpurl, host+showimg, name);
+        
         if(httpurl && showimg && name){
             try{
                 if(httpurl.indexOf('192.168.0.1') > -1){
-                    qz_android.playVideo(httpurl, host+showimg, name);
+                    window.playVideo({httpurl: httpurl, img: host+showimg, name: name}, device);
                 }else{
-                    qz_android.playVideo(host+httpurl, host+showimg, name);
+                    window.playVideo({httpurl: host+httpurl, img: host+showimg, name: name}, device);
                 }
             }catch(err){
                 alert("请在app中观看");
             }
-            /*try{
-                qz_android.playVideo(host+httpurl, host+showimg, name);
-            }catch(err){
-                alert("请在app中观看");
-            } */
         }
     });
     $(".changetype").click(function(){
