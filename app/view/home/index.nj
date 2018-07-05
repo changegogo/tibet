@@ -250,13 +250,13 @@ $(".filma").click(function(){
 		return;
 	}
 	var wmac = "";
-	if(device === 'Android'){
-		wmac = qz_android.getWifiMac();
-	}else {
-		wmac = window.webkit.messageHandlers.getWifiMac.postMessage(null);
-	}
 	var url = $(this).attr("httpurl");
 	try{
+		if(device === 'Android'){
+			wmac = qz_android.getWifiMac();
+		}else {
+			wmac = window.webkit.messageHandlers.getWifiMac.postMessage(null);
+		}
 		url = url + "&wmac=" + wmac;
 		//alert(url);
 		window.location.href = url;
