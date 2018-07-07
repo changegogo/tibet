@@ -23,11 +23,10 @@
 
 <body>
 <div class="trainCinema-page">
-    <!---------------------------nav-------------------------->
+    <!-- -------------------------nav------------------------ -->
     <div class="nav fixed-top bg-white font_size16 flex flex-pack-center">
         <a href="javascript:history.back();" class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
         <p class="text-center flex justify-content-center">列车影院</p>
-        <!--<a href="/myfilm/list">我的电影</a>-->
     </div>
     <!--------------------------------body--+++++++++++++++++++++++++++++++++-->
     <div class="trainCinema-body font_size16">
@@ -74,7 +73,7 @@
         {% endfor %}
         
 
-        <!------------------------------------trainCinema-movie-type-------------------------------------->
+        <!-- ----------------------------------trainCinema-movie-type------------------- -->
        
         </div>
         <div class="movies-wrapper marginlr15">
@@ -86,7 +85,7 @@
                     </div>
                 <div class="body-wrapper weui-flex moviestype-wrapper">
                     {% for film in item.films %}
-                        <a httpurl="/film/details/{{film.id}}?mac={{mac}}" class="filma weui-media-box weui-media-box_appmsg ">
+                    <a httpurl="/film/details/{{film.id}}?mac={{mac}}" class="filma weui-media-box weui-media-box_appmsg ">
                         <div class="weui-flex__item movie-item" >
                             <div class="movie-img">
                                 <img class="weui-media-box__thumb" src="{{film.imgv}}" width="100%" height="100%"/>
