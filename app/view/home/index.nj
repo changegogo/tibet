@@ -46,7 +46,6 @@
 					<div class="open-btn"><a href="{{online}}">开启外网</a></div>
 				{% endif %}
 			{% endif %}
-			
 		</div>
 		<div class="home-body">
 			<div class="fenlei-wrapper weui-flex">
@@ -236,6 +235,13 @@ $('.news-wrapper').on('click', 'a', function (e) {
 	e.preventDefault() ;
     weui.topTips('请您先开启外网');
 });
+// 接受mac传回的设备mac地址
+window.receiveWifiMacResult = function(wmac) {
+	alert(wmac);
+	window.curUrl = window.curUrl + "&wmac=" + wmac;
+	alert(window.curUrl);
+	window.location.href = window.curUrl;
+}
 
 $(".filma").click(function(){
 	// 判断设备信息
@@ -254,12 +260,13 @@ $(".filma").click(function(){
 	try{
 		if(device === 'Android'){
 			wmac = qz_android.getWifiMac();
+			url = url + "&wmac=" + wmac;
+			window.location.href = url;
 		}else {
-			wmac = window.webkit.messageHandlers.getWifiMac.postMessage(null);
+			window.curUrl = url;
+			alert("调用getWifiMac.postMessage(null)");
+			window.webkit.messageHandlers.getWifiMac.postMessage(null);
 		}
-		url = url + "&wmac=" + wmac;
-		//alert(url);
-		window.location.href = url;
 	}catch(err){
 		url = url + "&wmac=" + wmac;
 		window.location.href = url;

@@ -205,6 +205,11 @@
             }
         }
     });
+    // 接受mac传回的设备mac地址
+    window.receiveWifiMacResult = function(wmac) {
+        window.curUrl = window.curUrl + "&wmac=" + wmac;
+        window.location.href = window.curUrl;
+    }
     $(".changetype").click(function(){
         var url = $(this).attr("httpurl");
         // 通过app协议获取连接设备的mac地址，后台去判断是否为列车wifi
@@ -223,11 +228,12 @@
         try{
             if(device === 'Android'){
                 wmac = qz_android.getWifiMac();
+                url = url + "&wmac=" + wmac;
+                window.location.href = url;
             }else {
-                wmac = window.webkit.messageHandlers.getWifiMac.postMessage(null);
-            }
-            url = url + "&wmac=" + wmac;
-            window.location.href = url;
+                window.curUrl = url;
+                window.webkit.messageHandlers.getWifiMac.postMessage(null);
+            } 
         }catch(err){
             url = url + "&wmac=" + wmac;
             window.location.href = url;
