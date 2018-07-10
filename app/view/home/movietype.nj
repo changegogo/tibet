@@ -57,14 +57,34 @@
 <script src="/public/js/bootstrap.min.js"></script>
 <script src="/public/js/weui.js"></script>
 <script type="text/javascript">
+    // 接受mac传回的设备mac地址
+    window.receiveWifiMacResult = function(wmac) {
+        window.curUrl = window.curUrl + "&wmac=" + wmac;
+        window.location.href = window.curUrl;
+    }
     $(".filma").click(function(){
-        var url = $(this).attr("httpurl");
+        // 判断设备信息
+        var device = "";
+        if(/Android/i.test(navigator.userAgent)) {
+            device = "Android";
+        } else if(/iPhone/i.test(navigator.userAgent)) {
+            device = "iPhone";
+        }
+        if(!device){
+            alert("设备不支持");
+            return;
+        }
         var wmac = "";
+        var url = $(this).attr("httpurl");
         try{
-            wmac = qz_android.getWifiMac();
-            url = url + "&wmac=" + wmac;
-            //alert(url);
-            window.location.href = url;
+            if(device === 'Android'){
+                wmac = qz_android.getWifiMac();
+                url = url + "&wmac=" + wmac;
+			    window.location.href = url;
+            }else {
+                window.curUrl = url;
+                window.webkit.messageHandlers.getWifiMac.postMessage(null);
+            }
         }catch(err){
             url = url + "&wmac=" + wmac;
             window.location.href = url;

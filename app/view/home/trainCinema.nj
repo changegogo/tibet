@@ -23,11 +23,10 @@
 
 <body>
 <div class="trainCinema-page">
-    <!---------------------------nav-------------------------->
+    <!-- -------------------------nav------------------------ -->
     <div class="nav fixed-top bg-white font_size16 flex flex-pack-center">
         <a href="javascript:history.back();" class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
         <p class="text-center flex justify-content-center">列车影院</p>
-        <!--<a href="/myfilm/list">我的电影</a>-->
     </div>
     <!--------------------------------body--+++++++++++++++++++++++++++++++++-->
     <div class="trainCinema-body font_size16">
@@ -74,7 +73,7 @@
         {% endfor %}
         
 
-        <!------------------------------------trainCinema-movie-type-------------------------------------->
+        <!-- ----------------------------------trainCinema-movie-type------------------- -->
        
         </div>
         <div class="movies-wrapper marginlr15">
@@ -86,7 +85,7 @@
                     </div>
                 <div class="body-wrapper weui-flex moviestype-wrapper">
                     {% for film in item.films %}
-                        <a httpurl="/film/details/{{film.id}}?mac={{mac}}" class="filma weui-media-box weui-media-box_appmsg ">
+                    <a httpurl="/film/details/{{film.id}}?mac={{mac}}" class="filma weui-media-box weui-media-box_appmsg ">
                         <div class="weui-flex__item movie-item" >
                             <div class="movie-img">
                                 <img class="weui-media-box__thumb" src="{{film.imgv}}" width="100%" height="100%"/>
@@ -107,15 +106,35 @@
 <script src="/public/js//swiper.min.js"></script>
 <script src="/public/js/trainCInema.js"></script>
 <script>
+    // 接受mac传回的设备mac地址
+    window.receiveWifiMacResult = function(wmac) {
+        window.curUrl = window.curUrl + "&wmac=" + wmac;
+        window.location.href = window.curUrl;
+    }
     $(function(){
         $(".filma").click(function(){
-            var url = $(this).attr("httpurl");
+            // 判断设备信息
+            var device = "";
+            if(/Android/i.test(navigator.userAgent)) {
+                device = "Android";
+            } else if(/iPhone/i.test(navigator.userAgent)) {
+                device = "iPhone";
+            }
+            if(!device){
+                alert("设备不支持");
+                return;
+            }
             var wmac = "";
+            var url = $(this).attr("httpurl");
             try{
-                wmac = qz_android.getWifiMac();
-                url = url + "&wmac=" + wmac;
-                //alert(url);
-                window.location.href = url;
+                if(device === 'Android'){
+                    wmac = qz_android.getWifiMac();
+                    url = url + "&wmac=" + wmac;
+                    window.location.href = url;
+                }else {
+                    window.curUrl = url;
+                    window.webkit.messageHandlers.getWifiMac.postMessage(null);
+                }
             }catch(err){
                 url = url + "&wmac=" + wmac;
                 window.location.href = url;
