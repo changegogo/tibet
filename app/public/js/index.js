@@ -14,8 +14,10 @@ function init(){
     s=getid("news_notice_adverst");
     s2=getid("adversit_one");
     s3=getid("adversit_two");
-    s3.innerHTML=s2.innerHTML;
-    timer=setInterval(mar,30) ;
+    if(s2 && s3){
+        s3.innerHTML=s2.innerHTML;
+        timer=setInterval(mar,30) ;
+    }
 }
 
 function mar(){

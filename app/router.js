@@ -108,4 +108,6 @@ module.exports = app => {
     app.get('/game/web', 'game.gameWeb');
     // web页面观看电影
     app.get('/film/play', 'film.filmPlay');
+    // app版本接口
+    app.get('/app/version', 'version.ver');
 };

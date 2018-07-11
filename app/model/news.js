@@ -2,8 +2,7 @@
  * 藏旅行新闻
  */
 module.exports = app => {
-    const { STRING, TEXT, DATE, UUID, UUID4, INTEGER, Op} = app.Sequelize;
-    const OP = app.Sequelize.op;
+    const { STRING, TEXT, DATE, INTEGER, Op} = app.Sequelize;
 
     const News = app.model.define('new', {
         "id": {
@@ -27,7 +26,7 @@ module.exports = app => {
         return !data.id ? 
             News.create(data)
               .then(news => {
-
+                return news && news.get({plain: true});
               }): 
             News.update({
                 "description": data.description,
@@ -46,7 +45,7 @@ module.exports = app => {
         return News.findOne({
             "where": {
                 "id": {
-                    [OP.eq]: id
+                    [Op.eq]: id
                 }
             }
         }).then( news => {
