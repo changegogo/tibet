@@ -101,7 +101,6 @@ module.exports = app => {
     app.post('/wx/notify', 'wxSell.wxCallback');
     // app访问接口
     app.get('/app/:wmac/:mmac/:wifi', 'home.appcontroller');
-
     // 旧版web页面游戏，小说，电影的跳转页面
     app.get('/novel/web', 'novel.novelWeb');
     app.get('/film/web', 'film.filmWeb');
@@ -110,4 +109,6 @@ module.exports = app => {
     app.get('/film/play', 'film.filmPlay');
     // app版本接口
     app.get('/app/version', 'version.ver');
+    // ios端特定接口
+    app.get('/ios/:wmac/:telphone/:wifiname', 'home.iosEntry');
 };

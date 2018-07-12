@@ -72,10 +72,10 @@ module.exports = app => {
                 }
             }
         }).then(sta => {
-            return sta ? sta.get({ plain: true }) : {};
+            return sta ? sta.get({ plain: true }) : null;
         }).catch((error)=>{
             console.log(error);
-            return {};
+            return null;
         });
     };
 

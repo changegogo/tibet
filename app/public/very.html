@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>天路WiFi</title>
+<link rel="stylesheet" href="/public/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/public/css/weui.min.css" />
+<link rel="stylesheet" href="/public/css/common.css" />
+<style>
+.form-group.position-relative .position-absolute {
+  top: 0;
+  right: 0;
+}
+.wenxin-tip  p {
+  border-radius: 8px;
+    line-height: 36px;
+    background-color: rgba(24, 144, 255, 0.12);
+    padding: 16px;
+    border: 1px solid rgba(24, 144, 255, 0.38);
+}
+</style>
+</head>
+
+<body>
+<div class="container-fluid px-2">
+  <div class="card border-0">
+    <h5 class="card-header bg-white border-0 text-center py-4">验证绑定</h5>
+    <form>
+      <div class="form-group border-bottom mb-4">
+        <input value='15383830596' name="mobile" type="input" class="form-control border-0" placeholder="手机号" />
+      </div>
+      <button type="button" class="verybtn btn btn-primary btn-block">验证</button>
+    </form>
+  </div>
+</div>
+
+<script src="/public/js/jquery-3.3.1.min.js"></script>
+<script src="/public/js/bootstrap.min.js"></script>
+<script src="/public/js/weui.min.js"></script>
+<script>
+window.wmac = '58:69:6C:ED:EF:10';
+window.wifiname = 'wifi';
+window.startLoading = weui.loading('Loading');
+// 获取wifimac
+try{
+    (function() {
+        window.webkit.messageHandlers.getWMacAndWName.postMessage(null);
+    })();
+}catch(error){
+    weui.topTips('请在ios中打开', 2000);
+    window.startLoading.hide();
+}
+
+// 接受ios传回的设备mac地址和wifi名称
+window.receiveWMacAndWNameResult = function(obj) {
+	window.wmac = obj.wmac;
+    window.wifiname = obj.wname;
+    window.startLoading.hide();
+}
+
+
+window.saveTelphone = function(telphone) {
+    window.webkit.messageHandlers.saveTelphone.postMessage({telphone: telphone});
+    return true;
+}
+$('.verybtn').click(function(){
+    var el = $(this);
+    if (el.data('isLoading')) {
+        return;
+    }
+    var loading = weui.loading('Loading');
+    el.data('isLoading', true);
+    if(!window.wmac) {
+        el.data('isLoading', false);
+        loading.hide(function () {
+            weui.topTips('请连接wifi访问', 3000);
+        });
+        return;
+    }
+    var telphone = $('input[name=mobile]').val();
+    var reg = /^(1[3456789][0-9]{9})$/;
+    var isMatch = reg.test(telphone);
+    if(!isMatch) {
+        el.data('isLoading', false);
+        loading.hide(function () {
+            weui.topTips('请输入正确手机号', 3000);
+        });
+        return;
+    }
+    var api = '/ios/'+window.wmac+'/'+telphone+'/'+window.wifiname;
+    $.ajax({
+        url: api,
+        type: 'get',
+        timeout: 5000
+    }).then(function(res) {
+        console.log(res);
+        el.data('isLoading', false);
+        if(res.code == 200){
+            try{
+                window.saveTelphone(res.telphone); 
+            }catch(error){
+                weui.topTips('保存手机号出错', 5000);
+            }
+            window.location.href = res.url;
+            
+        }else {
+            loading.hide(function () {
+                weui.topTips(res.msg, 5000);
+            });
+        }
+    }).catch(function(error) {
+        el.data('isLoading', false);
+        loading.hide(function () {
+            weui.topTips('请求出错', 3000);
+        });
+    });
+});
+</script>
+</body>
+</html>

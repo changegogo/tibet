@@ -795,27 +795,76 @@ module.exports = app => {
             let wifiname = ctx.params.wifi;
             wmac = wmac.toLowerCase();
             mmac = mmac.toLowerCase();
-            //console.log("wmac:"+wmac);
-            //console.log("mmac:"+mmac);
-            //console.log("wifiname:"+wifiname);
+            let gateWay = conf.deviceaddress;
             // 判断wmac是否存在mtfis表中，如果存在
             let mtifi =  await model.Mtfi.findByLickMac(wmac);
-            //console.log('mtifimtifimtifimtifimtifi');
-            //console.log(mtifi);
             if(mtifi){
-                console.log('app and device');
                 await model.Sta.updateIsApp(wmac, mmac, true);
-                ctx.redirect('http://192.168.0.1');
+                ctx.redirect(gateWay);
             }
             else {
                 //mac, wifi, tag
                 ctx.redirect(`/wifi/login?mac=${mmac}&wifi=${wifiname}&tag=app&device=no`);
             }
+        }
 
+        async iosEntry(ctx) {
+            try {
+                ctx.validate({
+                    "wmac": {
+                        type: 'string',
+                        format: /^([a-fA-F0-9]{2}:){5}[a-fA-F0-9]{2}$/
+                    },
+                    "telphone": {
+                        type: 'string',
+                        format: /^(1[3456789][0-9]{9})$/
+                    }
+                }, ctx.params);
+            } catch (error) {
+                ctx.body = {
+                    code: 201,
+                    msg: '参数不完整'
+                }
+                return;
+            }
+            let { wmac, telphone, wifiname } = ctx.params;
+            let gateWay = conf.deviceaddress;
+
+            // 根据手机号查找是否有绑定记录
+            let sta = await model.Sta.findByMobile(telphone);
+            // 判断wmac是否存在mtfis表中，如果存在
+            let mtifi =  await model.Mtfi.findByLickMac(wmac);
+            let res = {};
+            if(sta && mtifi){
+                await model.Sta.updateIsApp(wmac, sta.mac, true);
+                res = {
+                    code: 200,
+                    msg: 'redirect',
+                    telphone: sta.username,
+                    url: gateWay
+                };
+            }else if(sta && !mtifi){
+                res = {
+                    code: 200,
+                    msg: 'redirect',
+                    telphone: sta.username,
+                    url: `/wifi/login?mac=${sta.mac}&wifi=${wifiname}&tag=app&device=no`
+                };
+            }else if(!sta && mtifi){
+                res = {
+                    code: 200,
+                    msg: 'redirect',
+                    url: gateWay
+                };
+            }else {
+                res = {
+                    code: 201,
+                    msg: "请首先连接列车wifi绑定，再使用",
+                    url: ''
+                }
+            }
+            ctx.body = res;
         }
     }
-
-   
-
     return Home;
 };
