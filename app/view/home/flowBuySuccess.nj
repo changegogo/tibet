@@ -52,7 +52,6 @@
             let mac = $(this).val();
             var url = localStorage.getItem("indexurl");
             window.location.href = url;
-            //window.location.href = "/wifi/login?mac="+mac+"&tag=app";
         });
     });
 </script>
