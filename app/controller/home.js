@@ -835,12 +835,13 @@ module.exports = app => {
             // 判断wmac是否存在mtfis表中，如果存在
             let mtifi =  await model.Mtfi.findByLickMac(wmac);
             let res = {};
-            if(sta && mtifi){
+            if(sta.username && mtifi){
                 await model.Sta.updateIsApp(wmac, sta.mac, true);
                 res = {
                     code: 200,
                     msg: 'redirect',
                     telphone: sta.username,
+                    mac: sta.mac,
                     url: gateWay
                 };
             }else if(sta && !mtifi){
@@ -848,11 +849,12 @@ module.exports = app => {
                     code: 200,
                     msg: 'redirect',
                     telphone: sta.username,
+                    mac: sta.mac,
                     url: `/wifi/login?mac=${sta.mac}&wifi=${wifiname}&tag=app&device=no`
                 };
             }else if(!sta && mtifi){
                 res = {
-                    code: 200,
+                    code: 202,
                     msg: 'redirect',
                     url: gateWay
                 };

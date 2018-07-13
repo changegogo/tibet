@@ -40,8 +40,10 @@
 <script src="/public/js/bootstrap.min.js"></script>
 <script src="/public/js/weui.min.js"></script>
 <script>
-window.wmac = '58:69:6C:ED:EF:10';
-window.wifiname = 'wifi';
+//window.wmac = '58:69:6C:ED:EF:10';
+//window.wifiname = 'wifi';
+window.wmac = '';
+window.wifiname = '';
 window.startLoading = weui.loading('Loading');
 // 获取wifimac
 try{
@@ -55,14 +57,15 @@ try{
 
 // 接受ios传回的设备mac地址和wifi名称
 window.receiveWMacAndWNameResult = function(obj) {
+    obj = window.JSON.parse(obj);
 	window.wmac = obj.wmac;
     window.wifiname = obj.wname;
     window.startLoading.hide();
 }
 
 
-window.saveTelphone = function(telphone) {
-    window.webkit.messageHandlers.saveTelphone.postMessage({telphone: telphone});
+window.saveTelphoneAndMac = function(obj) {
+    window.webkit.messageHandlers.saveTelphoneAndMac.postMessage(obj);
     return true;
 }
 $('.verybtn').click(function(){
@@ -99,17 +102,19 @@ $('.verybtn').click(function(){
         el.data('isLoading', false);
         if(res.code == 200){
             try{
-                window.saveTelphone(res.telphone); 
+                window.saveTelphoneAndMac({telphone: res.telphone, mac: res.mac});
             }catch(error){
                 weui.topTips('保存手机号出错', 5000);
             }
             window.location.href = res.url;
+        }else if(res.code == 201){
             
-        }else {
-            loading.hide(function () {
-                weui.topTips(res.msg, 5000);
-            });
+        }else if(res.code == 202){
+            window.location.href = res.url;
         }
+        loading.hide(function () {
+            weui.topTips(res.msg, 5000);
+        });
     }).catch(function(error) {
         el.data('isLoading', false);
         loading.hide(function () {
