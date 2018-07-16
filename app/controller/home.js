@@ -849,7 +849,7 @@ module.exports = app => {
                     mac: sta.mac,
                     url: gateWay
                 };
-            }else if(sta && !mtifi){
+            }else if(sta.username && !mtifi){
                 res = {
                     code: 200,
                     msg: 'redirect',
@@ -857,7 +857,7 @@ module.exports = app => {
                     mac: sta.mac,
                     url: `http://tianlu.5uwifi.com:8081/wifi/login?mac=${sta.mac}&wifi=${wifiname}&tag=app&device=no`
                 };
-            }else if(!sta && mtifi){
+            }else if(!sta.username && mtifi){
                 res = {
                     code: 202,
                     msg: 'redirect',
