@@ -810,6 +810,114 @@ module.exports = app => {
                 ctx.redirect(`/wifi/login?mac=${mmac}&wifi=${wifiname}&tag=app&device=no`);
             }
         }
+        // ios端验证绑定的发送验证码接口
+        async iossmscode(ctx) {
+            let { mobile } = ctx.request.body;
+            let key = `SMS:ios`;
+            let ttl = `${key}:TTL`;
+            let day = moment().date();
+            let code = new Chance().string({
+                length: 6,
+                pool: "0123456789"
+            });
+            console.log(code);
+            // 校验是否可以发送短信
+            let isOK = await redis.isOK(key, mobile, code, day);
+            if (isOK === 'ttl') {
+                ctx.status = 400;
+                ctx.body = {
+                    ttl: await redis.ttl(ttl)
+                };
+                return;
+            }
+            else if (isOK === 'threshold') {
+                ctx.status = 400;
+                ctx.body = {
+                    message: "请求次数超限"
+                };
+                return;
+            }
+
+            ctx.logger.debug('sms code: %s', code);
+
+            // 发送短信
+            const client = new SMSClient(conf);
+            let result = 'OK';
+
+            if (conf.env === 'prod') {
+                result = await client.sendSMS({
+                    "PhoneNumbers":   mobile,
+                    "SignName":       conf.signName,
+                    "TemplateCode":   conf.templateCode,
+                    "TemplateParam":  `{"code":"${code}"}`
+                }).then(({ Code, Message }) => {
+                    if (Code === 'OK') {
+                        return Code;
+                    }
+
+                    return Promise.reject({
+                        message: Message
+                    });
+                }).catch(err => {
+                    ctx.logger.error(err);
+                    // 短信发送失败重置短信防火墙
+                    return Promise.all([
+                        redis.del(ttl),
+                        redis.decr(`${key}:COUNT:${day}`)
+                    ]).catch(err => {
+                        ctx.logger.error(err.message);
+                    }).then(() => "发送短信出错");
+                });
+            }
+
+            if (result === 'OK') {
+                ctx.body = {
+                    ttl: await redis.ttl(ttl)
+                };
+                return;
+            }
+
+            ctx.status = 400;
+            ctx.body = {
+                message: result
+            };
+        }
+        // iOS端验证绑定接口
+        async iosVeryBind(ctx) {
+            let { mobile, code } = ctx.request.body;
+            try {
+                ctx.validate({
+                    "code": {
+                        type: 'string',
+                        max: 6
+                    }
+                });
+            } catch (err) {
+                ctx.body = {
+                    "code": 201,
+                    "msg": "验证码输入错误"
+                };
+                return;
+            }
+
+            let key = `SMS:ios:${mobile}`;
+            let val = await redis.get(key);
+
+            if (val !== code) {
+                ctx.body = {
+                    "code": 202,
+                    "msg": "验证码输入错误或已失效"
+                };
+                return;
+            }else {
+                ctx.body = {
+                    "code": 200,
+                    "msg": "验证码正确"
+                };
+            }
+        }
+        
+
 
         async iosEntry(ctx) {
             try {

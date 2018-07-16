@@ -31,6 +31,10 @@
       <div class="form-group border-bottom mb-4">
         <input value='15383830596' name="mobile" type="input" class="form-control border-0" placeholder="手机号" />
       </div>
+      <div class="form-group border-bottom position-relative mb-4">
+        <input name="code" type="input" class="form-control border-0" placeholder="验证码" />
+        <span data-api="/iossmscode" class="position-absolute btn btn-outline-primary border-0 rounded-0">发送验证码</span>
+      </div>
       <button type="button" class="verybtn btn btn-primary btn-block">验证</button>
     </form>
   </div>
@@ -68,6 +72,103 @@ window.saveTelphoneAndMac = function(obj) {
     window.webkit.messageHandlers.saveTelphoneAndMac.postMessage(obj);
     return true;
 }
+
+$('.verybtn').click(function(){
+    var el = $(this);
+    if (el.data('isLoading')) {
+        return;
+    }
+    var loading = weui.loading('Loading');
+    el.data('isLoading', true);
+
+    var mobile = $("input[name=mobile]").val();
+    var reg = /^(1[3456789][0-9]{9})$/;
+    var isMatch = reg.test(mobile);
+    if(!isMatch) {
+        el.data('isLoading', false);
+        loading.hide(function () {
+            weui.topTips('请输入正确手机号', 3000);
+        });
+        return;
+    }
+    var code = $("input[name=code]").val();
+    if(!code || code.length != 6){
+        el.data('isLoading', false);
+        loading.hide(function () {
+            weui.topTips('请输入正确验证码', 3000);
+        });
+        return;
+    }
+    $.ajax({
+        url: "/iosVeryBind",
+        type: "POST",
+        data: {
+            mobile: mobile,
+            code: code
+        }
+    }).then(function(res) {
+       if(res.code === 200) {
+           if(!window.wmac) {
+                el.data('isLoading', false);
+                loading.hide(function () {
+                    weui.topTips('请连接wifi访问', 3000);
+                });
+                return;
+            }
+            var telphone = $('input[name=mobile]').val();
+            var reg = /^(1[3456789][0-9]{9})$/;
+            var isMatch = reg.test(telphone);
+            if(!isMatch) {
+                el.data('isLoading', false);
+                loading.hide(function () {
+                    weui.topTips('请输入正确手机号', 3000);
+                });
+                return;
+            }
+            var api = '/ios/'+window.wmac+'/'+telphone+'/'+window.wifiname;
+            $.ajax({
+                url: api,
+                type: 'get',
+                timeout: 5000
+            }).then(function(res) {
+                console.log(res);
+                el.data('isLoading', false);
+                if(res.code == 200){
+                    try{
+                        window.saveTelphoneAndMac({telphone: res.telphone, mac: res.mac, redirectUrl: res.url});
+                    }catch(error){
+                        weui.topTips('保存手机号出错', 5000);
+                    }
+                    window.location.href = res.url;
+                }else if(res.code == 201){
+                    
+                }else if(res.code == 202){
+                    window.location.href = res.url;
+                }
+                loading.hide(function () {
+                    weui.topTips(res.msg, 5000);
+                });
+            }).catch(function(error) {
+                el.data('isLoading', false);
+                loading.hide(function () {
+                    weui.topTips('请求出错', 3000);
+                });
+            });
+        }else{
+            el.data('isLoading', false);
+                loading.hide(function () {
+                    weui.topTips(res.msg, 3000);
+                });
+        }
+    }).catch(function(error) {
+        el.data('isLoading', false);
+        loading.hide(function () {
+            weui.topTips('请求出错', 3000);
+        });
+    })
+});
+
+/*
 $('.verybtn').click(function(){
     var el = $(this);
     if (el.data('isLoading')) {
@@ -122,6 +223,76 @@ $('.verybtn').click(function(){
         });
     });
 });
+*/
+$('span[data-api]').on('click', function (ev) {
+  ev.preventDefault();
+
+  var el = $(this);
+  if (el.hasClass('disabled')) {
+    return;
+  }
+  el.addClass('disabled');
+
+  var api = el.data('api');
+  var method = 'POST';
+  var data1 = $('form').serialize();
+  $.ajax({
+    url: api,
+    method: method,
+    dataType: 'json',
+    data: $('form').serialize()
+  }).then(function (res) {
+    if (res.reload) {
+      location.reload();
+      return;
+    }
+
+    countdown(res.ttl);
+  }).catch(function (err) {
+    var res = err.responseJSON;
+    var message = "输入错误";
+
+    if (res && res.ttl) {
+      countdown(res.ttl);
+      return;
+    }
+
+    el.removeClass('disabled');
+
+    if (err.status !== 404) {
+      message = res.message;
+    }
+
+    weui.topTips(message, 3000);
+  });
+});
+
+function countdown(ttl, delay) {
+  countdown.stop();
+  delay = delay || 1000;
+
+  var clss = 'disabled';
+  var text = countdown.defaultText;
+  var node = countdown.node;
+
+  (function f() {
+    if (ttl < 1) {
+      node.removeClass(clss).html(text);
+      return;
+    }
+
+    node.html(ttl + ' 秒后重新发送');
+    ttl -= 1;
+    countdown.timer = setTimeout(f, delay);
+  })();
+}
+
+countdown.node = $('span[data-api]');
+countdown.defaultText = countdown.node.html();
+countdown.timer = null;
+countdown.stop = function () {
+  clearTimeout(countdown.timer);
+};
 </script>
 </body>
 </html>

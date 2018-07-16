@@ -109,6 +109,11 @@ module.exports = app => {
     app.get('/film/play', 'film.filmPlay');
     // app版本接口
     app.get('/app/version', 'version.ver');
+    // ios端验证绑定发送验证码接口
+    app.post('/iossmscode', MIDDLE_WARES.isMobile(), 'home.iossmscode');
+    // ios端验证接口
+    app.post('/iosVeryBind', MIDDLE_WARES.isMobile(), 'home.iosVeryBind');
     // ios端特定接口
     app.get('/ios/:wmac/:telphone/:wifiname', 'home.iosEntry');
+    
 };
