@@ -264,7 +264,7 @@ $(".filma").click(function(){
 			window.location.href = url;
 		}else {
 			window.curUrl = url;
-			alert("调用getWifiMac.postMessage(null)");
+			//alert("调用getWifiMac.postMessage(null)");
 			window.webkit.messageHandlers.getWifiMac.postMessage(null);
 		}
 	}catch(err){
