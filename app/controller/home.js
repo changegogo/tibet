@@ -853,7 +853,7 @@ module.exports = app => {
                     msg: 'redirect',
                     telphone: sta.username,
                     mac: sta.mac,
-                    url: `http://192.168.1.140:7001/wifi/login?mac=${sta.mac}&wifi=${wifiname}&tag=app&device=no`
+                    url: `http://tianlu.5uwifi.com:8081/wifi/login?mac=${sta.mac}&wifi=${wifiname}&tag=app&device=no`
                 };
             }else if(!sta && mtifi){
                 res = {
