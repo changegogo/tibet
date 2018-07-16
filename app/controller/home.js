@@ -832,7 +832,9 @@ module.exports = app => {
             }
             let { wmac, telphone, wifiname } = ctx.params;
             let gateWay = conf.deviceaddress;
-
+            if(wmac){
+                wmac = wmac.toLowerCase();
+            }
             // 根据手机号查找是否有绑定记录
             let sta = await model.Sta.findByMobile(telphone);
             // 判断wmac是否存在mtfis表中，如果存在
