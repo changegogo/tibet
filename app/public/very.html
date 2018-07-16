@@ -102,7 +102,7 @@ $('.verybtn').click(function(){
         el.data('isLoading', false);
         if(res.code == 200){
             try{
-                window.saveTelphoneAndMac({telphone: res.telphone, mac: res.mac});
+                window.saveTelphoneAndMac({telphone: res.telphone, mac: res.mac, redirectUrl: res.url});
             }catch(error){
                 weui.topTips('保存手机号出错', 5000);
             }

@@ -619,6 +619,9 @@ module.exports = app => {
 
         async mycenter(ctx) {
             let { mac } = ctx.query;
+            if(!mac){
+                return;
+            }
             let { username } = await model.Sta.findByMAC(mac);
             return await ctx.render('home/mycenter', {
                 tel: username,
@@ -850,7 +853,7 @@ module.exports = app => {
                     msg: 'redirect',
                     telphone: sta.username,
                     mac: sta.mac,
-                    url: `/wifi/login?mac=${sta.mac}&wifi=${wifiname}&tag=app&device=no`
+                    url: `http://192.168.1.140:7001/wifi/login?mac=${sta.mac}&wifi=${wifiname}&tag=app&device=no`
                 };
             }else if(!sta && mtifi){
                 res = {
