@@ -179,6 +179,18 @@ $('.verybtn').click(function(){
 
 $('span[data-api]').on('click', function (ev) {
   ev.preventDefault();
+  if(!window.wmac) {
+        el.data('isLoading', false);
+        loading.hide(function () {
+            weui.topTips('请连接wifi，然后刷新页面', 3000);
+        });
+        try{
+            window.webkit.messageHandlers.diconnectTrainWifi.postMessage({msg:"请连接wifi，然后刷新页面"});
+        }catch(error){
+
+        }
+        return;
+    }
 
   var el = $(this);
   if (el.hasClass('disabled')) {
