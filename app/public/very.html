@@ -111,8 +111,13 @@ $('.verybtn').click(function(){
            if(!window.wmac) {
                 el.data('isLoading', false);
                 loading.hide(function () {
-                    weui.topTips('请连接wifi访问', 3000);
+                    weui.topTips('请连接wifi，然后刷新页面', 3000);
                 });
+                try{
+                    window.webkit.messageHandlers.diconnectTrainWifi.postMessage();
+                }catch(error){
+
+                }
                 return;
             }
             var telphone = $('input[name=mobile]').val();
@@ -141,7 +146,11 @@ $('.verybtn').click(function(){
                     }
                     window.location.href = res.url;
                 }else if(res.code == 201){
-                    
+                    try{
+                        window.webkit.messageHandlers.diconnectTrainWifi.postMessage();
+                    }catch(error){
+
+                    }
                 }else if(res.code == 202){
                     window.location.href = res.url;
                 }
