@@ -114,7 +114,7 @@ $('.verybtn').click(function(){
                     weui.topTips('请连接wifi，然后刷新页面', 3000);
                 });
                 try{
-                    window.webkit.messageHandlers.diconnectTrainWifi.postMessage();
+                    window.webkit.messageHandlers.diconnectTrainWifi.postMessage({msg:"请连接wifi，然后刷新页面"});
                 }catch(error){
 
                 }
@@ -147,7 +147,7 @@ $('.verybtn').click(function(){
                     window.location.href = res.url;
                 }else if(res.code == 201){
                     try{
-                        window.webkit.messageHandlers.diconnectTrainWifi.postMessage();
+                        window.webkit.messageHandlers.diconnectTrainWifi.postMessage({msg:"您当前还没有连接过列车上的wifi,请先去连接并注册账号"});
                     }catch(error){
 
                     }
