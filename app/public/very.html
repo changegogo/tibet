@@ -177,62 +177,6 @@ $('.verybtn').click(function(){
     })
 });
 
-/*
-$('.verybtn').click(function(){
-    var el = $(this);
-    if (el.data('isLoading')) {
-        return;
-    }
-    var loading = weui.loading('Loading');
-    el.data('isLoading', true);
-    if(!window.wmac) {
-        el.data('isLoading', false);
-        loading.hide(function () {
-            weui.topTips('请连接wifi访问', 3000);
-        });
-        return;
-    }
-    var telphone = $('input[name=mobile]').val();
-    var reg = /^(1[3456789][0-9]{9})$/;
-    var isMatch = reg.test(telphone);
-    if(!isMatch) {
-        el.data('isLoading', false);
-        loading.hide(function () {
-            weui.topTips('请输入正确手机号', 3000);
-        });
-        return;
-    }
-    var api = '/ios/'+window.wmac+'/'+telphone+'/'+window.wifiname;
-    $.ajax({
-        url: api,
-        type: 'get',
-        timeout: 5000
-    }).then(function(res) {
-        console.log(res);
-        el.data('isLoading', false);
-        if(res.code == 200){
-            try{
-                window.saveTelphoneAndMac({telphone: res.telphone, mac: res.mac, redirectUrl: res.url});
-            }catch(error){
-                weui.topTips('保存手机号出错', 5000);
-            }
-            window.location.href = res.url;
-        }else if(res.code == 201){
-            
-        }else if(res.code == 202){
-            window.location.href = res.url;
-        }
-        loading.hide(function () {
-            weui.topTips(res.msg, 5000);
-        });
-    }).catch(function(error) {
-        el.data('isLoading', false);
-        loading.hide(function () {
-            weui.topTips('请求出错', 3000);
-        });
-    });
-});
-*/
 $('span[data-api]').on('click', function (ev) {
   ev.preventDefault();
 
