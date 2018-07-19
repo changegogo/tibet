@@ -30,8 +30,8 @@
     </div>
     <!-- ------------------------------------top-book-jianjie -introduce----------------------------------- -->
    <div class="top-intro font_size16 marginlr15" style="margin-top: 16px;">
-       <div class="flex">
-           <div class="weui-media-box__hd news-img marginR16" style="max-width: 80px;">
+       <div class="weui-media-box_appmsg">
+           <div class="news-img marginR16" style="max-width: 80px;">
                 <span id="novelid" hidden>{{novel.id}}</span>
                <img class="weui-media-box__thumb" src="{{novel.img}}" width="100%" height="100%"/>
            </div>
