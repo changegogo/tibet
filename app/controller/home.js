@@ -924,10 +924,10 @@ module.exports = app => {
         async iosEntry(ctx) {
             try {
                 ctx.validate({
-                    "wmac": {
-                        type: 'string',
-                        format: /^([a-fA-F0-9]{2}:){5}[a-fA-F0-9]{2}$/
-                    },
+                    // "wmac": {
+                    //     type: 'string',
+                    //     format: /^([a-fA-F0-9]{2}:){5}[a-fA-F0-9]{2}$/
+                    // },
                     "telphone": {
                         type: 'string',
                         format: /^(1[3456789][0-9]{9})$/
@@ -935,8 +935,8 @@ module.exports = app => {
                 }, ctx.params);
             } catch (error) {
                 ctx.body = {
-                    code: 201,
-                    msg: '参数不完整'
+                    code: 203,
+                    msg: '手机号格式不正确'
                 }
                 return;
             }
