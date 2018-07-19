@@ -960,7 +960,6 @@ module.exports = app => {
                     url: gateWay
                 };
             }else if(sta.username && !mtifi){
-                wifiname = "flow";
                 res = {
                     code: 200,
                     msg: 'redirect',
