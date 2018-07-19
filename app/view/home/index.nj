@@ -28,8 +28,12 @@
 				<div class="left-flow-text">剩余外网流量</div>
 				<div class="left-flow-data">{{flow.total}}<span> {{flow.units}}</span></div>
 				<div class="desc">
+					{% if wifiname == 'flow' %}
+					<span>流量</span>
+					{% else %}
 					<img class="align-self-center ico" src="/public/img/1wifi.png" width="100%" height="100%" />
 					<span>{{wifiname}}</span>
+					{% endif %}
 				</div>
 			{% else %}
 				<div class="left-flow-text">剩余外网流量</div>
