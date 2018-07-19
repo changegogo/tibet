@@ -330,6 +330,8 @@ module.exports = app => {
                     let isToken = uuidv4.test(ctx.query.token);
 
                     if (isToken) {
+                        // 根据mac地址查询当前绑定的手机号码，流量记录中保存手机号码todo
+
                         model.Counters.userTrace(ctx.query).catch(err => {
                             ctx.logger.error('counters: %o', err);
                         });

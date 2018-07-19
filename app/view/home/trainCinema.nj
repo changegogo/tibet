@@ -37,9 +37,8 @@
                 <div class="swiper-wrapper">
                     {% for item in header %}
                         <div class="swiper-slide" >
-                            <a class="filma" httpurl="/film/details/{{item.id}}?mac={{mac}}">
-                            <!-- <img src="{{item.imgh}}" alt=""> -->
-                            <img src="http://39.108.211.168:8081/public/upload/artboard.png" alt="">
+                            <a class="filma_o" httpurl="/film/details/{{item.id}}?mac={{mac}}">
+                            <img src="http://tianlu.5uwifi.com:8081/public/upload/artboard.png" alt="">
                             </a>
                         </div>
                     {% endfor %}
