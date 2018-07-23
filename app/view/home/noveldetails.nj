@@ -42,9 +42,13 @@
            </div>
        </div>
       <p class="description_p marginT16 color_opacity60 font_size12 ">
-        <span>{{novel.description.substring(0,100)}}</span>
-        <span class="hide_content" style="display:none;">{{novel.description.substring(100)}}</span>
-        <span class="more" style="color: red; text-decoration:underline;">更多</span>
+        {% if novel.description != null %}
+            {% if novel.description.trim() != "" %}
+                <span>{{novel.description.substring(0,100)}}</span>
+                <span class="hide_content" style="display:none;">{{novel.description.substring(100)}}</span>
+                <span class="more" style="color: red; text-decoration:underline;">更多</span>
+            {% endif %}
+        {% endif %}
       </p>
    </div>
     <!-- -------------------------------------select-pay-method-wrapper----------------------------------- -->
