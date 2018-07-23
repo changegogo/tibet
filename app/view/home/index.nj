@@ -221,7 +221,7 @@
 			window.location.href = url;
 		});
 
-		$(".gamejump").click(function(){
+		/*$(".gamejump").click(function(){
 			// 判断设备信息
             var device = "";
             if(/Android/i.test(navigator.userAgent)) {
@@ -244,7 +244,7 @@
             }catch(err){
                 window.location.href = httpurl;
             }
-		});
+		});*/
 
 		// 接受mac传回的设备mac地址
 		window.receiveWifiMacResult = function(wmac) {
@@ -282,6 +282,41 @@
 	});
 	localStorage.setItem("indexurl", window.location.href); 
 </script>
+{% if status %}
+<script>
+	$(".gamejump").click(function(){
+		// 判断设备信息
+		var device = "";
+		if(/Android/i.test(navigator.userAgent)) {
+			device = "Android";
+		} else if(/iPhone/i.test(navigator.userAgent)) {
+			device = "iPhone";
+		}
+		if(!device){
+			alert("设备不支持");
+			return;
+		}
+
+		var httpurl = $(this).attr('httpurl');
+		try{
+			if(device === 'Android'){
+				qz_android.playGame(httpurl);
+			}else{
+				window.webkit.messageHandlers.playGame.postMessage({httpurl: httpurl});
+			}
+		}catch(err){
+			window.location.href = httpurl;
+		}
+	});
+</script>
+{% else %}
+<script>
+	$(".gamejump").click(function(){
+		weui.topTips('请您先开启外网');
+	});
+</script>
+{% endif %}
+
 {% if not status %}
 <script>
 $('.news-wrapper').on('click', 'a', function (e) {
