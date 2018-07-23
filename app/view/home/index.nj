@@ -245,6 +245,40 @@
                 window.location.href = httpurl;
             }
 		});
+
+		// 接受mac传回的设备mac地址
+		window.receiveWifiMacResult = function(wmac) {
+			window.curUrl = window.curUrl + "&wmac=" + wmac;
+			window.location.href = window.curUrl;
+		}
+		$(".filma").click(function(){
+			// 判断设备信息
+			var device = "";
+			if(/Android/i.test(navigator.userAgent)) {
+				device = "Android";
+			} else if(/iPhone/i.test(navigator.userAgent)) {
+				device = "iPhone";
+			}
+			if(!device){
+				alert("设备不支持");
+				return;
+			}
+			var wmac = "";
+			var url = $(this).attr("httpurl");
+			try{
+				if(device === 'Android'){
+					wmac = qz_android.getWifiMac();
+					url = url + "&wmac=" + wmac;
+					window.location.href = url;
+				}else {
+					window.curUrl = url;
+					window.webkit.messageHandlers.getWifiMac.postMessage(null);
+				}
+			}catch(err){
+				url = url + "&wmac=" + wmac;
+				window.location.href = url;
+			}
+		});
 	});
 	localStorage.setItem("indexurl", window.location.href); 
 </script>
@@ -253,43 +287,6 @@
 $('.news-wrapper').on('click', 'a', function (e) {
 	e.preventDefault();
     weui.topTips('请您先开启外网');
-});
-// 接受mac传回的设备mac地址
-window.receiveWifiMacResult = function(wmac) {
-	//alert(wmac);
-	window.curUrl = window.curUrl + "&wmac=" + wmac;
-	//alert(window.curUrl);
-	window.location.href = window.curUrl;
-}
-
-$(".filma").click(function(){
-	// 判断设备信息
-	var device = "";
-	if(/Android/i.test(navigator.userAgent)) {
-		device = "Android";
-	} else if(/iPhone/i.test(navigator.userAgent)) {
-		device = "iPhone";
-	}
-	if(!device){
-		alert("设备不支持");
-		return;
-	}
-	var wmac = "";
-	var url = $(this).attr("httpurl");
-	try{
-		if(device === 'Android'){
-			wmac = qz_android.getWifiMac();
-			url = url + "&wmac=" + wmac;
-			window.location.href = url;
-		}else {
-			window.curUrl = url;
-			//alert("调用getWifiMac.postMessage(null)");
-			window.webkit.messageHandlers.getWifiMac.postMessage(null);
-		}
-	}catch(err){
-		url = url + "&wmac=" + wmac;
-		window.location.href = url;
-	}
 });
 </script>
 {% endif %}
