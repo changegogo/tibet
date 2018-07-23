@@ -22,9 +22,10 @@
     <style>
         .bookReaderItem-title .name {
             overflow: hidden;
-            width: 95px;
+            width: 90px;
             white-space: nowrap;
             text-overflow: ellipsis;
+            text-align: center;
         }
     </style>
 </head>
