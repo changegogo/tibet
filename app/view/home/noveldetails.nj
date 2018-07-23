@@ -41,8 +41,10 @@
                <p class="theme_fontcolor"><span>{{novel.price}}</span>元</p>
            </div>
        </div>
-      <p class="marginT16 color_opacity60 font_size12 mui-ellipsis-3">
-        {{novel.description}}
+      <p class="description_p marginT16 color_opacity60 font_size12 ">
+        <span>{{novel.description.substring(0,100)}}</span>
+        <span class="hide_content" style="display:none;">{{novel.description.substring(100)}}</span>
+        <span class="more" style="color: red; text-decoration:underline;">更多</span>
       </p>
    </div>
     <!-- -------------------------------------select-pay-method-wrapper----------------------------------- -->
@@ -164,6 +166,11 @@
                     alert("请在app中阅读");
                 }
             }
+        });
+
+        $(".description_p").click( function() {
+            $(".hide_content").toggle();
+            $(".more").toggle();
         });
     });
 </script>
