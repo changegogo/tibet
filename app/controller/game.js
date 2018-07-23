@@ -2,7 +2,7 @@ const Controller = require('egg').Controller;
 
 class GameController extends Controller {
     async lists(ctx){
-        //let conf = ctx.app.config;
+        let {referer} = ctx.query;
         // 头部轮播图
         let header = await ctx.service.game.lists('all', 1, 5);
         // 中部类型
@@ -12,7 +12,8 @@ class GameController extends Controller {
         return await ctx.render('home/game', {
             header: header,
             types: types,
-            games: gamelist
+            games: gamelist,
+            referer: referer
         });
         
     }

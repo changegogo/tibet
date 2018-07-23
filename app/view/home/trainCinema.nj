@@ -25,7 +25,12 @@
 <div class="trainCinema-page">
     <!-- -------------------------nav------------------------ -->
     <div class="nav fixed-top bg-white font_size16 flex flex-pack-center">
+        {% if referer %}
+        <a href="{{referer}}" class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
+        {% else %}
         <a href="javascript:history.back();" class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>
+        {% endif %}
+        <!--<a href="javascript:history.back();" class="back"><img src="/public/img/Chevron@2x.png" width="12"/></a>-->
         <p class="text-center flex justify-content-center">列车影院</p>
     </div>
     <!--------------------------------body--+++++++++++++++++++++++++++++++++-->

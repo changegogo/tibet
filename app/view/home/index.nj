@@ -49,17 +49,12 @@
 				{% else %}
 					<div class="open-btn"><span httpurl="{{online}}">开启外网</span></div>
 				{% endif %}
-				<!-- {% if status %}
-					<div class="open-btn"><a href="{{offline}}">关闭外网</a></div>
-				{% else %}
-					<div class="open-btn"><a href="{{online}}">开启外网</a></div>
-				{% endif %} -->
 			{% endif %}
 		</div>
 		<div class="home-body">
 			<div class="fenlei-wrapper weui-flex">
 				<div class="weui-flex__item">
-					<a href="/traincinema/list?mac={{mac}}">
+					<a httpurl="/traincinema/list?mac={{mac}}" class="jumpa">
 						<div class="item-img">
 							<img class="" src="/public/img/ic_movie.svg" width="100%" height="100%" />
 						</div>
@@ -75,7 +70,7 @@
 					</a>
 				</div>
 				<div class="weui-flex__item">
-					<a href="/game/list?mac={{mac}}">
+					<a httpurl="/game/list?mac={{mac}}" class="jumpa">
 						<div class="item-img">
 							<img class="" src="/public/img/ic_videogame.svg" width="100%" height="100%" />
 						</div>
@@ -83,7 +78,7 @@
 					</a>
 				</div>
 				<div class="weui-flex__item">
-					<a href="/tianluwifi?mac={{mac}}">
+					<a httpurl="/tianluwifi?mac={{mac}}" class="jumpa">
 						<div class="item-img">
 							<img class="" src="/public/img/ic_wifi.svg" width="100%" height="100%" />
 						</div>
@@ -95,7 +90,6 @@
 			<div class="news-wrapper">
 				<div class="head-wrapepr weui-cell weui-cell_access">
 					<div class="weui-cell__bd">青藏铁路资讯</div>
-					<!-- <div class="weui-cell__ft more"><a href="/news/list/normal">更多</a></div> -->
 				</div>
 				<div class="body-wrapper">
 					<div class="news-notice">
@@ -147,7 +141,7 @@
 			<div class="movies-wrapper">
 				<div class="head-wrapepr weui-cell weui-cell_access">
 					<div class="weui-cell__bd">精品电影</div>
-					<div class="weui-cell__ft more"><a href="/traincinema/list?mac={{mac}}">更多</a></div>
+					<div class="weui-cell__ft more"><a httpurl="/traincinema/list?mac={{mac}}" class="jumpa">更多</a></div>
 				</div>
 				<div class="body-wrapper weui-flex">
 					{% for item in films %}
@@ -183,7 +177,7 @@
 			<div class="games-wrapper">
 				<div class="head-wrapepr weui-cell weui-cell_access">
 					<div class="weui-cell__bd">精品游戏</div>
-					<div class="weui-cell__ft more"><a href="/game/list?mac={{mac}}">更多</a></div>
+					<div class="weui-cell__ft more"><a httpurl="/game/list?mac={{mac}}" class="jumpa">更多</a></div>
 				</div>
 				<div class="body-wrapper">
 					<div class="swiper-container game-swiper-container">
@@ -221,30 +215,15 @@
 			window.location.href = url;
 		});
 
-		/*$(".gamejump").click(function(){
-			// 判断设备信息
-            var device = "";
-            if(/Android/i.test(navigator.userAgent)) {
-                device = "Android";
-            } else if(/iPhone/i.test(navigator.userAgent)) {
-                device = "iPhone";
-            }
-            if(!device){
-                alert("设备不支持");
-                return;
-            }
-
+		$('.jumpa').click(function(){
 			var httpurl = $(this).attr('httpurl');
-			try{
-				if(device === 'Android'){
-					qz_android.playGame(httpurl);
-				}else{
-					window.webkit.messageHandlers.playGame.postMessage({httpurl: httpurl});
-				}
-            }catch(err){
-                window.location.href = httpurl;
-            }
-		});*/
+			if(httpurl.indexOf("?")>-1){
+				httpurl = httpurl +'&referer='+ encodeURIComponent(window.location.href);
+			}else{
+				httpurl = httpurl +'?referer='+ encodeURIComponent(window.location.href);
+			}
+			window.location.href = httpurl;
+		});
 
 		// 接受mac传回的设备mac地址
 		window.receiveWifiMacResult = function(wmac) {

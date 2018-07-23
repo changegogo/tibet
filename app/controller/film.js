@@ -35,7 +35,7 @@ class FilmController extends Controller {
 
     async trainCinema(ctx){
         let model = ctx.app.model;
-        let { mac } = ctx.query;
+        let { mac, referer } = ctx.query;
         //  查询所有电影的类型
         let filmTypes = await model.Filmtype.findAllFilmType();
         
@@ -52,24 +52,13 @@ class FilmController extends Controller {
                 films: await ctx.service.film.lists(filmType.id, 1, 3)
             });
         }
-
-        // if(tag){
-        //     return await ctx.render('home/staticTrainCinema', {
-        //         mac: "",
-        //         header: header,
-        //         middle: middle,
-        //         allTypeFilms: allTypefilms
-        //     });
-        // }else{
         return await ctx.render('home/trainCinema', {
             mac: mac,
             header: header,
             middle: middle,
-            allTypeFilms: allTypefilms
+            allTypeFilms: allTypefilms,
+            referer: referer
         });
-       // }
-        
-        
     }
 
     async details(ctx) {
