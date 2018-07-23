@@ -45,10 +45,15 @@
 					<span>{{users}} 人已连接</span>
 				</div>
 				{% if status %}
+					<div class="open-btn"><span httpurl="{{offline}}">关闭外网</span></div>
+				{% else %}
+					<div class="open-btn"><span httpurl="{{online}}">开启外网</span></div>
+				{% endif %}
+				<!-- {% if status %}
 					<div class="open-btn"><a href="{{offline}}">关闭外网</a></div>
 				{% else %}
 					<div class="open-btn"><a href="{{online}}">开启外网</a></div>
-				{% endif %}
+				{% endif %} -->
 			{% endif %}
 		</div>
 		<div class="home-body">
@@ -206,6 +211,16 @@
 <script src="/public/js/index.js"></script>
 <script>
 	$(function(){
+		$(".open-btn").click(function(){
+			var el = $(this);
+			if (el.data('isClick')) {
+				return;
+			}
+			el.data("isClick", true);
+			var url = el.children("span:first-child").attr("httpurl");
+			window.location.href = url;
+		});
+
 		$(".gamejump").click(function(){
 			// 判断设备信息
             var device = "";
