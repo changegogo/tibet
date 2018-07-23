@@ -44,9 +44,13 @@
       <p class="description_p marginT16 color_opacity60 font_size12 ">
         {% if novel.description != null %}
             {% if novel.description.trim() != "" %}
+                {% if novel.description.length > 100 %}
                 <span>{{novel.description.substring(0,100)}}</span>
                 <span class="hide_content" style="display:none;">{{novel.description.substring(100)}}</span>
-                <span class="more" style="color: red; text-decoration:underline;">更多</span>
+                <span class="more" style="color: red; text-decoration:underline; font-style: italic;">更多</span>
+                {% else %}
+                <span>{{novel.description}}</span>
+                {% endif %}
             {% endif %}
         {% endif %}
       </p>

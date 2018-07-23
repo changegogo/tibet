@@ -47,8 +47,18 @@
                 {% endif %}
            </div>
        </div>
-      <p class="marginT16 color_opacity60 font_size12 mui-ellipsis-3">
-       {{film.description}}
+      <p class="description_p marginT16 color_opacity60 font_size12">
+       {% if film.description != null %}
+            {% if film.description.trim() != "" %}
+                {% if film.description.length > 100 %}
+                <span>{{film.description.substring(0,100)}}</span>
+                <span class="hide_content" style="display:none;">{{film.description.substring(100)}}</span>
+                <span class="more" style="color: red; text-decoration:underline; font-style: italic;">更多</span>
+                {% else %}
+                <span>{{film.description}}</span>
+                {% endif %}
+            {% endif %}
+        {% endif %}
       </p>
    </div>
     <!---------------------------------------select-pay-method-wrapper-------------------------------------->
@@ -175,6 +185,11 @@
                     alert("请在app中观看");
                 }
             }
+        });
+
+        $(".description_p").click( function() {
+            $(".hide_content").toggle();
+            $(".more").toggle();
         });
     })
 </script>
