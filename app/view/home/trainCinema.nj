@@ -42,7 +42,7 @@
                 <div class="swiper-wrapper">
                     {# {% for item in header %} #}
                         <div class="swiper-slide" >
-                            <a style="display: inline-block;" class="filma_o" href="#">
+                            <a style="display: inline-block;" class="filma_o" href="https://m.chunyuyisheng.com/lp_download">
                             <img src="/public/upload/chunyu_h.png" alt="">
                             </a>
                         </div>

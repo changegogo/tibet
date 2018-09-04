@@ -219,7 +219,7 @@ body {
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <a style="display: inline-block;" href="#"><img class="d-block w-100" src="/public/upload/chunyu_h.png" /></a>
+      <a style="display: inline-block;" href="https://m.chunyuyisheng.com/lp_download"><img class="d-block w-100" src="/public/upload/chunyu_h.png" /></a>
     </div>
     <!-- <div class="carousel-item">
       <img class="d-block w-100" src="/public/upload/artboard.png" />
