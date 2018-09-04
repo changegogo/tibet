@@ -47,6 +47,8 @@ module.exports = app => {
 
     // 下载页面
     app.get('/app/download', 'home.downloadApp');
+    // 启动页广告
+    app.get('/adver/splash', 'home.splashAdv');
     // 浮窗广告
     app.get('/adver', 'home.adv');
     // 资讯列表 :type 取值 normal notice

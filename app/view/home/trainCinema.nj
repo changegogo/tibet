@@ -40,23 +40,23 @@
             <div class="swiper-container topbanner-swiper-container swiper-container-horizontal">
                 
                 <div class="swiper-wrapper">
-                    {% for item in header %}
+                    {# {% for item in header %} #}
                         <div class="swiper-slide" >
-                            <a class="filma_o" httpurl="/film/details/{{item.id}}?mac={{mac}}">
-                            <img src="http://tianlu.5uwifi.com:8081/public/upload/artboard.png" alt="">
+                            <a style="display: inline-block;" class="filma_o" href="#">
+                            <img src="/public/upload/chunyu_h.png" alt="">
                             </a>
                         </div>
-                    {% endfor %}
+                    {# {% endfor %} #}
                     
                 </div>
                 <div class="swiper-pagination topbanner-pagination swiper-pagination-bullets font_size16">
-                    {% for item in header %}
+                    {# {% for item in header %} #}
                         {% if loop.index0 === 0 %}
                             <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
                         {% else %}
                             <span class="swiper-pagination-bullet"></span>
                         {% endif %}
-                    {% endfor %}
+                    {# {% endfor %} #}
                 </div>
             </div>
         </div>

@@ -586,12 +586,20 @@ module.exports = app => {
             let film = await ctx.service.film.getFileById(filmid);
             return await ctx.render('home/playervideo', {film: film});
         }
+
+        async splashAdv(ctx) {
+            ctx.body = {
+                name: '春雨医生',
+                img: '/public/upload/chunyu_v.png',
+                httpurl: 'https://mobipromo.io'
+            };
+        }
         
         async adv(ctx) {
             ctx.body = {
-                name: '广告名称',
-                img: '/public/upload/adv.png',
-                httpurl: 'http://www.peoplerail.com/rail/'
+                name: '春雨医生',
+                img: '/public/upload/chunyu.png',
+                httpurl: ''
             };
         }
 
