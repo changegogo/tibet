@@ -591,7 +591,7 @@ module.exports = app => {
             ctx.body = {
                 name: '春雨医生',
                 img: '/public/upload/chunyu_v.png',
-                httpurl: 'http://api.chunyuyisheng.com/download/chunyu/latest/?vendor=tianluqidong'
+                httpurl: 'http://api.chunyuyisheng.com/download/chunyu/latest/?vendor=tianluqidong&ylkjtag=ylkjadv'
             };
         }
         
@@ -599,7 +599,7 @@ module.exports = app => {
             ctx.body = {
                 name: '春雨医生',
                 img: '/public/upload/chunyu.png',
-                httpurl: 'http://api.chunyuyisheng.com/download/chunyu/latest/?vendor=tianlushouye'
+                httpurl: 'http://api.chunyuyisheng.com/download/chunyu/latest/?vendor=tianlushouye&ylkjtag=ylkjadv'
             };
         }
 
