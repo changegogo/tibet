@@ -591,7 +591,7 @@ module.exports = app => {
             let advList = [
                 {
                     name: '春雨医生',
-                    img: '/public/upload/chunyu.png',
+                    img: '/public/upload/chunyu_v.png',
                     httpurl: 'http://api.chunyuyisheng.com/download/chunyu/latest/?vendor=tianlushouye&ylkjtag=ylkjadv'
                 },
                 {
