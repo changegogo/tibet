@@ -32,11 +32,16 @@
     <div class="zixun-header font_size16">
         <div class="swiper-container topbanner-swiper-container swiper-container-horizontal">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" ><a  style="display: inline-block;" href="http://api.chunyuyisheng.com/download/chunyu/latest/?vendor=tianluzixun&ylkjtag=ylkjadv"><img src="/public/upload/chunyu_h.png" alt=""></a></div>
-                <!-- {% for item in header %}
-                    <div class="swiper-slide" ><img src="{{item.img_1}}" alt=""></div>
-                    <div class="swiper-slide" ><img src="http://39.108.211.168:8081/public/upload/artboard.png" alt=""></div>
-                {% endfor %} -->
+                <div class="swiper-slide" >
+                    <a  style="display: inline-block;" href="http://api.chunyuyisheng.com/download/chunyu/latest/?vendor=tianluzixun&ylkjtag=ylkjadv">
+                        <img src="/public/upload/chunyu_h.png" alt="">
+                    </a>
+                </div>
+                <div class="swiper-slide" >
+                    <a style="display: inline-block;" href="https://rxcq.tantanyou.com/?sp=450001&ss=WIFI&ts=0001?ylkjtag=ylkjadv">
+                        <img src="/public/upload/rexuecq_h.jpeg" alt="">
+                    </a>
+                </div>
             </div>
             <div class="swiper-pagination topbanner-pagination swiper-pagination-bullets font_size16">
             </div>

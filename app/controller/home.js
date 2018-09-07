@@ -609,11 +609,24 @@ module.exports = app => {
         }
         
         async adv(ctx) {
-            ctx.body = {
-                name: '春雨医生',
-                img: '/public/upload/chunyu.png',
-                httpurl: 'http://api.chunyuyisheng.com/download/chunyu/latest/?vendor=tianlushouye&ylkjtag=ylkjadv'
-            };
+            let advList = [
+                {
+                    name: '热血传奇',
+                    img: '/public/upload/rexuecq.jpeg',
+                    httpurl: 'https://rxcq.tantanyou.com/?sp=450001&ss=WIFI&ts=0001?ylkjtag=ylkjadv'
+                },
+                {
+                    name: '春雨医生',
+                    img: '/public/upload/chunyu.png',
+                    httpurl: 'http://api.chunyuyisheng.com/download/chunyu/latest/?vendor=tianlushouye&ylkjtag=ylkjadv'
+                }
+            ];
+            let ranNum = parseInt(Math.random()*2);
+            let adv = advList[ranNum];
+            if(!adv) {
+                adv = advList[0];
+            }
+            ctx.body = adv;
         }
 
         async tianluwifi(ctx){
@@ -1002,6 +1015,18 @@ module.exports = app => {
                 }
             }
             ctx.body = res;
+        }
+
+        async indexold (ctx){
+            return await ctx.render('home/indexold', {
+                mac: '',
+                status: 1,
+                uname: 'sd',
+                online: "true",
+                offline: "false",
+                users: 10,
+                flow: 1000
+            });
         }
     }
     return Home;

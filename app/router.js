@@ -117,5 +117,8 @@ module.exports = app => {
     app.post('/iosVeryBind', MIDDLE_WARES.isMobile(), 'home.iosVeryBind');
     // ios端特定接口
     app.get('/ios/:wmac/:telphone/:wifiname', 'home.iosEntry');
+
+    // 测试indexold
+    //app.get('/indexold', 'home.indexold');
     
 };

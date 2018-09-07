@@ -1,5 +1,8 @@
 var swiper = new Swiper('.topbanner-swiper-container', {
-    watchSlidesProgress: true,
+	watchSlidesProgress: true,
+	autoplay: {
+        delay: 3000
+    },
     pagination: {
         el: '.topbanner-pagination',
         clickable :true

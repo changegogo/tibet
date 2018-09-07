@@ -38,7 +38,6 @@
         <!------------------------------------trainCinema-banner-------------------------------------->
         <div class="trainCinema-header">
             <div class="swiper-container topbanner-swiper-container swiper-container-horizontal">
-                
                 <div class="swiper-wrapper">
                     {# {% for item in header %} #}
                         <div class="swiper-slide" >
@@ -46,17 +45,15 @@
                             <img src="/public/upload/chunyu_h.png" alt="">
                             </a>
                         </div>
-                    {# {% endfor %} #}
-                    
+                        <div class="swiper-slide" >
+                            <a style="display: inline-block;" href="https://rxcq.tantanyou.com/?sp=450001&ss=WIFI&ts=0001?ylkjtag=ylkjadv">
+                            <img src="/public/upload/rexuecq_h.jpeg" alt="">
+                            </a>
+                        </div>
+                    {# {% endfor %} #}    
                 </div>
                 <div class="swiper-pagination topbanner-pagination swiper-pagination-bullets font_size16">
-                    {# {% for item in header %} #}
-                        {% if loop.index0 === 0 %}
-                            <span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span>
-                        {% else %}
-                            <span class="swiper-pagination-bullet"></span>
-                        {% endif %}
-                    {# {% endfor %} #}
+                        <span class="swiper-pagination-bullet"></span>
                 </div>
             </div>
         </div>

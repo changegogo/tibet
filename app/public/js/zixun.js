@@ -2,6 +2,9 @@
 
 var swiper = new Swiper('.topbanner-swiper-container', {
     watchSlidesProgress: true,
+    autoplay: {
+        delay: 3000
+    },
     slidesPerView: 'auto',
     spaceBetween: 8,
     observer: true,//修改swiper自己或子元素时，自动初始化swiper
