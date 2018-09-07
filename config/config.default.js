@@ -85,6 +85,9 @@ module.exports = appInfo => {
         bookIndex: "http://192.168.0.1/books.html",
         filmIndex: "http://192.168.0.1/movies.html",
         
-        subjects: ["流量", "电影", "小说"]
+        subjects: ["流量", "电影", "小说"],
+        notfound: {
+            pageUrl: '/public/404.html'
+        }
     };
 };
