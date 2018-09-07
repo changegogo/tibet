@@ -590,14 +590,14 @@ module.exports = app => {
         async splashAdv(ctx) {
             let advList = [
                 {
-                    name: '春雨医生',
-                    img: '/public/upload/chunyu_v.png',
-                    httpurl: 'http://api.chunyuyisheng.com/download/chunyu/latest/?vendor=tianlushouye&ylkjtag=ylkjadv'
-                },
-                {
                     name: '豆皮',
                     img: '/public/upload/doupi.jpg',
                     httpurl: 'http://h5.coolpi360.com/static/kupi_wifi_v1.2.0_2018-09-05.apk?ylkjtag=ylkjadv'
+                },
+                {
+                    name: '春雨医生',
+                    img: '/public/upload/chunyu_v.png',
+                    httpurl: 'http://api.chunyuyisheng.com/download/chunyu/latest/?vendor=tianlushouye&ylkjtag=ylkjadv'
                 }
             ];
             let ranNum = parseInt(Math.random()*2);
