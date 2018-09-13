@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <title>天路WiFi</title>
+    <script type="text/javascript">
+        document.getElementsByTagName('html')[0].style.fontSize = document.documentElement.clientWidth/3.75 +'px';
+    </script>
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/public/css/weui.min.css" />
+    <link rel="stylesheet" href="/public/css/flex.css">
+    <link rel="stylesheet" href="/public/css/swiper.min.css">
+    <link rel="stylesheet" href="/public/css/common.css">
+    <link rel="stylesheet" href="/public/css/trainCinema.css?version=1.0.2">
+</head>
+
+<body>
+<div class="houtai-page">
+    <h1>后台管理系统</h1>
+    <!-- -------------------------nav------------------------ -->
+</nav>
+    <nav class="nav nav-pills nav-justified">
+      <a class="nav-item nav-link active" href="#">Active</a>
+      <a class="nav-item nav-link" href="#">Link</a>
+      <a class="nav-item nav-link" href="#">Link</a>
+      <a class="nav-item nav-link disabled" href="#">Disabled</a>
+    </nav>
+    <!--------------------------------body--+++++++++++++++++++++++++++++++++-->
+    <div class="container">
+        <div class="row">
+            <p class="col"></p>
+            <p class="col"></p>
+            <p class="col"></p>
+        </div>
+    </div>
+</div>
+<script src="/public/js/jquery-3.3.1.min.js"></script>
+<script src="/public/js/bootstrap.min.js"></script>
+<script src="/public/js/weui.js"></script>
+<script src="/public/js//swiper.min.js"></script>
+<script src="/public/js/trainCInema.js"></script>
+<script>
+    // 接受mac传回的设备mac地址
+    window.receiveWifiMacResult = function(wmac) {
+        window.curUrl = window.curUrl + "&wmac=" + wmac;
+        window.location.href = window.curUrl;
+    }
+    $(function(){
+        $(".filma").click(function(){
+            // 判断设备信息
+            var device = "";
+            if(/Android/i.test(navigator.userAgent)) {
+                device = "Android";
+            } else if(/iPhone/i.test(navigator.userAgent)) {
+                device = "iPhone";
+            }
+            if(!device){
+                alert("设备不支持");
+                return;
+            }
+            var wmac = "";
+            var url = $(this).attr("httpurl");
+            try{
+                if(device === 'Android'){
+                    wmac = qz_android.getWifiMac();
+                    url = url + "&wmac=" + wmac;
+                    window.location.href = url;
+                }else {
+                    window.curUrl = url;
+                    window.webkit.messageHandlers.getWifiMac.postMessage(null);
+                }
+            }catch(err){
+                url = url + "&wmac=" + wmac;
+                window.location.href = url;
+            }
+        });
+        $.ajax({
+            url: '/admin/statistics',
+            success: function(res) {
+                console.log(res)
+            },
+            error: function(err) {
+                console.log(err);
+            }
+        })
+    });
+</script>
+</body>
+
+</html>

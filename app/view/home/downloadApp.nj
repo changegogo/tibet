@@ -58,6 +58,7 @@
         }
         .downloadApp-top-wrapper {
             padding: 40px 0;
+            background: #fff;
         }
         .downloadApp-bottom-wrapper {
             background-image: url("/public/img/download_icon_04.png");

@@ -118,7 +118,7 @@ module.exports = app => {
 
     class Home extends app.Controller {
         async login(ctx) {
-            console.log('login');
+            //console.log('login');
             /*try {
                 ctx.validate({
                     "gw_address": {
@@ -156,8 +156,8 @@ module.exports = app => {
 
             // 获取`WIFI终端`信息
             let [ sta ] = await model.Sta.updateByMAC(mac, ip, gw_id, gw_sn);
-            console.log('index sta');
-            console.log(sta);
+            //console.log('index sta');
+            //console.log(sta);
             let query = new URLSearchParams(ctx.query).toString();
 
             // 未绑定手机
@@ -247,7 +247,7 @@ module.exports = app => {
                 length: 6,
                 pool: "0123456789"
             });
-            console.log(code);
+            //console.log(code);
             // 校验是否可以发送短信
             let isOK = await redis.isOK(key, mobile, code, day);
             if (isOK === 'ttl') {
@@ -358,7 +358,7 @@ module.exports = app => {
                 // 流量是否超限
                 let flow = await model.Counters.remains(mac).then(f => f.plus(balance));
                 
-                console.log('LOGIN FLOW STATUS: ', flow);
+                //console.log('LOGIN FLOW STATUS: ', flow);
                 if (flow.isNegative()) {
                     ctx.body = { auth: 0 };
                     return;
@@ -386,7 +386,7 @@ module.exports = app => {
         }
 
         async index(ctx) {
-            console.log('index');
+            //console.log('index');
             let { gw_id, gw_sn, mac, wifi, tag, device } = ctx.query;
             let [ gw_address, gw_port,ssid, ip, username, is_app ] = await Promise.all([
                 model.Mtfi.findByGW(gw_id, gw_sn),
@@ -447,11 +447,11 @@ module.exports = app => {
                 ctx.redirect('http://192.168.0.1:2060/wifidog/redirect');
                 return;
             }
-            console.log('token: ', token);
+            //console.log('token: ', token);
 
             // 上线操作
             let online = `http://${gw_address}:${gw_port}/wifidog/auth?token=${token.token}`;
-            console.log('online: ', online);
+            //console.log('online: ', online);
             // 下线操作
             let offline = `${online}&logout=1`;
             if(tag === 'app'){ // 表示在app中打开
@@ -495,6 +495,7 @@ module.exports = app => {
                     device: device
                 });  
             }else{ // 表示在弹出页面打开
+                //return await ctx.redirect('/app/download');
                 return await ctx.render('home/indexold', {
                     mac: mac,
                     status: token.auth,
@@ -667,7 +668,7 @@ module.exports = app => {
 
         //type (novel,film,wifi)
         async alreadybuy(ctx) {
-            console.log(ctx.query);
+            //console.log(ctx.query);
             try {
                 let { mac,wmac } = ctx.query;
                 if(wmac){
@@ -856,7 +857,7 @@ module.exports = app => {
                 length: 6,
                 pool: "0123456789"
             });
-            console.log(code);
+            //console.log(code);
             // 校验是否可以发送短信
             let isOK = await redis.isOK(key, mobile, code, day);
             if (isOK === 'ttl') {

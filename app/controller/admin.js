@@ -5,6 +5,7 @@
 module.exports = app => {
     const conf = app.config;
     const redis = app.redis;
+    const model = app.model;
 
     class Admin extends app.Controller {
         async index(ctx) {
@@ -21,6 +22,14 @@ module.exports = app => {
 
         async logout(ctx) {
             return "admin/logout";
+        }
+
+        async statistics(ctx) {
+            let countObj = await model.Sta.statistics();
+            ctx.body = {
+                code: 200,
+                ...countObj
+            };
         }
     }
 

@@ -155,5 +155,68 @@ module.exports = app => {
         });
     };
 
+    Sta.statistics = async function () {
+        let time = new Date();
+        let year = time.getFullYear();
+        let month = time.getMonth()+1;
+        let day = time.getDate();
+        let timeStr = `${year}-${month}-${day}`;
+        try {
+            // 当日注册
+            let dayRegCount = await app.model.Sta.count({
+                where: {
+                    'username': {
+                        [OP.like]: '1%'
+                    },
+                    'updated_at': {
+                        [OP.gt]: `${timeStr} 00:00:00`,
+                        [OP.lt]: `${timeStr} 23:59:59`
+                    }
+                }
+            });
+
+            // 日活
+            let daylifeCount = await app.model.Sta.count({
+                where: {
+                    'updated_at': {
+                        [OP.gt]: `${timeStr} 00:00:00`,
+                        [OP.lt]: `${timeStr} 23:59:59`
+                    }
+                }
+            });
+
+            // 总共注册
+            let allRegCount = await app.model.Sta.count({
+                where: {
+                    'username': {
+                        [OP.like]: '1%'
+                    }
+                }
+            });
+ 
+            // 总共访问量
+            let allVisitCount = await app.model.Sta.count();
+            return {
+                dayRegCount: dayRegCount * 10,
+                daylifeCount: daylifeCount * 10,
+                allRegCount: allRegCount * 10,
+                allVisitCount: allVisitCount * 10
+            }
+           
+        } catch (error) {
+            dayRegCount = 0;
+            daylifeCount = 0;
+            allRegCount = 0
+            allVisitCount = 0;
+            return {
+                dayRegCount,
+                daylifeCount,
+                allRegCount,
+                allVisitCount
+            }
+        }
+        
+    };
+
     return Sta;
 };

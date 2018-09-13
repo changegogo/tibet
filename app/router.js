@@ -39,6 +39,8 @@ module.exports = app => {
     app.post(ADMIN_ENTRY_POINT, 'admin.login');
     app.get('/logout/', 'admin.logout');
     app.get('/admin', 'admin.dashboard');
+    // 统计数据
+    app.get('/admin/statistics', 'admin.statistics');
     app.get('/books', 'home.books');
     app.get('/books/my', 'home.mybooks');
     app.get('/movies', 'home.movies');
