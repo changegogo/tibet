@@ -22,22 +22,22 @@
 </head>
 
 <body>
-<div class="houtai-page">
-    <h1>后台管理系统</h1>
+<div class="houtai-page container">
+    <h2>后台统计</h2>
     <!-- -------------------------nav------------------------ -->
-</nav>
-    <nav class="nav nav-pills nav-justified">
+   <!--  <nav class="nav nav-pills nav-justified">
       <a class="nav-item nav-link active" href="#">Active</a>
       <a class="nav-item nav-link" href="#">Link</a>
       <a class="nav-item nav-link" href="#">Link</a>
       <a class="nav-item nav-link disabled" href="#">Disabled</a>
-    </nav>
+    </nav> -->
     <!--------------------------------body--+++++++++++++++++++++++++++++++++-->
     <div class="container">
-        <div class="row">
-            <p class="col"></p>
-            <p class="col"></p>
-            <p class="col"></p>
+        <div class="row" style="margin-top: 40px;">
+            <div class="col">今日注册 <p class="today_register">--</p></div>
+            <div class="col">今日访问量 <p class="today_totalViews">--</p></div>
+            <div class="col">总共注册 <p class="total_registers">--</p></div>
+            <div class="col">总共访问量 <p class="total_views">--</p></div>
         </div>
     </div>
 </div>
@@ -85,6 +85,12 @@
             url: '/admin/statistics',
             success: function(res) {
                 console.log(res)
+                if (res.code === 200) {
+                    $('.today_register').text(res.dayRegCount)
+                    $('.today_totalViews').text(res.daylifeCount)
+                    $('.total_registers').text(res.allRegCount)
+                    $('.total_views').text(res.allVisitCount)
+                }
             },
             error: function(err) {
                 console.log(err);
