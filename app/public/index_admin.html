@@ -16,27 +16,69 @@
     <link rel="stylesheet" href="/public/css/swiper.min.css">
     <link rel="stylesheet" href="/public/css/common.css">
     <link rel="stylesheet" href="/public/css/trainCinema.css?version=1.0.2">
+    <style type="text/css">
+    body {
+      padding-top: 40px;
+      padding-bottom: 40px;
+      background-color: #eee;
+  }
+
+  .form-signin {
+      max-width: 330px;
+      padding: 15px;
+      margin: 0 auto;
+  }
+  .form-signin .form-signin-heading,
+  .form-signin .checkbox {
+      margin-bottom: 10px;
+  }
+  .form-signin .checkbox {
+      font-weight: normal;
+  }
+  .form-signin .form-control {
+      position: relative;
+      height: auto;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 12px;
+  }
+  .form-signin .form-control:focus {
+      z-index: 2;
+  }
+  .form-signin input[type="email"] {
+      margin-bottom: -1px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+  }
+  .form-signin input[type="password"] {
+      margin-bottom: 10px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+  }
+
+</style>
 </head>
 
 <body>
-<div class="houtai-page container">
-    <h1>后台管理系统</h1>
-    <!-- -------------------------nav------------------------ -->
-
-    <!-- <nav class="nav nav-pills nav-justified">
-      <a class="nav-item nav-link active" href="#">Active</a>
-      <a class="nav-item nav-link" href="#">Link</a>
-      <a class="nav-item nav-link" href="#">Link</a>
-      <a class="nav-item nav-link disabled" href="#">Disabled</a>
-    </nav> -->
-    <!--------------------------------body--+++++++++++++++++++++++++++++++++-->
     <div class="container">
-        <div class="row">
-            <p class="col"><span></span></p>
-            <p class="col"></p>
-            <p class="col"></p>
-        </div>
-    </div>
+
+      <form class="form-signin">
+        <h2 class="form-signin-heading text-center">登录</h2>
+        <label for="inputEmail" class="sr-only">用户名</label>
+        <input type="username" id="userName" class="form-control" placeholder="用户名" required="" name="username" value="admin">
+        <label for="inputPassword" class="sr-only">密码</label>
+        <input type="password" id="inputPassword" class="form-control" name="password" placeholder="密码" required="" value="12345678">
+        <!-- <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div> -->
+    <button class="btn btn-lg btn-primary btn-block login-btn" type="button">登录</button>
+</form>
+
 </div>
 <script src="/public/js/jquery-3.3.1.min.js"></script>
 <script src="/public/js/bootstrap.min.js"></script>
@@ -78,15 +120,32 @@
                 window.location.href = url;
             }
         });
-        $.ajax({
-            url: '/admin/statistics',
-            success: function(res) {
-                console.log(res)
-
-            },
-            error: function(err) {
-                console.log(err);
-            }
+        
+        function loginMethod() {
+            $.ajax({
+                url: '/login',
+                method: 'POST',
+                data: {
+                    username: $('#userName').val(),
+                    password: $('#inputPassword').val(),
+                },
+                success: function(res){
+                    console.log(res);
+                    if (res.code === 200) {
+                        window.location.href = '/public/statistics.html'
+                    } else {
+                        alert(res.msg);
+                    }
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            })
+        }
+        // login-btn
+        $('.login-btn').click(function(){
+            console.log(323232)
+            loginMethod();
         })
     });
 </script>

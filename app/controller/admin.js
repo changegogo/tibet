@@ -17,11 +17,28 @@ module.exports = app => {
         }
 
         async login(ctx) {
-            return "admin/login";
+            console.log(ctx.session);
+            let { username, password } = ctx.request.body;
+            if(username === 'admin' && password === '12345678') {
+                ctx.session.username = username;
+                ctx.body = {
+                    code: 200,
+                    msg: '登录成功'
+                };
+            }else {
+                ctx.body = {
+                    code: 201,
+                    msg: '用户或密码不正确'
+                };
+            }
         }
 
         async logout(ctx) {
-            return "admin/logout";
+            ctx.session.username = null;
+            ctx.body = {
+                code: 200,
+                msg: '登出成功'
+            };
         }
 
         async statistics(ctx) {

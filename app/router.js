@@ -36,8 +36,8 @@ module.exports = app => {
     // ---------------------------------------------------
 
     app.get(ADMIN_ENTRY_POINT, 'admin.index');
-    app.post(ADMIN_ENTRY_POINT, 'admin.login');
-    app.get('/logout/', 'admin.logout');
+    app.post('/login', 'admin.login');
+    app.get('/logout', 'admin.logout');
     app.get('/admin', 'admin.dashboard');
     // 统计数据
     app.get('/admin/statistics', 'admin.statistics');
