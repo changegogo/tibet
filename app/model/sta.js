@@ -197,10 +197,10 @@ module.exports = app => {
             // 总共访问量
             let allVisitCount = await app.model.Sta.count();
             return {
-                dayRegCount: dayRegCount * 10,
-                daylifeCount: daylifeCount * 10,
-                allRegCount: allRegCount * 10,
-                allVisitCount: allVisitCount * 10
+                dayRegCount: dayRegCount * 11,
+                daylifeCount: daylifeCount * 11,
+                allRegCount: allRegCount * 11,
+                allVisitCount: allVisitCount * 11
             }
            
         } catch (error) {
