@@ -824,9 +824,7 @@ module.exports = app => {
              *  去mti查找，如果没有，内部重定向/wifi/login?mac=&tag=app
              *  如果有，
              */
-            let wmac = ctx.params.wmac; // 设备mac
-            let mmac = ctx.params.mmac; // 手机mac
-            let wifiname = ctx.params.wifi;
+            let { wmac, mmac, wifi } = ctx.params; // 设备mac 手机mac
             wmac = wmac.toLowerCase();
             mmac = mmac.toLowerCase();
             let gateWay = conf.deviceaddress;
@@ -838,7 +836,7 @@ module.exports = app => {
             }
             else {
                 //mac, wifi, tag
-                ctx.redirect(`/wifi/login?mac=${mmac}&wifi=${wifiname}&tag=app&device=no`);
+                ctx.redirect(`/wifi/login?mac=${mmac}&wifi=${wifi}&tag=app&device=no`);
             }
         }
         // ios端验证绑定的发送验证码接口

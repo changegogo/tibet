@@ -34,13 +34,14 @@ module.exports = app => {
 
     // 后台管理
     // ---------------------------------------------------
-
     app.get(ADMIN_ENTRY_POINT, 'admin.index');
     app.post('/login', 'admin.login');
     app.get('/logout', 'admin.logout');
     app.get('/admin', 'admin.dashboard');
-    // 统计数据
+    // 统计数据 日访问量、日注册、总注册、总访问量
     app.get('/admin/statistics', 'admin.statistics');
+    // 统计每一天的访问量
+    app.get('/admin/everydayReg', 'admin.everydayReg')
     app.get('/books', 'home.books');
     app.get('/books/my', 'home.mybooks');
     app.get('/movies', 'home.movies');

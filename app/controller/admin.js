@@ -55,7 +55,11 @@ module.exports = app => {
                     ...countObj
                 };
             }
-           
+        }
+
+        async everydayReg(ctx) {
+            let data = await model.Sta.everydayReg();
+            ctx.body = data;
         }
     }
 

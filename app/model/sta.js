@@ -168,7 +168,7 @@ module.exports = app => {
                     'username': {
                         [OP.like]: '1%'
                     },
-                    'updated_at': {
+                    'created_at': {
                         [OP.gt]: `${timeStr} 00:00:00`,
                         [OP.lt]: `${timeStr} 23:59:59`
                     }
@@ -215,8 +215,17 @@ module.exports = app => {
                 allVisitCount
             }
         }
-        
     };
+
+    // 统计每一天的注册量
+    Sta.everydayReg = async function () {
+        let sql = `select to_char( sta.created_at, 'yyyy-MM-dd' ) as day, count(id) as sum
+                    from sta
+                    where username is not null
+                    GROUP BY  to_char( sta.created_at, 'yyyy-MM-dd' )`;
+        let data = await app.model.query(sql);
+        return data[0];
+    }
 
     return Sta;
 };
