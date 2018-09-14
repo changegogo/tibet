@@ -118,21 +118,6 @@ module.exports = app => {
 
     class Home extends app.Controller {
         async login(ctx) {
-            //console.log('login');
-            /*try {
-                ctx.validate({
-                    "gw_address": {
-                        type: 'string',
-                        format: /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/
-                    },
-                    "gw_port": 'id',
-                }, ctx.query);
-            } catch (err) {
-                ctx.logger.error(err);
-                // 非法输入返回`404`
-                return;
-            }*/
-
             // 请求参数:
             // -------------------------------------
             // {
@@ -156,8 +141,6 @@ module.exports = app => {
 
             // 获取`WIFI终端`信息
             let [ sta ] = await model.Sta.updateByMAC(mac, ip, gw_id, gw_sn);
-            //console.log('index sta');
-            //console.log(sta);
             let query = new URLSearchParams(ctx.query).toString();
 
             // 未绑定手机
@@ -311,10 +294,13 @@ module.exports = app => {
         }
 
         async auth(ctx) {
+            let username = null;
             try {
                 ctx.validate({
                     "stage": [ 'login', 'logout', 'counters', 'query' ],
                 }, ctx.query);
+                // 根据mac地址查询当前绑定的手机号码，流量记录中保存手机号码
+                username = (await model.Sta.findByMAC(ctx.query.mac)).username;
 
                 // 查询终端认证状态
                 // 没有流量信息参数
@@ -330,8 +316,7 @@ module.exports = app => {
                     let isToken = uuidv4.test(ctx.query.token);
 
                     if (isToken) {
-                        // 根据mac地址查询当前绑定的手机号码，流量记录中保存手机号码todo
-
+                        Object.assign(ctx.query, {username: username});
                         model.Counters.userTrace(ctx.query).catch(err => {
                             ctx.logger.error('counters: %o', err);
                         });
@@ -354,9 +339,9 @@ module.exports = app => {
             // 用户登录
             if (stage === 'login') {
                 // 充值
-                let balance = await model.Order.balance(mac, 'FLOW');
+                let balance = await model.Order.balance(username, 'FLOW');
                 // 流量是否超限
-                let flow = await model.Counters.remains(mac).then(f => f.plus(balance));
+                let flow = await model.Counters.remains(username).then(f => f.plus(balance));
                 
                 //console.log('LOGIN FLOW STATUS: ', flow);
                 if (flow.isNegative()) {
@@ -371,9 +356,9 @@ module.exports = app => {
             // 用户追踪
             if (stage === 'counters') {
                 // 充值
-                let balance = await model.Order.balance(mac, 'FLOW');
+                let balance = await model.Order.balance(username, 'FLOW');
                 // 流量是否超限
-                let flow = await model.Counters.remains(mac).then(f => f.plus(balance));
+                let flow = await model.Counters.remains(username).then(f => f.plus(balance));
 
                 if (flow.isNegative()) {
                     await model.Token.offline(gw_id, mac);
@@ -432,7 +417,7 @@ module.exports = app => {
                 // 当前在线用户数
                 model.Token.countByOnline(gw_id),
                 // 终端流量统计
-                model.Counters.flow(mac, username),
+                model.Counters.flow(username),
                 // 用户跟踪超时(MTFi设备断电)
                 model.Counters.timeout(token.token)
             ]);

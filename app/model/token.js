@@ -47,13 +47,14 @@ module.exports = app => {
      */
     Token.findByLock = async function (gw_id, gw_sn, ip, mac, username) {
         let lock = `LOCK:${gw_id}:${mac}`;
-        if (await redis.setnx(lock, 'lock')) {
+        let isSetnx = await redis.setnx(lock, 'lock');
+        if (isSetnx) {
             let token, isNew;
 
             try {
                 [ token, isNew ] = await Token.findOrGenerate(gw_id, gw_sn, ip, mac, username);
             } finally {
-                await redis.del(lock).catch(() => {});
+                //await redis.del(lock).catch(() => {});
             }
 
             return [ token, isNew ];

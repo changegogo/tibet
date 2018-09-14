@@ -18,43 +18,36 @@ module.exports = app => {
             "autoIncrement": true,
             "primaryKey": true
         },
-
         // MTFi 设备的 id, wifidog 中使用设备的 MAC
         "gw_id": STRING,
-
         // MTFi设备的序列号
         "gw_sn": STRING,
-
         // wifi 终端 IP 地址
         "ip": STRING,
-
         // wifi 终端 MAC 地址
         "mac": STRING,
-
+        // 手机号
+        "username": STRING,
         // Portal 生成的连接标识
         "token": {
             "type": STRING,
             "unique": true
         },
-
         // 累计下行流量，单位"byte"
         "incoming": BIGINT,
-
         // 累计上行流量，单位"byte"
         "outgoing": BIGINT,
-
         // 终端上线时间
         "usedtime": INTEGER,
-
         "created_at": DATE,
         "updated_at": DATE,
     });
 
-    Counters.aggr = function (mac) {
+    Counters.aggr = function (username) {
         return Counters.findOne({
             "where": {
-                "mac": {
-                    [OP.eq]: mac
+                "username": {
+                    [OP.eq]: username
                 }
             },
             "attributes": [
@@ -66,20 +59,20 @@ module.exports = app => {
         });
     };
 
-    Counters.remains = async function (mac) {
+    Counters.remains = async function (username) {
         let limit = new BN(app.config.maxFlowLimit);
-        let total = await Counters.aggr(mac).then(flow => {
+        let total = await Counters.aggr(username).then(flow => {
             return new BN(flow.incoming || 0).plus(flow.outgoing || 0);
         });
 
         return limit.minus(total);
     };
 
-    Counters.flow = async function (mac, username) {
-        let total = await Counters.remains(mac);
+    Counters.flow = async function (username) {
+        let total = await Counters.remains(username);
         let units = 'B';
         // 计算流量总量todo
-        total = await app.model.Order.balance(mac, /*username,*/ 'FLOW').then(b => {
+        total = await app.model.Order.balance(username, 'FLOW').then(b => {
             return total.plus(b)
         });
 
@@ -127,12 +120,13 @@ module.exports = app => {
         });
     };
 
-    Counters.userTrace = function ({ gw_id, gw_sn, ip, mac, token, incoming, outgoing, usedtime }) {
+    Counters.userTrace = function ({ gw_id, gw_sn, ip, mac, username, token, incoming, outgoing, usedtime }) {
         return Counters.upsert({
             "gw_id": gw_id,
             "gw_sn": gw_sn,
             "ip": ip,
             "mac": mac,
+            "username": username,
             "token": token,
             "incoming": parseInt(incoming),
             "outgoing": parseInt(outgoing),

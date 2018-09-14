@@ -26,9 +26,12 @@ module.exports = app => {
     // 认识失败, 错误信息页面
     app.get('/wifi/gw_message.php', 'home.message');
 
-    // 绑定手机号
+    // 绑定手机号和mac
     app.post('/signup', MIDDLE_WARES.isMtfi(), MIDDLE_WARES.isMobile(), MIDDLE_WARES.existsMac(), 'home.signup');
 
+    // 解除手机号和mac绑定
+    app.post('/user/unbind', MIDDLE_WARES.isMobile(), 'user.unbind');
+    
     // 发送短信验证码
     app.post('/smscode', MIDDLE_WARES.isMtfi(), MIDDLE_WARES.isMobile(), MIDDLE_WARES.existsMac(), 'home.smscode');
 

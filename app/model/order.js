@@ -73,14 +73,11 @@ module.exports = app => {
         })
     }
 
-    Order.balance = function (mac,/* username,*/ key, from = null) {
+    Order.balance = function (username, key, from = null) {
         let where = {
-            "mac": {
-                [Op.eq]: mac
+            "username": {
+                [Op.eq]: username
             },
-            // "username": {
-            //     [Op.eq]: username
-            // },
             "key": {
                 [Op.eq]: key
             },

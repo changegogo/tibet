@@ -49,6 +49,42 @@ module.exports = app => {
         "updated_at": DATE,
     });
 
+    Sta.findByMacAndMobile = function (mobile, mac) {
+        return Sta.findOne({
+            "where": {
+                "username": {
+                    [OP.eq]: mobile
+                },
+                "mac": {
+                    [OP.eq]: mac
+                }
+            }
+        }).then(sta => {
+            return sta && sta.get({ plain: true });
+        }).catch((error)=>{
+            return null;
+        });
+    };
+
+    Sta.unbindMac = function(mobile, mac){
+        return Sta.update({
+            mac: ""
+        },{
+            where: {
+                username: {
+                    [OP.eq]: mobile
+                },
+                mac: {
+                    [OP.eq]: mac
+                }
+            }
+        }).then( c => {
+            return c;
+        }).catch(err=>{
+            console.log(err);
+        });
+    }
+
     Sta.findByMAC = function (mac) {
         return Sta.findOne({
             "where": {
@@ -74,7 +110,6 @@ module.exports = app => {
         }).then(sta => {
             return sta ? sta.get({ plain: true }) : {};
         }).catch((error)=>{
-            console.log(error);
             return {};
         });
     };
@@ -94,12 +129,8 @@ module.exports = app => {
             },
             "returning": true
         }).then(([ user, isNew ]) => {
-            //console.log(user);
-            console.log("isNew-->"+isNew);
             return [ user.get({ plain: true }), isNew ];
         }).catch(err =>{
-            console.log("err");
-            console.log(err);
         });
     };
 
@@ -117,7 +148,6 @@ module.exports = app => {
                 }
             }
         }).then( c => {
-            //console.log('updateIsApp'+c);
             return c;
         }).catch(err=>{
             console.log(err);
