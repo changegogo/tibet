@@ -186,11 +186,6 @@ body {
 </style>
 {% endblock %}
 
-
-
-
-
-
 {% block header %}
 <div class="container-fluid px-2">
   <div class="web-header-wrapper">
@@ -215,16 +210,22 @@ body {
   <ol class="carousel-indicators">
     <li data-target="#carousel" data-slide-to="0" class="active"></li>
     <li data-target="#carousel" data-slide-to="1"></li>
+    <li data-target="#carousel" data-slide-to="2"></li>
   </ol>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <a style="display: inline-block;" href="http://api.chunyuyisheng.com/download/chunyu/latest/?vendor=tianlushouye&ylkjtag=ylkjadv">
-        <img class="d-block w-100" src="/public/upload/chunyu_h.png" />
+      <a style="display: inline-block;" href="javascript:void(0)">
+        <img class="d-block w-100" src="/public/upload/artboard.png" />
       </a>
     </div>
     <div class="carousel-item">
-      <a style="display: inline-block;" href="https://rxcq.tantanyou.com/?sp=450001&ss=WIFI&ts=0001?ylkjtag=ylkjadv">
-        <img class="d-block w-100" src="/public/upload/rexuecq_h.jpeg" />
+      <a style="display: inline-block;" href="javascript:void(0)">
+        <img class="d-block w-100" src="/public/upload/artboard.png" />
+      </a>
+    </div>
+    <div class="carousel-item">
+      <a style="display: inline-block;" href="javascript:void(0)">
+        <img class="d-block w-100" src="/public/upload/artboard.png" />
       </a>
     </div>
   </div>

@@ -386,7 +386,6 @@ module.exports = app => {
         }
 
         async index(ctx) {
-            //console.log('index');
             let { gw_id, gw_sn, mac, wifi, tag, device } = ctx.query;
             let [ gw_address, gw_port,ssid, ip, username, is_app ] = await Promise.all([
                 model.Mtfi.findByGW(gw_id, gw_sn),
@@ -404,8 +403,6 @@ module.exports = app => {
                 ctx.logger.error(err);
                 return [];
             });
-            //console.log("is_app");
-            //console.log(is_app);
             if (is_app) {
                 tag = "app";
             }
@@ -447,11 +444,8 @@ module.exports = app => {
                 ctx.redirect('http://192.168.0.1:2060/wifidog/redirect');
                 return;
             }
-            //console.log('token: ', token);
-
             // 上线操作
             let online = `http://${gw_address}:${gw_port}/wifidog/auth?token=${token.token}`;
-            //console.log('online: ', online);
             // 下线操作
             let offline = `${online}&logout=1`;
             if(tag === 'app'){ // 表示在app中打开

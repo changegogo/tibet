@@ -116,6 +116,8 @@
                     $('.today_totalViews').text(res.daylifeCount)
                     $('.total_registers').text(res.allRegCount)
                     $('.total_views').text(res.allVisitCount)
+                }else {
+                    window.location.href = 'admin.html';
                 }
             },
             error: function(err) {

@@ -42,11 +42,20 @@ module.exports = app => {
         }
 
         async statistics(ctx) {
-            let countObj = await model.Sta.statistics();
-            ctx.body = {
-                code: 200,
-                ...countObj
-            };
+            let { username } = ctx.session;
+            if(username != 'admin') {
+                ctx.body = {
+                    code: 403,
+                    msg: 'no login'
+                };
+            }else {
+                let countObj = await model.Sta.statistics();
+                ctx.body = {
+                    code: 200,
+                    ...countObj
+                };
+            }
+           
         }
     }
 

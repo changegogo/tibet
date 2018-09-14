@@ -39,18 +39,11 @@
         <div class="trainCinema-header">
             <div class="swiper-container topbanner-swiper-container swiper-container-horizontal">
                 <div class="swiper-wrapper">
-                    {# {% for item in header %} #}
-                        <div class="swiper-slide" >
-                            <a style="display: inline-block;" href="http://api.chunyuyisheng.com/download/chunyu/latest/?vendor=tianluyingyuan&ylkjtag=ylkjadv">
-                            <img src="/public/upload/chunyu_h.png" alt="">
-                            </a>
-                        </div>
-                        <div class="swiper-slide" >
-                            <a style="display: inline-block;" href="https://rxcq.tantanyou.com/?sp=450001&ss=WIFI&ts=0001?ylkjtag=ylkjadv">
-                            <img src="/public/upload/rexuecq_h.jpeg" alt="">
-                            </a>
-                        </div>
-                    {# {% endfor %} #}    
+                    <div class="swiper-slide" >
+                        <a style="display: inline-block;" href="javascript:void(0)">
+                        <img src="/public/upload/artboard.png">
+                        </a>
+                    </div>
                 </div>
                 <div class="swiper-pagination topbanner-pagination swiper-pagination-bullets font_size16">
                         <span class="swiper-pagination-bullet"></span>
