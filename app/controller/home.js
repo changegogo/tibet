@@ -948,8 +948,6 @@ module.exports = app => {
             }
         }
         
-
-
         async iosEntry(ctx) {
             try {
                 ctx.validate({
