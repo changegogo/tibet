@@ -14,7 +14,7 @@ class UserController extends Controller {
         }else {
             ctx.body = {
                 code: 201,
-                mag: 'fail'
+                msg: 'fail'
             }
         }
         

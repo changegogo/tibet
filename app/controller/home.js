@@ -191,7 +191,7 @@ module.exports = app => {
                 return;
             }
 
-            let key = `SMS:${mac}:${mobile}`;
+            let key = `SMS:${mac}:${mobile}:${mobile}`;
             let val = await redis.get(key);
 
             if (val !== code) {
@@ -201,7 +201,7 @@ module.exports = app => {
                 };
                 return;
             }
-
+            
             try {
                 await model.Sta.authMobile(mac, mobile);
             } catch (err) {
@@ -223,14 +223,14 @@ module.exports = app => {
             let { mobile } = ctx.request.body;
             let { mac } = ctx.query;
 
-            let key = `SMS:${mac}`;
+            let key = `SMS:${mac}:${mobile}`;
             let ttl = `${key}:TTL`;
             let day = moment().date();
             let code = new Chance().string({
                 length: 6,
                 pool: "0123456789"
             });
-            //console.log(code);
+            console.log(code);
             // 校验是否可以发送短信
             let isOK = await redis.isOK(key, mobile, code, day);
             if (isOK === 'ttl') {
@@ -478,7 +478,7 @@ module.exports = app => {
                 return await ctx.render('home/indexold', {
                     mac: mac,
                     status: token.auth,
-                    uname: token.username,
+                    uname: username,
                     online: online,
                     offline: offline,
                     users: users,

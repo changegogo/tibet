@@ -299,6 +299,18 @@ body {
       </div>
     </li>
   </ul>
+
+  <ul class="list-unstyled wifi w-100 mb-2">
+    <li class="pr-1 logout">
+      <div class="bg-primary h-120px position-relative">
+        <div class="nav-item text-white">
+          <img src="/public/img/ic_library_books_black_24px.svg" />
+          <span>退出登录</span>
+        </di>
+      </div>
+    </li>
+  </ul>
+
 </div>
 {% endblock %}
 
@@ -333,8 +345,25 @@ $('.jumpa').click(function(){
   }else{
     httpurl = httpurl +'?referer='+ encodeURIComponent(window.location.href);
   }
-  
   window.location.href = httpurl;
+});
+
+$('.logout').click(function() {
+  $.ajax({
+    method: 'POST',
+    url: '/user/unbind',
+    data: {
+      mobile: "{{uname}}",
+	    mac: "{{mac}}"
+    },
+    success: function(res){
+      alert(JSON.stringify(res));
+      window.location.href = 'http://192.168.0.1';
+    },
+    error: function(err){
+      alert(JSON.stringify(err));
+    }
+  });
 });
 </script>
 {% endblock %}

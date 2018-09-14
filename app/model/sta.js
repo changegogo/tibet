@@ -67,9 +67,7 @@ module.exports = app => {
     };
 
     Sta.unbindMac = function(mobile, mac){
-        return Sta.update({
-            mac: ""
-        },{
+        return Sta.destroy({
             where: {
                 username: {
                     [OP.eq]: mobile
