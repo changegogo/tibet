@@ -46,7 +46,7 @@
     <div class="mycenter-body font_size16 marginlr15 marginT16">
 
         <div class="weui-panel__ft">
-            <a id="alreadybuy" httpurl="/alreadybuy/novel?mac={{ mac }}" class="weui-cell weui-cell_access weui-cell_link mycenter-celllink-item">
+            <a style="display:none;" id="alreadybuy" httpurl="/alreadybuy/novel?mac={{ mac }}" class="ios-no weui-cell weui-cell_access weui-cell_link mycenter-celllink-item">
                 <img src="/public/img/Group02.svg" alt="" class="marginR16">
                 <div class="weui-cell__bd flex flex-align-center flex-pack-justify common_borderBottom">
                     <p>已购买</p>
@@ -87,6 +87,10 @@
 <script src="/public/js/weui.js"></script>
 <script src="/public/js/mycenter.js"></script>
 <script>
+    // android设备显示流量和游戏，iphone设备隐藏
+    if(/Android/i.test(navigator.userAgent)) {
+            $(".ios-no").show();
+    }
     // 接受mac传回的设备mac地址
     window.receiveWifiMacResult = function(wmac) {
         window.curUrl = window.curUrl + "&wmac=" + wmac;
