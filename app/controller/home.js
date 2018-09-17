@@ -470,6 +470,10 @@ module.exports = app => {
                 let novels = await ctx.service.novel.lists('all', 1, 3);
                 // 3个游戏
                 let games = await ctx.service.game.lists('all', 1, 3);
+                // 设置登录信息
+                ctx.session.mac = mac;
+                ctx.session.username = username;
+
                 return await ctx.render('home/index', {
                     mac: mac,
                     status: token.auth,
@@ -654,6 +658,7 @@ module.exports = app => {
                 return;
             }
             let { username } = await model.Sta.findByMAC(mac);
+            username = username.replace(/^(\d{4})\d{4}(\d+)/,"$1****$2");
             return await ctx.render('home/mycenter', {
                 tel: username,
                 mac: mac

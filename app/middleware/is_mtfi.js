@@ -6,7 +6,7 @@ module.exports = (options, app) => {
             gw_id: "58:69:6C:ED:EF:10",
             gw_port: "2060",
             gw_sn: "HMAPA04170500534"
-        }, ctx.query);
+        }, ctx.query, ctx.session);
 
         try {
             ctx.validate({
