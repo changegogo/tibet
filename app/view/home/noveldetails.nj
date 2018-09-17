@@ -56,6 +56,7 @@
       </p>
    </div>
     <!-- -------------------------------------select-pay-method-wrapper----------------------------------- -->
+    <div class="ios-no" style="display: none;">
     <div class="paymethod-wrapper marginT16 marginlr15">
         {% if novel.isfree === 'pay' %}
         <h2 class="font_size16">支付方式</h2>
@@ -86,6 +87,7 @@
             去支付  
         </button>
     </div>
+    </div>
     {% else %}
         <div class="text-center font_size16">
         <button id="goread" class="pay-btn orange_bgcolor" httpurl="{{novel.httpurl}}" name="{{novel.name}}">
@@ -101,6 +103,11 @@
 
 <script>
     $(function(){
+        // android设备显示流量和游戏，iphone设备隐藏
+		if(/Android/i.test(navigator.userAgent)) {
+				$(".ios-no").css({"display": 'block'});
+		}
+
         $("#gopay").click(function(){
             // 显示遮罩层，防止连续点击todo
             // 支付方式
