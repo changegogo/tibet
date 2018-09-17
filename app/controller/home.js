@@ -247,7 +247,7 @@ module.exports = app => {
                 length: 6,
                 pool: "0123456789"
             });
-            //console.log(code);
+            console.log(code);
             // 校验是否可以发送短信
             let isOK = await redis.isOK(key, mobile, code, day);
             if (isOK === 'ttl') {
@@ -406,7 +406,7 @@ module.exports = app => {
             if (is_app) {
                 tag = "app";
             }
-            // 设置is_app为false todo
+            // 设置is_app为false
             // await model.Sta.updateIsApp(gw_id, mac, false);
             // 非法请求
             if (!gw_address || !username) {
@@ -658,7 +658,11 @@ module.exports = app => {
                 return;
             }
             let { username } = await model.Sta.findByMAC(mac);
-            username = username.replace(/^(\d{4})\d{4}(\d+)/,"$1****$2");
+            
+            if( username ){
+                username = username.replace(/^(\d{4})\d{4}(\d+)/,"$1****$2");
+            }
+            
             return await ctx.render('home/mycenter', {
                 tel: username,
                 mac: mac

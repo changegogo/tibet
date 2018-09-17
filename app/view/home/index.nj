@@ -45,9 +45,9 @@
 					<span>{{users}} 人已连接</span>
 				</div>
 				{% if status %}
-					<div class="open-btn"><span httpurl="{{offline}}">关闭外网</span></div>
+					<div hidden class="open-btn"><span httpurl="{{offline}}">关闭外网</span></div>
 				{% else %}
-					<div class="open-btn"><span httpurl="{{online}}">开启外网</span></div>
+					<div hidden class="open-btn"><span httpurl="{{online}}">开启外网</span></div>
 				{% endif %}
 			{% endif %}
 		</div>
@@ -203,6 +203,23 @@
 <script src="/public/js/swiper.min.js"></script>
 <script src="/public/js/weui.js"></script>
 <script src="/public/js/index.js"></script>
+<!-- 自动连接网络 -->
+{% if not status %}
+	{% if flow.total > 0 %}
+		{% if device === 'no' %}
+		{% else %}
+			<script>
+				window.location.href= "{{online}}";
+			</script>
+		{% endif %}
+	{% endif %}
+{% else %}
+	{% if flow.total <= 0 %}
+		<script>
+			window.location.href= "{{online}}";
+		</script>
+	{% endif %}
+{% endif %}
 <script>
 	$(function(){
 		// android设备显示流量和游戏，iphone设备隐藏

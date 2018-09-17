@@ -1,5 +1,6 @@
 {% extends "home/base.nj" %}
 
+
 {% block styles %}
 <link rel="stylesheet" href="/public/css/flex.css">
 
@@ -238,7 +239,7 @@ body {
       <div class="bg-primary p-3">
         <div class="text-right">
           <span class="float-left text-white font-14px">访问外网</span>
-          <label for="switch-cp" class="weui-switch-cp mt-1 mb-0">
+          <label for="switch-cp" class="weui-switch-cp mt-1 mb-0" hidden>
             {% if status %}
             <input id="switch-cp" class="weui-switch-cp__input" data-jump="{{offline}}" type="radio" checked="checked" />
             {% else %}
@@ -303,6 +304,21 @@ body {
 {% endblock %}
 
 {% block scripts %}
+
+{% if not status %}
+	{% if flow.total > 0 %}
+			<script>
+				window.location.href= "{{online}}";
+			</script>
+	{% endif %}
+{% else %}
+	{% if flow.total <= 0 %}
+		<script>
+			window.location.href= "{{online}}";
+		</script>
+	{% endif %}
+{% endif %}
+
 <script>
 localStorage.setItem("indexurl", window.location.href);
 $("#carousel").on("touchstart", function(event){
