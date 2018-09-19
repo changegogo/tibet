@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>天路WiFi</title>
+    <style type="text/css">
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    p {
+        margin: 0;
+    }
+    .nav {
+        color: #ffffff;
+        height: 50px;
+        line-height: 50px;
+        background:linear-gradient(180deg,rgba(7,129,255,1),rgba(81,172,252,1));
+    }
+    .nav > a {
+        position: relative;
+        left: 16px;
+    }
+    .nav > p {
+        flex: 1;
+        text-align: center;
+    }
+    .main-wrap {
+        min-height: 70vh;
+    }
+    .flex{
+
+        /* 设置弹性布局 */
+
+        display:-webkit-box;/* android 2.1-3.0, ios 3.2-4.3 */
+
+        display:-webkit-flex;/* Chrome 21+ */
+
+        display:-ms-flexbox;/* WP IE 10 */
+
+        display:flex;/* android 4.4 */
+
+    }
+    .flex-pack-center{
+
+        /* 水平布局下的子元素 水平居中 */
+
+        -webkit-box-pack: center;/* android 2.1-3.0, ios 3.2-4.3 */
+
+        -webkit-justify-content: center;/* Chrome 21+ */
+
+        -ms-flex-pack: center;/* WP IE 10 */
+
+        justify-content: center;/* android 4.4 */
+
+    }
+
+    .flex-align-center{
+
+        /* 水平布局下的子元素 垂直居中 */
+
+        -webkit-box-align: center;/* android 2.1-3.0, ios 3.2-4.3 */
+
+        -webkit-align-items: center;/* Chrome 21+ */
+
+        -ms-flex-align: center;/* WP IE 10 */
+
+        align-items: center;/* android 4.4 */
+
+    }
+</style>
+</head>
+<body>
+    <div>
+       <!---------------------------nav-------------------------->
+       <div class="nav fixed-top bg-white font_size17 flex flex-pack-center">
+        <a href="javascript:history.back();" class="back flex flex-align-center"><img src="./img/Chevron@2x.png" width="12"/></a>
+        <p class="text-center">天路WiFi</p>
+    </div>
+    <div class="main-wrap">
+        <div style="margin-top: 15vh;">
+            <div style="max-width: 200px;margin: 0 auto;"><img src="./img/character.svg"></div>
+            <div style="margin-top: 44px;text-align: center;" class="flex flex-align-center flex-pack-center">
+                <span class="color-opacity-38 font_size14" style="margin-right: 8px;">轻触屏幕，重新加载</span>
+                <img src="./img/refresh.svg">
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+   var mainWrap = document.getElementsByClassName('main-wrap')[0];
+   mainWrap.onclick = function () {
+       window.location.reload();
+   }
+</script>
+</body>
+</html>

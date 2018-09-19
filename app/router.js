@@ -80,7 +80,7 @@ module.exports = app => {
     // 购买成功界面
     app.get('/buy/success', 'home.buysuccess');
     // 我的中心
-    app.get('/mycenter', MIDDLE_WARES.isMtfi(), 'home.mycenter');
+    app.get('/mycenter', /*MIDDLE_WARES.isMtfi(),*/ 'home.mycenter');
     // 已购买 type (novel,film,wifi)
     app.get('/alreadybuy/:type', 'home.alreadybuy');
     // 常见问题

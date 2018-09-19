@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
+    <title>天路WiFi</title>
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/public/css/weui.min.css" />
+    <link rel="stylesheet" href="/public/css/flex.css">
+    <link rel="stylesheet" href="/public/css/swiper.min.css">
+    <link rel="stylesheet" href="/public/css/common.css">
+    <link rel="stylesheet" href="/public/css/trainCinema.css?version=1.0.2">
+    <style type="text/css">
+    body {
+      padding-top: 40px;
+      padding-bottom: 40px;
+      background-color: #eee;
+  }
+
+  .form-signin {
+      max-width: 330px;
+      padding: 15px;
+      margin: 0 auto;
+  }
+  .form-signin .form-signin-heading,
+  .form-signin .checkbox {
+      margin-bottom: 10px;
+  }
+  .form-signin .checkbox {
+      font-weight: normal;
+  }
+  .form-signin .form-control {
+      position: relative;
+      height: auto;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 12px;
+  }
+  .form-signin .form-control:focus {
+      z-index: 2;
+  }
+  .form-signin input[type="email"] {
+      margin-bottom: -1px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+  }
+  .form-signin input[type="password"] {
+      margin-bottom: 10px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+  }
+
+</style>
+</head>
+
+<body>
+    <div class="container">
+
+      <form class="form-signin">
+        <h2 class="form-signin-heading text-center">登录</h2>
+        <label for="inputEmail" class="sr-only">用户名</label>
+        <input type="username" id="userName" class="form-control" placeholder="用户名" required="" name="username" value="admin">
+        <label for="inputPassword" class="sr-only">密码</label>
+        <input type="password" id="inputPassword" class="form-control" name="password" placeholder="密码" required="" value="12345678">
+        <!-- <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div> -->
+    <button class="btn btn-lg btn-primary btn-block login-btn" type="button">登录</button>
+</form>
+
+</div>
+<script src="/public/js/jquery-3.3.1.min.js"></script>
+<script src="/public/js/bootstrap.min.js"></script>
+<script src="/public/js/weui.js"></script>
+<script src="/public/js//swiper.min.js"></script>
+<script src="/public/js/trainCInema.js"></script>
+<script>
+    // 接受mac传回的设备mac地址
+    window.receiveWifiMacResult = function(wmac) {
+        window.curUrl = window.curUrl + "&wmac=" + wmac;
+        window.location.href = window.curUrl;
+    }
+    $(function(){
+        $(".filma").click(function(){
+            // 判断设备信息
+            var device = "";
+            if(/Android/i.test(navigator.userAgent)) {
+                device = "Android";
+            } else if(/iPhone/i.test(navigator.userAgent)) {
+                device = "iPhone";
+            }
+            if(!device){
+                alert("设备不支持");
+                return;
+            }
+            var wmac = "";
+            var url = $(this).attr("httpurl");
+            try{
+                if(device === 'Android'){
+                    wmac = qz_android.getWifiMac();
+                    url = url + "&wmac=" + wmac;
+                    window.location.href = url;
+                }else {
+                    window.curUrl = url;
+                    window.webkit.messageHandlers.getWifiMac.postMessage(null);
+                }
+            }catch(err){
+                url = url + "&wmac=" + wmac;
+                window.location.href = url;
+            }
+        });
+        
+        function loginMethod() {
+            $.ajax({
+                url: '/login',
+                method: 'POST',
+                data: {
+                    username: $('#userName').val(),
+                    password: $('#inputPassword').val(),
+                },
+                success: function(res){
+                    console.log(res);
+                    if (res.code === 200) {
+                        window.location.href = '/public/statistics.html'
+                    } else {
+                        alert(res.msg);
+                    }
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            })
+        }
+        // login-btn
+        $('.login-btn').click(function(){
+            console.log(323232)
+            loginMethod();
+        })
+    });
+</script>
+</body>
+
+</html>

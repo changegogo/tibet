@@ -1,13 +1,11 @@
 module.exports = (options, app) => {
     return async function(ctx, next) {
-        ctx.query = Object.assign({
-            ip: "192.168.0.51",
-            gw_address: "192.168.255.1",
-            gw_id: "58:69:6C:ED:EF:10",
-            gw_port: "2060",
-            gw_sn: "HMAPA04170500534"
-        }, ctx.query, ctx.session);
-
+        // 表示连接的不是MTFI
+        let { device } = ctx.query;
+        if(device === 'no') {
+            return await next();
+        }
+        ctx.query = Object.assign({}, ctx.query, ctx.session);
         try {
             ctx.validate({
                "gw_id": {
@@ -25,7 +23,6 @@ module.exports = (options, app) => {
                 "mac": {
                     type: 'string',
                     format: /^([a-fA-F0-9]{2}:){5}[a-fA-F0-9]{2}$/
-                    //format: /[A-F\d]{2}:[A-F\d]{2}:[A-F\d]{2}:[A-F\d]{2}:[A-F\d]{2}:[A-F\d]{2}/
                 }
             }, ctx.query);
         } catch (err) {
@@ -34,7 +31,6 @@ module.exports = (options, app) => {
             return;
         }
         ctx.query.mac = ctx.query.mac.toLowerCase();
-
         return await next();
     };
 }

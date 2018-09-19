@@ -50,18 +50,23 @@ module.exports = app => {
     });
 
     Sta.findByMAC = function (mac) {
-        return Sta.findOne({
-            "where": {
-                "mac": {
-                    [OP.eq]: mac
+        try { 
+            mac = mac.toLowerCase();
+            return Sta.findOne({
+                "where": {
+                    "mac": {
+                        [OP.eq]: mac
+                    }
                 }
-            }
-        }).then(sta => {
-            return sta ? sta.get({ plain: true }) : {};
-        }).catch((error)=>{
-            console.log(error);
+            }).then(sta => {
+                return sta ? sta.get({ plain: true }) : {};
+            }).catch((error)=>{
+                console.log(error);
+                return {};
+            });
+        } catch (error) {
             return {};
-        });
+        }
     };
 
     Sta.findByMobile = function (mobile) {
@@ -79,14 +84,25 @@ module.exports = app => {
         });
     };
 
-    Sta.updateByMAC = function (mac, ip, gw_id, gw_sn) {
-        return Sta.upsert({
-            "mac": mac,
-            "ip": ip,
-            "gw_id": gw_id,
-            "gw_sn": gw_sn,
-            //"is_app": is_app
-        }, {
+    Sta.updateByMAC = function (mac, ip, gw_id, gw_sn, is_app) {
+        let data;
+        if(is_app) {
+            data = {
+                "mac": mac,
+                "ip": ip,
+                "gw_id": gw_id,
+                "gw_sn": gw_sn,
+                "is_app": is_app
+            }
+        }else {
+            data = {
+                "mac": mac,
+                "ip": ip,
+                "gw_id": gw_id,
+                "gw_sn": gw_sn
+            }
+        }
+        return Sta.upsert(data, {
             "where": {
                 "mac": {
                     [OP.eq]: mac

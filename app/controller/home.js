@@ -118,21 +118,6 @@ module.exports = app => {
 
     class Home extends app.Controller {
         async login(ctx) {
-            //console.log('login');
-            /*try {
-                ctx.validate({
-                    "gw_address": {
-                        type: 'string',
-                        format: /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/
-                    },
-                    "gw_port": 'id',
-                }, ctx.query);
-            } catch (err) {
-                ctx.logger.error(err);
-                // 非法输入返回`404`
-                return;
-            }*/
-
             // 请求参数:
             // -------------------------------------
             // {
@@ -151,40 +136,42 @@ module.exports = app => {
                 gw_id, gw_sn, gw_address, gw_port,
                 url,
                 ip, mac,
-                apmac, ssid
+                apmac, ssid,
+                device
             } = ctx.query;
 
-            // 获取`WIFI终端`信息
-            let [ sta ] = await model.Sta.updateByMAC(mac, ip, gw_id, gw_sn);
-            //console.log('index sta');
-            //console.log(sta);
+            
+            // 更新并获取`WIFI终端`信息
+            if(device != 'no') {
+                await model.Sta.updateByMAC(mac, ip, gw_id, gw_sn);
+                // 更新`MTFi设备`信息
+                // *** 临时方案: 设备信息应该是静态存储的 ***
+                await model.Mtfi.findAndUpdate(ctx.query);
+            }
+            let sta = await model.Sta.findByMAC(mac);
+            Object.assign(ctx.query, {
+                gw_id: sta.gw_id,
+                gw_sn: sta.gw_sn,
+                tag: sta.is_app ? "app" : ""
+            });
             let query = new URLSearchParams(ctx.query).toString();
-
             // 未绑定手机
             if (!sta.username) {
                 return await ctx.render('home/signup', {
                     "action": `/signup?${query}`,
                     "sendcode": `/smscode?${query}`
                 });
+            }else {
+                // 跳转`Portal`页
+                ctx.redirect(`/wifi/portal?${query}`);
             }
-
-            if (sta.is_app) {
-                query+="&tag=app";
-            }
-
-            // 更新`MTFi设备`信息
-            // *** 临时方案: 设备信息应该是静态存储的 ***
-            await model.Mtfi.findAndUpdate(ctx.query);
-
-            // 跳转`Portal`页
-            ctx.redirect(`/wifi/portal?${query}`);
         }
 
         async signup(ctx) {
             let { mobile, code } = ctx.request.body;
             let { mac } = ctx.query;
             // 限制只能绑定一台设备
-            let {username} = await model.Sta.findByMobile(mobile);
+            let { username } = await model.Sta.findByMobile(mobile);
             if(username){
                 ctx.status = 400;
                 ctx.body = {
@@ -387,7 +374,22 @@ module.exports = app => {
 
         async index(ctx) {
             let { gw_id, gw_sn, mac, wifi, tag, device } = ctx.query;
-            let [ gw_address, gw_port,ssid, ip, username, is_app ] = await Promise.all([
+            let gw_address, gw_port, ssid, ip, username, is_app;
+            let mtfi = await model.Mtfi.findByGW(gw_id, gw_sn);
+            if(mtfi){
+                gw_address  = mtfi.gw_address;
+                gw_port = mtfi.gw_port;
+                ssid = mtfi.ssid;
+            }
+            
+            let sta = await model.Sta.findByMAC(mac);  
+            if(sta) {
+                ip = sta.ip;
+                username = sta.username;
+                is_app = sta.is_app;
+            }
+        
+            /*let [ gw_address, gw_port,ssid, ip, username, is_app ] = await Promise.all([
                 model.Mtfi.findByGW(gw_id, gw_sn),
                 model.Sta.findByMAC(mac)
             ]).then(([ mtfi, user ]) => {
@@ -402,14 +404,14 @@ module.exports = app => {
             }).catch(err => {
                 ctx.logger.error(err);
                 return [];
-            });
+            });*/
             if (is_app) {
                 tag = "app";
             }
             // 设置is_app为false
             // await model.Sta.updateIsApp(gw_id, mac, false);
             // 非法请求
-            if (!gw_address || !username) {
+            if (/*!gw_address ||*/ !username) {
                 return;
             }
 
@@ -684,7 +686,6 @@ module.exports = app => {
                 let config = ctx.app.config;
                 let deploy = config.deploy;
                 let deviceaddress = config.deviceaddress;
-                //let checkdeviceurl = config.checkdeviceurl;
                 let isDevice =  null;
                 if(deploy && wmac){
                     isDevice =  await model.Mtfi.findByLickMac(wmac);
