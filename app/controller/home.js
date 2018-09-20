@@ -152,7 +152,7 @@ module.exports = app => {
             Object.assign(ctx.query, {
                 gw_id: sta.gw_id,
                 gw_sn: sta.gw_sn,
-                tag: sta.is_app ? "app" : ""
+                tag: ctx.query.tag == 'app' ? "app" : (sta.is_app ? "app" : "")
             });
             let query = new URLSearchParams(ctx.query).toString();
             // 未绑定手机
@@ -405,9 +405,10 @@ module.exports = app => {
                 ctx.logger.error(err);
                 return [];
             });*/
-            if (is_app) {
-                tag = "app";
-            }
+            tag = ctx.query.tag == 'app' ? "app" : (is_app ? "app": "");
+            // if (is_app) {
+            //     tag = "app";
+            // }
             // 设置is_app为false
             // await model.Sta.updateIsApp(gw_id, mac, false);
             // 非法请求
