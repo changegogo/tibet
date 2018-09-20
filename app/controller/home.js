@@ -848,7 +848,9 @@ module.exports = app => {
             }
             else {
                 //mac, wifi, tag
-                ctx.redirect(`/wifi/login?mac=${mmac}&wifi=${wifiname}&tag=app&device=no`);
+                wifiname = encodeURIComponent(wifiname);
+                let url = `/wifi/login?mac=${mmac}&wifi=${wifiname}&tag=app&device=no`;
+                ctx.redirect(url);
             }
         }
         // ios端验证绑定的发送验证码接口
