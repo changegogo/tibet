@@ -61,6 +61,10 @@ label.disabled p {
 .btn-primary {
   background-color: #4A90E2 !important;
 }
+
+.paymethod-wrapper .intro {
+  font-size: 13px;
+}
 </style>
 {% endblock %}
 
@@ -105,7 +109,10 @@ label.disabled p {
 
  
     <div class="paymethod-wrapper marginT16 marginlr15">
-        <h1 class="font_size18" style="font-size: 16px;">公网WiFi流量与通信运营商所提供的手机流量不同，该流量仅限于天路WiFi列车使用。</h1>
+        <h1 class="font_size18" style="font-size: 16px;">购买须知：</h1>
+        <p class="intro">1. 本流量仅限于天路WiFi内使用；</p>
+        <p class="intro">2. 当支付完成后，即流量购买成功，如未及时显示请刷新页面；</p>
+        <p class="intro">3. 天路Wi-Fi因青藏铁路地域原因及连接WiFi人数过多，有可能造成部分时间段网络不稳定的情况。</p>
         <div class="weui-cells weui-cells_radio">
             <label class="weui-cell weui-check__label" for="wxpay">
                 <div class="weui-cell__bd">
