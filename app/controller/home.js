@@ -373,8 +373,11 @@ module.exports = app => {
         }
 
         async index(ctx) {
+            // MTFI回调服务器带来的query参数和app中主动添加的参数
             let { gw_id, gw_sn, mac, wifi, tag, device } = ctx.query;
+            // 声明变量
             let gw_address, gw_port, ssid, ip, username, is_app;
+            // 查询MTFI信息 gw_id 设备的MAC、gw_sn MTFi设备的序列号
             let mtfi = await model.Mtfi.findByGW(gw_id, gw_sn);
             if(mtfi){
                 gw_address  = mtfi.gw_address;
@@ -405,10 +408,7 @@ module.exports = app => {
                 ctx.logger.error(err);
                 return [];
             });*/
-            tag = ctx.query.tag == 'app' ? "app" : (is_app ? "app": "");
-            // if (is_app) {
-            //     tag = "app";
-            // }
+            tag = ctx.query.tag === 'app' ? "app" : (is_app ? "app": "");
             // 设置is_app为false
             // await model.Sta.updateIsApp(gw_id, mac, false);
             // 非法请求

@@ -119,6 +119,20 @@ module.exports = app => {
         });
     };
 
+    // 通过telphone更新mtfi信息
+    Sta.updateByTelphone = function(telphone, gw_id, gw_sn) {
+        return Sta.update({
+            "gw_id": gw_id,
+            "gw_sn": gw_sn
+        },{
+            where: {
+                username: telphone
+            }
+        }).then(affectedCount => {
+            return affectedCount;
+        });
+    }
+
     Sta.updateIsApp = function(wmac, mac, is_app = false){
         let value = wmac.slice(0, wmac.length-1)+'%';
         return Sta.update({
@@ -171,6 +185,24 @@ module.exports = app => {
         });
     };
 
+    // 查找或者创建用户信息
+    Sta.findOrGenerate = async function (mtfi, telphone, mac, ip) {
+        return Sta.findOrCreate({
+            where: {
+                username: telphone
+            },
+            defaults: {
+                ...mtfi,
+                username: telphone,
+                mac: mac,
+                ip: ip
+            }
+        }).then(([ sta, isNew ]) => {
+            return [ sta.get({ plain: true }), isNew ];
+        });
+    }
+
+    // 注册统计
     Sta.statistics = async function () {
         let time = new Date();
         let year = time.getFullYear();

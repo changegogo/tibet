@@ -120,6 +120,9 @@ module.exports = app => {
     // ios端特定接口
     app.get('/ios/:wmac/:telphone/:wifiname', 'home.iosEntry');
 
+    // crh接口 http://localhost:7001/crh/tianlu?mMac=18:d2:76:8d:8c:c3&wMac=58:69:6C:ED:EF:10&telphone=15383830596
+    app.get('/crh/tianlu', 'crhapi.receive');
+
     // 测试indexold
     //app.get('/indexold', 'home.indexold');
     
